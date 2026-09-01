@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta name="mizan-version" content="2.5">
+<meta name="mizan-version" content="2.5.1">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -63,7 +63,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 </head>
 <body>
 <div class="app">
-<header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version">v2.5</span></h1></div><button class="iconbtn" id="settingsBtn">⚙️</button></header>
+<header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version">v2.5.1</span></h1></div><button class="iconbtn" id="settingsBtn">⚙️</button></header>
 <main id="homeView">
 <section class="card hero"><div><div class="muted">المتبقي اليوم</div><div class="big"><span id="todayRemaining">100</span> <small>ر.س</small></div><div id="todaySpend" class="muted">صرفت 0 من 100 ر.س</div><div id="statusPill" class="pill">✓ على المسار</div></div><div id="ring" class="ring"><div class="ringin"><strong id="pct">0%</strong><span>استهلاك</span></div></div><div class="safehero"><div><span>Safe to Spend</span><small>اليوم + الأسبوع + الشهر</small></div><b><span id="safeSpend">0</span> ر.س</b></div></section>
 <section class="grid3"><div class="tile a"><span>المتبقي هذا الأسبوع</span><strong id="weekRemaining">1,000</strong><small>ر.س</small></div><div class="tile b"><span>مستحق لك</span><strong id="owedTotal">0</strong><small>ر.س</small></div><div class="tile c"><span>المتبقي للدورة</span><strong id="savedMonth">0</strong><small>ر.س</small><div id="monthModeNote" class="monthnote">دورة المصروف</div></div></section>
@@ -170,7 +170,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 <button id="exportBackupBtn" type="button" class="toolbtn">تصدير نسخة احتياطية</button>
 <label class="toolbtn filelabel">استرجاع نسخة<input id="backupFile" type="file" accept=".json,application/json"></label>
 <button id="checkUpdateBtn" type="button" class="toolbtn">تحديث التطبيق</button>
-<div class="toolbtn" style="display:grid;place-items:center;pointer-events:none">النسخة v2.5</div>
+<div class="toolbtn" style="display:grid;place-items:center;pointer-events:none">النسخة v2.5.1</div>
 </div>
 </section>
 
@@ -182,7 +182,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 <section id="importSheet" class="sheet hidden"><div class="handle"></div><h3>استيراد كشف CSV</h3><label>اربطه بمصدر<select id="importSource"></select></label><label>الملف<input id="csvFile" type="file" accept=".csv,text/csv"></label><div id="importResult" class="result">الأعمدة المدعومة: Date / التاريخ، Description / الوصف، Amount أو Debit/Credit.</div><div class="actions"><button type="button" class="secondary close">إغلاق</button><button id="importGo" type="button" class="primary">استيراد</button></div></section>
 <script>
 (()=>{
-const APP_VERSION='2.5';
+const APP_VERSION='2.5.1';
 const KEY='mizan-static-v1';
 const defaults={settings:{weekday:100,weekend:200,reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleEndDay:31},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open'},merchantRules:{},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nطلب الدفع: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nطلب الدفع: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]};
 const clone=x=>JSON.parse(JSON.stringify(x));let state=load();let splitReturnTxnId=null;
@@ -243,6 +243,18 @@ function activeDayBudget(){return isTrackedDay(fdate())?(adaptiveTargets()[fdate
 function adaptiveDelta(){const ws=wstart(),idx=fdate().getDay(),track=trackingStartDate();let basePast=0,spentPast=0;for(let i=0;i<idx;i++){const d=new Date(ws);d.setDate(d.getDate()+i);if(d>=track){basePast+=dayBudget(new Date(d.getFullYear(),d.getMonth(),d.getDate(),12));spentPast+=spendOnDay(d)}}return basePast-spentPast}
 function monthAllocationForToday(){const now=fdate(),b=currentCycle(),remain=Math.max(0,monthRemaining()),track=trackingStartDate();let weights=0,d=new Date(now);while(d<b.endExclusive){if(d>=track)weights+=dayBudget(new Date(d.getFullYear(),d.getMonth(),d.getDate(),12));d.setDate(d.getDate()+1)}return weights>0?remain*dayBudget(new Date(now.getFullYear(),now.getMonth(),now.getDate(),12))/weights:remain}
 function safeToSpend(){const todayRemain=Math.max(0,activeDayBudget()-todaySpend()),weekRemain=Math.max(0,weeklyBudget()-weekSpend()),monthCap=monthOverrideActive()?Math.max(0,monthAllocationForToday()):todayRemain;return Math.max(0,Math.min(todayRemain,weekRemain,monthCap))}
+function pendingMembers(){
+  const rows=[];
+  for(const s of state.splits){
+    if(!Array.isArray(s.members))continue;
+    for(const m of s.members){
+      if(m.isSelf)continue;
+      const remaining=Math.max(0,(+m.share||0)-(+m.paidAmount||0));
+      if(remaining>0.009)rows.push({split:s,member:m,remaining})
+    }
+  }
+  return rows
+}
 function suggestedSplitMember(amount){const rows=pendingMembers();if(!rows.length)return null;return [...rows].sort((a,b)=>Math.abs(a.remaining-amount)-Math.abs(b.remaining-amount))[0]}
 function suggestedSplit(amount){const member=suggestedSplitMember(amount);if(member)return member.split;const open=state.splits.filter(s=>splitRemaining(s)>0);if(!open.length)return null;return [...open].sort((a,b)=>Math.abs(splitRemaining(a)-amount)-Math.abs(splitRemaining(b)-amount))[0]}
 function applyRefundToMember(amount,splitId,memberId){const s=state.splits.find(x=>x.id===splitId),m=s?.members?.find(x=>x.id===memberId);if(!s||!m)return applyRefund(amount);const due=Math.max(0,(+m.share||0)-(+m.paidAmount||0)),paid=Math.min(due,amount);m.paidAmount=(+m.paidAmount||0)+paid;m.paid=m.paidAmount>=(+m.share||0)-.009;m.paidAt=m.paid?new Date().toISOString():m.paidAt;syncSplitTotals(s);let allocations=paid>0?[{splitId:s.id,memberId:m.id,amount:paid}]:[];if(amount>paid){const rest=applyRefund(amount-paid);allocations=allocations.concat(rest.allocations||[])}return{applied:allocations.reduce((a,x)=>a+x.amount,0),allocations}}
@@ -401,7 +413,7 @@ $('smsImportGo').onclick=()=>{const sender=$('smsSender').value==='auto'?'':$('s
 function csvRows(text){const out=[];let row=[],f='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c==='"'){if(q&&n==='"'){f+='"';i++}else q=!q}else if(c===','&&!q){row.push(f);f=''}else if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(f);f='';if(row.some(x=>x.trim()))out.push(row);row=[]}else f+=c}if(f||row.length){row.push(f);out.push(row)}return out}function col(h,ks){const x=h.map(s=>s.trim().toLowerCase());for(const k of ks){const i=x.findIndex(v=>v===k||v.includes(k));if(i>=0)return i}return-1}function num(v){return Number(String(v||'').replace(/[ ,]/g,'').replace(/SAR|ر\.س/gi,''))}function date(v){const d=new Date(v);if(!isNaN(d))return d;const m=String(v).match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);if(m){let y=+m[3];if(y<100)y+=2000;return new Date(y,+m[2]-1,+m[1],12)}return new Date()}
 $('importGo').onclick=async()=>{const file=$('csvFile').files[0];if(!file)return $('importResult').textContent='اختر ملف CSV أولًا.';try{const rows=csvRows(await file.text()),h=rows[0]||[],di=col(h,['date','التاريخ']),xi=col(h,['description','details','merchant','الوصف','البيان','التفاصيل']),ai=col(h,['amount','المبلغ']),debi=col(h,['debit','مدين','خصم']),cri=col(h,['credit','دائن','إيداع']);if(di<0||xi<0||(ai<0&&debi<0&&cri<0))throw Error('تعذر اكتشاف أعمدة التاريخ والوصف والمبلغ');let add=0,dup=0,rev=0;for(const r of rows.slice(1)){let amount=NaN,direction='debit';if(ai>=0){amount=num(r[ai]);if(amount<0){amount=Math.abs(amount);direction='credit'}}else{const d=debi>=0?num(r[debi]):NaN,c=cri>=0?num(r[cri]):NaN;if(d>0)amount=d;else if(c>0){amount=c;direction='credit'}}if(!(amount>0))continue;const desc=r[xi]||'عملية مستوردة',t={id:uid(),amount,impact:direction==='debit'?amount:0,category:categoryFrom(desc),source:$('importSource').value,note:desc,label:direction==='debit'?'مصروف مستورد':'تحويل وارد',ts:date(r[di]).toISOString(),createdAt:new Date().toISOString(),direction};t.fp=fingerprint(t);if(isDup(t)){dup++;continue}t.review=infer(t);if(t.review)rev++;state.txns.push(t);add++}save();$('importResult').innerHTML=`تمت إضافة <b>${add}</b> عملية، تجاهل ${dup} مكررة، و${rev} للمراجعة.`}catch(err){$('importResult').textContent='تعذر الاستيراد: '+err.message}};
 
-$('exportBackupBtn').onclick=()=>{const payload={app:'Mizan',version:'2.5',exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`Mizan_Backup_${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('تم تجهيز النسخة الاحتياطية')};
+$('exportBackupBtn').onclick=()=>{const payload={app:'Mizan',version:'2.5.1',exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`Mizan_Backup_${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('تم تجهيز النسخة الاحتياطية')};
 $('backupFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const data=JSON.parse(await f.text()),incoming=data.state||data;if(!incoming||!Array.isArray(incoming.txns)||!Array.isArray(incoming.splits))throw Error('ملف غير صالح');if(!confirm('استرجاع النسخة الاحتياطية سيستبدل بيانات ميزان الحالية. متابعة؟'))return;state={...clone(defaults),...incoming,settings:{...defaults.settings,...(incoming.settings||{})},monthOverride:{...defaults.monthOverride,...(incoming.monthOverride||{})},ui:{...defaults.ui,...(incoming.ui||{})}};save();toast('تم استرجاع النسخة الاحتياطية')}catch(err){toast('تعذر قراءة ملف النسخة الاحتياطية',true)}finally{e.target.value=''}};
 
 let updateReloading=false;
@@ -444,7 +456,7 @@ if('serviceWorker'in navigator){
   });
   window.addEventListener('load',async()=>{
     try{
-      const reg=await navigator.serviceWorker.register('./sw.js?v=2.5',{updateViaCache:'none'});
+      const reg=await navigator.serviceWorker.register('./sw.js?v=2.5.1',{updateViaCache:'none'});
       await reg.update();if(reg.waiting)showUpdateBanner()
     }catch(err){console.warn('SW register',err)}
     setTimeout(()=>checkForAppUpdate(false),1200)
