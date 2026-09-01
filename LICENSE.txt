@@ -1,0 +1,14 @@
+MIZAN — ALL RIGHTS RESERVED
+
+Copyright © 2026 Fahad. All rights reserved.
+
+This software, its user interface, workflow, branding, source code, and related materials are proprietary to Fahad.
+
+No permission is granted to copy, reproduce, republish, redistribute, sell, sublicense, create derivative distributions, or deploy a cloned version of Mizan without prior written permission from the copyright owner.
+
+Access to publicly delivered web assets does not constitute a grant of permission to reuse the source code.
+
+Official public build:
+https://fahotchi.github.io/
+
+Made by Fahad.

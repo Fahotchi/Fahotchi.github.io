@@ -1,4 +1,4 @@
-const CACHE='mizan-v2-5-1';
+const CACHE='mizan-v2-6';
 const CORE=['/index.html','/manifest.webmanifest','/icon-192.png','/icon-512.png','/apple-touch-icon.png'];
 
 self.addEventListener('install',event=>{

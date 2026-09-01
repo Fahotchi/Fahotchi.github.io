@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#edf8f4">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-l3WBawWoRfWtlqybJzN8j5dDnMnZwgwEfJvz8n97iAc='; style-src 'sha256-bbJ1N5IaaAyXmma2gCFxncuj7q3vsIGcdloT1k1oAO0='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self';">
+<title>ميزان Secure v3</title>
+<style>:root{--bg:#f2f8f6;--card:#fff;--text:#14332c;--muted:#728b85;--line:#dcebe6;--teal:#18a98d;--teal2:#4dcdb2;--mint:#e6f8f2;--danger:#b84f42;--dangerbg:#fff0ec;--warn:#8a6718;--warnbg:#fff8e6;--shadow:0 16px 45px rgba(31,82,70,.10)}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:linear-gradient(180deg,#eaf8f3,#f8fbfa 34%,#f2f8f6);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Tahoma,Arial,sans-serif;-webkit-tap-highlight-color:transparent}body{min-height:100vh}.hidden{display:none!important}.shell{width:min(100%,720px);margin:auto;padding:calc(env(safe-area-inset-top) + 24px) 15px calc(env(safe-area-inset-bottom) + 30px)}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand h1{margin:0;color:#0d8d76;font-size:30px;letter-spacing:-.6px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.badge{font-size:10px;border-radius:999px;padding:7px 10px;background:var(--mint);color:#08705e;font-weight:800}.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:25px;padding:18px;box-shadow:var(--shadow);margin-bottom:12px}.card h2,.card h3{margin:0 0 7px}.card h2{font-size:24px}.card h3{font-size:17px}.lead{margin:0 0 16px;color:var(--muted);font-size:12px;line-height:1.7}.secureNote{background:#edf9f5;border:1px solid #c8e9e0;border-radius:14px;padding:11px 12px;color:#34675d;font-size:11px;line-height:1.65;margin:12px 0}.warn{background:var(--warnbg);border-color:#ead9a2;color:#6e571f}.grid{display:grid;gap:10px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}label{display:grid;gap:6px;color:var(--muted);font-size:11px;margin-bottom:10px}input{width:100%;min-height:48px;border:1px solid var(--line);background:#fbfdfc;border-radius:13px;padding:0 12px;color:var(--text);outline:none;font-size:16px}input:focus{border-color:#82d7c6;box-shadow:0 0 0 3px #18a98d14}.btn{min-height:48px;border:0;border-radius:14px;font-weight:850;padding:0 14px;cursor:pointer}.primary{background:linear-gradient(135deg,var(--teal),var(--teal2));color:white}.secondary{background:#edf5f2;color:var(--text);border:1px solid var(--line)}.btn:disabled{opacity:.5;cursor:not-allowed}.full{width:100%}.actions{display:grid;grid-template-columns:1fr 1.35fr;gap:8px;margin-top:13px}.message{border-radius:13px;padding:10px 11px;margin:10px 0;font-size:11px;line-height:1.6;background:#edf9f5;color:#356a60;overflow-wrap:anywhere}.message.bad{background:var(--dangerbg);color:#8c4036}.message.warn{background:var(--warnbg);color:#6e571f}.sectionTitle{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:2px 0 10px}.sectionTitle h3{margin:0}.tiny{font-size:9px;color:var(--muted)}.list{display:grid;gap:8px}.row{border:1px solid var(--line);background:#fafdfc;border-radius:15px;padding:11px}.rowTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.row b{font-size:12px}.row small{display:block;color:var(--muted);font-size:9px;line-height:1.6;margin-top:3px}.status{display:inline-flex;padding:4px 7px;border-radius:999px;font-size:9px;font-weight:850}.status.active{background:#e5f8f1;color:#08705e}.status.blocked{background:var(--dangerbg);color:var(--danger)}.rowBtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.mini{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 9px;font-size:10px;font-weight:750;color:var(--text)}.mini.red{color:var(--danger);background:var(--dangerbg);border-color:#efc8c0}.mini.green{color:#08705e;background:#edf9f5;border-color:#c8e9e0}.kpiGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.kpi{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px}.kpi span{font-size:9px;color:var(--muted);display:block}.kpi b{font-size:20px;display:block;margin-top:4px}.ownerBar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.ownerBar .who b{font-size:12px}.ownerBar .who small{display:block;color:var(--muted);font-size:9px;margin-top:2px}.qrWrap{text-align:center}.qrWrap img{width:min(230px,80%);background:#fff;border-radius:16px;border:1px solid var(--line);padding:10px}.secret{direction:ltr;text-align:left;overflow-wrap:anywhere;background:#123c33;color:#eafff8;border-radius:12px;padding:10px;font-size:10px;margin:9px 0;user-select:all}.switchLine{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);border-radius:16px;padding:12px;background:#fafdfc}.switchLine b{font-size:12px}.switchLine small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.payHero{text-align:center}.payAmount{font-size:48px;font-weight:900;color:#08705e;margin:10px 0}.payAmount small{font-size:17px}.payMeta{display:grid;gap:8px;text-align:right;margin-top:15px}.payMeta div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:8px 0;font-size:11px}.payMeta div:last-child{border-bottom:0}.foot{text-align:center;color:#8aa19b;font-size:9px;line-height:1.7;margin-top:18px}.foot b{color:#08705e}.empty{padding:14px;border-radius:14px;background:#f7fbfa;color:var(--muted);font-size:11px}.toast{position:fixed;z-index:100;top:calc(env(safe-area-inset-top) + 12px);left:50%;transform:translateX(-50%) translateY(-15px);width:min(calc(100% - 28px),520px);background:#123c33;color:#fff;border-radius:14px;padding:11px 13px;font-size:11px;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}@media(max-width:520px){.grid2,.actions{grid-template-columns:1fr}.kpiGrid{grid-template-columns:1fr 1fr}.top{align-items:flex-start}.badge{max-width:42%;text-align:center}.card{border-radius:22px;padding:16px}}
+.ltr{direction:ltr;text-align:left;display:block;overflow-wrap:anywhere}.message button{margin-top:8px}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+<script>window.addEventListener('DOMContentLoaded',()=>{
+(() => {
+'use strict';
+
+const SUPABASE_URL = 'https://snhmckjyhiizzsqgraec.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_jBKntvH70OkSa9zgrMjRjw_XNC2sSq0';
+const OWNER_EMAIL = 'fs.almutairi@outlook.com';
+const PENDING_INVITE_KEY = 'mizan_secure_pending_invite_v1';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+});
+
+const $ = id => document.getElementById(id);
+const views = ['loadingView','guestView','deniedView','mfaEnrollView','mfaChallengeView','ownerView','userView','payView'];
+let currentProfile = null;
+let mfaEnrollment = null;
+let accessTimer = null;
+let currentControl = null;
+
+function show(id){
+  views.forEach(v => $(v).classList.toggle('hidden', v !== id));
+}
+function msg(id, text, kind=''){
+  const el=$(id); el.textContent=text; el.className='message'+(kind?' '+kind:''); el.classList.remove('hidden');
+}
+function clearMsg(id){ $(id).classList.add('hidden'); $(id).textContent=''; }
+function toast(text){
+  const el=$('toast'); el.textContent=text; el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),2200);
+}
+function esc(v=''){
+  return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function fmtDate(v){
+  if(!v) return '—';
+  try { return new Intl.DateTimeFormat('ar-SA',{dateStyle:'medium',timeStyle:'short'}).format(new Date(v)); }
+  catch { return String(v); }
+}
+function getInviteToken(){
+  const q = new URLSearchParams(location.search).get('invite');
+  if(q){ localStorage.setItem(PENDING_INVITE_KEY,q); return q; }
+  return localStorage.getItem(PENDING_INVITE_KEY) || '';
+}
+function getPayToken(){ return new URLSearchParams(location.search).get('pay') || ''; }
+
+async function boot(){
+  if(!window.supabase){ show('deniedView'); $('deniedText').textContent='تعذر تحميل طبقة الاتصال الآمن.'; return; }
+
+  const payToken=getPayToken();
+  if(payToken){ await openPublicPay(payToken); return; }
+
+  const invite=getInviteToken();
+  $('inviteNotice').classList.toggle('hidden',!invite);
+  $('inviteSignupBtn').classList.toggle('hidden',!invite);
+
+  const {data:{session}} = await sb.auth.getSession();
+  if(!session){ show('guestView'); return; }
+  await enterAuthenticated(session);
+}
+
+async function enterAuthenticated(session){
+  show('loadingView');
+  const user=session.user;
+  let {data:profile,error:pErr}=await sb.from('profiles')
+    .select('user_id,email,display_name,role,status,last_login_at,last_activity_at')
+    .eq('user_id',user.id).maybeSingle();
+
+  if(pErr){ return deny('تعذر التحقق من ملف المستخدم.'); }
+
+  if(!profile && String(user.email||'').toLowerCase()===OWNER_EMAIL){
+    const {error}=await sb.rpc('bootstrap_owner');
+    if(error) return deny(mapError(error));
+    const res=await sb.from('profiles').select('*').eq('user_id',user.id).maybeSingle();
+    profile=res.data;
+  }
+
+  if(!profile){
+    const invite=getInviteToken();
+    if(invite){
+      const {error}=await sb.rpc('claim_invite',{p_token:invite});
+      if(error) return deny(mapError(error));
+      localStorage.removeItem(PENDING_INVITE_KEY);
+      history.replaceState({},'',location.pathname);
+      const res=await sb.from('profiles').select('*').eq('user_id',user.id).maybeSingle();
+      profile=res.data;
+    }
+  }
+
+  if(!profile) return deny('هذا الحساب غير مدعو إلى ميزان.');
+
+  currentProfile=profile;
+  try{ await sb.rpc('record_activity',{p_action:'login',p_metadata:{client:'secure-v3'}}); }catch{}
+
+  const {data:allowed,error:aErr}=await sb.rpc('can_access_app');
+  if(aErr || !allowed){
+    const text=profile.status==='blocked' ? 'تم إيقاف وصول هذا الحساب بواسطة مالك ميزان.' : 'الوصول إلى ميزان موقوف حاليًا.';
+    return deny(text);
+  }
+
+  startAccessHeartbeat();
+
+  if(profile.role==='owner'){
+    await routeOwnerMfa(session);
+  }else{
+    $('userWho').textContent=profile.display_name||profile.email||'مستخدم ميزان';
+    $('userAccessState').textContent='Access verified by server • '+fmtDate(new Date());
+    show('userView');
+  }
+}
+
+async function routeOwnerMfa(session){
+  const aal=await sb.auth.mfa.getAuthenticatorAssuranceLevel();
+  if(aal.error) return deny('تعذر التحقق من مستوى الحماية.');
+  const {currentLevel,nextLevel}=aal.data;
+
+  if(currentLevel==='aal2'){
+    await showOwner();
+    return;
+  }
+  if(nextLevel==='aal2'){
+    show('mfaChallengeView');
+    return;
+  }
+  show('mfaEnrollView');
+}
+
+function startAccessHeartbeat(){
+  if(accessTimer) clearInterval(accessTimer);
+  accessTimer=setInterval(async()=>{
+    if(!currentProfile) return;
+    const {data,error}=await sb.rpc('can_access_app');
+    if(error||!data){
+      clearInterval(accessTimer);
+      await sb.auth.signOut();
+      deny('تم إنهاء الوصول بواسطة مالك ميزان.');
+    }
+  },15000);
+}
+
+function deny(text){
+  $('deniedText').textContent=text;
+  show('deniedView');
+}
+
+function mapError(error){
+  const m=String(error?.message||error||'');
+  const known={
+    'email_not_verified':'يجب تأكيد الإيميل أولًا.',
+    'not_allowed_owner_email':'هذا الحساب ليس حساب المالك المصرح.',
+    'owner_already_bound':'حساب المالك تم ربطه مسبقًا.',
+    'invalid_or_expired_invite':'الدعوة غير صالحة أو انتهت.',
+    'invite_email_mismatch':'الإيميل لا يطابق الإيميل المدعو.',
+    'owner_only':'هذه العملية للمالك فقط.',
+    'owner_mfa_required':'يلزم تحقق MFA للمالك.',
+    'access_denied':'تم رفض الوصول.'
+  };
+  for(const [k,v] of Object.entries(known)) if(m.includes(k)) return v;
+  return m || 'حدث خطأ غير متوقع.';
+}
+
+async function login(){
+  clearMsg('authMessage');
+  const email=$('loginEmail').value.trim().toLowerCase();
+  const password=$('loginPassword').value;
+  if(!email||!password) return msg('authMessage','أدخل الإيميل وكلمة المرور.','warn');
+  $('loginBtn').disabled=true;
+  const {data,error}=await sb.auth.signInWithPassword({email,password});
+  $('loginBtn').disabled=false;
+  if(error) return msg('authMessage',mapError(error),'bad');
+  await enterAuthenticated(data.session);
+}
+
+async function signupOwner(){
+  clearMsg('authMessage');
+  const p1=$('ownerPassword').value, p2=$('ownerPassword2').value;
+  if(p1.length<12) return msg('authMessage','اختر كلمة مرور لا تقل عن 12 خانة.','warn');
+  if(p1!==p2) return msg('authMessage','تأكيد كلمة المرور غير مطابق.','warn');
+
+  $('ownerSignupBtn').disabled=true;
+  const {data,error}=await sb.auth.signUp({email:OWNER_EMAIL,password:p1});
+  $('ownerSignupBtn').disabled=false;
+  if(error) return msg('authMessage',mapError(error),'bad');
+
+  if(data.session){
+    await enterAuthenticated(data.session);
+  }else{
+    msg('authMessage','تم إنشاء الحساب. افتح رسالة التأكيد في Outlook، أكد البريد، ثم ارجع لهذه الصفحة وسجل دخولك.','');
+  }
+}
+
+async function signupInvite(){
+  clearMsg('authMessage');
+  const token=getInviteToken();
+  if(!token) return msg('authMessage','رابط الدعوة غير موجود.','bad');
+  const email=$('loginEmail').value.trim().toLowerCase();
+  const password=$('loginPassword').value;
+  if(!email||password.length<10) return msg('authMessage','أدخل الإيميل المدعو وكلمة مرور من 10 خانات على الأقل.','warn');
+
+  $('inviteSignupBtn').disabled=true;
+  const {data,error}=await sb.auth.signUp({email,password});
+  $('inviteSignupBtn').disabled=false;
+  if(error) return msg('authMessage',mapError(error),'bad');
+  if(data.session){
+    await enterAuthenticated(data.session);
+  }else{
+    msg('authMessage','تم إنشاء الحساب. أكد البريد من الرسالة، ثم ارجع لنفس رابط الدعوة وسجل دخولك.','');
+  }
+}
+
+async function startMfa(){
+  clearMsg('mfaEnrollMessage');
+  $('startMfaBtn').disabled=true;
+  const {data,error}=await sb.auth.mfa.enroll({factorType:'totp',friendlyName:'Mizan Owner'});
+  $('startMfaBtn').disabled=false;
+  if(error) return msg('mfaEnrollMessage',mapError(error),'bad');
+  mfaEnrollment={factorId:data.id};
+  $('mfaQr').src=data.totp.qr_code;
+  $('mfaSecret').textContent=data.totp.secret;
+  $('mfaEnrollData').classList.remove('hidden');
+  $('startMfaBtn').classList.add('hidden');
+}
+
+async function verifyMfaEnroll(){
+  clearMsg('mfaEnrollMessage');
+  if(!mfaEnrollment?.factorId) return msg('mfaEnrollMessage','ابدأ إعداد MFA أولًا.','warn');
+  const code=$('mfaEnrollCode').value.trim();
+  if(code.length<6) return msg('mfaEnrollMessage','أدخل رمز Authenticator.','warn');
+
+  const c=await sb.auth.mfa.challenge({factorId:mfaEnrollment.factorId});
+  if(c.error) return msg('mfaEnrollMessage',mapError(c.error),'bad');
+  const v=await sb.auth.mfa.verify({factorId:mfaEnrollment.factorId,challengeId:c.data.id,code});
+  if(v.error) return msg('mfaEnrollMessage',mapError(v.error),'bad');
+  await sb.auth.refreshSession();
+  toast('تم تفعيل MFA ✓');
+  await showOwner();
+}
+
+async function verifyMfaChallenge(){
+  clearMsg('mfaChallengeMessage');
+  const code=$('mfaChallengeCode').value.trim();
+  if(code.length<6) return msg('mfaChallengeMessage','أدخل رمز Authenticator.','warn');
+
+  const factors=await sb.auth.mfa.listFactors();
+  if(factors.error) return msg('mfaChallengeMessage',mapError(factors.error),'bad');
+  const factor=(factors.data.totp||[]).find(f=>f.status==='verified') || (factors.data.totp||[])[0];
+  if(!factor) return msg('mfaChallengeMessage','لم يتم العثور على عامل MFA.','bad');
+
+  const c=await sb.auth.mfa.challenge({factorId:factor.id});
+  if(c.error) return msg('mfaChallengeMessage',mapError(c.error),'bad');
+  const v=await sb.auth.mfa.verify({factorId:factor.id,challengeId:c.data.id,code});
+  if(v.error) return msg('mfaChallengeMessage',mapError(v.error),'bad');
+  await sb.auth.refreshSession();
+  toast('تم التحقق ✓');
+  await showOwner();
+}
+
+async function showOwner(){
+  $('ownerWho').textContent=(currentProfile?.display_name||'Fahad')+' • Owner';
+  $('ownerSession').textContent='AAL2 • Server-enforced admin session';
+  show('ownerView');
+  await refreshAdmin();
+}
+
+async function refreshAdmin(){
+  const [profiles,control,invites,audit]=await Promise.all([
+    sb.from('profiles').select('user_id,email,display_name,role,status,created_at,last_login_at,last_activity_at,blocked_at').order('created_at',{ascending:true}),
+    sb.from('app_control').select('non_owner_access_enabled,updated_at').eq('id',true).single(),
+    sb.from('invites').select('id,email,display_name,status,expires_at,created_at').order('created_at',{ascending:false}).limit(30),
+    sb.from('audit_events').select('id,action,target_user_id,metadata,created_at').order('created_at',{ascending:false}).limit(20)
+  ]);
+  if(profiles.error) return toast('تعذر تحميل المستخدمين');
+  currentControl=control.data;
+  renderUsers(profiles.data||[]);
+  renderControl(control.data);
+  renderAudit(audit.data||[]);
+  $('kpiUsers').textContent=(profiles.data||[]).filter(x=>x.role!=='owner').length;
+  $('kpiBlocked').textContent=(profiles.data||[]).filter(x=>x.status==='blocked').length;
+  $('kpiInvites').textContent=(invites.data||[]).filter(x=>x.status==='pending').length;
+}
+
+function renderControl(c){
+  const on=!!c?.non_owner_access_enabled;
+  $('killTitle').textContent=on?'وصول المستخدمين مفعّل':'Kill Switch مفعّل';
+  $('killDesc').textContent=on?'كل المستخدمين النشطين يمكنهم الدخول.':'كل المستخدمين موقوفون، والـOwner فقط مستثنى.';
+  $('killBtn').textContent=on?'إيقاف الجميع':'إعادة فتح الوصول';
+  $('killBtn').className='mini '+(on?'red':'green');
+}
+
+function renderUsers(users){
+  const list=$('usersList');
+  const normal=users.filter(u=>u.role!=='owner');
+  if(!normal.length){ list.innerHTML='<div class="empty">ما فيه مستخدمون حتى الآن.</div>'; return; }
+  list.innerHTML=normal.map(u=>`
+    <div class="row">
+      <div class="rowTop">
+        <div><b>${esc(u.display_name||u.email)}</b><small>${esc(u.email)}<br>آخر دخول: ${esc(fmtDate(u.last_login_at))}</small></div>
+        <span class="status ${u.status==='blocked'?'blocked':'active'}">${u.status==='blocked'?'Blocked':'Active'}</span>
+      </div>
+      <div class="rowBtns">
+        <button class="mini ${u.status==='blocked'?'green':'red'}" data-action="toggle" data-id="${esc(u.user_id)}" data-blocked="${u.status==='blocked'}">${u.status==='blocked'?'Unblock':'Block'}</button>
+        <button class="mini red" data-action="remove" data-id="${esc(u.user_id)}">إزالة الوصول</button>
+      </div>
+    </div>`).join('');
+  list.querySelectorAll('[data-action="toggle"]').forEach(btn=>btn.onclick=()=>toggleUser(btn.dataset.id,btn.dataset.blocked!=='true'));
+  list.querySelectorAll('[data-action="remove"]').forEach(btn=>btn.onclick=()=>removeUser(btn.dataset.id));
+}
+
+async function toggleUser(userId,blocked){
+  const {error}=await sb.rpc('owner_set_user_blocked',{p_user_id:userId,p_blocked:blocked});
+  if(error) return toast(mapError(error));
+  toast(blocked?'تم إيقاف المستخدم':'تم فتح المستخدم');
+  await refreshAdmin();
+}
+
+async function removeUser(userId){
+  if(!confirm('إزالة وصول هذا المستخدم وبياناته المرتبطة من ميزان؟')) return;
+  const {error}=await sb.rpc('owner_remove_user_access',{p_user_id:userId});
+  if(error) return toast(mapError(error));
+  toast('تمت إزالة الوصول');
+  await refreshAdmin();
+}
+
+async function toggleKill(){
+  const next=!currentControl?.non_owner_access_enabled;
+  const {error}=await sb.rpc('owner_set_kill_switch',{p_non_owner_access_enabled:next});
+  if(error) return toast(mapError(error));
+  toast(next?'تم فتح الوصول':'تم إيقاف جميع المستخدمين');
+  await refreshAdmin();
+}
+
+async function createInvite(){
+  clearMsg('inviteResult');
+  const email=$('inviteEmail').value.trim().toLowerCase();
+  const name=$('inviteName').value.trim();
+  const hours=Math.max(1,Math.min(720,Number($('inviteHours').value)||72));
+  if(!email.includes('@')) return msg('inviteResult','أدخل إيميل صحيح.','warn');
+
+  const {data,error}=await sb.rpc('owner_create_invite',{p_email:email,p_display_name:name||null,p_expires_hours:hours});
+  if(error) return msg('inviteResult',mapError(error),'bad');
+  const row=Array.isArray(data)?data[0]:data;
+  const url=`${location.origin}${location.pathname}?invite=${encodeURIComponent(row.invite_token)}`;
+  $('inviteResult').innerHTML=`رابط الدعوة (يظهر مرة واحدة):<br><span class="ltr">${esc(url)}</span><br><button id="copyInviteLink" class="mini green" type="button">نسخ الرابط</button>`;
+  $('inviteResult').classList.remove('hidden');
+  setTimeout(()=>{ const b=$('copyInviteLink'); if(b)b.onclick=()=>copy(url); },0);
+  await refreshAdmin();
+}
+
+async function createSplit(){
+  clearMsg('splitResult');
+  const recipient=$('splitRecipient').value.trim();
+  const title=$('splitTitle').value.trim()||'قطة';
+  const amount=Number($('splitAmount').value);
+  const phone=$('splitPhone').value.trim();
+  if(!(amount>0)) return msg('splitResult','أدخل مبلغ صحيح.','warn');
+  const {data,error}=await sb.rpc('create_split_link',{
+    p_recipient_name:recipient||null,p_split_title:title,p_amount:amount,p_collection_phone:phone||null,p_expires_hours:168
+  });
+  if(error) return msg('splitResult',mapError(error),'bad');
+  const row=Array.isArray(data)?data[0]:data;
+  const url=`${location.origin}${location.pathname}?pay=${encodeURIComponent(row.link_token)}`;
+  $('splitResult').innerHTML=`رابط القطة:<br>${esc(url)}<br><button id="copySplitLink" class="mini green" type="button">نسخ الرابط</button>`;
+  $('splitResult').classList.remove('hidden');
+  setTimeout(()=>{const b=$('copySplitLink');if(b)b.onclick=()=>copy(url)},0);
+}
+
+function renderAudit(rows){
+  const list=$('auditList');
+  if(!rows.length){list.innerHTML='<div class="empty">لا يوجد نشاط بعد.</div>';return}
+  const labels={
+    owner_bootstrap:'تفعيل حساب المالك',invite_created:'إنشاء دعوة',invite_claimed:'قبول دعوة',
+    user_blocked:'إيقاف مستخدم',user_unblocked:'فتح مستخدم',user_access_removed:'إزالة وصول',
+    kill_switch_changed:'تغيير Kill Switch',split_link_created:'إنشاء رابط قطة',split_link_revoked:'إلغاء رابط قطة',
+    login:'تسجيل دخول',activity:'نشاط'
+  };
+  list.innerHTML=rows.map(r=>`<div class="row"><b>${esc(labels[r.action]||r.action)}</b><small>${esc(fmtDate(r.created_at))}</small></div>`).join('');
+}
+
+async function openPublicPay(token){
+  show('loadingView');
+  const {data,error}=await sb.rpc('get_public_split',{p_token:token});
+  const row=Array.isArray(data)?data[0]:data;
+  if(error||!row) return deny('رابط القطة غير صالح أو انتهت صلاحيته أو تم إلغاؤه.');
+  $('payTitle').textContent=row.split_title||'قطة';
+  $('payAmount').textContent=Number(row.amount).toLocaleString('ar-SA',{maximumFractionDigits:2});
+  $('payRecipient').textContent=row.recipient_name?`مطلوب من ${row.recipient_name}`:'طلب تحصيل';
+  $('payPhone').textContent=row.collection_phone||'—';
+  $('payExpiry').textContent=fmtDate(row.expires_at);
+  $('payStatus').textContent=row.paid?'تم السداد ✓':'مطلوب';
+  $('copyPayPhoneBtn').disabled=!row.collection_phone;
+  show('payView');
+}
+
+async function copy(text){
+  try{await navigator.clipboard.writeText(text);toast('تم النسخ ✓')}catch{toast('تعذر النسخ')}
+}
+async function signout(){
+  currentProfile=null;
+  if(accessTimer)clearInterval(accessTimer);
+  await sb.auth.signOut();
+  location.href=location.pathname;
+}
+
+$('loginBtn').onclick=login;
+$('ownerSignupBtn').onclick=signupOwner;
+$('inviteSignupBtn').onclick=signupInvite;
+$('deniedSignoutBtn').onclick=signout;
+$('ownerSignoutBtn').onclick=signout;
+$('userSignoutBtn').onclick=signout;
+$('startMfaBtn').onclick=startMfa;
+$('verifyMfaEnrollBtn').onclick=verifyMfaEnroll;
+$('verifyMfaChallengeBtn').onclick=verifyMfaChallenge;
+$('copySecretBtn').onclick=()=>copy($('mfaSecret').textContent);
+$('killBtn').onclick=toggleKill;
+$('createInviteBtn').onclick=createInvite;
+$('refreshAdminBtn').onclick=refreshAdmin;
+$('createSplitBtn').onclick=createSplit;
+$('copyPayPhoneBtn').onclick=()=>copy($('payPhone').textContent);
+
+sb.auth.onAuthStateChange((event,session)=>{
+  if(event==='SIGNED_OUT'){ currentProfile=null; }
+});
+
+boot().catch(err=>deny(mapError(err)));
+})();
+});</script>
+</head>
+<body>
+<main class="shell">
+  <header class="top">
+    <div class="brand"><h1>ميزان</h1><small>Secure v3 • Controlled Access</small></div>
+    <span class="badge">Made by Fahad</span>
+  </header>
+
+  <section id="loadingView" class="card">
+    <h2>جاري التحقق…</h2>
+    <p class="lead">ميزان يتحقق من الجلسة والصلاحيات من السيرفر قبل عرض أي بيانات.</p>
+  </section>
+
+  <section id="guestView" class="hidden">
+    <div class="card">
+      <h2>دخول ميزان 🔐</h2>
+      <p class="lead">الدخول للمستخدمين المصرح لهم فقط. معرفة الرابط وحدها لا تعطي صلاحية.</p>
+      <div id="inviteNotice" class="secureNote hidden">لديك رابط دعوة. استخدم نفس الإيميل الذي تمت دعوتك عليه.</div>
+      <div class="grid">
+        <label>الإيميل<input id="loginEmail" type="email" autocomplete="email" placeholder="name@example.com"></label>
+        <label>كلمة المرور<input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+      </div>
+      <div class="actions">
+        <button id="inviteSignupBtn" class="btn secondary hidden" type="button">إنشاء حساب بالدعوة</button>
+        <button id="loginBtn" class="btn primary" type="button">تسجيل الدخول</button>
+      </div>
+      <div id="authMessage" class="message hidden"></div>
+    </div>
+
+    <div id="ownerFirstCard" class="card">
+      <h3>أول تفعيل للمالك فقط</h3>
+      <p class="lead">هذه الخطوة تُستخدم مرة واحدة فقط. السيرفر لا يمنح Owner إلا للحساب الذي يثبت ملكية الإيميل المصرح به.</p>
+      <label>Owner Email<input id="ownerEmail" type="email" value="fs.almutairi@outlook.com" readonly></label>
+      <div class="grid2">
+        <label>كلمة مرور قوية<input id="ownerPassword" type="password" autocomplete="new-password" placeholder="12+ characters"></label>
+        <label>تأكيد كلمة المرور<input id="ownerPassword2" type="password" autocomplete="new-password" placeholder="كرر كلمة المرور"></label>
+      </div>
+      <button id="ownerSignupBtn" class="btn primary full" type="button">إنشاء حساب المالك</button>
+      <div class="secureNote warn">بعد إنشاء الحساب سيصلك تأكيد على Outlook. لا تصبح Owner قبل تأكيد البريد ثم تسجيل الدخول.</div>
+    </div>
+  </section>
+
+  <section id="deniedView" class="card hidden">
+    <h2>لا يوجد وصول</h2>
+    <p id="deniedText" class="lead">هذا الحساب غير مصرح له باستخدام ميزان.</p>
+    <button id="deniedSignoutBtn" class="btn secondary full" type="button">تسجيل الخروج</button>
+  </section>
+
+  <section id="mfaEnrollView" class="card hidden">
+    <h2>تأمين حساب المالك</h2>
+    <p class="lead">قبل فتح لوحة الإدارة، فعّل العامل الثاني TOTP. بعد التفعيل لن تكفي معرفة الإيميل أو كلمة المرور لتنفيذ أوامر الإدارة.</p>
+    <button id="startMfaBtn" class="btn primary full" type="button">بدء إعداد MFA</button>
+    <div id="mfaEnrollData" class="hidden">
+      <div class="qrWrap"><img id="mfaQr" alt="MFA QR Code"></div>
+      <p class="lead">امسح الرمز بتطبيق Authenticator، أو انسخ المفتاح وأضفه يدويًا.</p>
+      <div id="mfaSecret" class="secret"></div>
+      <button id="copySecretBtn" class="btn secondary full" type="button">نسخ المفتاح</button>
+      <label>رمز التحقق المكون من 6 أرقام<input id="mfaEnrollCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="123456"></label>
+      <button id="verifyMfaEnrollBtn" class="btn primary full" type="button">تفعيل MFA</button>
+    </div>
+    <div id="mfaEnrollMessage" class="message hidden"></div>
+  </section>
+
+  <section id="mfaChallengeView" class="card hidden">
+    <h2>تحقق إضافي</h2>
+    <p class="lead">أدخل الرمز الحالي من تطبيق Authenticator لفتح لوحة الإدارة.</p>
+    <label>رمز MFA<input id="mfaChallengeCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="123456"></label>
+    <button id="verifyMfaChallengeBtn" class="btn primary full" type="button">تحقق وادخل</button>
+    <div id="mfaChallengeMessage" class="message hidden"></div>
+  </section>
+
+  <section id="ownerView" class="hidden">
+    <div class="card">
+      <div class="ownerBar">
+        <div class="who"><b id="ownerWho">Owner</b><small id="ownerSession">AAL2 • Secure session</small></div>
+        <button id="ownerSignoutBtn" class="mini" type="button">خروج</button>
+      </div>
+    </div>
+
+    <div class="kpiGrid">
+      <div class="kpi"><span>المستخدمون</span><b id="kpiUsers">0</b></div>
+      <div class="kpi"><span>الموقوفون</span><b id="kpiBlocked">0</b></div>
+      <div class="kpi"><span>الدعوات</span><b id="kpiInvites">0</b></div>
+    </div>
+
+    <div class="card">
+      <div class="sectionTitle"><h3>التحكم العام</h3><span class="tiny">Owner only + MFA</span></div>
+      <div class="switchLine">
+        <div><b id="killTitle">وصول المستخدمين مفعّل</b><small id="killDesc">كل المستخدمين النشطين يمكنهم الدخول.</small></div>
+        <button id="killBtn" class="mini red" type="button">إيقاف الجميع</button>
+      </div>
+      <div class="secureNote">حتى لو كانت جلسة المستخدم مفتوحة، بياناته على السيرفر تتوقف فورًا عند Block أو Kill Switch، والواجهة تعيد فحص الصلاحية بشكل دوري.</div>
+    </div>
+
+    <div class="card">
+      <div class="sectionTitle"><h3>دعوة مستخدم</h3><span class="tiny">Invite only</span></div>
+      <div class="grid2">
+        <label>الاسم<input id="inviteName" placeholder="محمد"></label>
+        <label>الإيميل<input id="inviteEmail" type="email" placeholder="name@example.com"></label>
+      </div>
+      <label>صلاحية الدعوة بالساعات<input id="inviteHours" type="number" min="1" max="720" value="72"></label>
+      <button id="createInviteBtn" class="btn primary full" type="button">إنشاء رابط دعوة</button>
+      <div id="inviteResult" class="message hidden"></div>
+    </div>
+
+    <div class="card">
+      <div class="sectionTitle"><h3>المستخدمون</h3><button id="refreshAdminBtn" class="mini" type="button">تحديث</button></div>
+      <div id="usersList" class="list"></div>
+    </div>
+
+    <div class="card">
+      <div class="sectionTitle"><h3>اختبار رابط قطة آمن</h3><span class="tiny">Token + Expiry + Revoke</span></div>
+      <div class="grid2">
+        <label>اسم الشخص<input id="splitRecipient" placeholder="خالد"></label>
+        <label>المبلغ<input id="splitAmount" type="number" min="0.01" step="0.01" placeholder="75"></label>
+      </div>
+      <label>اسم القطة<input id="splitTitle" placeholder="عشاء الخميس"></label>
+      <label>رقم التحويل / ساري<input id="splitPhone" inputmode="tel" placeholder="05xxxxxxxx"></label>
+      <button id="createSplitBtn" class="btn secondary full" type="button">إنشاء رابط اختبار</button>
+      <div id="splitResult" class="message hidden"></div>
+    </div>
+
+    <div class="card">
+      <div class="sectionTitle"><h3>آخر النشاطات</h3><span class="tiny">Audit log</span></div>
+      <div id="auditList" class="list"></div>
+    </div>
+  </section>
+
+  <section id="userView" class="hidden">
+    <div class="card">
+      <div class="ownerBar">
+        <div class="who"><b id="userWho">مستخدم ميزان</b><small id="userAccessState">Access verified by server</small></div>
+        <button id="userSignoutBtn" class="mini" type="button">خروج</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>تم تأمين الوصول ✓</h2>
+      <p class="lead">هذا الحساب مصرح له، وبياناته منفصلة عن أي مستخدم آخر. هذه صفحة اختبار طبقة الأمان فقط؛ بعد نجاح الاختبار سنركب ميزان الكامل فوقها.</p>
+      <div class="secureNote">المرحلة التالية: نقل حالة ميزان الحالية إلى <b>user_state</b> وربط كل حفظ/قراءة بصلاحيات السيرفر.</div>
+    </div>
+  </section>
+
+  <section id="payView" class="card hidden">
+    <div class="payHero">
+      <span class="badge">طلب قطة آمن</span>
+      <h2 id="payTitle">قطة</h2>
+      <div class="payAmount"><span id="payAmount">0</span> <small>ر.س</small></div>
+      <p id="payRecipient" class="lead"></p>
+    </div>
+    <div class="payMeta">
+      <div><span>التحويل إلى</span><b id="payPhone">—</b></div>
+      <div><span>صلاحية الرابط</span><b id="payExpiry">—</b></div>
+      <div><span>الحالة</span><b id="payStatus">مطلوب</b></div>
+    </div>
+    <button id="copyPayPhoneBtn" class="btn primary full" type="button">نسخ رقم التحويل</button>
+    <div class="secureNote">هذا الرابط لا يعطي أي وصول إلى حساب صاحب ميزان أو بياناته، ويمكن إلغاؤه أو تركه ينتهي تلقائيًا.</div>
+  </section>
+
+  <footer class="foot"><b>Made by Fahad</b><br>© 2026 Fahad. All rights reserved.</footer>
+</main>
+<div id="toast" class="toast"></div>
+</body>
+</html>

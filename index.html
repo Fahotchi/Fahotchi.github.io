@@ -1,7 +1,13 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta name="mizan-version" content="2.5.1">
+<meta name="mizan-version" content="2.6">
+<meta name="author" content="Fahad">
+<meta name="copyright" content="© 2026 Fahad. All rights reserved.">
+<meta name="application-name" content="Mizan">
+<meta name="mizan-owner" content="Fahad">
+<meta name="mizan-official-host" content="fahotchi.github.io">
+<!-- Mizan © 2026 Fahad. All rights reserved. Production build — no source maps distributed. -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -59,11 +65,78 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 
 .payview{max-width:520px;margin:0 auto;padding:calc(28px + env(safe-area-inset-top)) 18px calc(28px + env(safe-area-inset-bottom));min-height:100vh;display:grid;align-content:center;gap:14px}.payBrand{text-align:center;font-size:20px;font-weight:850;color:#08705e}.payBrand small{display:block;font-size:10px;color:var(--muted);font-weight:600;margin-top:4px}.payCard{background:#fff;border:1px solid var(--line);border-radius:26px;padding:22px 18px;box-shadow:0 16px 44px #16483d12}.payHello{text-align:center;color:var(--muted);font-size:12px}.payAmount{text-align:center;font-size:48px;font-weight:900;letter-spacing:-1px;margin:7px 0}.payAmount small{font-size:16px}.paySplit{text-align:center;font-size:14px;font-weight:750;margin-bottom:18px}.payData{display:grid;gap:8px}.payDataRow{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);background:#f8fbfa;border-radius:14px;padding:12px}.payDataRow span{color:var(--muted);font-size:10px}.payDataRow b{font-size:15px;direction:ltr}.payPrimary{width:100%;min-height:52px;border:0;border-radius:15px;background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff;font-weight:850;font-size:14px;margin-top:12px}.payButtons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.payButtons button{min-height:44px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--text);font-size:11px;font-weight:750}.paySteps{background:#f6fbf9;border:1px solid var(--line);border-radius:18px;padding:14px}.paySteps h3{font-size:12px;margin:0 0 8px}.paySteps ol{margin:0;padding-right:20px;color:var(--muted);font-size:11px;line-height:1.9}.payPrivacy{text-align:center;color:var(--muted);font-size:9px;line-height:1.6}.payDone{display:none;text-align:center;margin-top:10px;color:#08705e;font-size:11px;font-weight:750}.payview.invalid .payCard{text-align:center}.payview.invalid .payData,.payview.invalid .payButtons,.payview.invalid .payPrimary,.payview.invalid .paySteps{display:none}
 @media(max-width:430px){.big{font-size:42px}.ring{width:96px;height:96px}.ringin{width:68px;height:68px}.grid3{grid-template-columns:1fr 1fr}.grid3 .tile:last-child{grid-column:1/-1}.sources{grid-template-columns:1fr 1fr}.weekstrip{gap:4px}.daychip{padding:8px 2px}.insightgrid{grid-template-columns:1fr}}
+
+/* Mizan v2.6 */
+.onboard{max-width:560px;margin:0 auto;min-height:100vh;padding:calc(env(safe-area-inset-top) + 24px) 16px calc(env(safe-area-inset-bottom) + 28px);display:grid;align-content:center;gap:14px}
+.obBrand{text-align:center;margin-bottom:3px}.obBrand .logo{font-size:34px;font-weight:900;color:#0d8d76;letter-spacing:-1px}.obBrand p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+.obCard{background:#fff;border:1px solid var(--line);border-radius:28px;padding:20px;box-shadow:var(--shadow)}
+.obTop{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.obTop b{font-size:12px}.obCount{font-size:10px;color:var(--muted)}
+.obProgress{height:6px;background:#e8f0ed;border-radius:99px;overflow:hidden;margin-bottom:18px}.obProgress i{display:block;height:100%;width:25%;background:linear-gradient(90deg,var(--teal),var(--teal2));border-radius:99px;transition:.22s}
+.obStep h2{font-size:23px;margin:0 0 7px}.obStep>p{color:var(--muted);font-size:12px;line-height:1.7;margin:0 0 17px}
+.obPrivacy{border:1px solid #cfe9e2;background:#effaf6;border-radius:15px;padding:12px;font-size:11px;line-height:1.65;color:#35685e;margin:12px 0}
+.obGrid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.obActions{display:grid;grid-template-columns:1fr 1.35fr;gap:8px;margin-top:18px}.obActions button{min-height:50px;border:0;border-radius:14px;font-weight:800}.obNext{background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff}.obPrev{background:#eef6f3;color:var(--text)}
+.setupMini{display:grid;gap:8px}.setupMiniCard{border:1px solid var(--line);background:#f8fbfa;border-radius:16px;padding:12px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}.setupMiniCard .n{width:30px;height:30px;border-radius:10px;background:var(--mint);display:grid;place-items:center;font-weight:900;color:#08705e}.setupMiniCard b{font-size:12px}.setupMiniCard small{display:block;color:var(--muted);font-size:10px;line-height:1.55;margin-top:3px}
+.obGuideBtn{width:100%;min-height:45px;border:1px solid #a9ddd1;background:#effaf6;color:#08705e;border-radius:13px;font-weight:800;margin-top:10px}
+.brandFooter{text-align:center;color:#8aa19b;font-size:10px;line-height:1.7;padding:18px 4px 6px}.brandFooter button{border:0;background:transparent;color:#4c746b;font-weight:800;padding:3px 5px}.brandFooter b{color:#08705e}
+.payCreator{text-align:center;color:#8aa19b;font-size:10px;margin-top:2px}.payCreator b{color:#08705e}.payUseMizan{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;min-height:44px;color:#08705e;font-weight:800}
+.guideTabs{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:#edf4f2;padding:4px;border-radius:13px;margin-bottom:14px}.guideTabs button{border:0;background:transparent;border-radius:10px;min-height:38px;font-size:10px;color:var(--muted)}.guideTabs button.on{background:#fff;color:#08705e;font-weight:800;box-shadow:0 2px 8px #0000000a}
+.guidePane{display:none}.guidePane.on{display:block}.guidePane h4{margin:4px 0 5px;font-size:15px}.guidePane>p{color:var(--muted);font-size:11px;line-height:1.6;margin:0 0 12px}.guideSteps{counter-reset:step;display:grid;gap:8px}.guideStep{position:relative;border:1px solid var(--line);background:#f9fcfb;border-radius:14px;padding:10px 42px 10px 10px;font-size:11px;line-height:1.65}.guideStep:before{counter-increment:step;content:counter(step);position:absolute;right:10px;top:10px;width:23px;height:23px;border-radius:8px;background:var(--mint);color:#08705e;display:grid;place-items:center;font-weight:900}.guideCode{direction:ltr;text-align:left;background:#102f2a;color:#eafff8;border-radius:11px;padding:9px 10px;font-size:9px;overflow-wrap:anywhere;margin-top:6px;user-select:all}.guideNote{background:#fff7e6;border:1px solid #efddb0;border-radius:12px;padding:10px;font-size:10px;line-height:1.6;margin-top:10px;color:#765b1d}
+.ownershipCard{border:1px solid var(--line);background:#f8fbfa;border-radius:16px;padding:14px;font-size:11px;line-height:1.8;color:#536f69}.ownershipMark{text-align:center;font-size:23px;font-weight:900;color:#08705e;margin:6px 0 12px}.officialBadge{display:inline-flex;align-items:center;gap:5px;border-radius:99px;padding:5px 8px;background:#e9f8f3;color:#08705e;font-size:9px;font-weight:800}
+.cloneWarning{position:fixed;z-index:950;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 78px);background:#6f3e28;color:#fff;border-radius:13px;padding:9px 11px;text-align:center;font-size:10px;box-shadow:0 8px 25px #0003}
 </style>
 </head>
 <body>
-<div class="app">
-<header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version">v2.5.1</span></h1></div><button class="iconbtn" id="settingsBtn">⚙️</button></header>
+
+<main id="onboardingView" class="onboard hidden">
+  <div class="obBrand"><div class="logo">ميزان</div><p>مصروفك اليومي، دورتك المالية، وقطاتك — كلها في مكان واحد.</p></div>
+  <section class="obCard">
+    <div class="obTop"><b id="obStepTitle">ابدأ ميزانك</b><span id="obCount" class="obCount">1 من 4</span></div>
+    <div class="obProgress"><i id="obProgress"></i></div>
+    <div class="obStep" data-ob-step="1">
+      <h2>أهلًا بك 👋</h2>
+      <p>نضبط ميزان على طريقتك. إعدادك وبياناتك تبقى على جهازك ولا يراها صاحب الرابط أو أي مستخدم آخر.</p>
+      <label>اسمك<input id="obName" autocomplete="name" placeholder="مثال: فهد"></label>
+      <div class="obPrivacy"><b>🔒 ميزان خاص بجهازك</b><br>لا يوجد حساب مشترك، ولا تُرفع عملياتك أو الأشخاص أو القطات إلى GitHub. كل جهاز لديه بيانات مستقلة.</div>
+    </div>
+    <div class="obStep hidden" data-ob-step="2">
+      <h2>ميزانيتك اليومية</h2>
+      <p>حدد الحد اللي تبي تمشي عليه. تقدر تعدله بأي وقت من الإعدادات.</p>
+      <div class="obGrid2">
+        <label>الأحد–الأربعاء<input id="obWeekday" type="number" min="0" step="1" inputmode="decimal" value="100"></label>
+        <label>الخميس–السبت<input id="obWeekend" type="number" min="0" step="1" inputmode="decimal" value="200"></label>
+      </div>
+    </div>
+    <div class="obStep hidden" data-ob-step="3">
+      <h2>دورة راتبك</h2>
+      <p>ميزان يحسب من راتب إلى راتب بدل الالتزام بالشهر الميلادي.</p>
+      <div class="obGrid2">
+        <label>بداية دورة المصروف<input id="obCycleStart" type="number" min="1" max="31" inputmode="numeric" value="1"></label>
+        <label>نهاية دورة المصروف<input id="obCycleEnd" type="number" min="1" max="31" inputmode="numeric" value="31"></label>
+      </div>
+      <label>بداية يومك المالي<select id="obResetHour"><option value="0">12 منتصف الليل</option><option value="2">2 صباحًا</option><option value="4" selected>4 صباحًا</option><option value="6">6 صباحًا</option></select></label>
+      <div class="settingsnote">مثال: إذا الراتب يوم 27، حط البداية 27 والنهاية 26.</div>
+    </div>
+    <div class="obStep hidden" data-ob-step="4">
+      <h2>خل ميزان يشتغل عنك</h2>
+      <p>الـShortcuts اختيارية، لكنها تحول ميزان من تسجيل يدوي إلى تجربة شبه تلقائية.</p>
+      <div class="setupMini">
+        <div class="setupMiniCard"><div class="n">1</div><div><b>أضف ميزان للشاشة الرئيسية</b><small>يفتح كتطبيق مستقل بدل صفحة Safari.</small></div></div>
+        <div class="setupMiniCard"><div class="n">2</div><div><b>Mizan Import</b><small>رسائل البنك تدخل ميزان تلقائيًا.</small></div></div>
+        <div class="setupMiniCard"><div class="n">3</div><div><b>Mizan Collect</b><small>يرسل طلبات القطات لكل شخص بالمبلغ الصحيح.</small></div></div>
+      </div>
+      <button id="obOpenGuide" class="obGuideBtn" type="button">عرض خطوات الإعداد بالتفصيل</button>
+      <div class="settingsnote" style="margin-top:9px">تقدر تبدأ الآن وتسوي الاختصارات لاحقًا من الإعدادات.</div>
+    </div>
+    <div class="obActions">
+      <button id="obPrev" class="obPrev hidden" type="button">رجوع</button>
+      <button id="obNext" class="obNext" type="button">التالي</button>
+    </div>
+  </section>
+  <div class="brandFooter"><b>Made by Fahad</b><br>© 2026 Fahad. All rights reserved.</div>
+</main>
+<div id="appRoot" class="app hidden">
+<header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version">v2.6</span></h1></div><button class="iconbtn" id="settingsBtn">⚙️</button></header>
 <main id="homeView">
 <section class="card hero"><div><div class="muted">المتبقي اليوم</div><div class="big"><span id="todayRemaining">100</span> <small>ر.س</small></div><div id="todaySpend" class="muted">صرفت 0 من 100 ر.س</div><div id="statusPill" class="pill">✓ على المسار</div></div><div id="ring" class="ring"><div class="ringin"><strong id="pct">0%</strong><span>استهلاك</span></div></div><div class="safehero"><div><span>Safe to Spend</span><small>اليوم + الأسبوع + الشهر</small></div><b><span id="safeSpend">0</span> ر.س</b></div></section>
 <section class="grid3"><div class="tile a"><span>المتبقي هذا الأسبوع</span><strong id="weekRemaining">1,000</strong><small>ر.س</small></div><div class="tile b"><span>مستحق لك</span><strong id="owedTotal">0</strong><small>ر.س</small></div><div class="tile c"><span>المتبقي للدورة</span><strong id="savedMonth">0</strong><small>ر.س</small><div id="monthModeNote" class="monthnote">دورة المصروف</div></div></section>
@@ -99,6 +172,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
   <section class="card"><div class="sectionhead"><div><h2>إعداد التحصيل</h2><p>يظهر داخل رسالة طلب القطة.</p></div><button id="collectionSettingsBtn" class="ghost" type="button">تعديل</button></div><div id="collectionBox" class="collectionBox"></div></section>
   <section class="card"><div class="sectionhead"><div><h2>الفواتير المقسمة</h2><p>تابع كل شخص ومتى دفع.</p></div><div class="filterSeg"><button id="splitOpenFilter" class="on" type="button">مفتوحة</button><button id="splitDoneFilter" type="button">مكتملة</button></div></div><div id="splitHubList"></div></section>
 </main>
+<footer class="brandFooter"><button id="ownershipBtn" type="button">Made by Fahad</button><br>© 2026 Fahad. All rights reserved.</footer>
 <nav class="bottom"><button id="homeNav" class="navtab on" type="button"><b>⌂</b>الرئيسية</button><button id="splitsNav" class="navtab" type="button"><b>👥</b>القطات</button><button id="addTxnBtn" class="primaryNav" type="button"><b>＋</b>عملية</button><button id="canBuyBtn" type="button"><b>؟</b>هل أقدر؟</button></nav>
 </div>
 <main id="payView" class="payview hidden">
@@ -117,6 +191,8 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
   </section>
   <section class="paySteps"><h3>التحويل بأسرع طريقة</h3><ol><li>افتح تطبيق بنكك واختر تحويل سريع/محلي.</li><li>اختر التحويل باستخدام رقم الجوال.</li><li>الصق رقم سريع والمبلغ الموجودين فوق.</li></ol></section>
   <div class="payPrivacy">هذا الرابط يعرض بيانات طلب القطة فقط، ولا يطلب تسجيل دخول أو بيانات بنكية.</div>
+<button id="payUseMizanBtn" class="payUseMizan" type="button">أبي أستخدم ميزان لنفسي</button>
+<div class="payCreator"><b>Made by Fahad</b> • © 2026</div>
 </main>
 <div id="updateBanner" class="hidden" style="position:fixed;left:14px;right:14px;top:calc(env(safe-area-inset-top) + 12px);z-index:1000;background:#102f2a;color:#fff;border-radius:16px;padding:11px 12px;box-shadow:0 10px 30px #0003;display:flex;align-items:center;justify-content:space-between;gap:10px">
 <div><b style="font-size:12px">تحديث ميزان جاهز</b><div id="updateBannerText" style="font-size:9px;opacity:.8;margin-top:2px">سيتم تحميل آخر نسخة بدون حذف التطبيق.</div></div>
@@ -151,6 +227,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 <section id="buySheet" class="sheet hidden"><div class="handle"></div><h3>هل أقدر أشتريه؟</h3><form id="buyForm"><label>السعر<input id="buyAmount" type="number" min="0.01" step="0.01" inputmode="decimal" required></label><div id="buyResult" class="result">اكتب السعر ونحسب أثره على اليوم والأسبوع.</div><div class="actions"><button type="button" class="secondary close">إغلاق</button><button type="submit" class="primary">احسب</button></div></form></section>
 <section id="sourceSheet" class="sheet hidden"><div class="handle"></div><h3>إضافة بطاقة أو حساب</h3><form id="sourceForm"><label>الاسم<input id="sourceName" required placeholder="بطاقة البنزين"></label><label>البنك<input id="sourceBank" placeholder="اسم البنك"></label><label>النوع<select id="sourceType"><option>بطاقة</option><option>حساب جاري</option><option>محفظة</option></select></label><label>آخر 4 أرقام<input id="last4" inputmode="numeric" maxlength="4"></label><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">إضافة</button></div></form></section>
 <section id="settingsSheet" class="sheet hidden"><div class="handle"></div><h3>الإعدادات</h3><form id="settingsForm">
+<label>اسمك<input id="profileName" placeholder="اسمك"></label>
 <label>ميزانية الأحد–الأربعاء<input id="weekdayBudget" type="number" min="0"></label>
 <label>ميزانية الخميس–السبت<input id="weekendBudget" type="number" min="0"></label>
 <label>بداية اليوم المالي<select id="resetHour"><option value="0">12 منتصف الليل</option><option value="2">2 صباحًا</option><option value="4">4 صباحًا</option><option value="6">6 صباحًا</option></select></label>
@@ -170,7 +247,8 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 <button id="exportBackupBtn" type="button" class="toolbtn">تصدير نسخة احتياطية</button>
 <label class="toolbtn filelabel">استرجاع نسخة<input id="backupFile" type="file" accept=".json,application/json"></label>
 <button id="checkUpdateBtn" type="button" class="toolbtn">تحديث التطبيق</button>
-<div class="toolbtn" style="display:grid;place-items:center;pointer-events:none">النسخة v2.5.1</div>
+<button id="setupGuideBtn" type="button" class="toolbtn">دليل الإعداد</button>
+<div class="toolbtn" style="display:grid;place-items:center;pointer-events:none">النسخة v2.6</div>
 </div>
 </section>
 
@@ -180,13 +258,82 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 <div id="smsResult" class="result">يدعم أي بنك بصيغة عامة. الاستيراد الآلي من Shortcuts يُعالج محليًا على جهازك باستخدام رابط #sms ولا يرسل نص الرسالة إلى الاستضافة.</div>
 <div class="actions"><button type="button" class="secondary close">إغلاق</button><button id="smsImportGo" type="button" class="primary">تحليل وإضافة</button></div></section>
 <section id="importSheet" class="sheet hidden"><div class="handle"></div><h3>استيراد كشف CSV</h3><label>اربطه بمصدر<select id="importSource"></select></label><label>الملف<input id="csvFile" type="file" accept=".csv,text/csv"></label><div id="importResult" class="result">الأعمدة المدعومة: Date / التاريخ، Description / الوصف، Amount أو Debit/Credit.</div><div class="actions"><button type="button" class="secondary close">إغلاق</button><button id="importGo" type="button" class="primary">استيراد</button></div></section>
+
+<section id="shortcutGuideSheet" class="sheet hidden"><div class="handle"></div>
+  <h3>إعداد ميزان على الآيفون</h3>
+  <div class="guideTabs">
+    <button class="on" data-guide-tab="install" type="button">الشاشة الرئيسية</button>
+    <button data-guide-tab="import" type="button">Mizan Import</button>
+    <button data-guide-tab="collect" type="button">Mizan Collect</button>
+  </div>
+  <div class="guidePane on" data-guide-pane="install">
+    <h4>إضافة ميزان كتطبيق</h4><p>نفذها من Safari مرة واحدة على الجهاز.</p>
+    <div class="guideSteps">
+      <div class="guideStep">افتح رابط ميزان في <b>Safari</b>.</div>
+      <div class="guideStep">اضغط زر <b>المشاركة Share</b>.</div>
+      <div class="guideStep">اختر <b>Add to Home Screen / إضافة إلى الشاشة الرئيسية</b>.</div>
+      <div class="guideStep">خل الاسم <b>ميزان</b> واضغط <b>Add / إضافة</b>.</div>
+    </div>
+    <div class="guideNote">بعد الإضافة افتح ميزان من الأيقونة. التحديثات القادمة تتم من داخل التطبيق ولا تحتاج تعيد الإضافة.</div>
+  </div>
+  <div class="guidePane" data-guide-pane="import">
+    <h4>Mizan Import — إدخال رسائل البنك تلقائيًا</h4><p>يأخذ رسالة البنك ويفتح ميزان محليًا ليحللها.</p>
+    <div class="guideSteps">
+      <div class="guideStep">Shortcuts → <b>+</b> → سمِّه <b>Mizan Import</b>.</div>
+      <div class="guideStep">أضف <b>Get Text from Shortcut Input</b>.</div>
+      <div class="guideStep">أضف <b>URL Encode</b> واختر الـText.</div>
+      <div class="guideStep">أضف <b>Text</b> واكتب:
+        <div class="guideCode">https://fahotchi.github.io/#sms=[URL Encoded Text]</div>
+        وبعد = أدرج متغير <b>URL Encoded Text</b>.
+      </div>
+      <div class="guideStep">أضف <b>Open URLs</b> واختر الـText الناتج.</div>
+      <div class="guideStep">Automation → <b>Message</b> → اختر مرسلي البنوك → اترك <b>Message Contains</b> فارغًا.</div>
+      <div class="guideStep">اختر <b>Run Immediately</b> ثم <b>Run Shortcut → Mizan Import</b> ومرّر <b>Shortcut Input</b>.</div>
+    </div>
+    <div class="guideNote">عطّل أي Automation قديم مخصص لكلمة «شراء» حتى ما تدخل العملية مرتين.</div>
+  </div>
+  <div class="guidePane" data-guide-pane="collect">
+    <h4>Mizan Collect — إرسال طلبات القطات</h4><p>يرسل لكل شخص رسالته ومبلغه من تطبيق Messages.</p>
+    <div class="guideSteps">
+      <div class="guideStep">أنشئ Shortcut باسم <b>Mizan Collect</b>.</div>
+      <div class="guideStep"><b>Get Dictionary from Shortcut Input</b>.</div>
+      <div class="guideStep"><b>Get Value</b> للمفتاح <b>items</b>.</div>
+      <div class="guideStep"><b>Repeat with Each Item</b> على Dictionary Value.</div>
+      <div class="guideStep">داخل Repeat: <b>Get Value for phone</b> → <b>Set Variable Phone</b>.</div>
+      <div class="guideStep"><b>Get Value for message</b> → <b>Set Variable Message</b>.</div>
+      <div class="guideStep"><b>Send Message</b>: اختر متغير <b>Message</b> كنص ومتغير <b>Phone</b> كمستلم. لا تكتب الكلمتين يدويًا.</div>
+      <div class="guideStep">عطّل <b>Show When Run</b> إذا ظهر في خيارات Send Message.</div>
+    </div>
+    <div class="guideNote">اختبر أول مرة على رقمك قبل استخدام قطة فعلية.</div>
+  </div>
+  <div class="actions"><button type="button" class="secondary close">إغلاق</button><button id="guideDoneBtn" type="button" class="primary">تم</button></div>
+</section>
+
+<section id="ownershipSheet" class="sheet hidden"><div class="handle"></div>
+  <div class="ownershipMark">ميزان</div>
+  <div class="ownershipCard">
+    <div class="officialBadge">✓ Official Mizan Build</div>
+    <p><b>Made by Fahad</b></p>
+    <p>© 2026 Fahad. All rights reserved.</p>
+    <p>يُحظر نسخ التطبيق أو إعادة نشره أو بيعه أو توزيع نسخة مشتقة منه دون إذن كتابي من المالك.</p>
+    <p>بيانات المستخدم المالية محفوظة محليًا على جهاز المستخدم في النسخة الحالية ولا تُشارك بين الأجهزة.</p>
+  </div>
+  <div class="actions"><button type="button" class="secondary close">إغلاق</button><button id="ownershipOkBtn" type="button" class="primary">حسنًا</button></div>
+</section>
+<div id="cloneWarning" class="cloneWarning hidden">نسخة غير رسمية من ميزان • التطبيق الأصلي Made by Fahad</div>
 <script>
 (()=>{
-const APP_VERSION='2.5.1';
+const APP_VERSION='2.6';
 const KEY='mizan-static-v1';
-const defaults={settings:{weekday:100,weekend:200,reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleEndDay:31},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open'},merchantRules:{},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nطلب الدفع: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nطلب الدفع: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]};
+const HAD_EXISTING_STATE=localStorage.getItem(KEY)!==null;
+const OFFICIAL_HOSTS=new Set(['fahotchi.github.io','localhost','127.0.0.1']);
+const defaults={profile:{name:''},meta:{onboarded:false,shortcutGuideSeen:false},settings:{weekday:100,weekend:200,reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleEndDay:31},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open'},merchantRules:{},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nطلب الدفع: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nطلب الدفع: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]};
 const clone=x=>JSON.parse(JSON.stringify(x));let state=load();let splitReturnTxnId=null;
-function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||'null');return x?{...clone(defaults),...x,settings:{...defaults.settings,...(x.settings||{})},monthOverride:{...defaults.monthOverride,...(x.monthOverride||{})},ui:{...defaults.ui,...(x.ui||{})},merchantRules:{...(x.merchantRules||{})},collection:{...defaults.collection,...(x.collection||{})},people:Array.isArray(x.people)?x.people:[]}:clone(defaults)}catch{return clone(defaults)}}
+if(HAD_EXISTING_STATE&&!state.meta.onboarded){
+  state.meta.onboarded=true;
+  try{localStorage.setItem(KEY,JSON.stringify(state))}catch{}
+}
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||'null');return x?{...clone(defaults),...x,profile:{...defaults.profile,...(x.profile||{})},meta:{...defaults.meta,...(x.meta||{})},settings:{...defaults.settings,...(x.settings||{})},monthOverride:{...defaults.monthOverride,...(x.monthOverride||{})},ui:{...defaults.ui,...(x.ui||{})},merchantRules:{...(x.merchantRules||{})},collection:{...defaults.collection,...(x.collection||{})},people:Array.isArray(x.people)?x.people:[]}:clone(defaults)}catch{return clone(defaults)}}
 function persistState(){
   try{localStorage.setItem(KEY,JSON.stringify(state));return true}
   catch(err){console.error('Mizan save failed',err);toast('تعذر حفظ البيانات على الجهاز',true);return false}
@@ -199,6 +346,33 @@ function finishSave(message='',after=null){
   return true
 }
 const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const fmt=n=>new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(Math.max(0,Number(n)||0));const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random();
+
+let obStep=1;
+function todayISO(){const d=new Date(),y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
+function showOnboarding(){
+  $('appRoot').classList.add('hidden');$('payView').classList.add('hidden');$('onboardingView').classList.remove('hidden');
+  obStep=1;$('obName').value=state.profile?.name||'';$('obWeekday').value=Number.isFinite(+state.settings.weekday)?state.settings.weekday:100;$('obWeekend').value=Number.isFinite(+state.settings.weekend)?state.settings.weekend:200;$('obCycleStart').value=state.settings.cycleStartDay||1;$('obCycleEnd').value=state.settings.cycleEndDay||31;$('obResetHour').value=String(state.settings.reset??4);renderOnboardingStep()
+}
+function renderOnboardingStep(){
+  document.querySelectorAll('[data-ob-step]').forEach(el=>el.classList.toggle('hidden',+el.dataset.obStep!==obStep));
+  $('obCount').textContent=`${obStep} من 4`;$('obProgress').style.width=`${obStep*25}%`;$('obPrev').classList.toggle('hidden',obStep===1);$('obNext').textContent=obStep===4?'ابدأ ميزان':'التالي';$('obStepTitle').textContent=['','ابدأ ميزانك','حدد ميزانيتك','دورة راتبك','جاهز للانطلاق'][obStep]
+}
+function validateOnboardingStep(){
+  if(obStep===1&&!$('obName').value.trim()){toast('اكتب اسمك أولًا',true);return false}
+  if(obStep===2){const a=+$('obWeekday').value,b=+$('obWeekend').value;if(!Number.isFinite(a)||a<0||!Number.isFinite(b)||b<0){toast('أدخل الميزانيات بشكل صحيح',true);return false}}
+  if(obStep===3){const s=+$('obCycleStart').value,e=+$('obCycleEnd').value;if(!(s>=1&&s<=31&&e>=1&&e<=31)){toast('أيام دورة المصروف لازم تكون بين 1 و31',true);return false}}
+  return true
+}
+function finishOnboarding(){
+  if(!validateOnboardingStep())return;
+  state.profile={...(state.profile||{}),name:$('obName').value.trim()};
+  state.settings.weekday=Math.max(0,+$('obWeekday').value||0);state.settings.weekend=Math.max(0,+$('obWeekend').value||0);state.settings.cycleStartDay=Math.max(1,Math.min(31,+$('obCycleStart').value||1));state.settings.cycleEndDay=Math.max(1,Math.min(31,+$('obCycleEnd').value||31));state.settings.reset=+$('obResetHour').value||0;state.settings.trackingStart=todayISO();state.meta={...(state.meta||{}),onboarded:true};
+  if(!persistState())return;$('onboardingView').classList.add('hidden');$('appRoot').classList.remove('hidden');render();toast('تم إعداد ميزانك ✓')
+}
+function openSetupGuide(){open('shortcutGuideSheet')}
+function showPrivateApp(){$('onboardingView').classList.add('hidden');$('payView').classList.add('hidden');$('appRoot').classList.remove('hidden')}
+function applyOwnershipLayer(){const official=OFFICIAL_HOSTS.has(location.hostname);$('cloneWarning').classList.toggle('hidden',official);if(!official)document.documentElement.dataset.mizanUnofficial='1'}
+
 function fdate(d=new Date()){const x=new Date(d);if(x.getHours()<state.settings.reset)x.setDate(x.getDate()-1);x.setHours(0,0,0,0);return x}
 function dayBudget(d=new Date()){const day=fdate(d).getDay();return day<=3?state.settings.weekday:state.settings.weekend}
 function wstart(){const x=fdate();x.setDate(x.getDate()-x.getDay());return x}
@@ -288,7 +462,7 @@ function handlePaymentLink(){if(!location.hash.startsWith('#pay?'))return false;
 
 function render(){
 const b=activeDayBudget(),sp=todaySpend(),rem=b-sp,p=b?Math.min(100,Math.round(sp/b*100)):0,fd=fdate();
-$('homeView').classList.toggle('hidden',state.ui.activeTab==='splits');$('splitsView').classList.toggle('hidden',state.ui.activeTab!=='splits');$('homeNav').classList.toggle('on',state.ui.activeTab!=='splits');$('splitsNav').classList.toggle('on',state.ui.activeTab==='splits');$('dayLabel').textContent=state.ui.activeTab==='splits'?'إدارة القطات والتحصيل':`${shortDays[fd.getDay()]} • ${state.ui.adaptive?'Adaptive ':'ميزانية اليوم '}${fmt(b)} ر.س`;
+$('homeView').classList.toggle('hidden',state.ui.activeTab==='splits');$('splitsView').classList.toggle('hidden',state.ui.activeTab!=='splits');$('homeNav').classList.toggle('on',state.ui.activeTab!=='splits');$('splitsNav').classList.toggle('on',state.ui.activeTab==='splits');$('dayLabel').textContent=state.ui.activeTab==='splits'?'إدارة القطات والتحصيل':`${state.profile?.name?state.profile.name+' • ':''}${shortDays[fd.getDay()]} • ${state.ui.adaptive?'Adaptive ':'ميزانية اليوم '}${fmt(b)} ر.س`;
 $('todayRemaining').textContent=fmt(Math.max(0,rem));$('todaySpend').textContent=`صرفت ${fmt(sp)} من ${fmt(b)} ر.س`;$('safeSpend').textContent=fmt(safeToSpend());$('pct').textContent=p+'%';$('ring').style.background=`conic-gradient(var(--teal) 0 ${p*3.6}deg,#dceee8 ${p*3.6}deg 360deg)`;
 const pill=$('statusPill');if(sp>b){pill.textContent=`تجاوزت بـ ${fmt(sp-b)} ر.س`;pill.style.background='var(--danger)';pill.style.color='#a5523f'}else if(p>=90){pill.textContent='⚠️ قريب جدًا من الحد';pill.style.background='var(--gold)';pill.style.color='#8b6500'}else if(p>=75){pill.textContent='انتبه للصرف';pill.style.background='var(--gold)';pill.style.color='#8b6500'}else{pill.textContent='✓ على المسار';pill.style.background='#dcf7ed';pill.style.color='#0b806b'}
 $('weekRemaining').textContent=fmt(Math.max(0,weeklyBudget()-weekSpend()));$('owedTotal').textContent=fmt(owed());$('savedMonth').textContent=fmt(Math.max(0,monthRemaining()));$('monthModeNote').textContent=monthOverrideActive()?`معدل يدويًا • ${cycleLabel(currentCycle())}`:cycleLabel(currentCycle());
@@ -364,7 +538,7 @@ $('splitModeEqual').onclick=()=>setSplitMode('equal');$('splitModeCustom').oncli
 $('splitForm').onsubmit=e=>{e.preventDefault();const t=state.txns.find(x=>x.id===$('splitTxnId').value);if(!t)return;const v=splitBuilderValues(),mode=$('splitMode').value;if(v.members.length<2){toast('اختر شخص واحد على الأقل معك في القطة',true);return}if(Math.abs(v.sum-v.total)>.01){toast('مجموع الحصص لازم يساوي إجمالي الفاتورة',true);return}let s=t.relatedSplitId?state.splits.find(x=>x.id===t.relatedSplitId):null;const oldByPerson=new Map((s?.members||[]).map(m=>[m.personId||'self',m]));const members=v.members.map(m=>{const old=oldByPerson.get(m.personId||'self');return{id:old?.id||uid(),personId:m.personId,name:m.name,phone:m.phone,isSelf:m.isSelf,share:m.share,paidAmount:m.isSelf?0:Math.min(+old?.paidAmount||0,m.share),paid:m.isSelf?true:Math.min(+old?.paidAmount||0,m.share)>=m.share-.009,requestSentAt:old?.requestSentAt||null,lastReminderAt:old?.lastReminderAt||null,reminderCount:+old?.reminderCount||0,paidAt:old?.paidAt||null}});if(!s){const sid=uid();t.preSplitImpact=t.impact;t.preSplitLabel=t.label;t.relatedSplitId=sid;s={id:sid,txId:t.id,note:t.note||t.category,total:t.amount,share:v.share,owed:v.owed,recovered:0,ts:t.ts,mode,members};state.splits.push(s)}else{s.total=t.amount;s.share=v.share;s.owed=v.owed;s.mode=mode;s.note=t.note||t.category;s.members=members}syncSplitTotals(s);t.impact=v.share;t.label='قطة';t.ignored=false;t.resolved=true;finishSave(`تم احتساب حصتك ${fmt(v.share)} ر.س`)};
 $('editTxnForm').onsubmit=e=>{e.preventDefault();const t=state.txns.find(x=>x.id===$('editTxnId').value);if(!t)return;const oldAmount=+t.amount||0,newAmount=Math.max(.01,+$('editAmount').value||0),oldImpact=+t.impact||0;t.amount=newAmount;t.category=$('editCategory').value;t.source=$('editSource').value;t.note=$('editNote').value.trim();const dt=new Date($('editDate').value);if(!isNaN(dt))t.ts=dt.toISOString();t.ignored=$('editIgnored').checked;if(t.relatedSplitId){const s=state.splits.find(x=>x.id===t.relatedSplitId);if(s){s.total=newAmount;s.note=t.note||t.category;if(Array.isArray(s.members)&&s.members.length){const sum=s.members.reduce((a,m)=>a+(+m.share||0),0),ratio=sum>0?newAmount/sum:1;s.members.forEach(m=>{m.share=Math.round((+m.share||0)*ratio*100)/100;if(!m.isSelf)m.paidAmount=Math.min(+m.paidAmount||0,m.share)});const fix=newAmount-s.members.reduce((a,m)=>a+(+m.share||0),0),me=s.members.find(m=>m.isSelf);if(me)me.share=Math.round((me.share+fix)*100)/100;syncSplitTotals(s)}else{s.share=Math.min(s.share||0,newAmount);s.owed=Math.max(0,newAmount-s.share);s.recovered=Math.min(s.recovered||0,s.owed)}t.impact=s.share}}else if(!/كاش باك|عكس/.test(t.label||'')){if(oldAmount>0&&Math.abs(oldImpact-oldAmount)<.01)t.impact=newAmount;else if(t.impact>newAmount)t.impact=newAmount}if($('rememberMerchant').checked&&normalizeMerchant(t.note))state.merchantRules[normalizeMerchant(t.note)]=t.category;t.fp=fingerprint(t);finishSave('تم تعديل العملية')}
 
-$('settingsBtn').onclick=()=>{$('weekdayBudget').value=state.settings.weekday;$('weekendBudget').value=state.settings.weekend;$('resetHour').value=state.settings.reset;$('trackingStart').value=state.settings.trackingStart||'2026-09-01';$('cycleStartDay').value=state.settings.cycleStartDay||1;$('cycleEndDay').value=state.settings.cycleEndDay||31;const active=monthOverrideActive();$('monthBudgetMode').value=active?'manual':'auto';$('monthRemainingSet').value=active?Math.max(0,monthRemaining()).toFixed(2):'';$('monthRemainingBox').classList.toggle('hidden',!active);open('settingsSheet')};$('homeNav').onclick=()=>setTab('home');$('splitsNav').onclick=()=>setTab('splits');$('openSplitsBtn').onclick=()=>setTab('splits');$('addTxnBtn').onclick=()=>{$('txnType').value='personal';open('txnSheet')};$('newSplitBtn').onclick=()=>{$('txnType').value='split';open('txnSheet')};$('canBuyBtn').onclick=()=>open('buySheet');$('addSourceBtn').onclick=()=>open('sourceSheet');$('smsBtn').onclick=()=>open('smsSheet');$('importBtn').onclick=()=>open('importSheet');$('addPersonBtn').onclick=$('addPersonBtn2').onclick=()=>openPerson();$('addPersonFromSplit').onclick=()=>openPerson('',true);$('collectionSettingsBtn').onclick=openCollectionSettings;$('sendDueReminders').onclick=()=>runCollect(dueReminderRows(),'reminder');$('splitOpenFilter').onclick=()=>{state.ui.splitFilter='open';save()};$('splitDoneFilter').onclick=()=>{state.ui.splitFilter='done';save()};$('monthPathToggle').onclick=()=>{state.ui.monthOpen=!state.ui.monthOpen;save()};$('monthBudgetMode').onchange=e=>{$('monthRemainingBox').classList.toggle('hidden',e.target.value!=='manual');if(e.target.value==='manual'&&!$('monthRemainingSet').value)$('monthRemainingSet').value=Math.max(0,monthRemaining()).toFixed(2)};$('txnType').onchange=e=>$('peopleBox').classList.add('hidden');$('weekTab').onclick=()=>{state.view='week';save()};$('monthTab').onclick=()=>{state.view='month';save()};
+$('settingsBtn').onclick=()=>{$('profileName').value=state.profile?.name||'';$('weekdayBudget').value=state.settings.weekday;$('weekendBudget').value=state.settings.weekend;$('resetHour').value=state.settings.reset;$('trackingStart').value=state.settings.trackingStart||'2026-09-01';$('cycleStartDay').value=state.settings.cycleStartDay||1;$('cycleEndDay').value=state.settings.cycleEndDay||31;const active=monthOverrideActive();$('monthBudgetMode').value=active?'manual':'auto';$('monthRemainingSet').value=active?Math.max(0,monthRemaining()).toFixed(2):'';$('monthRemainingBox').classList.toggle('hidden',!active);open('settingsSheet')};$('homeNav').onclick=()=>setTab('home');$('splitsNav').onclick=()=>setTab('splits');$('openSplitsBtn').onclick=()=>setTab('splits');$('addTxnBtn').onclick=()=>{$('txnType').value='personal';open('txnSheet')};$('newSplitBtn').onclick=()=>{$('txnType').value='split';open('txnSheet')};$('canBuyBtn').onclick=()=>open('buySheet');$('addSourceBtn').onclick=()=>open('sourceSheet');$('smsBtn').onclick=()=>open('smsSheet');$('importBtn').onclick=()=>open('importSheet');$('addPersonBtn').onclick=$('addPersonBtn2').onclick=()=>openPerson();$('addPersonFromSplit').onclick=()=>openPerson('',true);$('collectionSettingsBtn').onclick=openCollectionSettings;$('sendDueReminders').onclick=()=>runCollect(dueReminderRows(),'reminder');$('splitOpenFilter').onclick=()=>{state.ui.splitFilter='open';save()};$('splitDoneFilter').onclick=()=>{state.ui.splitFilter='done';save()};$('monthPathToggle').onclick=()=>{state.ui.monthOpen=!state.ui.monthOpen;save()};$('monthBudgetMode').onchange=e=>{$('monthRemainingBox').classList.toggle('hidden',e.target.value!=='manual');if(e.target.value==='manual'&&!$('monthRemainingSet').value)$('monthRemainingSet').value=Math.max(0,monthRemaining()).toFixed(2)};$('txnType').onchange=e=>$('peopleBox').classList.add('hidden');$('weekTab').onclick=()=>{state.view='week';save()};$('monthTab').onclick=()=>{state.view='month';save()};
 $('personForm').onsubmit=e=>{
   e.preventDefault();
   const id=$('personId').value,name=$('personName').value.trim(),phone=phoneClean($('personPhone').value);
@@ -406,18 +580,28 @@ $('sourceForm').onsubmit=e=>{
   if(!name){toast('اكتب اسم البطاقة أو الحساب',true);return}
   state.sources.push({id:uid(),name,bank:$('sourceBank').value.trim(),type:$('sourceType').value,last4:$('last4').value.trim()});
   e.target.reset();finishSave('تمت إضافة البطاقة / الحساب')
-};$('settingsForm').onsubmit=e=>{e.preventDefault();state.settings.weekday=Math.max(0,+$('weekdayBudget').value||0);state.settings.weekend=Math.max(0,+$('weekendBudget').value||0);state.settings.reset=+$('resetHour').value||0;const ts=$('trackingStart').value,cs=Math.max(1,Math.min(31,+$('cycleStartDay').value||1)),ce=Math.max(1,Math.min(31,+$('cycleEndDay').value||31));if(!/^\d{4}-\d{2}-\d{2}$/.test(ts)){toast('حدد تاريخ بداية الاحتساب',true);return}state.settings.trackingStart=ts;state.settings.cycleStartDay=cs;state.settings.cycleEndDay=ce;state.ui.monthOffset=0;if($('monthBudgetMode').value==='manual'){const amt=+$('monthRemainingSet').value;if(!Number.isFinite(amt)||amt<0){toast('أدخل المتبقي للدورة بشكل صحيح',true);return}state.monthOverride={key:monthKey(),amount:amt,at:new Date().toISOString()}}else state.monthOverride={key:'',amount:null,at:null};finishSave('تم حفظ الإعدادات')};
+};$('settingsForm').onsubmit=e=>{e.preventDefault();state.profile={...(state.profile||{}),name:$('profileName').value.trim()};state.settings.weekday=Math.max(0,+$('weekdayBudget').value||0);state.settings.weekend=Math.max(0,+$('weekendBudget').value||0);state.settings.reset=+$('resetHour').value||0;const ts=$('trackingStart').value,cs=Math.max(1,Math.min(31,+$('cycleStartDay').value||1)),ce=Math.max(1,Math.min(31,+$('cycleEndDay').value||31));if(!/^\d{4}-\d{2}-\d{2}$/.test(ts)){toast('حدد تاريخ بداية الاحتساب',true);return}state.settings.trackingStart=ts;state.settings.cycleStartDay=cs;state.settings.cycleEndDay=ce;state.ui.monthOffset=0;if($('monthBudgetMode').value==='manual'){const amt=+$('monthRemainingSet').value;if(!Number.isFinite(amt)||amt<0){toast('أدخل المتبقي للدورة بشكل صحيح',true);return}state.monthOverride={key:monthKey(),amount:amt,at:new Date().toISOString()}}else state.monthOverride={key:'',amount:null,at:null};finishSave('تم حفظ الإعدادات')};
 
 $('smsImportGo').onclick=()=>{const sender=$('smsSender').value==='auto'?'':$('smsSender').value;const r=importBankSms(sender,$('smsText').value);if(!r.ok){$('smsResult').textContent=r.error;return}const p=r.parsed;$('smsResult').innerHTML=`تمت الإضافة: <b>${esc(p.label)}</b> • ${fmt(p.amount)} ر.س • ${esc(p.merchant)}${p.impact===0?' • لا يؤثر على الميزانية':p.impact<0?' • خُصم من الصرف':' • احتُسب كمصروف'}`;$('smsText').value=''};
 
 function csvRows(text){const out=[];let row=[],f='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c==='"'){if(q&&n==='"'){f+='"';i++}else q=!q}else if(c===','&&!q){row.push(f);f=''}else if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(f);f='';if(row.some(x=>x.trim()))out.push(row);row=[]}else f+=c}if(f||row.length){row.push(f);out.push(row)}return out}function col(h,ks){const x=h.map(s=>s.trim().toLowerCase());for(const k of ks){const i=x.findIndex(v=>v===k||v.includes(k));if(i>=0)return i}return-1}function num(v){return Number(String(v||'').replace(/[ ,]/g,'').replace(/SAR|ر\.س/gi,''))}function date(v){const d=new Date(v);if(!isNaN(d))return d;const m=String(v).match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);if(m){let y=+m[3];if(y<100)y+=2000;return new Date(y,+m[2]-1,+m[1],12)}return new Date()}
 $('importGo').onclick=async()=>{const file=$('csvFile').files[0];if(!file)return $('importResult').textContent='اختر ملف CSV أولًا.';try{const rows=csvRows(await file.text()),h=rows[0]||[],di=col(h,['date','التاريخ']),xi=col(h,['description','details','merchant','الوصف','البيان','التفاصيل']),ai=col(h,['amount','المبلغ']),debi=col(h,['debit','مدين','خصم']),cri=col(h,['credit','دائن','إيداع']);if(di<0||xi<0||(ai<0&&debi<0&&cri<0))throw Error('تعذر اكتشاف أعمدة التاريخ والوصف والمبلغ');let add=0,dup=0,rev=0;for(const r of rows.slice(1)){let amount=NaN,direction='debit';if(ai>=0){amount=num(r[ai]);if(amount<0){amount=Math.abs(amount);direction='credit'}}else{const d=debi>=0?num(r[debi]):NaN,c=cri>=0?num(r[cri]):NaN;if(d>0)amount=d;else if(c>0){amount=c;direction='credit'}}if(!(amount>0))continue;const desc=r[xi]||'عملية مستوردة',t={id:uid(),amount,impact:direction==='debit'?amount:0,category:categoryFrom(desc),source:$('importSource').value,note:desc,label:direction==='debit'?'مصروف مستورد':'تحويل وارد',ts:date(r[di]).toISOString(),createdAt:new Date().toISOString(),direction};t.fp=fingerprint(t);if(isDup(t)){dup++;continue}t.review=infer(t);if(t.review)rev++;state.txns.push(t);add++}save();$('importResult').innerHTML=`تمت إضافة <b>${add}</b> عملية، تجاهل ${dup} مكررة، و${rev} للمراجعة.`}catch(err){$('importResult').textContent='تعذر الاستيراد: '+err.message}};
 
-$('exportBackupBtn').onclick=()=>{const payload={app:'Mizan',version:'2.5.1',exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`Mizan_Backup_${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('تم تجهيز النسخة الاحتياطية')};
-$('backupFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const data=JSON.parse(await f.text()),incoming=data.state||data;if(!incoming||!Array.isArray(incoming.txns)||!Array.isArray(incoming.splits))throw Error('ملف غير صالح');if(!confirm('استرجاع النسخة الاحتياطية سيستبدل بيانات ميزان الحالية. متابعة؟'))return;state={...clone(defaults),...incoming,settings:{...defaults.settings,...(incoming.settings||{})},monthOverride:{...defaults.monthOverride,...(incoming.monthOverride||{})},ui:{...defaults.ui,...(incoming.ui||{})}};save();toast('تم استرجاع النسخة الاحتياطية')}catch(err){toast('تعذر قراءة ملف النسخة الاحتياطية',true)}finally{e.target.value=''}};
+$('exportBackupBtn').onclick=()=>{const payload={app:'Mizan',version:'2.6',exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`Mizan_Backup_${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('تم تجهيز النسخة الاحتياطية')};
+$('backupFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const data=JSON.parse(await f.text()),incoming=data.state||data;if(!incoming||!Array.isArray(incoming.txns)||!Array.isArray(incoming.splits))throw Error('ملف غير صالح');if(!confirm('استرجاع النسخة الاحتياطية سيستبدل بيانات ميزان الحالية. متابعة؟'))return;state={...clone(defaults),...incoming,profile:{...defaults.profile,...(incoming.profile||{})},meta:{...defaults.meta,...(incoming.meta||{}),onboarded:true},settings:{...defaults.settings,...(incoming.settings||{})},monthOverride:{...defaults.monthOverride,...(incoming.monthOverride||{})},ui:{...defaults.ui,...(incoming.ui||{})}};save();toast('تم استرجاع النسخة الاحتياطية')}catch(err){toast('تعذر قراءة ملف النسخة الاحتياطية',true)}finally{e.target.value=''}};
+
+
+$('obNext').onclick=()=>{if(!validateOnboardingStep())return;if(obStep<4){obStep++;renderOnboardingStep()}else finishOnboarding()};
+$('obPrev').onclick=()=>{if(obStep>1){obStep--;renderOnboardingStep()}};
+$('obOpenGuide').onclick=openSetupGuide;$('setupGuideBtn').onclick=openSetupGuide;$('ownershipBtn').onclick=()=>open('ownershipSheet');$('ownershipOkBtn').onclick=close;
+$('guideDoneBtn').onclick=()=>{state.meta={...(state.meta||{}),shortcutGuideSeen:true};persistState();close();toast('تقدر ترجع للدليل من الإعدادات')};
+document.querySelectorAll('[data-guide-tab]').forEach(btn=>btn.onclick=()=>{const tab=btn.dataset.guideTab;document.querySelectorAll('[data-guide-tab]').forEach(x=>x.classList.toggle('on',x.dataset.guideTab===tab));document.querySelectorAll('[data-guide-pane]').forEach(x=>x.classList.toggle('on',x.dataset.guidePane===tab))});
+$('payUseMizanBtn').onclick=()=>{history.replaceState({},'',location.pathname);location.reload()};
+applyOwnershipLayer();
 
 let updateReloading=false;
 function showUpdateBanner(remoteVersion=''){
+  if(!state.meta?.onboarded||location.hash.startsWith('#pay?'))return;
   $('updateBannerText').textContent=remoteVersion?`النسخة ${remoteVersion} متوفرة — بياناتك لن تُحذف.`:'نسخة أحدث جاهزة — بياناتك لن تُحذف.';
   $('updateBanner').classList.remove('hidden')
 }
@@ -456,7 +640,7 @@ if('serviceWorker'in navigator){
   });
   window.addEventListener('load',async()=>{
     try{
-      const reg=await navigator.serviceWorker.register('./sw.js?v=2.5.1',{updateViaCache:'none'});
+      const reg=await navigator.serviceWorker.register('./sw.js?v=2.6',{updateViaCache:'none'});
       await reg.update();if(reg.waiting)showUpdateBanner()
     }catch(err){console.warn('SW register',err)}
     setTimeout(()=>checkForAppUpdate(false),1200)
@@ -466,7 +650,7 @@ window.addEventListener('pageshow',()=>setTimeout(()=>checkForAppUpdate(false),8
 document.addEventListener('visibilitychange',()=>{
   if(document.visibilityState==='visible')setTimeout(()=>checkForAppUpdate(false),500)
 });
-if(!handlePaymentLink())render();
+if(handlePaymentLink()){$('onboardingView').classList.add('hidden');$('appRoot').classList.add('hidden')}else if(!state.meta?.onboarded){showOnboarding()}else{showPrivateApp();render()}
 (function(){
   let sender='',sms='';
   if(location.hash&&location.hash.includes('sms=')){
