@@ -1,17 +1,15 @@
-Mizan Deploy v4.2
+Mizan Secure v4.4
 
-Domain:
-https://mezanmoney.github.io
+New update system:
+- version.json is the single source of truth for latest release
+- app checks for updates automatically after startup
+- app re-checks every 30 minutes and when returning to the app
+- settings update button performs a real server check
+- update banner appears only when a newer version exists
+- update clears only Mizan application caches, not Supabase account data
+- PWA start_url is versioned
+- Service Worker cache is v4.4
 
-Secure app:
-https://mezanmoney.github.io/secure-v3.html
-
-Verified updates:
-- Secure v4.2
-- New onboarding clarification: 2 Shortcuts + 1 Automation
-- Improved sender-matching step layout
-- Final full-order summary for Mizan Import
-- Final full-order summary for Mizan Collect
-- No fahotchi.github.io references in secure-v3.html
-- Root index redirects to /secure-v3.html
-- Service Worker cache bumped to v4.2
+Data safety:
+- user state remains in Supabase
+- updating does not delete transactions, settings, people, or splits

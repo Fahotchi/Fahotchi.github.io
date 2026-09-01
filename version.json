@@ -1,0 +1,8 @@
+{
+  "app": "Mizan Secure",
+  "version": "4.4",
+  "build": 440,
+  "releasedAt": "2026-09-01T22:30:00+03:00",
+  "minSupported": "4.0",
+  "notes": "نظام تحديث تلقائي آمن لجميع مستخدمي ميزان"
+}
