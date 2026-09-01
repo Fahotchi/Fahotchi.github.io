@@ -1,39 +1,63 @@
-const CACHE='mizan-v2-6';
-const CORE=['/index.html','/manifest.webmanifest','/icon-192.png','/icon-512.png','/apple-touch-icon.png'];
+const CACHE = 'mizan-secure-v4-1-root';
+const SHELL = [
+  '/secure-v3.html',
+  '/manifest.webmanifest',
+  '/icon-192.png',
+  '/icon-512.png',
+  '/apple-touch-icon.png'
+];
 
-self.addEventListener('install',event=>{
+self.addEventListener('install', event => {
   self.skipWaiting();
-  event.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)))
+  event.waitUntil(
+    caches.open(CACHE).then(cache =>
+      Promise.allSettled(SHELL.map(url => cache.add(url)))
+    )
+  );
 });
 
-self.addEventListener('activate',event=>{
-  event.waitUntil(Promise.all([
-    caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))),
-    self.clients.claim()
-  ]))
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    Promise.all([
+      caches.keys().then(keys =>
+        Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      ),
+      self.clients.claim()
+    ])
+  );
 });
 
-self.addEventListener('message',event=>{
-  if(event.data&&event.data.type==='SKIP_WAITING')self.skipWaiting()
-});
+self.addEventListener('fetch', event => {
+  const req = event.request;
+  if (req.method !== 'GET') return;
 
-self.addEventListener('fetch',event=>{
-  if(event.request.method!=='GET')return;
-  const req=event.request,url=new URL(req.url);
-
-  if(req.mode==='navigate'||url.pathname.endsWith('/index.html')||url.pathname.endsWith('/manifest.webmanifest')){
+  // Always prefer the newest HTML/navigation so app updates appear without reinstalling
+  if (req.mode === 'navigate' || req.destination === 'document') {
     event.respondWith(
-      fetch(req,{cache:'no-store'}).then(res=>{
-        const copy=res.clone();
-        if(req.mode==='navigate'||url.pathname.endsWith('/index.html'))caches.open(CACHE).then(c=>c.put('/index.html',copy));
-        else caches.open(CACHE).then(c=>c.put(req,copy));
-        return res
-      }).catch(()=>caches.match(req).then(x=>x||caches.match('/index.html')))
+      fetch(req, {cache:'no-store'})
+        .then(res => {
+          const copy = res.clone();
+          caches.open(CACHE).then(c => c.put(req, copy));
+          return res;
+        })
+        .catch(() =>
+          caches.match(req).then(r => r || caches.match('/secure-v3.html'))
+        )
     );
-    return
+    return;
   }
 
-  event.respondWith(caches.match(req).then(cached=>cached||fetch(req).then(res=>{
-    const copy=res.clone();caches.open(CACHE).then(c=>c.put(req,copy));return res
-  })))
+  // Static assets: cache first, refresh in the background
+  event.respondWith(
+    caches.match(req).then(cached => {
+      const fresh = fetch(req).then(res => {
+        if (res && res.ok) {
+          const copy = res.clone();
+          caches.open(CACHE).then(c => c.put(req, copy));
+        }
+        return res;
+      }).catch(() => cached);
+      return cached || fresh;
+    })
+  );
 });
