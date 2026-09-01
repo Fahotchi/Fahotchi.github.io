@@ -1,7 +1,7 @@
-const CACHE = 'mizan-secure-v4-2-root';
+const CACHE = 'mizan-secure-v4-3-force-1';
 const SHELL = [
-  '/secure-v3.html',
-  '/manifest.webmanifest',
+  '/secure-v3.html?v=430',
+  '/manifest.webmanifest?v=430',
   '/icon-192.png',
   '/icon-512.png',
   '/apple-touch-icon.png'
@@ -31,33 +31,26 @@ self.addEventListener('fetch', event => {
   const req = event.request;
   if (req.method !== 'GET') return;
 
-  // Always prefer the newest HTML/navigation so app updates appear without reinstalling
   if (req.mode === 'navigate' || req.destination === 'document') {
     event.respondWith(
       fetch(req, {cache:'no-store'})
-        .then(res => {
-          const copy = res.clone();
-          caches.open(CACHE).then(c => c.put(req, copy));
-          return res;
-        })
+        .then(res => res)
         .catch(() =>
-          caches.match(req).then(r => r || caches.match('/secure-v3.html'))
+          caches.match(req).then(r => r || caches.match('/secure-v3.html?v=430'))
         )
     );
     return;
   }
 
-  // Static assets: cache first, refresh in the background
   event.respondWith(
-    caches.match(req).then(cached => {
-      const fresh = fetch(req).then(res => {
+    fetch(req, {cache:'no-store'})
+      .then(res => {
         if (res && res.ok) {
           const copy = res.clone();
           caches.open(CACHE).then(c => c.put(req, copy));
         }
         return res;
-      }).catch(() => cached);
-      return cached || fresh;
-    })
+      })
+      .catch(() => caches.match(req))
   );
 });
