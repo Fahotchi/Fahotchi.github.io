@@ -1,4 +1,4 @@
-const CACHE = 'mizan-secure-v4-1-root';
+const CACHE = 'mizan-secure-v4-2-root';
 const SHELL = [
   '/secure-v3.html',
   '/manifest.webmanifest',

@@ -1,0 +1,17 @@
+Mizan Deploy v4.2
+
+Domain:
+https://mezanmoney.github.io
+
+Secure app:
+https://mezanmoney.github.io/secure-v3.html
+
+Verified updates:
+- Secure v4.2
+- New onboarding clarification: 2 Shortcuts + 1 Automation
+- Improved sender-matching step layout
+- Final full-order summary for Mizan Import
+- Final full-order summary for Mizan Collect
+- No fahotchi.github.io references in secure-v3.html
+- Root index redirects to /secure-v3.html
+- Service Worker cache bumped to v4.2
