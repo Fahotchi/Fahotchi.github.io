@@ -1,8 +1,8 @@
 {
   "app": "Mizan Secure",
-  "version": "5.0",
-  "build": 500,
-  "releasedAt": "2026-09-02T13:45:00+03:00",
-  "minSupported": "4.0",
-  "notes": "Financial Intelligence: smart classification, personal learning, category budgets, pacing, recurring detection, anomaly detection, review inbox, merchant analytics and transaction search"
+  "version": "5.0.1",
+  "build": 501,
+  "releasedAt": "2026-09-02T22:18:00+03:00",
+  "minSupported": "5.0",
+  "notes": "Mizan Inbox: background SMS ingestion without Safari; consecutive purchase and cashback support"
 }

@@ -1,16 +1,25 @@
-Mizan Secure v5.0
+Mizan Secure v5.0.1 — Mizan Inbox
 
-Upload/replace:
-- secure-v3.html
-- index.html
-- manifest.webmanifest
-- sw.js
-- version.json
-- icons if they are missing in the repo
+What changed
+- Mizan Import no longer opens Safari
+- Each bank SMS is POSTed to a private Supabase inbox
+- Purchase + cashback can arrive consecutively and are stored independently
+- App syncs inbox on launch, when returning to foreground, or manually
+- Every user gets a private rotatable Mizan Import token
 
-After GitHub Pages finishes:
-https://mezanmoney.github.io/secure-v3.html?v=500
+New Mizan Import
+1 Receive Shortcut Input
+2 Get Text from Shortcut Input
+3 URL = https://snhmckjyhiizzsqgraec.supabase.co/functions/v1/sms-ingest
+4 Get Contents of URL
+  Method: POST
+  Header: X-Mizan-Token = personal token from Mizan Settings
+  Request Body: JSON
+  message = Text
 
-Do not delete user data or Supabase tables.
-The v5 intelligence migration is backward-compatible with existing saved user state.
-Payment gateway work is intentionally excluded from this release.
+Delete from old shortcut
+- URL Encode
+- old Text containing #sms=
+- Open URLs
+
+Automation remains Run Immediately -> Mizan Import
