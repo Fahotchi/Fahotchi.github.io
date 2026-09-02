@@ -1,0 +1,64 @@
+MIZAN SECURE v5.0 — FINAL VERIFICATION
+
+Version:
+- meta: 5.0
+- APP_VERSION: 5.0
+- build: 500
+- Service Worker cache: mizan-secure-v5-0
+
+Financial Intelligence Engine:
+- 15 main categories + subcategories
+- 55 built-in merchant profiles
+- Arabic/English merchant normalization
+- personal merchant learning
+- fuzzy merchant matching
+- semantic merchant rules
+- recurring-pattern classification
+- confidence score + review threshold
+- old transaction intelligence backfill
+- explainable classification reason
+
+Financial Management:
+- category budgets
+- cycle pacing by elapsed/remaining days
+- recommended daily pace per category
+- historical category budget suggestions
+- allocation vs unallocated cycle budget
+- smarter "هل أقدر؟"
+
+Analytics:
+- attention center
+- top merchants
+- average transaction
+- recurring subscriptions/commitments
+- price change signal for recurring items
+- unusual transaction detection
+- classification review inbox
+- all-transactions search and filters
+
+Regression tests:
+ALDREES 244 RIYADH SA => بنزين | 97% | merchant_db | review=false
+HUNGRSTATION => مطاعم | 95% | fuzzy | review=false
+Starbucks Riyadh => قهوة | 98% | merchant_db | review=false
+DANUBE 019 => بقالة | 97% | merchant_db | review=false
+Uber Trip => تنقل | 97% | merchant_db | review=false
+NETFLIX.COM => اشتراكات | 97% | merchant_db | review=false
+صيدلية النهدي => صحة وعناية | 97% | merchant_db | review=false
+FLYNAS => سفر | 98% | merchant_db | review=false
+RZM TRADING EST => أخرى | 35% | unknown | review=true
+
+Learning tests:
+BODY HEAL => صحة وعناية/عناية شخصية 100%
+ABC CLOUD => اشتراكات شهري 78%
+
+Security/build checks:
+- JavaScript syntax: PASS
+- duplicate static DOM IDs: PASS
+- CSP style SHA256: RmD3vqLoZQ9G2BdUfn4LbD/zerHuOu06CKUVhv42eMc=
+- CSP script SHA256: /ie48R391v7/rob9R3daxE1mnHvejnpTPr0E6DAyc7Y=
+- CSP exact re-verification: PASS
+- Apple Pay / PSP UI references: NONE
+
+Payment gateway:
+- intentionally excluded from v5.0
+- existing split collection remains via Mizan Collect + public split link + Sarie/mobile transfer details

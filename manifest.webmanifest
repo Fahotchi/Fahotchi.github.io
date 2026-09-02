@@ -1,8 +1,8 @@
 {
-  "name": "ميزان — إدارة المصروف اليومي",
+  "name": "ميزان — الإدارة المالية الذكية",
   "short_name": "ميزان",
-  "description": "إدارة المصروف اليومي والقطات ودورة الراتب",
-  "start_url": "/secure-v3.html?v=440",
+  "description": "إدارة المصروف اليومي، التصنيف الذكي، ميزانيات الفئات، التحليل والقطات",
+  "start_url": "/secure-v3.html?v=500",
   "scope": "/",
   "display": "standalone",
   "background_color": "#f4faf8",

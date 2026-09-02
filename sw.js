@@ -1,40 +1,30 @@
-const CACHE='mizan-secure-v4-4';
-const SHELL=['/secure-v3.html?v=440','/version.json','/manifest.webmanifest?v=440','/icon-192.png','/icon-512.png','/apple-touch-icon.png'];
+const CACHE='mizan-secure-v5-0';
+const SHELL=['/secure-v3.html?v=500','/version.json','/manifest.webmanifest?v=500','/icon-192.png','/icon-512.png','/apple-touch-icon.png'];
 
-self.addEventListener('install',event=>{
-  self.skipWaiting();
-  event.waitUntil(caches.open(CACHE).then(c=>Promise.allSettled(SHELL.map(u=>c.add(u)))));
+self.addEventListener('install',e=>{
+ self.skipWaiting();
+ e.waitUntil(caches.open(CACHE).then(c=>Promise.allSettled(SHELL.map(u=>c.add(u)))));
 });
 
-self.addEventListener('activate',event=>{
-  event.waitUntil(Promise.all([
-    caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))),
-    self.clients.claim()
-  ]));
+self.addEventListener('activate',e=>{
+ e.waitUntil(Promise.all([
+  caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))),
+  self.clients.claim()
+ ]));
 });
 
-self.addEventListener('fetch',event=>{
-  const req=event.request;
-  if(req.method!=='GET')return;
-
-  if(req.mode==='navigate'||req.destination==='document'||new URL(req.url).pathname==='/version.json'){
-    event.respondWith(
-      fetch(req,{cache:'no-store'})
-        .then(res=>res)
-        .catch(()=>caches.match(req).then(r=>r||caches.match('/secure-v3.html?v=440')))
-    );
-    return;
-  }
-
-  event.respondWith(
-    fetch(req,{cache:'no-store'})
-      .then(res=>{
-        if(res&&res.ok){
-          const copy=res.clone();
-          caches.open(CACHE).then(c=>c.put(req,copy));
-        }
-        return res;
-      })
-      .catch(()=>caches.match(req))
-  );
+self.addEventListener('fetch',e=>{
+ const r=e.request;
+ if(r.method!=='GET')return;
+ const path=new URL(r.url).pathname;
+ if(r.mode==='navigate'||r.destination==='document'||path==='/version.json'){
+  e.respondWith(fetch(r,{cache:'no-store'}).catch(()=>caches.match(r).then(x=>x||caches.match('/secure-v3.html?v=500'))));
+  return;
+ }
+ e.respondWith(
+  fetch(r,{cache:'no-store'}).then(res=>{
+   if(res&&res.ok){const cp=res.clone();caches.open(CACHE).then(c=>c.put(r,cp))}
+   return res
+  }).catch(()=>caches.match(r))
+ );
 });
