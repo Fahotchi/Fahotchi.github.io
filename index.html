@@ -10,16 +10,16 @@
 (function(){
  const target=new URL('/secure-v3.html',location.origin);
  new URLSearchParams(location.search).forEach((v,k)=>{if(k!=='v'&&k!=='_updated')target.searchParams.set(k,v)});
- target.searchParams.set('v','501');
+ target.searchParams.set('v','550');
  target.hash=location.hash;
  const go=()=>location.replace(target.href);
  if('serviceWorker' in navigator){
-   navigator.serviceWorker.register('/sw.js?v=501',{scope:'/'}).catch(()=>{}).finally(go);
+   navigator.serviceWorker.register('/sw.js?v=550',{scope:'/'}).catch(()=>{}).finally(go);
    setTimeout(go,900);
  } else go();
 })();
 </script>
-<noscript><meta http-equiv="refresh" content="0;url=/secure-v3.html?v=501"></noscript>
+<noscript><meta http-equiv="refresh" content="0;url=/secure-v3.html?v=550"></noscript>
 <style>
 html,body{height:100%;margin:0}
 body{display:grid;place-items:center;background:linear-gradient(180deg,#edf9f5,#f8fcfb);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;color:#0c806b}
