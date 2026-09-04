@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-+yR6CbRyc2lk+mv5ifDPR4N/yOKVSXtoaOtqA9DkDno='; style-src 'sha256-Rl5XCra8ghIqLp689NZd7joT/Pvvaho9xb01FGyrWRU='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-5641y1z7FZury4veeKIOxogpmTd2VP5K8odqvcM0FVM='; style-src 'sha256-fKgJCvA5guxQXSgWBwFffL7bPYpLzOviUFRx1wPO/Ys='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -266,6 +266,22 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 .learningRules{display:grid;gap:6px}.learningRule{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:8px;background:#fbfdfc}.learningRule b{font-size:9px}.learningRule small{display:block;color:var(--muted);font-size:8px}.learningRule button{border:0;background:#fff0ec;color:#9b4f3d;border-radius:8px;padding:5px 7px;font-size:8px}
 @media(max-width:390px){.attentionSummary{grid-template-columns:1fr 1fr}.attentionSummary .attentionKpi:last-child{grid-column:1/-1}.budgetHeroV5{grid-template-columns:1fr}.insightKpisV5{grid-template-columns:1fr 1fr}}
 
+
+.guideAddBtn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:11px;min-height:47px;border:0;border-radius:15px;background:linear-gradient(180deg,#12ab8e,#0b8570);color:#fff;font-size:10.5px;font-weight:900;text-decoration:none;box-shadow:0 10px 22px #0b857033}
+.guideAddBtn em{font-style:normal;font-size:13px}
+.guideKeyBox{margin-top:10px;border:1px solid #cbe7df;background:#f4fcfa;border-radius:15px;padding:10px;display:grid;gap:7px}
+.guideKeyBox>b{font-size:8.5px;color:#08715f}
+.guideKeyValue{direction:ltr;text-align:left;background:#113d33;color:#eafff8;border-radius:11px;padding:10px;font-size:7.5px;overflow-wrap:anywhere;min-height:15px;font-weight:700}
+.guideKeyValue.empty{color:#7fa79c;font-weight:600}
+.guideKeyRow{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.guideKeyRow button{min-height:39px;border-radius:12px;border:1px solid #bfe4da;background:#ebf9f5;color:#08705e;font-size:8.5px;font-weight:850}
+.guideKeyRow button.primary{border:0;background:#0fa187;color:#fff}
+.guideKeyRow button:disabled{opacity:.55}
+.guideMiniList{display:grid;gap:6px;margin-top:9px}
+.guideMiniList>div{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:start;border:1px solid #e0ece8;background:#fafdfc;border-radius:12px;padding:8px 9px}
+.guideMiniList i{font-style:normal;width:21px;height:21px;border-radius:7px;background:#e5f8f1;color:#08705e;display:grid;place-items:center;font-size:8px;font-weight:900}
+.guideMiniList span{font-size:8.6px;line-height:1.65;color:#4c6c65}
+.guideMiniList span b{color:#0b7361}
 </style>
 </head>
 <body>
@@ -526,338 +542,156 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 
   <section class="quickScene hidden proGuideScene" data-quick-step="2">
       <div class="tutorialHeaderSticky proGuideTop">
-        <div class="tutorialStepHead"><span class="quickBadge">2</span><div><small>رسائل البنك</small><h2>إعداد Mizan Import</h2></div></div>
-        <p class="tutorialLead">التجهيز الكامل يحتاج <b>2 Shortcuts</b> و<b>1 Automation</b>. نبدأ الآن بـ Mizan Import ثم Automation الرسائل.</p>
+        <div class="tutorialStepHead"><span class="quickBadge">2</span><div><small>رسائل البنك</small><h2>خل العمليات تدخل لحالها</h2></div></div>
+        <p class="tutorialLead">ما فيه بناء يدوي. تضيف الاختصار جاهز، تربطه بحسابك، وتشغّل الأتمتة مرة وحدة.</p>
       </div>
       <div class="guideBlueprint">
         <div class="guideNeedGrid">
-          <div class="guideNeedCard"><em>1</em><b>Mizan Import</b><small>Shortcut يستقبل نص الرسالة ويحوّله إلى رابط يفتح ميزان تلقائيًا.</small></div>
-          <div class="guideNeedCard"><em>2</em><b>Automation</b><small>Message → Sender → Run Immediately → Mizan Import.</small></div>
-          <div class="guideNeedCard"><em>3</em><b>Mizan Collect</b><small>Shortcut مستقل للقطات، وسنضبطه في الشاشة التالية.</small></div>
+          <div class="guideNeedCard"><em>1</em><b>أضف الاختصار</b><small>Mizan Import يجيك جاهز بضغطة، بدون ما تبني خطوة وحدة.</small></div>
+          <div class="guideNeedCard"><em>2</em><b>اربطه بحسابك</b><small>مفتاح خاص فيك يضمن أن عملياتك تدخل حسابك أنت فقط.</small></div>
+          <div class="guideNeedCard"><em>3</em><b>شغّل الأتمتة</b><small>كل رسالة بنك تنرسل لحالها وأنت ما تفتح شيء.</small></div>
         </div>
-        <div class="guideRoadmap"><b>الخلاصة السريعة لهذا القسم</b><div class="guideRoadmapRow"><span class="guideRoadChip"><i>4</i>بناء Shortcut Mizan Import</span><span class="guideRoadArrow">←</span><span class="guideRoadChip"><i>6</i>بناء Automation الرسائل</span><span class="guideRoadArrow">←</span><span class="guideRoadChip"><i>✓</i>رسائل البنك تدخل ميزان تلقائيًا</span></div></div>
+        <div class="guideRoadmap"><b>الخلاصة السريعة لهذا القسم</b><div class="guideRoadmapRow"><span class="guideRoadChip"><i>1</i>إضافة الاختصار</span><span class="guideRoadArrow">←</span><span class="guideRoadChip"><i>2</i>ربط المفتاح</span><span class="guideRoadArrow">←</span><span class="guideRoadChip"><i>3–4</i>الأتمتة</span></div></div>
       </div>
-      <div class="proGuideViewport"><article class="proGuideStep" data-import-sub="0"><div class="setupMiniPlan"><div class="setupMiniPlanHead"><b>قبل تبدأ: 3 أجزاء فقط</b><span>مرة واحدة في الإعداد</span></div><div class="setupMiniItems"><div class="setupMiniItem"><em>1</em><strong>Shortcut 1 — Mizan Import</strong><small>4 خطوات لبناء الاختصار</small></div><div class="setupMiniItem"><em>2</em><strong>Automation — رسائل البنك</strong><small>6 خطوات لتشغيله تلقائيًا</small></div><div class="setupMiniItem"><em>3</em><strong>Shortcut 2 — Mizan Collect</strong><small>11 خطوة للقطات والإرسال</small></div></div></div><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 1 من 2</span><div class="guidePhaseText"><b>Mizan Import</b><small>الخطوة 1 من 4 — بناء الاختصار داخل Shortcuts</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">1</span>
-        <div><div class="proGuideKicker">الخطوة 1</div><h3>أنشئ Shortcut باسم Mizan Import</h3></div>
-      </div>
-      <p class="proGuideText">افتح تطبيق Shortcuts واضغط + ثم سمّ الاختصار بالضبط <b>Mizan Import</b></p>
+      <div class="proGuideViewport">
+
+      <article class="proGuideStep" data-import-sub="0">
+      <div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 1 من 2</span><div class="guidePhaseText"><b>Mizan Import</b><small>الخطوة 1 من 4 — إضافة الاختصار</small></div></div>
+      <div class="proGuideHeader"><span class="proGuideNum">1</span><div><div class="proGuideKicker">الخطوة 1</div><h3>أضف اختصار Mizan Import</h3></div></div>
+      <p class="proGuideText">اضغط الزر تحت. بيفتح تطبيق <b>Shortcuts</b> ويعرض لك الاختصار جاهز — اضغط <b>Add Shortcut</b> وبس.</p>
+      <a class="guideAddBtn" href="https://www.icloud.com/shortcuts/17b99cafa10c43d7b59f73e8a1eff337" target="_blank" rel="noopener"><em>＋</em>إضافة Mizan Import</a>
       <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
       <div class="scHeader"><span class="scBack">‹</span><b>Mizan Import</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon blueIcon">⇩</span>
-      <div class="scActionText"><b>Receive <span class="scChip blue">Apps and 18 more</span> from <span class="scChip blue">Nowhere</span></b><small>If there's no input: Continue</small></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout plain"><b>ملاحظة</b><span>وجود Receive في أعلى الاختصار طبيعي، ما تحتاج تغيره</span></div>
-    </article><article class="proGuideStep hidden" data-import-sub="1"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 1 من 2</span><div class="guidePhaseText"><b>Mizan Import</b><small>الخطوة 2 من 4 — بناء الاختصار داخل Shortcuts</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">2</span>
-        <div><div class="proGuideKicker">الخطوة 2</div><h3>خذ نص رسالة البنك</h3></div>
+      <div class="scCanvas">
+      <div class="scAction"><span class="scIcon blueIcon">⇩</span><div class="scActionText"><b>Receive <span class="scChip blue">Text</span> from <span class="scChip blue">Share Sheet</span></b></div><span class="scClose">×</span></div>
+      <div class="scAction"><span class="scIcon yellowIcon">T</span><div class="scActionText"><b>Get text from <span class="scChip">Shortcut Input</span></b></div><span class="scClose">×</span></div>
+      <div class="scAction"><span class="scIcon linkIcon">↗</span><div class="scActionText"><b>URL</b><small>sms-ingest</small></div><span class="scClose">×</span></div>
+      <div class="scAction"><span class="scIcon greenIcon">⇪</span><div class="scActionText"><b>Get Contents of URL</b><small>POST</small></div><span class="scClose">×</span></div>
+      </div></div></div>
+      <div class="guideCallout plain"><b>ليش صار أسهل؟</b><span>قبل كان لازم تبني 4 خطوات بنفسك. الحين تجيك جاهزة ومضبوطة</span></div>
+    </article>
+
+    <article class="proGuideStep hidden" data-import-sub="1">
+      <div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 1 من 2</span><div class="guidePhaseText"><b>Mizan Import</b><small>الخطوة 2 من 4 — ربط الاختصار بحسابك</small></div></div>
+      <div class="proGuideHeader"><span class="proGuideNum">2</span><div><div class="proGuideKicker">الخطوة 2</div><h3>الصق مفتاحك داخل الاختصار</h3></div></div>
+      <p class="proGuideText">هذي أهم خطوة. بدونها ما تدخل أي عملية. المفتاح خاص فيك وحدك ويضمن أن رسائلك توصل حسابك أنت.</p>
+      <div class="guideKeyBox">
+        <b>مفتاح Mizan Import الخاص فيك</b>
+        <div id="quickTokenValue" class="guideKeyValue empty">اضغط «إنشاء المفتاح» عشان يظهر لك</div>
+        <div class="guideKeyRow">
+          <button id="quickTokenBtn" class="primary" type="button">إنشاء المفتاح</button>
+          <button id="quickTokenCopy" type="button" disabled>نسخ المفتاح</button>
+        </div>
       </div>
-      <p class="proGuideText">أضف <b>Get Text from Shortcut Input</b> حتى يستقبل الاختصار نص الرسالة اللي وصلت من البنك</p>
+      <div class="guideMiniList">
+        <div><i>1</i><span>افتح تطبيق <b>Shortcuts</b> واضغط على <b>Mizan Import</b></span></div>
+        <div><i>2</i><span>اضغط على خطوة <b>Get Contents of URL</b></span></div>
+        <div><i>3</i><span>تحت <b>Headers</b> بتلقى <b>X-Mizan-Token</b> وقيمته فاضية</span></div>
+        <div><i>4</i><span>الصق مفتاحك في خانة القيمة</span></div>
+      </div>
       <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
       <div class="scHeader"><span class="scBack">‹</span><b>Mizan Import</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon yellowIcon">T</span>
-      <div class="scActionText"><b>Get text from <span class="scChip blue">Shortcut Input</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout mint"><b>النتيجة المطلوبة</b><span>Get Text ← Shortcut Input</span></div>
-    </article><article class="proGuideStep hidden" data-import-sub="2"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 1 من 2</span><div class="guidePhaseText"><b>Mizan Import</b><small>الخطوة 3 من 4 — رابط الاستقبال الآمن</small></div></div>
-      <div class="proGuideHeader"><span class="proGuideNum">3</span><div><div class="proGuideKicker">الخطوة 3</div><h3>أضف رابط Mizan Inbox</h3></div></div>
-      <p class="proGuideText">من إعدادات ميزان أنشئ مفتاح <b>Mizan Inbox</b> أولًا، ثم في الاختصار أضف Action باسم <b>URL</b> والصق رابط الاستقبال</p>
-      <div class="guideCallout mint"><b>رابط الاستقبال</b><span>https://snhmckjyhiizzsqgraec.supabase.co/functions/v1/sms-ingest</span></div>
-      <button id="guideCopyInboxEndpoint" class="guideCopyBtn" type="button">نسخ رابط الاستقبال</button>
-      <div class="guideCallout plain"><b>ليش تغيرنا؟</b><span>ما عاد نستخدم #sms ولا URL Encode ولا نفتح Safari</span></div>
-    </article><article class="proGuideStep hidden" data-import-sub="3"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 1 من 2</span><div class="guidePhaseText"><b>Mizan Import</b><small>الخطوة 4 من 4 — إرسال الرسالة بالخلفية</small></div></div>
-      <div class="proGuideHeader"><span class="proGuideNum">4</span><div><div class="proGuideKicker">الخطوة 4</div><h3>Get Contents of URL بدل Open URLs</h3></div></div>
-      <p class="proGuideText">أضف <b>Get Contents of URL</b> بعد URL، وافتح Show More ثم اختر <b>POST</b> وRequest Body = <b>JSON</b></p>
-      <div class="guideCallout mint"><b>Header</b><span>X-Mizan-Token = المفتاح اللي نسخته من إعدادات ميزان</span></div>
-      <div class="guideCallout mint"><b>JSON Body</b><span>message = متغير Text الناتج من Get Text</span></div>
-      <div class="guideCallout warm"><b>مهم</b><span>احذف URL Encode وText القديم وOpen URLs. آخر Action لازم يكون Get Contents of URL</span></div>
-    </article><article class="proGuideStep hidden" data-import-sub="5"><div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 1 من 6 — تشغيل Mizan Import تلقائيًا</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">6</span>
-        <div><div class="proGuideKicker">الخطوة 6</div><h3>انتقل إلى Automation</h3></div>
+      <div class="scCanvas">
+      <div class="scAction"><span class="scIcon greenIcon">⇪</span><div class="scActionText"><b>Get Contents of URL</b><small>Method: POST</small><small>Headers: X-Mizan-Token = <span class="scChip">الصق هنا</span></small><small>Request Body: File</small></div><span class="scClose">×</span></div>
+      </div></div></div>
+      <div class="guideCallout warm"><b>لا تشارك مفتاحك</b><span>أي شخص يملك مفتاحك تدخل رسائله في حسابك. تقدر تغيّره بأي وقت من الإعدادات</span></div>
+    </article>
+
+    <article class="proGuideStep hidden" data-import-sub="2">
+      <div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 3 من 4 — متى يشتغل الاختصار</small></div></div>
+      <div class="proGuideHeader"><span class="proGuideNum">3</span><div><div class="proGuideKicker">الخطوة 3</div><h3>أنشئ الأتمتة وحدد شرطها</h3></div></div>
+      <p class="proGuideText">الأتمتة هي اللي تخلي كل رسالة بنك تنرسل لحالها. هذي الوحيدة اللي لازم تسويها بنفسك — iOS ما يسمح بمشاركتها.</p>
+      <div class="guideMiniList">
+        <div><i>1</i><span>في Shortcuts افتح تبويب <b>Automation</b> واضغط <b>+</b></span></div>
+        <div><i>2</i><span>اختر <b>Message</b> من القائمة</span></div>
+        <div><i>3</i><span>فعّل <b>Message Contains</b> واكتب فيها بالضبط: <b>الصرف المتبقي</b></span></div>
       </div>
-      <p class="proGuideText">ارجع لتبويب <b>Automation</b> داخل Shortcuts واضغط + ثم اختر <b>Message</b></p>
       <div class="unifiedGuideStage"><div class="shortcutStage automationStage" dir="ltr">
-      <div class="autoTop"><b>Automation</b><span class="autoPlus">＋</span></div>
-      <div class="autoSub">Personal</div>
-      <div class="autoEmptyCard"><span class="msgDot">●</span><div><b>Message</b><small>When I Get a Message</small></div><span>›</span></div>
-    </div></div>
-      <div class="guideCallout plain"><b>ليش Message؟</b><span>لأن تشغيل Mizan Import يبدأ لحظة وصول رسالة البنك</span></div>
-    </article><article class="proGuideStep hidden" data-import-sub="6"><div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 2 من 6 — تشغيل Mizan Import تلقائيًا</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">7</span>
-        <div><div class="proGuideKicker">الخطوة 7</div><h3>اختر مرسلي البنوك</h3></div>
+      <div class="autoDoneRow"><span>×</span><button>Next</button></div>
+      <h4>When</h4>
+      <div class="autoRule"><span class="msgBubble">●</span><b>Message Contains<br>الصرف المتبقي</b><span>›</span></div>
+      </div></div>
+      <div class="guideCallout mint"><b>ليش هذي العبارة؟</b><span>«الصرف المتبقي» موجودة في كل رسائل البنك — الشراء والاسترجاع النقدي</span></div>
+      <div class="guideCallout plain"><b>ملاحظة</b><span>ما نعتمد على اسم المرسل لأن iOS ما يسمح بكتابته لبعض البنوك</span></div>
+    </article>
+
+    <article class="proGuideStep hidden" data-import-sub="3">
+      <div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 4 من 4 — وش يسوي وقتها</small></div></div>
+      <div class="proGuideHeader"><span class="proGuideNum">4</span><div><div class="proGuideKicker">الخطوة 4</div><h3>اربطها بـ Mizan Import</h3></div></div>
+      <p class="proGuideText">آخر خطوة، وفيها نقطة وحدة أغلب الناس تفوتها — اقرأها بتركيز.</p>
+      <div class="guideMiniList">
+        <div><i>1</i><span>فعّل <b>Run Immediately</b> وأطفئ <b>Notify When Run</b></span></div>
+        <div><i>2</i><span>اضغط <b>Next</b> واختر <b>Run Shortcut</b></span></div>
+        <div><i>3</i><span>اختر <b>Mizan Import</b></span></div>
+        <div><i>4</i><span>اضغط السهم <b>›</b> جنب اسم الاختصار عشان تفتح خيارات إضافية</span></div>
+        <div><i>5</i><span>في خانة <b>Input</b> اختر <b>Shortcut Input</b></span></div>
       </div>
-      <p class="proGuideText">داخل إعداد Message اختر <b>Sender</b> وأضف أسماء الجهات اللي توصلك منها رسائل العمليات</p>
-      <div class="unifiedGuideStage"><div class="shortcutStage automationStage" dir="ltr">
-      <div class="autoSheetTitle">Message</div>
-      <div class="autoField"><span>Sender</span><b>5 selected</b></div>
-      <div class="senderList"><div class="senderRow"><span>BSF</span><i>✓</i></div><div class="senderRow"><span>BankAlbilad</span><i>✓</i></div><div class="senderRow"><span>AlRajhiBank</span><i>✓</i></div><div class="senderRow"><span>bank</span><i>✓</i></div><div class="senderRow"><span>SNBAlAhli</span><i>✓</i></div></div>
-      <div class="autoField focusField"><span>Message Contains</span><b class="emptyValue">Not Set</b></div>
-    </div></div>
-      <div class="guideCallout warm"><b>أمثلة من إعدادك الحالي</b><span>BSF • BankAlbilad • AlRajhiBank • bank • SNBAlAhli</span></div>
-    </article><article class="proGuideStep hidden" data-import-sub="7"><div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 3 من 6 — تشغيل Mizan Import تلقائيًا</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">8</span>
-        <div><div class="proGuideKicker">الخطوة 8</div><h3>طابق اسم المرسل حرفيًا</h3></div>
-      </div>
-      <p class="proGuideText">افتح محادثة البنك في تطبيق Messages وخذ الاسم الظاهر فوق كما هو، ثم اختر نفس الاسم داخل Sender بدون أي تغيير أو اختصار.</p>
-      <div class="unifiedGuideStage"><div class="senderMatchPro">
-             <div class="senderCardPro">
-               <div class="senderCardHead"><small>الاسم المطلوب اختياره</small><span class="senderAppTag">⚙</span></div>
-               <div class="senderMainRow pick"><div><div class="senderName">AlRajhiBank</div><div class="senderHint">داخل إعداد Sender في الـAutomation</div></div><i class="senderCheck">✓</i></div>
-             </div>
-             <span class="matchArrowPro">→</span>
-             <div class="senderCardPro">
-               <div class="senderCardHead"><small>الاسم الظاهر لك</small><span class="senderAppTag">✉</span></div>
-               <div class="senderMainRow"><span class="senderBubble">B</span><div><div class="senderName">AlRajhiBank</div><div class="senderHint">من أعلى محادثة البنك في تطبيق Messages</div></div></div>
-             </div>
-           </div></div>
-      <div class="guideIssueHint"><b>مهم</b><br>لا تستخدم اسم البنك من ذاكرتك. العبرة بالاسم الظاهر لك حرفيًا داخل Messages، حتى لو كان مختصرًا أو مختلفًا عن الاسم التجاري.</div>
-    </article><article class="proGuideStep hidden" data-import-sub="8"><div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 4 من 6 — تشغيل Mizan Import تلقائيًا</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">9</span>
-        <div><div class="proGuideKicker">الخطوة 9</div><h3>اترك Message Contains فارغ</h3></div>
-      </div>
-      <p class="proGuideText">لا تكتب شراء أو أي كلمة ثانية حتى تدخل رسائل الشراء والاسترداد والعكس والحوالات للمراجعة</p>
-      <div class="unifiedGuideStage"><div class="shortcutStage automationStage" dir="ltr">
-      <div class="autoSheetTitle">Message</div>
-      <div class="autoField"><span>Sender</span><b>5 selected</b></div>
-      <div class="senderList"><div class="senderRow"><span>BSF</span><i>✓</i></div><div class="senderRow"><span>BankAlbilad</span><i>✓</i></div><div class="senderRow"><span>AlRajhiBank</span><i>✓</i></div><div class="senderRow"><span>bank</span><i>✓</i></div><div class="senderRow"><span>SNBAlAhli</span><i>✓</i></div></div>
-      <div class="autoField focusField"><span>Message Contains</span><b class="emptyValue">Not Set</b></div>
-    </div></div>
-      <div class="guideCallout mint"><b>الضبط الصحيح</b><span>Sender محدد • Message Contains = Not Set</span></div>
-    </article><article class="proGuideStep hidden" data-import-sub="9"><div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 5 من 6 — تشغيل Mizan Import تلقائيًا</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">10</span>
-        <div><div class="proGuideKicker">الخطوة 10</div><h3>فعّل Run Immediately</h3></div>
-      </div>
-      <p class="proGuideText">من إعداد الـAutomation اختر <b>Run Immediately</b> عشان يشتغل بدون طلب موافقة كل مرة</p>
       <div class="unifiedGuideStage"><div class="shortcutStage automationStage" dir="ltr">
       <div class="autoDoneRow"><span>×</span><button>Done</button></div>
       <div class="autoField"><span>Automation</span><b>Run Immediately</b></div>
-      <h4>When</h4>
-      <div class="autoRule"><span class="msgBubble">●</span><b>When I Get a Message From<br>BSF, BankAlbilad, AlRajhiBank, bank, SNBAlAhli</b><span>›</span></div>
       <h4>Do</h4>
-      <div class="autoRule"><span class="shortcutApp">◆</span><b>Choose Shortcut</b><span>›</span></div>
-    </div></div>
-      <div class="guideCallout mint"><b>الضبط الصحيح</b><span>Automation = Run Immediately</span></div>
-    </article><article class="proGuideStep hidden" data-import-sub="10"><div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 6 من 6 — تشغيل Mizan Import تلقائيًا</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">11</span>
-        <div><div class="proGuideKicker">الخطوة 11</div><h3>خل التنفيذ Mizan Import</h3></div>
-      </div>
-      <p class="proGuideText">تحت قسم <b>Do</b> اختر <b>Mizan Import</b> ثم اضغط Done</p>
-      <div class="unifiedGuideStage"><div class="shortcutStage automationStage" dir="ltr">
-      <div class="autoDoneRow"><span>×</span><button>Done</button></div>
-      <div class="autoField"><span>Automation</span><b>Run Immediately</b></div>
-      <h4>When</h4>
-      <div class="autoRule"><span class="msgBubble">●</span><b>When I Get a Message From<br>BSF, BankAlbilad, AlRajhiBank, bank, SNBAlAhli</b><span>›</span></div>
-      <h4>Do</h4>
-      <div class="autoRule"><span class="shortcutApp">◆</span><b>Mizan Import</b><span>›</span></div>
-    </div></div>
-      <div class="guideCallout mint"><b>خلصنا</b><span>When = رسالة من البنك • Do = Mizan Import • Run Immediately</span></div>
+      <div class="autoRule"><span class="shortcutApp">◆</span><b>Run Mizan Import<br><span style="opacity:.7;font-size:11px">Input: Shortcut Input</span></b><span>⌄</span></div>
+      </div></div>
+      <div class="guideCallout warm"><b>لا تتخطى خانة Input</b><span>إذا تركتها فاضية بيشتغل الاختصار بدون نص الرسالة وما بيدخل ولا عملية</span></div>
       <div class="guideFinalStack">
-        <div class="guideFinalStage"><b>الترتيب الكامل — Shortcut Mizan Import</b><div class="guideFlowLine"><span class="guideFlowChip"><i>1</i>Receive</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>2</i>Get Text</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>3</i>URL — Mizan Inbox</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>4</i>Get Contents of URL — POST</span></div></div>
-        <div class="guideFinalStage"><b>الترتيب الكامل — Automation</b><div class="guideFlowLine"><span class="guideFlowChip"><i>1</i>Automation → Message</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>2</i>Sender</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>3</i>Message Contains = فارغ</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>4</i>Run Immediately</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>5</i>Do = Mizan Import</span></div></div>
+        <div class="guideFinalStage"><b>الشكل النهائي</b><div class="guideFlowLine"><span class="guideFlowChip"><i>1</i>رسالة من البنك</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>2</i>Automation تشتغل</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>3</i>Mizan Import يرسلها</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>4</i>تظهر في ميزان</span></div></div>
       </div>
-    <div class="finalProcessTitle">الشكل النهائي — Mizan Import كامل</div><div class="finalShortcutMap" dir="ltr"><div class="scHeader"><span class="scBack">‹</span><b>Mizan Import</b><span class="scChevron">⌄</span></div><div class="scCanvas"><div class="scAction"><span class="scIcon blueIcon">⇩</span><div class="scActionText"><b>Receive Shortcut Input</b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon yellowIcon">T</span><div class="scActionText"><b>Get text from <span class="scChip">Shortcut Input</span></b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon linkIcon">↗</span><div class="scActionText"><b>URL</b><small>snhmckjyhiizzsqgraec.supabase.co/functions/v1/sms-ingest</small></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon openIcon">↗</span><div class="scActionText"><b>Get Contents of URL</b><small>POST • JSON: message = Text<br>Header: X-Mizan-Token = your token</small></div><span class="scClose">×</span></div></div></div><div class="finalProcessTitle">الشكل النهائي — Automation كامل</div><div class="finalAutoMap" dir="ltr"><div class="finalAutoMapRow"><span>When</span><b>Message from bank senders</b></div><div class="finalAutoMapRow"><span>Contains</span><b>Not Set</b></div><div class="finalAutoMapRow"><span>Run</span><b>Run Immediately</b></div><div class="finalAutoMapRow"><span>Do</span><b>Mizan Import</b></div></div></article></div>
+      <div class="guideCallout mint"><b>خلصنا هذا القسم</b><span>من الآن أي عملية بنكية تدخل ميزان بدون ما تفتح Safari ولا تسجل دخول</span></div>
+    </article>
+
+      </div>
       <div class="proGuideBottom">
-        <div class="proGuideProgress"><span id="importSubCount" dir="ltr">1 / 11</span><i><b id="importSubProgress"></b></i></div>
+        <div class="proGuideProgress"><span id="importSubCount" dir="ltr">1 / 4</span><i><b id="importSubProgress"></b></i></div>
         <div class="proGuideNav"><button id="importPrev" class="tutorialBack hidden" type="button">رجوع</button><button id="importNext" class="onboardPrimary" type="button">التالي</button></div>
       </div>
     </section><section class="quickScene hidden proGuideScene" data-quick-step="3">
       <div class="tutorialHeaderSticky proGuideTop">
-        <div class="tutorialStepHead"><span class="quickBadge">3</span><div><small>القطات</small><h2>إعداد Mizan Collect</h2></div></div>
-        <p class="tutorialLead">هذا هو <b>Shortcut 2 من 2</b>. نمشي عليه خطوة بخطوة، وآخر شاشة تعرض الترتيب النهائي كاملًا.</p>
+        <div class="tutorialStepHead"><span class="quickBadge">3</span><div><small>القطات</small><h2>جهّز Mizan Collect</h2></div></div>
+        <p class="tutorialLead">هذا <b>Shortcut 2 من 2</b>، ويجيك جاهز بضغطة وحدة. ما يحتاج مفتاح ولا إعداد.</p>
       </div>
       <div class="guideBlueprint">
         <div class="guideNeedGrid">
-          <div class="guideNeedCard"><em>1</em><b>Shortcut Input</b><small>ميزان يرسل البيانات إلى الاختصار: الأشخاص + الأرقام + نص الطلب.</small></div>
-          <div class="guideNeedCard"><em>2</em><b>Repeat لكل شخص</b><small>نقرأ بيانات كل شخص داخل Repeat ثم نجهز الرسالة والرقم.</small></div>
-          <div class="guideNeedCard"><em>3</em><b>Send Message</b><small>إرسال الطلب لكل شخص تلقائيًا، وWhatsApp يبقى اختياريًا.</small></div>
+          <div class="guideNeedCard"><em>1</em><b>ميزان يرسل البيانات</b><small>الأشخاص وأرقامهم ونص الطلب تنرسل للاختصار تلقائيًا.</small></div>
+          <div class="guideNeedCard"><em>2</em><b>الاختصار يوزّعها</b><small>يقرأ كل شخص على حدة ويجهز رسالته ورقمه.</small></div>
+          <div class="guideNeedCard"><em>3</em><b>يرسل الطلبات</b><small>رسالة لكل شخص عبر Messages بدون ما تكتب شيء.</small></div>
         </div>
-        <div class="guideRoadmap"><b>خريطة خطوات Mizan Collect</b><div class="guideRoadmapRow"><span class="guideRoadChip"><i>1–3</i>قراءة البيانات</span><span class="guideRoadArrow">←</span><span class="guideRoadChip"><i>4–8</i>داخل Repeat</span><span class="guideRoadArrow">←</span><span class="guideRoadChip"><i>9–11</i>الإرسال ثم End Repeat</span></div></div>
+        <div class="guideRoadmap"><b>الخلاصة السريعة لهذا القسم</b><div class="guideRoadmapRow"><span class="guideRoadChip"><i>1</i>إضافة الاختصار</span><span class="guideRoadArrow">←</span><span class="guideRoadChip"><i>2</i>جاهز للاستخدام</span></div></div>
       </div>
-      <div class="proGuideViewport"><article class="proGuideStep" data-collect-sub="0"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 1 من 11 — تجهيز البيانات</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">1</span>
-        <div><div class="proGuideKicker">الخطوة 1</div><h3>أنشئ Shortcut باسم Mizan Collect</h3></div>
-      </div>
-      <p class="proGuideText">افتح Shortcuts واضغط + ثم سمّ الاختصار بالضبط <b>Mizan Collect</b></p>
+      <div class="proGuideViewport">
+
+      <article class="proGuideStep" data-collect-sub="0">
+      <div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 1 من 2 — إضافة الاختصار</small></div></div>
+      <div class="proGuideHeader"><span class="proGuideNum">1</span><div><div class="proGuideKicker">الخطوة 1</div><h3>أضف اختصار Mizan Collect</h3></div></div>
+      <p class="proGuideText">اضغط الزر تحت، وبيفتح تطبيق <b>Shortcuts</b> — اضغط <b>Add Shortcut</b>. ما يحتاج أي تعديل بعدها.</p>
+      <a class="guideAddBtn" href="https://www.icloud.com/shortcuts/0ab2d515c825472281f2330a2b5e212a" target="_blank" rel="noopener"><em>＋</em>إضافة Mizan Collect</a>
       <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
       <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon blueIcon">⇩</span>
-      <div class="scActionText"><b>Receive <span class="scChip blue">Apps and 18 more</span> from <span class="scChip blue">Nowhere</span></b><small>If there's no input: Continue</small></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout plain"><b>ملاحظة</b><span>وجود Receive في الأعلى طبيعي</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="1"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 2 من 11 — تجهيز البيانات</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">2</span>
-        <div><div class="proGuideKicker">الخطوة 2</div><h3>حوّل Shortcut Input إلى Dictionary</h3></div>
+      <div class="scCanvas">
+      <div class="scAction"><span class="scIcon orangeIcon">▣</span><div class="scActionText"><b>Get Dictionary from <span class="scChip">Shortcut Input</span></b></div><span class="scClose">×</span></div>
+      <div class="scAction"><span class="scIcon grayIcon">↔</span><div class="scActionText"><b>Repeat with each item</b></div><span class="scClose">×</span></div>
+      <div class="scAction"><span class="scIcon greenIcon">✉</span><div class="scActionText"><b>Send <span class="scChip">Message</span> to <span class="scChip">Phone</span></b></div><span class="scClose">×</span></div>
+      </div></div></div>
+      <div class="guideCallout plain"><b>ما فيه بيانات شخصية</b><span>الاختصار ما يحمل رقمك ولا أرقام أصحابك — ميزان يرسلها له وقت الاستخدام</span></div>
+    </article>
+
+    <article class="proGuideStep hidden" data-collect-sub="1">
+      <div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 2 من 2 — كيف تستخدمه</small></div></div>
+      <div class="proGuideHeader"><span class="proGuideNum">2</span><div><div class="proGuideKicker">الخطوة 2</div><h3>صار جاهز — كذا يشتغل</h3></div></div>
+      <p class="proGuideText">ما تحتاج تفتح الاختصار بنفسك أبدًا. ميزان يشغّله لك وقت ما ترسل طلبات القطة.</p>
+      <div class="guideMiniList">
+        <div><i>1</i><span>سجّل القطة في ميزان وحدد نصيب كل شخص</span></div>
+        <div><i>2</i><span>اضغط <b>أرسل الطلبات</b> من صفحة القطة</span></div>
+        <div><i>3</i><span>يفتح Messages وكل شخص يجيه طلبه ومبلغه ورابط القطة</span></div>
       </div>
-      <p class="proGuideText">أضف <b>Get Dictionary from Shortcut Input</b> حتى يقرأ البيانات اللي يرسلها ميزان</p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon orangeIcon">▣</span>
-      <div class="scActionText"><b>Get dictionary from <span class="scChip blue">Shortcut Input</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout mint"><b>النتيجة المطلوبة</b><span>Dictionary ← Shortcut Input</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="2"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 3 من 11 — تجهيز البيانات</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">3</span>
-        <div><div class="proGuideKicker">الخطوة 3</div><h3>استخرج قائمة الأشخاص</h3></div>
-      </div>
-      <p class="proGuideText">أضف <b>Get Value</b> واكتب المفتاح <b>items</b> من الـDictionary</p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon orangeIcon">▣</span>
-      <div class="scActionText"><b>Get <span class="scChip blue">Value</span> for <span class="scChip blue">items</span> in <span class="scChip orange">Dictionary</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout mint"><b>المفتاح</b><span>items</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="3"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 4 من 11 — داخل Repeat لكل شخص</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">4</span>
-        <div><div class="proGuideKicker">الخطوة 4</div><h3>كرر على كل شخص</h3></div>
-      </div>
-      <p class="proGuideText">أضف <b>Repeat with Each Item</b> على Dictionary Value، وكل دورة تمثل شخص واحد</p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon grayIcon">↔</span>
-      <div class="scActionText"><b>Repeat with each item in <span class="scChip orange">Dictionary Value</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout warm"><b>من هنا</b><span>كل الخطوات الجاية تكون داخل Repeat</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="4"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 5 من 11 — داخل Repeat لكل شخص</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">5</span>
-        <div><div class="proGuideKicker">الخطوة 5</div><h3>استخرج رقم الجوال</h3></div>
-      </div>
-      <p class="proGuideText">داخل Repeat أضف <b>Get Value for phone in Repeat Item</b></p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon orangeIcon">▣</span>
-      <div class="scActionText"><b>Get <span class="scChip blue">Value</span> for <span class="scChip blue">phone</span> in <span class="scChip blue">Repeat Item</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout mint"><b>المفتاح</b><span>phone</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="5"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 6 من 11 — داخل Repeat لكل شخص</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">6</span>
-        <div><div class="proGuideKicker">الخطوة 6</div><h3>احفظ الرقم في Phone</h3></div>
-      </div>
-      <p class="proGuideText">أضف <b>Set Variable</b> وسمّ المتغير <b>Phone</b></p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon varIcon">x</span>
-      <div class="scActionText"><b>Set variable <span class="scChip blue">Phone</span> to <span class="scChip orange">Dictionary Value</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout mint"><b>اسم المتغير</b><span>Phone</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="6"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 7 من 11 — داخل Repeat لكل شخص</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">7</span>
-        <div><div class="proGuideKicker">الخطوة 7</div><h3>استخرج نص الرسالة</h3></div>
-      </div>
-      <p class="proGuideText">أضف <b>Get Value for message in Repeat Item</b></p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon orangeIcon">▣</span>
-      <div class="scActionText"><b>Get <span class="scChip blue">Value</span> for <span class="scChip blue">message</span> in <span class="scChip blue">Repeat Item</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout mint"><b>المفتاح</b><span>message</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="7"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 8 من 11 — داخل Repeat لكل شخص</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">8</span>
-        <div><div class="proGuideKicker">الخطوة 8</div><h3>احفظ النص في Message</h3></div>
-      </div>
-      <p class="proGuideText">أضف <b>Set Variable</b> وسمّ المتغير <b>Message</b></p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon varIcon">x</span>
-      <div class="scActionText"><b>Set variable <span class="scChip blue">Message</span> to <span class="scChip orange">Dictionary Value</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout mint"><b>اسم المتغير</b><span>Message</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="8"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 9 من 11 — الإرسال وإنهاء Repeat</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">9</span>
-        <div><div class="proGuideKicker">الخطوة 9</div><h3>أرسل الرسالة إلى الشخص</h3></div>
-      </div>
-      <p class="proGuideText">أضف <b>Send Message</b> وخلي النص متغير <b>Message</b> والمستلم متغير <b>Phone</b></p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon greenIcon">●</span>
-      <div class="scActionText"><b>Send <span class="scChip orange">Message</span> to <span class="scChip orange">Phone</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout warm"><b>انتبه</b><span>Message و Phone لازم تكون متغيرات من Shortcuts، مو كلمات مكتوبة يدويًا</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="9"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 10 من 11 — الإرسال وإنهاء Repeat</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">10</span>
-        <div><div class="proGuideKicker">الخطوة 10</div><h3>WhatsApp خيار إضافي</h3></div>
-      </div>
-      <p class="proGuideText">إذا تبي توفر إرسال عبر WhatsApp أيضًا، أضف Send بنفس Message و Phone</p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon waIcon">◉</span>
-      <div class="scActionText"><b>Send <span class="scChip orange">Message</span> to <span class="scChip orange">Phone</span></b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout plain"><b>اختياري</b><span>إذا ما تحتاج WhatsApp تجاهل هذه الخطوة</span></div>
-    </article><article class="proGuideStep hidden" data-collect-sub="10"><div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 11 من 11 — الإرسال وإنهاء Repeat</small></div></div>
-      <div class="proGuideHeader">
-        <span class="proGuideNum">11</span>
-        <div><div class="proGuideKicker">الخطوة 11</div><h3>اختم التكرار</h3></div>
-      </div>
-      <p class="proGuideText">آخر شيء يكون <b>End Repeat</b> حتى يخلص من الشخص الحالي ثم ينتقل للشخص اللي بعده</p>
-      <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
-      <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
-      <div class="scCanvas"><div class="scAction">
-      <span class="scIcon grayIcon">↔</span>
-      <div class="scActionText"><b>End Repeat</b></div>
-      <span class="scClose">×</span>
-    </div></div>
-    </div></div>
-      <div class="guideCallout mint"><b>الترتيب النهائي</b><span>Phone → Message → Send → End Repeat</span></div>
       <div class="guideFinalStack">
-        <div class="guideFinalStage"><b>الترتيب الكامل — Mizan Collect</b><div class="guideFlowLine"><span class="guideFlowChip"><i>1</i>Receive</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>2</i>Get Dictionary</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>3</i>Get items</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>4</i>Repeat Each Item</span></div><div class="guideFlowLine"><span class="guideFlowChip"><i>5</i>Get phone</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>6</i>Set Phone</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>7</i>Get message</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>8</i>Set Message</span></div><div class="guideFlowLine"><span class="guideFlowChip"><i>9</i>Send Message</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>10</i>WhatsApp اختياري</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>11</i>End Repeat</span></div></div>
+        <div class="guideFinalStage"><b>الشكل النهائي</b><div class="guideFlowLine"><span class="guideFlowChip"><i>1</i>قطة في ميزان</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>2</i>Mizan Collect</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>3</i>رسالة لكل شخص</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>4</i>تتابع مين دفع</span></div></div>
       </div>
-    <div class="finalProcessTitle">الشكل النهائي — Mizan Collect كامل</div><div class="finalShortcutMap" dir="ltr"><div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div><div class="scCanvas"><div class="scAction"><span class="scIcon blueIcon">⇩</span><div class="scActionText"><b>Receive Shortcut Input</b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon orangeIcon">▣</span><div class="scActionText"><b>Get Dictionary from Shortcut Input</b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon orangeIcon">▣</span><div class="scActionText"><b>Get Value for <span class="scChip">items</span></b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon grayIcon">↔</span><div class="scActionText"><b>Repeat with each item</b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon orangeIcon">▣</span><div class="scActionText"><b>Get Value for <span class="scChip">phone</span></b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon varIcon">x</span><div class="scActionText"><b>Set variable <span class="scChip">Phone</span></b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon orangeIcon">▣</span><div class="scActionText"><b>Get Value for <span class="scChip">message</span></b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon varIcon">x</span><div class="scActionText"><b>Set variable <span class="scChip">Message</span></b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon greenIcon">●</span><div class="scActionText"><b>Send <span class="scChip orange">Message</span> to <span class="scChip orange">Phone</span></b></div><span class="scClose">×</span></div><div class="scAction"><span class="scIcon grayIcon">↔</span><div class="scActionText"><b>End Repeat</b></div><span class="scClose">×</span></div></div></div></article></div>
+      <div class="guideCallout mint"><b>أول مرة فقط</b><span>iOS بيسألك تسمح لميزان يشغّل الاختصار — اختر «سماح»</span></div>
+    </article>
+
+      </div>
       <div class="proGuideBottom">
-        <div class="proGuideProgress"><span id="collectSubCount" dir="ltr">1 / 11</span><i><b id="collectSubProgress"></b></i></div>
+        <div class="proGuideProgress"><span id="collectSubCount" dir="ltr">1 / 2</span><i><b id="collectSubProgress"></b></i></div>
         <div class="proGuideNav"><button id="collectPrev" class="tutorialBack hidden" type="button">رجوع</button><button id="collectNext" class="onboardPrimary" type="button">التالي</button></div>
       </div>
     </section><section class="quickScene hidden" data-quick-step="4"><div class="tutorialHeaderSticky"><div class="tutorialStepHead"><span class="quickBadge">4</span><div><small>آخر لمسة</small><h2>حدد رقم الاستلام</h2></div></div><p class="tutorialLead">هذا الرقم يظهر فقط في طلبات القطة التي ترسلها</p></div><div class="collectionVisual"><div class="collectPhoneCard"><span>رقم الاستلام</span><b>05•• ••• ••••</b><small>يظهر في رابط القطة فقط</small></div><div class="collectArrow">↓</div><div class="collectLinkCard"><small>طلب قطة آمن</small><b>75 ر.س</b><span>نسخ بيانات التحويل</span></div></div><div class="explainField"><label for="quickCollectionPhone">رقم الجوال للاستلام</label><input id="quickCollectionPhone" inputmode="tel" placeholder="05xxxxxxxx"><small>تقدر تضيفه الآن أو تكمل وتضيفه لاحقًا من القطات</small></div><div class="quickReady"><div class="readyCheck">✓</div><div><b>خلص إعداد البداية</b><small>بعد الدخول بتبدأ الجولة داخل واجهة ميزان نفسها</small></div></div><div class="tutorialStickyNav final"><button id="quickFinalBack" class="tutorialBack">رجوع</button><button id="quickFinishBtn" class="onboardPrimary">ادخل ميزان</button></div></section>
@@ -1711,7 +1545,32 @@ function showQuickStart(){
   quickStep=1;installSub=0;importSub=0;collectSub=0;
   $('quickCollectionPhone').value=state.collection?.phone||'';
   if($('quickImportUrl'))$('quickImportUrl').textContent=SMS_INGEST_ENDPOINT;
+  if($('quickTokenValue')){$('quickTokenValue').textContent='اضغط «إنشاء المفتاح» عشان يظهر لك';$('quickTokenValue').classList.add('empty')}
+  if($('quickTokenCopy'))$('quickTokenCopy').disabled=true;
   renderQuickStep();renderInstallSub();renderImportSub();renderCollectSub()
+}
+async function quickCreateToken(){
+  const btn=$('quickTokenBtn');if(!btn)return;
+  btn.disabled=true;btn.textContent='جاري الإنشاء…';
+  try{
+    const {data,error}=await sb.rpc('create_or_rotate_sms_ingest_token');
+    if(error)throw error;
+    const row=Array.isArray(data)?data[0]:data;
+    const tok=row?.token||'';
+    if(!tok)throw new Error('token_missing');
+    smsIngestTokenOnce=tok;
+    $('quickTokenValue').textContent=tok;$('quickTokenValue').classList.remove('empty');
+    $('quickTokenCopy').disabled=false;
+    btn.textContent='إنشاء مفتاح جديد';
+    toast('تم إنشاء المفتاح');
+  }catch(e){console.error(e);toast('تعذر إنشاء المفتاح',true);btn.textContent='إنشاء المفتاح'}
+  finally{btn.disabled=false}
+}
+async function quickCopyToken(){
+  const v=$('quickTokenValue')?.textContent||'';
+  if(!v||$('quickTokenValue').classList.contains('empty'))return;
+  try{await navigator.clipboard.writeText(v);toast('تم نسخ المفتاح')}
+  catch(e){toast('انسخ المفتاح يدويًا',true)}
 }
 function renderQuickStep(){
   hydrateGuideShots();
@@ -1730,8 +1589,10 @@ function renderInstallSub(){
 function renderImportSub(){
   hydrateGuideShots();const steps=[...document.querySelectorAll('[data-import-sub]')],total=steps.length;
   steps.forEach(x=>x.classList.toggle('hidden',+x.dataset.importSub!==importSub));
-  if(importSub<5){const n=importSub+1;$('importSubCount').textContent=`Shortcut 1/2 • ${n}/5`;$('importSubProgress').style.width=`${n/5*100}%`;$('importNext').textContent=importSub===4?'التالي: Automation':'التالي'}
-  else{const n=importSub-4;$('importSubCount').textContent=`Automation • ${n}/6`;$('importSubProgress').style.width=`${n/6*100}%`;$('importNext').textContent=importSub===total-1?'التالي: Mizan Collect':'التالي'}
+  const n=importSub+1;
+  $('importSubCount').textContent=importSub<2?`Shortcut 1/2 • ${n}/4`:`Automation • ${n}/4`;
+  $('importSubProgress').style.width=`${n/total*100}%`;
+  $('importNext').textContent=importSub===1?'التالي: Automation':(importSub===total-1?'التالي: Mizan Collect':'التالي');
   $('importPrev').classList.toggle('hidden',importSub===0)
 }
 function renderCollectSub(){
@@ -1814,6 +1675,8 @@ document.querySelectorAll('[data-setup-back]').forEach(b=>b.onclick=()=>{setupSt
 
 $('installNext').onclick=()=>{if(installSub<5){installSub++;renderInstallSub()}else{quickStep=2;renderQuickStep();renderImportSub()}};
 $('installPrev').onclick=()=>{if(installSub>0){installSub--;renderInstallSub()}};
+if($('quickTokenBtn'))$('quickTokenBtn').onclick=quickCreateToken;
+if($('quickTokenCopy'))$('quickTokenCopy').onclick=quickCopyToken;
 $('importNext').onclick=()=>{const total=document.querySelectorAll('[data-import-sub]').length;if(importSub<total-1){importSub++;renderImportSub()}else{quickStep=3;collectSub=0;renderQuickStep();renderCollectSub()}};
 $('importPrev').onclick=()=>{if(importSub>0){importSub--;renderImportSub()}else{quickStep=1;renderQuickStep();installSub=5;renderInstallSub()}};
 $('collectNext').onclick=()=>{const total=document.querySelectorAll('[data-collect-sub]').length;if(collectSub<total-1){collectSub++;renderCollectSub()}else{quickStep=4;renderQuickStep()}};
