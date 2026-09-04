@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-req3eMbjTsdmHwJHLyv76NpGDZWIH4NGYvT07Tlm2uQ='; style-src 'sha256-LhDzqb56LuxPVif4k9aNFcrnZSCqMNQ4ijrIXSbR5GU='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-TB0fyurjXZhE2Q/cj+Wexnrx64uzzQTqZgZv7SS/wqE='; style-src 'sha256-MuGyAEWXicChXCVHwObtX/VeAx0hryiT7p7j4f2flog='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -389,6 +389,14 @@ body{overflow-x:hidden}
 .saveStatus.saving{background:#eef6f4;color:#4f6f68;border-color:#dbe9e5}
 .saveStatus.merged{background:#eaf7f0;color:#0b6d5b;border-color:#c9e8dc}
 .saveStatus.dirty{background:#fff7e6;color:#8a6a1e;border-color:#ecdcae}
+
+.anchorRow{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:9px;border:1px solid #e3efeb;background:#f8fcfb;border-radius:13px;padding:9px 11px;font-size:9px;color:#4f6f68;font-weight:800}
+.anchorRow em{font-style:normal;color:#0b7d5f;font-size:9px}
+.commitEnd{display:flex;align-items:center;gap:7px}
+.miniBtn{min-height:29px;padding:0 9px;border-radius:9px;border:0;background:#0fa187;color:#fff;font-size:8px;font-weight:850}
+.miniBtn.ghostMini{background:#eef6f4;color:#5c7a73}
+.privacyBtn{position:fixed;top:calc(env(safe-area-inset-top) + 8px);inset-inline-end:12px;z-index:59;width:33px;height:33px;border-radius:50%;border:1px solid #e0ece8;background:#fff;color:#7d948e;font-size:13px;box-shadow:0 4px 14px #0000000d}
+.privacyBtn.on{background:#0fa187;color:#fff;border-color:#0fa187}
 </style>
 </head>
 <body>
@@ -726,25 +734,26 @@ body{overflow-x:hidden}
     <article class="proGuideStep hidden" data-import-sub="3">
       <div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 4 من 4 — وش يسوي وقتها</small></div></div>
       <div class="proGuideHeader"><span class="proGuideNum">4</span><div><div class="proGuideKicker">الخطوة 4</div><h3>اربطها بـ Mizan Import</h3></div></div>
-      <p class="proGuideText">آخر خطوة. فيها نقطة صغيرة سهل تفوت — خذ بالك منها.</p>
+      <p class="proGuideText">بعض العمليات توصلك برسالتين — شراء واسترجاع نقدي في نفس اللحظة. هذي الخطوات تضمن أن الاثنتين تدخلان.</p>
       <div class="guideMiniList">
         <div><i>1</i><span>فعّل <b>Run Immediately</b> وأطفئ <b>Notify When Run</b></span></div>
-        <div><i>2</i><span>اضغط <b>Next</b> واختر <b>Run Shortcut</b></span></div>
-        <div><i>3</i><span>اختر <b>Mizan Import</b></span></div>
-        <div><i>4</i><span>اضغط السهم <b>›</b> جنب اسم الاختصار عشان تفتح خيارات إضافية</span></div>
-        <div><i>5</i><span>في خانة <b>Input</b> اختر <b>Shortcut Input</b></span></div>
+        <div><i>2</i><span>اضغط <b>Next</b> وأضف <b>Find Messages</b> — الشرط: <b>Date is in the last 2 minutes</b></span></div>
+        <div><i>3</i><span>أضف <b>Repeat with each item</b> على نتيجة <b>Find Messages</b></span></div>
+        <div><i>4</i><span>داخل الـRepeat أضف <b>Run Shortcut</b> واختر <b>Mizan Import</b></span></div>
+        <div><i>5</i><span>اضغط السهم <b>›</b> جنبه، وفي خانة <b>Input</b> اختر <b>Repeat Item</b></span></div>
       </div>
       <div class="unifiedGuideStage"><div class="shortcutStage automationStage" dir="ltr">
       <div class="autoDoneRow"><span>×</span><button>Done</button></div>
       <div class="autoField"><span>Automation</span><b>Run Immediately</b></div>
       <h4>Do</h4>
-      <div class="autoRule"><span class="shortcutApp">◆</span><b>Run Mizan Import<br><span style="opacity:.7;font-size:11px">Input: Shortcut Input</span></b><span>⌄</span></div>
+      <div class="autoRule"><span class="msgBubble">●</span><b>Find Messages<br><span style="opacity:.7;font-size:11px">last 2 minutes</span></b><span>›</span></div>
+      <div class="autoRule"><span class="shortcutApp">◆</span><b>Repeat › Run Mizan Import<br><span style="opacity:.7;font-size:11px">Input: Repeat Item</span></b><span>⌄</span></div>
       </div></div>
-      <div class="guideCallout warm"><b>خانة Input ضرورية</b><span>لو تركتها فاضية، بيشتغل الاختصار بدون نص الرسالة وما تدخل أي عملية</span></div>
+      <div class="guideCallout warm"><b>خانة Input ضرورية</b><span>لازم تكون <b>Repeat Item</b> — لو تركتها فاضية أو اخترت غيرها، ما تدخل أي عملية</span></div>
+      <div class="guideCallout mint"><b>ما فيه تكرار</b><span>لو مرّت نفس الرسالة مرتين، ميزان يعرفها ويتجاهلها. تسجّل مرة وحدة فقط</span></div>
       <div class="guideFinalStack">
-        <div class="guideFinalStage"><b>الشكل النهائي</b><div class="guideFlowLine"><span class="guideFlowChip"><i>1</i>رسالة من البنك</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>2</i>Automation تشتغل</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>3</i>Mizan Import يرسلها</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>4</i>تظهر في ميزان</span></div></div>
+        <div class="guideFinalStage"><b>الشكل النهائي</b><div class="guideFlowLine"><span class="guideFlowChip"><i>1</i>رسالة من البنك</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>2</i>Automation تشتغل</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>3</i>كل رسالة تنرسل</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>4</i>تظهر في ميزان</span></div></div>
       </div>
-      <div class="guideCallout mint"><b>جاهز</b><span>أي عملية بنكية بتدخل ميزان تلقائيًا من الآن</span></div>
     </article>
 
       </div>
@@ -806,7 +815,7 @@ body{overflow-x:hidden}
 </section>
 <div id="appRoot" class="app hidden">
 <header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version">Secure v5.0.1</span></h1></div><div class="secureHeadActions"><button class="iconbtn hidden" id="adminBtn" type="button">🔐</button><button class="iconbtn" id="settingsBtn" type="button">⚙️</button></div></header>
-<main id="homeView"><div id="saveStatus" class="saveStatus hidden"></div><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
+<main id="homeView"><div id="saveStatus" class="saveStatus hidden"></div><button id="privacyBtn" class="privacyBtn" type="button" aria-label="اخفاء الارقام">◎</button><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
 <section id="tourToday" class="card hero"><div><div class="muted">المتبقي اليوم</div><div class="big"><span id="todayRemaining">100</span> <small>ر.س</small></div><div id="todaySpend" class="muted">صرفت 0 من 100 ر.س</div><div id="statusPill" class="pill">✓ على المسار</div></div><div id="ring" class="ring"><div class="ringin"><strong id="pct">0%</strong><span>استهلاك</span></div></div><div id="tourSafe" class="safehero"><div><span>Safe to Spend</span><small>اليوم + الأسبوع + الشهر</small><button id="canBuyBtn" class="heroQuickAction" type="button">هل أقدر؟</button></div><b><span id="safeSpend">0</span> ر.س</b></div></section>
 <section class="grid3"><div class="tile a"><span>المتبقي هذا الأسبوع</span><strong id="weekRemaining">1,000</strong><small>ر.س</small></div><div class="tile b"><span>مستحق لك</span><strong id="owedTotal">0</strong><small>ر.س</small></div><div class="tile c"><span>المتبقي للدورة</span><strong id="savedMonth">0</strong><small>ر.س</small><div id="monthModeNote" class="monthnote">دورة المصروف</div></div></section>
 <section id="tourWeek" class="card"><div class="sectionhead"><div><h2>مسار الأسبوع</h2><p>ميزانية مستقلة لكل يوم حسب إعدادك</p></div><div class="adaptiveWrap"><button id="adaptiveToggle" class="switchbtn" type="button"><span>Adaptive</span><span class="track"><i class="dot"></i></span></button></div></div><div id="weekStrip" class="weekstrip"></div><div id="adaptiveNote" class="adaptiveNote">المسار الأساسي 100 / 200 ر.س</div></section>
@@ -852,7 +861,7 @@ body{overflow-x:hidden}
   <div class="segTabs"><button id="segCycle" class="on" type="button">الدورة</button><button id="segCats" type="button">الفئات</button></div>
   <div id="cyclePane">
     <section class="card">
-      <div class="cycleHero"><span id="cycleHeroLabel">دخل الدورة</span><b><span id="cycleIncomeVal">0</span> <small>ر.س</small></b></div>
+      <div class="cycleHero"><span id="cycleHeroLabel">دخل الدورة</span><b><span id="cycleIncomeVal">0</span> <small>ر.س</small></b></div><button id="cycleAnchorBtn" class="anchorRow" type="button"><span id="cycleAnchorText">—</span><em>تعديل</em></button>
       <div class="flowBar" id="cycleFlowBar"></div>
       <div class="flowLegend" id="cycleFlowLegend"></div>
       <div class="availCard">
@@ -994,6 +1003,14 @@ body{overflow-x:hidden}
     <div class="actions"><button id="loanPayBtn" class="secondary" type="button">تسجيل الدفعة</button><button id="loanSettleBtn" class="secondary" type="button">سدّد بالكامل</button></div>
   </div>
   <div class="actions"><button id="loanDeleteBtn" class="secondary hidden" type="button">حذف</button><button id="loanSaveBtn" class="primary" type="button">حفظ</button></div>
+</section>
+
+
+<section id="cycleAnchorSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div>
+  <h3>بداية الدورة</h3><p class="sheetLead">لو نزل الراتب بتاريخ مختلف هذا الشهر، صحّحه هنا. الدورة القادمة ترجع للوضع المعتاد.</p>
+  <label>تاريخ بداية هذه الدورة<input id="anchorDate" type="date"></label>
+  <label class="inlineCheck"><input id="anchorWeekend" type="checkbox"> قدّم الدورة لو صادف يوم البداية عطلة نهاية الأسبوع</label>
+  <div class="actions"><button id="anchorResetBtn" class="secondary" type="button">رجّع الافتراضي</button><button id="anchorSaveBtn" class="primary" type="button">حفظ</button></div>
 </section>
 
 <nav class="bottom"><button id="homeNav" class="navtab on" type="button"><b>⌂</b>الرئيسية</button><button id="budgetNav" class="navtab" type="button"><b>◎</b>الميزانية</button><button id="addTxnBtn" class="primaryNav" type="button"><b>＋</b>عملية</button><button id="insightsNav" class="navtab" type="button"><b>⌁</b>التحليل</button><button id="splitsNav" class="navtab" type="button"><b>👥</b>القطات</button></nav>
@@ -1162,7 +1179,7 @@ let availableAppVersion=null,availableAppBuild=null,updateCheckBusy=false;
 const LEGACY_KEY='mizan-static-v1';
 const GUIDE_CROPS={};
 const KEY=LEGACY_KEY;
-const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleEndDay:31},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:'',budgetSeg:'cycle',insightSeg:'spend',splitSeg:'splits'},merchantRules:{},income:{commitments:[],autoOpen:true},cycles:{},wealth:{accounts:[],snapshots:[]},balanceGaps:[],loans:[],meta:{rev:0,savedAt:null,device:''},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
+const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleShiftWeekend:true,cycleAnchors:{},cycleEndDay:31},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:'',budgetSeg:'cycle',insightSeg:'spend',splitSeg:'splits',privacy:false},merchantRules:{},income:{commitments:[],autoOpen:true},cycles:{},wealth:{accounts:[],snapshots:[]},balanceGaps:[],loans:[],meta:{rev:0,savedAt:null,device:''},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
 const clone=x=>JSON.parse(JSON.stringify(x));let state=clone(defaults);let splitReturnTxnId=null;
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 let secureUser=null,secureProfile=null,secureSession=null,secureReady=false,secureSaveTimer=null,secureSaveBusy=false,secureSaveQueued=false,accessTimer=null,mfaEnrollment=null,currentAdminControl=null,v5BackfillPending=0;
@@ -1425,7 +1442,7 @@ function startUpdateMonitor(){
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkForAppUpdate({silent:true})})
 }
 
-const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const fmt=n=>new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(Math.max(0,Number(n)||0));const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random();
+const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const rawFmt=n=>new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(Math.max(0,Number(n)||0));const privacyOn=()=>!!(state&&state.ui&&state.ui.privacy);const fmt=n=>{if(privacyOn()){const l=Math.min(6,Math.max(3,rawFmt(n).replace(/[^\d]/g,'').length));return '•'.repeat(l)}return rawFmt(n)};const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random();
 function fdate(d=new Date()){const x=new Date(d);if(x.getHours()<state.settings.reset)x.setDate(x.getDate()-1);x.setHours(0,0,0,0);return x}
 function dayBudget(d=new Date()){const day=fdate(d).getDay(),arr=Array.isArray(state.settings.dailyBudgets)?state.settings.dailyBudgets:null;return arr&&arr.length===7?Math.max(0,+arr[day]||0):(day<=3?Math.max(0,+state.settings.weekday||0):Math.max(0,+state.settings.weekend||0))}
 function wstart(){const x=fdate();x.setDate(x.getDate()-x.getDay());return x}
@@ -1434,7 +1451,33 @@ function trackingStartDate(){return parseLocalDate(state.settings.trackingStart|
 function isTrackedDay(d){const x=new Date(d);x.setHours(0,0,0,0);return x>=trackingStartDate()}
 function daysInMonth(y,m){return new Date(y,m+1,0).getDate()}
 function safeMonthDay(y,m,d){return new Date(y,m,Math.min(Math.max(1,+d||1),daysInMonth(y,m)),0,0,0,0)}
-function cycleCandidate(y,m){const sd=Math.min(31,Math.max(1,+state.settings.cycleStartDay||1)),ed=Math.min(31,Math.max(1,+state.settings.cycleEndDay||31)),start=safeMonthDay(y,m,sd),end=safeMonthDay(y,ed<sd?m+1:m,ed),endExclusive=new Date(end);endExclusive.setDate(endExclusive.getDate()+1);return{start,end,endExclusive}}
+function anchorKey(y,m){return `${y}-${String(m+1).padStart(2,'0')}`}
+function cycleAnchors(){if(!state.settings.cycleAnchors||typeof state.settings.cycleAnchors!=='object')state.settings.cycleAnchors={};return state.settings.cycleAnchors}
+function shiftBeforeWeekend(d){
+  if(state.settings.cycleShiftWeekend===false)return d;
+  const x=new Date(d);
+  while(x.getDay()===5||x.getDay()===6)x.setDate(x.getDate()-1);
+  return x
+}
+function cycleStartFor(y,m){
+  const key=anchorKey(y,m),ov=cycleAnchors()[key];
+  if(ov){const d=new Date(ov+'T00:00:00');if(!isNaN(d))return d}
+  const sd=Math.min(31,Math.max(1,+state.settings.cycleStartDay||1));
+  return shiftBeforeWeekend(safeMonthDay(y,m,sd))
+}
+function cycleCandidate(y,m){
+  const start=cycleStartFor(y,m);
+  const nextBase=new Date(y,m+1,1);
+  const nextStart=cycleStartFor(nextBase.getFullYear(),nextBase.getMonth());
+  const endExclusive=new Date(nextStart);
+  const end=new Date(nextStart);end.setDate(end.getDate()-1);
+  return{start,end,endExclusive}
+}
+function setCycleAnchor(dateStr){
+  const d=new Date(dateStr+'T00:00:00');if(isNaN(d))return false;
+  cycleAnchors()[anchorKey(d.getFullYear(),d.getMonth())]=dateStr;
+  save();render();return true
+}
 function currentCycle(d=fdate()){const x=new Date(d);x.setHours(0,0,0,0);const y=x.getFullYear(),m=x.getMonth(),c=[];for(let off=-2;off<=1;off++){const base=new Date(y,m+off,1),b=cycleCandidate(base.getFullYear(),base.getMonth());c.push(b);if(x>=b.start&&x<b.endExclusive)return b}const past=c.filter(b=>b.start<=x).sort((a,b)=>b.start-a.start)[0];return past||cycleCandidate(y,m)}
 function cycleByOffset(offset=0){const cur=currentCycle(),base=new Date(cur.start.getFullYear(),cur.start.getMonth()+offset,1);return cycleCandidate(base.getFullYear(),base.getMonth())}
 function mstart(){return currentCycle().start}
@@ -1659,7 +1702,22 @@ function classifyCategory(s='',ctx={}){
  return finish({category:'أخرى',subcategory:'أخرى',confidence:.35,source:'unknown',matched:'',reason:'ما عندنا معلومات كافية عن هذا التاجر بعد'})
 }
 function categoryFrom(s=''){return classifyCategory(s).category}
-function fingerprint(t){const d=new Date(t.ts);return[(isNaN(d)?'':d.toISOString().slice(0,10)),(+t.amount||0).toFixed(2),(t.note||'').trim().toLowerCase(),t.source||''].join('|')}function isDup(t){const f=fingerprint(t);return state.txns.some(x=>x.fp===f||fingerprint(x)===f)}function infer(t){if(t.direction==='credit'&&owed()>0){const rows=pendingMembers(),note=normalizeMerchant(t.note||''),nameHits=note?rows.filter(r=>{const n=normalizeMerchant(r.member.name||'');return n&&n.length>1&&(note.includes(n)||n.includes(note))}):[],amountHits=rows.filter(r=>Math.abs(r.remaining-(+t.amount||0))<.01);let hit=null;if(nameHits.length===1)hit=nameHits[0];else if(amountHits.length===1)hit=amountHits[0];const s=hit?.split||suggestedSplit(t.amount);return{kind:'refund',suggestedSplitId:s?.id||null,suggestedMemberId:hit?.member?.id||null,text:hit?`قد تكون دفعة ${hit.member.name} من قطة ${s.note||''} • ${fmt(hit.remaining)} ر.س`:(amountHits.length>1?`وصل ${fmt(t.amount)} ر.س ويوجد أكثر من شخص بنفس المبلغ — اختر من دفع`:(s?`وصل ${fmt(t.amount)} ر.س — حدّد الشخص أو القطة`:'قد يكون استرداد قطة'))}}if(t.impact>=250&&['مطاعم','ترفيه'].includes(t.category))return{kind:'split',text:'المبلغ مرتفع؛ هل كانت قطة؟'};return null}function applyRefund(amount){let r=amount,allocations=[];for(const s of state.splits){if(Array.isArray(s.members)&&s.members.length){for(const m of s.members.filter(x=>!x.isSelf)){const due=Math.max(0,(+m.share||0)-(+m.paidAmount||0)),p=Math.min(due,r);if(p>0){m.paidAmount=(+m.paidAmount||0)+p;m.paid=m.paidAmount>=(+m.share||0)-.009;allocations.push({splitId:s.id,memberId:m.id,amount:p});r-=p}if(r<=.009)break}syncSplitTotals(s)}else{const due=Math.max(0,(s.owed||0)-(s.recovered||0)),p=Math.min(due,r);if(p>0){s.recovered=(s.recovered||0)+p;allocations.push({splitId:s.id,amount:p});r-=p}}if(r<=.009)break}return{applied:amount-r,allocations}}
+function smsHash(raw=''){
+  const t=String(raw||'').replace(/\s+/g,' ').trim();
+  if(!t)return '';
+  let h1=0x811c9dc5,h2=0x01000193;
+  for(let i=0;i<t.length;i++){const c=t.charCodeAt(i);h1=((h1^c)*0x01000193)>>>0;h2=((h2+c*(i+7))*0x85ebca6b)>>>0}
+  return 'h'+h1.toString(36)+h2.toString(36)
+}
+function fingerprint(t){const d=new Date(t.ts);return[(isNaN(d)?'':d.toISOString().slice(0,10)),(+t.amount||0).toFixed(2),(t.note||'').trim().toLowerCase(),t.source||''].join('|')}
+function isDup(t){
+  if(t.smsHash){if(state.txns.some(x=>x.smsHash&&x.smsHash===t.smsHash))return true}
+  const f=fingerprint(t);
+  return state.txns.some(x=>{
+    if(t.smsHash&&x.smsHash&&x.smsHash!==t.smsHash)return false;
+    return x.fp===f||fingerprint(x)===f
+  })
+}function infer(t){if(t.direction==='credit'&&owed()>0){const rows=pendingMembers(),note=normalizeMerchant(t.note||''),nameHits=note?rows.filter(r=>{const n=normalizeMerchant(r.member.name||'');return n&&n.length>1&&(note.includes(n)||n.includes(note))}):[],amountHits=rows.filter(r=>Math.abs(r.remaining-(+t.amount||0))<.01);let hit=null;if(nameHits.length===1)hit=nameHits[0];else if(amountHits.length===1)hit=amountHits[0];const s=hit?.split||suggestedSplit(t.amount);return{kind:'refund',suggestedSplitId:s?.id||null,suggestedMemberId:hit?.member?.id||null,text:hit?`قد تكون دفعة ${hit.member.name} من قطة ${s.note||''} • ${fmt(hit.remaining)} ر.س`:(amountHits.length>1?`وصل ${fmt(t.amount)} ر.س ويوجد أكثر من شخص بنفس المبلغ — اختر من دفع`:(s?`وصل ${fmt(t.amount)} ر.س — حدّد الشخص أو القطة`:'قد يكون استرداد قطة'))}}if(t.impact>=250&&['مطاعم','ترفيه'].includes(t.category))return{kind:'split',text:'المبلغ مرتفع؛ هل كانت قطة؟'};return null}function applyRefund(amount){let r=amount,allocations=[];for(const s of state.splits){if(Array.isArray(s.members)&&s.members.length){for(const m of s.members.filter(x=>!x.isSelf)){const due=Math.max(0,(+m.share||0)-(+m.paidAmount||0)),p=Math.min(due,r);if(p>0){m.paidAmount=(+m.paidAmount||0)+p;m.paid=m.paidAmount>=(+m.share||0)-.009;allocations.push({splitId:s.id,memberId:m.id,amount:p});r-=p}if(r<=.009)break}syncSplitTotals(s)}else{const due=Math.max(0,(s.owed||0)-(s.recovered||0)),p=Math.min(due,r);if(p>0){s.recovered=(s.recovered||0)+p;allocations.push({splitId:s.id,amount:p});r-=p}}if(r<=.009)break}return{applied:amount-r,allocations}}
 
 
 function cycleDaysInfo(bounds=currentCycle()){const now=fdate(),start=new Date(bounds.start),end=new Date(bounds.endExclusive),total=Math.max(1,Math.round((end-start)/86400000)),elapsed=Math.max(0,Math.min(total,Math.floor((now-start)/86400000)+1)),remaining=Math.max(0,total-elapsed);return{total,elapsed,remaining,progress:Math.max(0,Math.min(1,elapsed/total))}}
@@ -1841,6 +1899,9 @@ function renderCycleFlow(){
   const inc=cycleIncomeTotal(),g=reservedByGroup(),avail=cycleAvailable();
   $('cycleIncomeVal').textContent=fmt(inc);
   $('cycleHeroLabel').textContent='دخل الدورة • '+cycleLabel(currentCycle());
+  {const b=currentCycle(),k=anchorKey(b.start.getFullYear(),b.start.getMonth()),manual=!!cycleAnchors()[k];
+   const d=n=>n.toLocaleDateString('en-US',{day:'numeric',month:'short'});
+   $('cycleAnchorText').textContent=`${d(b.start)} — ${d(b.end)} • ${cycleDaysLeft()} يوم باقي${manual?' • معدّلة يدويًا':''}`}
   const oblig=(g.visa||0)+(g.bills||0)+(g.education||0)+(g.bnpl||0)+(g.finance||0)+(g.other||0);
   const save=(g.saving||0)+(g.invest||0);
   const spendPart=Math.max(0,inc-reservedTotal());
@@ -1868,10 +1929,25 @@ function renderCycleFlow(){
   $('cycleNotes').innerHTML=notes.map(([c,i,t])=>`<div class="insightNote ${c}"><i>${i}</i><span>${t}</span></div>`).join('');
   const rows=cycleReservations();
   $('commitList').innerHTML=rows.length?rows.map(r=>{
-    const st=r.status==='confirmed'?['stConfirmed','تم الدفع'] : r.status==='skipped'?['stSkipped','متجاوَز'] : (new Date()-new Date(r.dueAt))/86400000>3?['stMissed','متأخر — ما وصل تأكيد']:['stReserved','محجوز • '+new Date(r.dueAt).toLocaleDateString('en-US',{day:'numeric',month:'short'})];
-    return `<div class="commitRow" data-commit="${r.commitmentId}"><div><h4>${r.name}<span class="groupChip ${groupClass(r.group)}">${groupLabel(r.group)}</span></h4><small class="${st[0]}">${st[1]}</small></div><b>${fmt(r.amount)}</b></div>`
+    const st=r.status==='confirmed'?['stConfirmed',r.manual?'مؤكد يدويًا':'تم الدفع'] : r.status==='skipped'?['stSkipped','متجاوَز'] : (new Date()-new Date(r.dueAt))/86400000>3?['stMissed','متأخر — ما وصل تأكيد']:['stReserved','محجوز • '+new Date(r.dueAt).toLocaleDateString('en-US',{day:'numeric',month:'short'})];
+    const act=r.status==='reserved'?`<button class="miniBtn" data-confirm="${r.commitmentId}" type="button">أكّد الدفع</button>`:(r.status==='confirmed'&&!r.txnId?`<button class="miniBtn ghostMini" data-unconfirm="${r.commitmentId}" type="button">تراجع</button>`:'');
+    return `<div class="commitRow"><div data-commit="${r.commitmentId}"><h4>${r.name}<span class="groupChip ${groupClass(r.group)}">${groupLabel(r.group)}</span></h4><small class="${st[0]}">${st[1]}</small></div><div class="commitEnd"><b>${fmt(r.amount)}</b>${act}</div></div>`
   }).join(''):`<div class="emptyBlock"><b>ما فيه التزامات بعد</b><small>سجّل القرض والفيزا والتحويلات الثابتة، وميزان يحجزها من راتبك قبل ما يحسب مصروفك اليومي</small><button class="ghost" onclick="document.getElementById('addCommitBtn').click()">إضافة أول التزام</button></div>`;
   document.querySelectorAll('[data-commit]').forEach(el=>el.onclick=()=>openCommitSheet(el.dataset.commit));
+  document.querySelectorAll('[data-confirm]').forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    const rec=state.cycles[currentCycleKey()];if(!rec)return;
+    const r=(rec.reservations||[]).find(x=>x.commitmentId===el.dataset.confirm);if(!r)return;
+    r.status='confirmed';r.confirmedAt=new Date().toISOString();r.manual=true;
+    save();render();toast('تم تأكيد الدفع')
+  });
+  document.querySelectorAll('[data-unconfirm]').forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    const rec=state.cycles[currentCycleKey()];if(!rec)return;
+    const r=(rec.reservations||[]).find(x=>x.commitmentId===el.dataset.unconfirm);if(!r)return;
+    r.status='reserved';r.confirmedAt=null;r.manual=false;
+    save();render();toast('رجعناه محجوز')
+  });
 }
 function renderWealth(){
   ensureIncomeShape();
@@ -1976,6 +2052,7 @@ function renderIncomeSheet(){
 function renderMoneyPanes(){
   ensureIncomeShape();
   const bs=state.ui.budgetSeg==='cats'?'cats':'cycle';
+  if($('privacyBtn'))$('privacyBtn').classList.toggle('on',privacyOn());
   $('segCycle')?.classList.toggle('on',bs==='cycle');$('segCats')?.classList.toggle('on',bs==='cats');
   $('cyclePane')?.classList.toggle('hidden',bs!=='cycle');$('catsPane')?.classList.toggle('hidden',bs!=='cats');
   $('budgetPageSub').textContent=bs==='cycle'?'وين يروح الراتب، وكم باقي للصرف':'ميزانية الفئات وسرعة الصرف داخل الدورة';
@@ -2162,7 +2239,7 @@ function resolveGap(id,mode){
   save();render();toast(mode==='add'?'تم تسجيل العملية':'تم التجاهل')
 }
 
-function importBankSms(sender,raw){const p=parseBankSms(sender,raw);if(!p.ok)return p;const source=ensureSmsSource(p);p.raw=raw;let balGap=null;try{balGap=checkBalanceGap(p,source)}catch(e){console.error('bal',e)}let matchedRes=null;if(p.impact>0){matchedRes=matchReservation(p);if(matchedRes){p.impact=0;p.label=matchedRes.name;p.category=groupLabel(matchedRes.group);p.classification={category:p.category,confidence:1,source:'system',matched:matchedRes.name,reason:'التزام محجوز من الراتب — لا يُحسب مرتين',needsReview:false}}}const tr={id:uid(),amount:p.amount,impact:p.impact,category:p.category,subcategory:p.subcategory||'',source,note:p.merchant,label:p.label,ts:p.ts,createdAt:new Date().toISOString(),direction:p.direction,classification:p.classification,merchantKey:normalizeMerchant(p.merchant),review:p.review,sms:true};tr.fp=fingerprint(tr);if(isDup(tr))return{ok:false,error:'هذه العملية موجودة مسبقًا'};if(matchedRes){tr.commitmentId=matchedRes.commitmentId;matchedRes.txnId=tr.id}state.txns.push(tr);save();return{ok:true,parsed:p}}
+function importBankSms(sender,raw){const p=parseBankSms(sender,raw);if(!p.ok)return p;const source=ensureSmsSource(p);p.raw=raw;let balGap=null;try{balGap=checkBalanceGap(p,source)}catch(e){console.error('bal',e)}let matchedRes=null;if(p.impact>0){matchedRes=matchReservation(p);if(matchedRes){p.impact=0;p.label=matchedRes.name;p.category=groupLabel(matchedRes.group);p.classification={category:p.category,confidence:1,source:'system',matched:matchedRes.name,reason:'التزام محجوز من الراتب — لا يُحسب مرتين',needsReview:false}}}const tr={id:uid(),amount:p.amount,impact:p.impact,category:p.category,subcategory:p.subcategory||'',source,note:p.merchant,label:p.label,ts:p.ts,createdAt:new Date().toISOString(),direction:p.direction,classification:p.classification,merchantKey:normalizeMerchant(p.merchant),review:p.review,sms:true};tr.fp=fingerprint(tr);tr.smsHash=smsHash(raw);if(isDup(tr))return{ok:false,error:'هذه العملية موجودة مسبقًا'};if(matchedRes){tr.commitmentId=matchedRes.commitmentId;matchedRes.txnId=tr.id}state.txns.push(tr);save();return{ok:true,parsed:p}}
 
 function toast(msg,bad=false){const el=$('toast');if(!el)return;el.textContent=msg;el.classList.toggle('bad',bad);el.classList.add('show');clearTimeout(window.__mizanToast);window.__mizanToast=setTimeout(()=>el.classList.remove('show'),2600)}
 function open(id){
@@ -2226,6 +2303,28 @@ $('loanDeleteBtn').onclick=()=>{
   if(!editingLoanId)return;
   state.loans=state.loans.filter(x=>x.id!==editingLoanId);
   save();close();render();toast('تم الحذف')
+};
+
+$('cycleAnchorBtn').onclick=()=>{
+  const b=currentCycle();
+  $('anchorDate').value=b.start.toISOString().slice(0,10);
+  $('anchorWeekend').checked=state.settings.cycleShiftWeekend!==false;
+  open('cycleAnchorSheet')
+};
+$('anchorSaveBtn').onclick=()=>{
+  state.settings.cycleShiftWeekend=$('anchorWeekend').checked;
+  const v=$('anchorDate').value;
+  if(v&&!setCycleAnchor(v)){toast('تاريخ غير صحيح',true);return}
+  save();close();render();toast('تم تحديث الدورة')
+};
+$('anchorResetBtn').onclick=()=>{
+  const b=currentCycle(),k=anchorKey(b.start.getFullYear(),b.start.getMonth());
+  delete cycleAnchors()[k];
+  save();close();render();toast('رجعت للافتراضي')
+};
+$('privacyBtn').onclick=()=>{
+  state.ui.privacy=!privacyOn();persistState();render();
+  toast(privacyOn()?'الأرقام مخفية':'الأرقام ظاهرة')
 };
 $('segCycle').onclick=()=>{state.ui.budgetSeg='cycle';persistState();render()};
 $('segCats').onclick=()=>{state.ui.budgetSeg='cats';persistState();render()};
