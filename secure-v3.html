@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-5641y1z7FZury4veeKIOxogpmTd2VP5K8odqvcM0FVM='; style-src 'sha256-fKgJCvA5guxQXSgWBwFffL7bPYpLzOviUFRx1wPO/Ys='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-nFJwmwn0mz5nN1Q+e7ExifWiFfuKs1Wu8ocSuVeH38k='; style-src 'sha256-3kdYTygqz9THwH7//x+DCcel6KlbvmXILSUslNMHMsk='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -282,6 +282,75 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 .guideMiniList i{font-style:normal;width:21px;height:21px;border-radius:7px;background:#e5f8f1;color:#08705e;display:grid;place-items:center;font-size:8px;font-weight:900}
 .guideMiniList span{font-size:8.6px;line-height:1.65;color:#4c6c65}
 .guideMiniList span b{color:#0b7361}
+
+body{overflow-x:hidden}
+.sheet{overflow-x:hidden}
+.sheetX{position:sticky;top:0;z-index:9;float:left;width:32px;height:32px;border-radius:50%;border:1px solid #e2edea;background:#f7fbfa;color:#4d6b64;font-size:14px;font-weight:800;display:grid;place-items:center;margin:-2px 0 2px}
+.sheetX:active{background:#eef6f4}
+.segTabs{display:flex;gap:4px;background:#eef6f4;border-radius:14px;padding:4px;margin:0 0 12px}
+.segTabs button{flex:1;min-height:38px;border:0;background:transparent;border-radius:11px;font-size:11px;font-weight:850;color:#6e8b84}
+.segTabs button.on{background:#fff;color:#0b6d5b;box-shadow:0 2px 8px #0b6d5b14}
+.pullRefresh{height:0;overflow:hidden;display:grid;place-items:center;transition:height .18s ease;color:#0b806b;font-size:9px;font-weight:800}
+.pullRefresh.show{height:34px}
+.pullRefresh.spin span{display:inline-block;animation:mzspin .8s linear infinite}
+@keyframes mzspin{to{transform:rotate(360deg)}}
+.refreshBtn{width:34px;height:34px;border-radius:12px;border:1px solid #dcebe6;background:#fff;color:#0b806b;font-size:14px;font-weight:800}
+.refreshBtn.busy span{display:inline-block;animation:mzspin .8s linear infinite}
+.flowBar{display:flex;height:11px;border-radius:6px;overflow:hidden;margin:12px 0 6px;background:#eef4f2}
+.flowBar i{display:block}
+.flowLegend{display:flex;justify-content:space-between;font-size:8.5px;color:#7a938c;margin-bottom:6px}
+.flowLegend b{display:block;font-size:9.5px;color:#3f5f58;font-weight:800}
+.cycleHero{display:grid;gap:3px}
+.cycleHero span{font-size:9px;color:#7a938c;font-weight:800}
+.cycleHero b{font-size:27px;color:#0b3a31;line-height:1.2}
+.cycleHero b small{font-size:11px;color:#7a938c;font-weight:700}
+.commitRow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:11px 0;border-top:1px solid #f1f7f5}
+.commitRow:first-child{border-top:0}
+.commitRow h4{font-size:11.5px;margin:0;color:#12463c;font-weight:850}
+.commitRow small{display:block;font-size:8.5px;margin-top:3px}
+.commitRow b{font-size:12.5px;color:#12463c}
+.stConfirmed{color:#0d8a6d}.stReserved{color:#a8791c}.stSkipped{color:#8d9c98}.stMissed{color:#b4553c}
+.groupChip{display:inline-block;font-size:7.5px;font-weight:850;border-radius:6px;padding:2px 6px;margin-inline-start:5px}
+.gFixed{background:#eaf1fb;color:#1a5390}.gTransfer{background:#fdf0e9;color:#9a4b25}
+.gSave{background:#e9f7f0;color:#0b6d5b}.gInvest{background:#efedfd;color:#4b41a8}
+.availCard{background:#f1faf7;border:1px solid #d5ebe4;border-radius:17px;padding:13px;margin-top:12px}
+.availCard .r{display:flex;justify-content:space-between;align-items:baseline}
+.availCard .r span{font-size:10px;color:#0f6e56;font-weight:800}
+.availCard .r b{font-size:18px;color:#0b3a31}
+.availTrack{height:8px;border-radius:5px;background:#dcefe9;overflow:hidden;margin:9px 0 7px}
+.availTrack i{display:block;height:100%;background:#0fa187}
+.availFoot{display:flex;justify-content:space-between;font-size:8.5px;color:#7a938c}
+.wealthHero{display:grid;gap:4px}
+.wealthHero span{font-size:9px;color:#7a938c;font-weight:800}
+.wealthHero b{font-size:29px;color:#0b3a31;line-height:1.15}
+.wealthDelta{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:850;border-radius:9px;padding:4px 8px;margin-top:5px}
+.wUp{background:#e7f7ef;color:#0b7d5f}.wDown{background:#fdeeea;color:#a8492f}.wFlat{background:#f1f5f4;color:#66817a}
+.sparkWrap{margin-top:12px}
+.spark{width:100%;height:74px;display:block}
+.wRow{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center;padding:11px 0;border-top:1px solid #f1f7f5}
+.wRow:first-child{border-top:0}
+.wIcon{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;font-size:12px;font-weight:900}
+.wRow h4{font-size:11.5px;margin:0;color:#12463c;font-weight:850}
+.wRow small{display:block;font-size:8.5px;color:#7d948e;margin-top:2px}
+.wRow .v{text-align:end}
+.wRow .v b{font-size:12.5px;color:#12463c;display:block}
+.wRow .v small{font-size:8.5px;margin-top:2px}
+.staleDot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#e0a92c;margin-inline-end:4px}
+.allocBar{display:flex;height:9px;border-radius:5px;overflow:hidden;margin:10px 0 7px;background:#eef4f2}
+.emptyBlock{text-align:center;padding:22px 14px;color:#7a938c}
+.emptyBlock b{display:block;font-size:12px;color:#2f544c;margin-bottom:5px}
+.emptyBlock small{font-size:9px;line-height:1.7}
+.emptyBlock button{margin-top:11px}
+.insightNote{display:grid;grid-template-columns:26px 1fr;gap:9px;align-items:start;border-radius:14px;padding:10px 11px;margin-top:9px}
+.insightNote i{font-style:normal;width:25px;height:25px;border-radius:9px;display:grid;place-items:center;font-size:11px;font-weight:900}
+.insightNote span{font-size:9px;line-height:1.7}
+.noteWarn{background:#fff8e7;border:1px solid #ecdaa8}.noteWarn i{background:#f6e3ae;color:#7a6122}.noteWarn span{color:#6f5c26}
+.noteGood{background:#eef9f4;border:1px solid #cde9de}.noteGood i{background:#d5f0e3;color:#0b6d5b}.noteGood span{color:#3d6a5f}
+.noteInfo{background:#f2f7fd;border:1px solid #d5e4f5}.noteInfo i{background:#dfeafb;color:#1a5390}.noteInfo span{color:#3c5c81}
+
+.sheetLead{font-size:9px;color:#7a938c;line-height:1.7;margin:2px 0 12px}
+.inlineCheck{display:flex;align-items:center;gap:8px;font-size:10px;color:#3f5f58;margin:8px 0}
+.inlineCheck input{width:auto;margin:0}
 </style>
 </head>
 <body>
@@ -543,13 +612,13 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
   <section class="quickScene hidden proGuideScene" data-quick-step="2">
       <div class="tutorialHeaderSticky proGuideTop">
         <div class="tutorialStepHead"><span class="quickBadge">2</span><div><small>رسائل البنك</small><h2>خل العمليات تدخل لحالها</h2></div></div>
-        <p class="tutorialLead">ما فيه بناء يدوي. تضيف الاختصار جاهز، تربطه بحسابك، وتشغّل الأتمتة مرة وحدة.</p>
+        <p class="tutorialLead">ثلاث خطوات، تسويها مرة وحدة. بعدها كل عملية بنكية تدخل ميزان وأنت ما تفتح شيء.</p>
       </div>
       <div class="guideBlueprint">
         <div class="guideNeedGrid">
-          <div class="guideNeedCard"><em>1</em><b>أضف الاختصار</b><small>Mizan Import يجيك جاهز بضغطة، بدون ما تبني خطوة وحدة.</small></div>
+          <div class="guideNeedCard"><em>1</em><b>أضف الاختصار</b><small>Mizan Import يجيك جاهز ومضبوط بضغطة وحدة.</small></div>
           <div class="guideNeedCard"><em>2</em><b>اربطه بحسابك</b><small>مفتاح خاص فيك يضمن أن عملياتك تدخل حسابك أنت فقط.</small></div>
-          <div class="guideNeedCard"><em>3</em><b>شغّل الأتمتة</b><small>كل رسالة بنك تنرسل لحالها وأنت ما تفتح شيء.</small></div>
+          <div class="guideNeedCard"><em>3</em><b>شغّل الأتمتة</b><small>تحدد متى يشتغل الاختصار على رسائل بنكك.</small></div>
         </div>
         <div class="guideRoadmap"><b>الخلاصة السريعة لهذا القسم</b><div class="guideRoadmapRow"><span class="guideRoadChip"><i>1</i>إضافة الاختصار</span><span class="guideRoadArrow">←</span><span class="guideRoadChip"><i>2</i>ربط المفتاح</span><span class="guideRoadArrow">←</span><span class="guideRoadChip"><i>3–4</i>الأتمتة</span></div></div>
       </div>
@@ -558,7 +627,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
       <article class="proGuideStep" data-import-sub="0">
       <div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 1 من 2</span><div class="guidePhaseText"><b>Mizan Import</b><small>الخطوة 1 من 4 — إضافة الاختصار</small></div></div>
       <div class="proGuideHeader"><span class="proGuideNum">1</span><div><div class="proGuideKicker">الخطوة 1</div><h3>أضف اختصار Mizan Import</h3></div></div>
-      <p class="proGuideText">اضغط الزر تحت. بيفتح تطبيق <b>Shortcuts</b> ويعرض لك الاختصار جاهز — اضغط <b>Add Shortcut</b> وبس.</p>
+      <p class="proGuideText">اضغط الزر تحت، بيفتح تطبيق <b>Shortcuts</b> ويعرض لك الاختصار — اضغط <b>Add Shortcut</b>.</p>
       <a class="guideAddBtn" href="https://www.icloud.com/shortcuts/17b99cafa10c43d7b59f73e8a1eff337" target="_blank" rel="noopener"><em>＋</em>إضافة Mizan Import</a>
       <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
       <div class="scHeader"><span class="scBack">‹</span><b>Mizan Import</b><span class="scChevron">⌄</span></div>
@@ -568,13 +637,13 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
       <div class="scAction"><span class="scIcon linkIcon">↗</span><div class="scActionText"><b>URL</b><small>sms-ingest</small></div><span class="scClose">×</span></div>
       <div class="scAction"><span class="scIcon greenIcon">⇪</span><div class="scActionText"><b>Get Contents of URL</b><small>POST</small></div><span class="scClose">×</span></div>
       </div></div></div>
-      <div class="guideCallout plain"><b>ليش صار أسهل؟</b><span>قبل كان لازم تبني 4 خطوات بنفسك. الحين تجيك جاهزة ومضبوطة</span></div>
+      <div class="guideCallout plain"><b>ما يحتاج تعديل</b><span>الاختصار يجيك مضبوط بالكامل — ما تغيّر فيه ولا خطوة</span></div>
     </article>
 
     <article class="proGuideStep hidden" data-import-sub="1">
       <div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 1 من 2</span><div class="guidePhaseText"><b>Mizan Import</b><small>الخطوة 2 من 4 — ربط الاختصار بحسابك</small></div></div>
       <div class="proGuideHeader"><span class="proGuideNum">2</span><div><div class="proGuideKicker">الخطوة 2</div><h3>الصق مفتاحك داخل الاختصار</h3></div></div>
-      <p class="proGuideText">هذي أهم خطوة. بدونها ما تدخل أي عملية. المفتاح خاص فيك وحدك ويضمن أن رسائلك توصل حسابك أنت.</p>
+      <p class="proGuideText">المفتاح يربط الاختصار بحسابك، ويضمن أن عملياتك تدخل عندك أنت وحدك. بدونه ما تدخل أي عملية.</p>
       <div class="guideKeyBox">
         <b>مفتاح Mizan Import الخاص فيك</b>
         <div id="quickTokenValue" class="guideKeyValue empty">اضغط «إنشاء المفتاح» عشان يظهر لك</div>
@@ -594,31 +663,32 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
       <div class="scCanvas">
       <div class="scAction"><span class="scIcon greenIcon">⇪</span><div class="scActionText"><b>Get Contents of URL</b><small>Method: POST</small><small>Headers: X-Mizan-Token = <span class="scChip">الصق هنا</span></small><small>Request Body: File</small></div><span class="scClose">×</span></div>
       </div></div></div>
-      <div class="guideCallout warm"><b>لا تشارك مفتاحك</b><span>أي شخص يملك مفتاحك تدخل رسائله في حسابك. تقدر تغيّره بأي وقت من الإعدادات</span></div>
+      <div class="guideCallout warm"><b>المفتاح خاص فيك</b><span>لا تشاركه مع أحد. تقدر تغيّره بأي وقت من الإعدادات</span></div>
     </article>
 
     <article class="proGuideStep hidden" data-import-sub="2">
       <div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 3 من 4 — متى يشتغل الاختصار</small></div></div>
-      <div class="proGuideHeader"><span class="proGuideNum">3</span><div><div class="proGuideKicker">الخطوة 3</div><h3>أنشئ الأتمتة وحدد شرطها</h3></div></div>
-      <p class="proGuideText">الأتمتة هي اللي تخلي كل رسالة بنك تنرسل لحالها. هذي الوحيدة اللي لازم تسويها بنفسك — iOS ما يسمح بمشاركتها.</p>
+      <div class="proGuideHeader"><span class="proGuideNum">3</span><div><div class="proGuideKicker">الخطوة 3</div><h3>حدد متى يشتغل</h3></div></div>
+      <p class="proGuideText">في Shortcuts افتح تبويب <b>Automation</b> ← اضغط <b>+</b> ← اختر <b>Message</b>. بعدها تختار طريقة وحدة من الثلاث حسب بنكك.</p>
       <div class="guideMiniList">
-        <div><i>1</i><span>في Shortcuts افتح تبويب <b>Automation</b> واضغط <b>+</b></span></div>
-        <div><i>2</i><span>اختر <b>Message</b> من القائمة</span></div>
-        <div><i>3</i><span>فعّل <b>Message Contains</b> واكتب فيها بالضبط: <b>الصرف المتبقي</b></span></div>
+        <div><i>أ</i><span><b>اسم المرسل</b> — الأنظف. في خانة <b>Sender</b> اكتب أسماء بنوكك، وخلّ خانة النص فاضية</span></div>
+        <div><i>ب</i><span><b>كلمة من الرسالة</b> — لو بنكك ما يقبل كتابة اسمه. فعّل <b>Message Contains</b> واكتب كلمة تتكرر في رسائله</span></div>
+        <div><i>ج</i><span><b>الاثنين معًا</b> — اسم المرسل + كلمة، لو تبي تقليل التشغيل غير الضروري</span></div>
       </div>
       <div class="unifiedGuideStage"><div class="shortcutStage automationStage" dir="ltr">
       <div class="autoDoneRow"><span>×</span><button>Next</button></div>
       <h4>When</h4>
-      <div class="autoRule"><span class="msgBubble">●</span><b>Message Contains<br>الصرف المتبقي</b><span>›</span></div>
+      <div class="autoRule"><span class="msgBubble">●</span><b>Message From<br>SNBAlAhli, AlRajhiBank, BSF</b><span>›</span></div>
+      <div class="autoField"><span>Message Contains</span><b>optional</b></div>
       </div></div>
-      <div class="guideCallout mint"><b>ليش هذي العبارة؟</b><span>«الصرف المتبقي» موجودة في كل رسائل البنك — الشراء والاسترجاع النقدي</span></div>
-      <div class="guideCallout plain"><b>ملاحظة</b><span>ما نعتمد على اسم المرسل لأن iOS ما يسمح بكتابته لبعض البنوك</span></div>
+      <div class="guideCallout mint"><b>كيف تختار الكلمة</b><span>افتح رسالة من بنكك واختر كلمة موجودة في كل رسائله. أمثلة شائعة: شراء • مبلغ • بطاقة • SAR</span></div>
+      <div class="guideCallout warm"><b>انتبه</b><span>لو اخترت كلمة ما تجي في كل الرسائل، بتضيع عليك عمليات. جرّبها على رسالة شراء ورسالة استرجاع</span></div>
     </article>
 
     <article class="proGuideStep hidden" data-import-sub="3">
       <div class="guidePhaseBanner"><span class="guidePhaseTag">Automation</span><div class="guidePhaseText"><b>رسائل البنك</b><small>الخطوة 4 من 4 — وش يسوي وقتها</small></div></div>
       <div class="proGuideHeader"><span class="proGuideNum">4</span><div><div class="proGuideKicker">الخطوة 4</div><h3>اربطها بـ Mizan Import</h3></div></div>
-      <p class="proGuideText">آخر خطوة، وفيها نقطة وحدة أغلب الناس تفوتها — اقرأها بتركيز.</p>
+      <p class="proGuideText">آخر خطوة. فيها نقطة صغيرة سهل تفوت — خذ بالك منها.</p>
       <div class="guideMiniList">
         <div><i>1</i><span>فعّل <b>Run Immediately</b> وأطفئ <b>Notify When Run</b></span></div>
         <div><i>2</i><span>اضغط <b>Next</b> واختر <b>Run Shortcut</b></span></div>
@@ -632,11 +702,11 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
       <h4>Do</h4>
       <div class="autoRule"><span class="shortcutApp">◆</span><b>Run Mizan Import<br><span style="opacity:.7;font-size:11px">Input: Shortcut Input</span></b><span>⌄</span></div>
       </div></div>
-      <div class="guideCallout warm"><b>لا تتخطى خانة Input</b><span>إذا تركتها فاضية بيشتغل الاختصار بدون نص الرسالة وما بيدخل ولا عملية</span></div>
+      <div class="guideCallout warm"><b>خانة Input ضرورية</b><span>لو تركتها فاضية، بيشتغل الاختصار بدون نص الرسالة وما تدخل أي عملية</span></div>
       <div class="guideFinalStack">
         <div class="guideFinalStage"><b>الشكل النهائي</b><div class="guideFlowLine"><span class="guideFlowChip"><i>1</i>رسالة من البنك</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>2</i>Automation تشتغل</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>3</i>Mizan Import يرسلها</span><span class="guideFlowArrow">←</span><span class="guideFlowChip"><i>4</i>تظهر في ميزان</span></div></div>
       </div>
-      <div class="guideCallout mint"><b>خلصنا هذا القسم</b><span>من الآن أي عملية بنكية تدخل ميزان بدون ما تفتح Safari ولا تسجل دخول</span></div>
+      <div class="guideCallout mint"><b>جاهز</b><span>أي عملية بنكية بتدخل ميزان تلقائيًا من الآن</span></div>
     </article>
 
       </div>
@@ -662,7 +732,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
       <article class="proGuideStep" data-collect-sub="0">
       <div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 1 من 2 — إضافة الاختصار</small></div></div>
       <div class="proGuideHeader"><span class="proGuideNum">1</span><div><div class="proGuideKicker">الخطوة 1</div><h3>أضف اختصار Mizan Collect</h3></div></div>
-      <p class="proGuideText">اضغط الزر تحت، وبيفتح تطبيق <b>Shortcuts</b> — اضغط <b>Add Shortcut</b>. ما يحتاج أي تعديل بعدها.</p>
+      <p class="proGuideText">اضغط الزر تحت، وبيفتح تطبيق <b>Shortcuts</b> — اضغط <b>Add Shortcut</b>. جاهز مباشرة.</p>
       <a class="guideAddBtn" href="https://www.icloud.com/shortcuts/0ab2d515c825472281f2330a2b5e212a" target="_blank" rel="noopener"><em>＋</em>إضافة Mizan Collect</a>
       <div class="unifiedGuideStage"><div class="shortcutStage" dir="ltr">
       <div class="scHeader"><span class="scBack">‹</span><b>Mizan Collect</b><span class="scChevron">⌄</span></div>
@@ -671,13 +741,13 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
       <div class="scAction"><span class="scIcon grayIcon">↔</span><div class="scActionText"><b>Repeat with each item</b></div><span class="scClose">×</span></div>
       <div class="scAction"><span class="scIcon greenIcon">✉</span><div class="scActionText"><b>Send <span class="scChip">Message</span> to <span class="scChip">Phone</span></b></div><span class="scClose">×</span></div>
       </div></div></div>
-      <div class="guideCallout plain"><b>ما فيه بيانات شخصية</b><span>الاختصار ما يحمل رقمك ولا أرقام أصحابك — ميزان يرسلها له وقت الاستخدام</span></div>
+      <div class="guideCallout plain"><b>بياناتك تبقى في ميزان</b><span>الاختصار ما يحفظ أرقام ولا أسماء — ميزان يرسلها له وقت الإرسال فقط</span></div>
     </article>
 
     <article class="proGuideStep hidden" data-collect-sub="1">
       <div class="guidePhaseBanner"><span class="guidePhaseTag">Shortcut 2 من 2</span><div class="guidePhaseText"><b>Mizan Collect</b><small>الخطوة 2 من 2 — كيف تستخدمه</small></div></div>
       <div class="proGuideHeader"><span class="proGuideNum">2</span><div><div class="proGuideKicker">الخطوة 2</div><h3>صار جاهز — كذا يشتغل</h3></div></div>
-      <p class="proGuideText">ما تحتاج تفتح الاختصار بنفسك أبدًا. ميزان يشغّله لك وقت ما ترسل طلبات القطة.</p>
+      <p class="proGuideText">ما تفتح الاختصار بنفسك. ميزان يشغّله وقت ما ترسل طلبات القطة.</p>
       <div class="guideMiniList">
         <div><i>1</i><span>سجّل القطة في ميزان وحدد نصيب كل شخص</span></div>
         <div><i>2</i><span>اضغط <b>أرسل الطلبات</b> من صفحة القطة</span></div>
@@ -698,7 +768,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 </section>
 <div id="appRoot" class="app hidden">
 <header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version">Secure v5.0.1</span></h1></div><div class="secureHeadActions"><button class="iconbtn hidden" id="adminBtn" type="button">🔐</button><button class="iconbtn" id="settingsBtn" type="button">⚙️</button></div></header>
-<main id="homeView">
+<main id="homeView"><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
 <section id="tourToday" class="card hero"><div><div class="muted">المتبقي اليوم</div><div class="big"><span id="todayRemaining">100</span> <small>ر.س</small></div><div id="todaySpend" class="muted">صرفت 0 من 100 ر.س</div><div id="statusPill" class="pill">✓ على المسار</div></div><div id="ring" class="ring"><div class="ringin"><strong id="pct">0%</strong><span>استهلاك</span></div></div><div id="tourSafe" class="safehero"><div><span>Safe to Spend</span><small>اليوم + الأسبوع + الشهر</small><button id="canBuyBtn" class="heroQuickAction" type="button">هل أقدر؟</button></div><b><span id="safeSpend">0</span> ر.س</b></div></section>
 <section class="grid3"><div class="tile a"><span>المتبقي هذا الأسبوع</span><strong id="weekRemaining">1,000</strong><small>ر.س</small></div><div class="tile b"><span>مستحق لك</span><strong id="owedTotal">0</strong><small>ر.س</small></div><div class="tile c"><span>المتبقي للدورة</span><strong id="savedMonth">0</strong><small>ر.س</small><div id="monthModeNote" class="monthnote">دورة المصروف</div></div></section>
 <section id="tourWeek" class="card"><div class="sectionhead"><div><h2>مسار الأسبوع</h2><p>ميزانية مستقلة لكل يوم حسب إعدادك</p></div><div class="adaptiveWrap"><button id="adaptiveToggle" class="switchbtn" type="button"><span>Adaptive</span><span class="track"><i class="dot"></i></span></button></div></div><div id="weekStrip" class="weekstrip"></div><div id="adaptiveNote" class="adaptiveNote">المسار الأساسي 100 / 200 ر.س</div></section>
@@ -742,16 +812,51 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 </main>
 
 <main id="budgetView" class="hidden v5Page">
-  <div class="tabPageTitle"><div><h2>الميزانية</h2><p>ميزانية الفئات + سرعة الصرف داخل دورة الراتب</p></div><button id="budgetSettingsBtn" class="ghost" type="button">تعديل</button></div>
+  <div class="tabPageTitle"><div><h2>الميزانية</h2><p id="budgetPageSub">وين يروح الراتب، وكم باقي للصرف</p></div><button id="budgetSettingsBtn" class="ghost" type="button">تعديل</button></div>
+  <div class="segTabs"><button id="segCycle" class="on" type="button">الدورة</button><button id="segCats" type="button">الفئات</button></div>
+  <div id="cyclePane">
+    <section class="card">
+      <div class="cycleHero"><span id="cycleHeroLabel">دخل الدورة</span><b><span id="cycleIncomeVal">0</span> <small>ر.س</small></b></div>
+      <div class="flowBar" id="cycleFlowBar"></div>
+      <div class="flowLegend" id="cycleFlowLegend"></div>
+      <div class="availCard">
+        <div class="r"><span>المتاح للصرف</span><b><span id="cycleAvailVal">0</span> ر.س</b></div>
+        <div class="availTrack"><i id="cycleAvailBar" style="width:0%"></i></div>
+        <div class="availFoot"><span id="cycleAvailSpent">صرفت 0</span><span id="cycleAvailLeft">باقي 0</span></div>
+      </div>
+      <div id="cycleNotes"></div>
+      <div class="actions"><button id="editIncomeBtn" class="ghost" type="button">تعديل الدخل</button><button id="addCommitBtn" class="ghost" type="button">إضافة التزام</button></div>
+    </section>
+    <section class="card"><div class="sectionhead"><div><h2>الالتزامات</h2><p>المحجوز من الراتب قبل المصروف اليومي</p></div></div>
+      <div id="commitList"></div>
+    </section>
+  </div>
+  <div id="catsPane" class="hidden">
   <section class="card"><div class="budgetHeroV5">
     <div><span>المخصص للفئات</span><b><span id="budgetAllocated">0</span> ر.س</b><small id="budgetAllocatedNote">داخل دورة المصروف الحالية</small></div>
     <div><span>غير مخصص</span><b><span id="budgetUnallocated">0</span> ر.س</b><small>يبقى ضمن ميزانية الدورة العامة</small></div>
   </div></section>
   <section class="card"><div class="sectionhead"><div><h2>مسار الفئات</h2><p>هل سرعة صرفك مناسبة للوقت المتبقي؟</p></div></div><div id="budgetRowsV5" class="budgetRowsV5"></div></section>
   <section class="card"><div class="sectionhead"><div><h2>اقتراحات ميزان</h2><p>مبنية على الدورات السابقة إذا توفر تاريخ كافٍ</p></div></div><div id="budgetSuggestions" class="budgetRowsV5"></div></section>
+  </div>
 </main>
 <main id="insightsView" class="hidden v5Page">
-  <div class="tabPageTitle"><div><h2>التحليل</h2><p>قراءة لسلوك الصرف، وليس رسومًا للتجميل</p></div><button id="openOperationsBtn2" class="ghost" type="button">كل العمليات</button></div>
+  <div class="tabPageTitle"><div><h2>التحليل</h2><p id="insightPageSub">قراءة لسلوك الصرف، وليس رسومًا للتجميل</p></div><button id="openOperationsBtn2" class="ghost" type="button">كل العمليات</button></div>
+  <div class="segTabs"><button id="segSpend" class="on" type="button">المصروف</button><button id="segWealth" type="button">الثروة</button></div>
+  <div id="wealthPane" class="hidden">
+    <section class="card">
+      <div class="wealthHero"><span>إجمالي الثروة</span><b><span id="wealthTotal">0</span> <small style="font-size:12px;color:#7a938c">ر.س</small></b><div><span id="wealthDelta" class="wealthDelta wFlat">—</span></div></div>
+      <div class="sparkWrap"><svg id="wealthSpark" class="spark" viewBox="0 0 300 74" preserveAspectRatio="none"></svg></div>
+      <div class="allocBar" id="wealthAlloc"></div>
+      <div class="flowLegend" id="wealthAllocLegend"></div>
+      <div id="wealthNotes"></div>
+      <div class="actions"><button id="addWealthBtn" class="ghost" type="button">إضافة حساب</button><button id="updateWealthBtn" class="ghost" type="button">تحديث القيم</button></div>
+    </section>
+    <section class="card"><div class="sectionhead"><div><h2>حساباتك</h2><p>القيمة الحالية مقابل ما ضخّيته</p></div></div>
+      <div id="wealthList"></div>
+    </section>
+  </div>
+  <div id="spendPane">
   <section class="card"><div class="insightKpisV5">
     <div class="insightKpiV5"><span>دقة التصنيف</span><b id="insightClassAccuracy">—</b><small id="insightClassDetail">حسب الثقة الحالية</small></div>
     <div class="insightKpiV5"><span>متوسط العملية</span><b id="insightAvgTxn">—</b><small>للمصاريف المحتسبة في الدورة</small></div>
@@ -762,6 +867,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
   <section class="card"><div class="sectionhead"><div><h2>المتكرر والاشتراكات</h2><p>يكتشف النمط من التاريخ حتى لو ما سجلته يدويًا</p></div></div><div id="recurringList" class="recurringList"></div></section>
   <section class="card"><div class="sectionhead"><div><h2>عمليات غير معتادة</h2><p>مقارنة بسلوكك المعتاد عند نفس التاجر — ليست ادعاء احتيال</p></div></div><div id="anomalyList" class="anomalyList"></div></section>
   <section class="card"><div class="sectionhead"><div><h2>مراجعة التصنيف</h2><p>العمليات الغامضة فقط، وتصحيحك يعلم ميزان</p></div><span id="classReviewCount" class="count">0</span></div><div id="classReviewList" class="reviewInbox"></div></section>
+  </div>
 </main>
 
 <main id="splitsView" class="hidden">
@@ -773,6 +879,48 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
   <section class="card"><div class="sectionhead"><div><h2>الفواتير المقسمة</h2><p>تابع كل شخص ومتى دفع</p></div><div class="filterSeg"><button id="splitOpenFilter" class="on" type="button">مفتوحة</button><button id="splitDoneFilter" type="button">مكتملة</button></div></div><div id="splitHubList"></div></section>
 </main>
 <footer class="secureFooter"><b>Made by Fahad Almutairi</b><br>© 2026 Fahad Almutairi. All rights reserved.</footer>
+
+<section id="cycleOpenSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button>
+  <div class="handle"></div><h3>افتتاح الدورة</h3><p class="sheetLead" id="cycleOpenLabel">راجع دخلك والتزاماتك قبل ما تبدأ</p>
+  <label>دخل هذه الدورة<input id="cycleOpenIncome" inputmode="decimal" placeholder="0"></label>
+  <div id="cycleOpenRows"></div>
+  <div class="availCard"><div class="r"><span>يتبقى للصرف</span><b><span id="cycleOpenAvail">0</span> ر.س</b></div><div class="availFoot" style="margin-top:6px"><span id="cycleOpenPerDay">—</span></div></div>
+  <div class="actions"><button id="cycleOpenLater" class="ghost" type="button">لاحقًا</button><button id="cycleOpenConfirm" class="primary" type="button">تأكيد وفتح الدورة</button></div>
+</section>
+
+<section id="incomeSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button>
+  <div class="handle"></div><h3>دخل الدورة</h3><p class="sheetLead">الراتب وأي دخل إضافي داخل الدورة الحالية</p>
+  <label>المبلغ<input id="incomeAmount" inputmode="decimal" placeholder="0"></label>
+  <label>الوصف<input id="incomeLabel" placeholder="الراتب"></label>
+  <div id="incomeRows"></div>
+  <div class="actions"><button id="incomeAddBtn" class="ghost" type="button">إضافة</button><button id="incomeDoneBtn" class="primary" type="button">تم</button></div>
+</section>
+
+<section id="commitSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button>
+  <div class="handle"></div><h3 id="commitSheetTitle">التزام جديد</h3><p class="sheetLead">يُحجز من الراتب في بداية كل دورة</p>
+  <label>الاسم<input id="commitName" placeholder="قرض تمويلي"></label>
+  <label>النوع<select id="commitGroup"></select></label>
+  <label>المبلغ<input id="commitAmount" inputmode="decimal" placeholder="0"></label>
+  <label>يوم الاستحقاق<input id="commitDue" inputmode="numeric" placeholder="27"></label>
+  <label class="inlineCheck"><input id="commitVarying" type="checkbox"> المبلغ متغير — اسألني كل دورة</label>
+  <div class="actions"><button id="commitDeleteBtn" class="ghost hidden" type="button">حذف</button><button id="commitSaveBtn" class="primary" type="button">حفظ</button></div>
+</section>
+
+<section id="wealthAccountSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button>
+  <div class="handle"></div><h3 id="wealthSheetTitle">حساب جديد</h3><p class="sheetLead">سجّل الحساب مرة، وحدّث قيمته شهريًا</p>
+  <label>الاسم<input id="wealthName" placeholder="صندوق الراجحي"></label>
+  <label>النوع<select id="wealthType"></select></label>
+  <label>إجمالي ما ضخّيته<input id="wealthContrib" inputmode="decimal" placeholder="0"></label>
+  <label>القيمة الحالية<input id="wealthValue" inputmode="decimal" placeholder="0"></label>
+  <div class="actions"><button id="wealthDeleteBtn" class="ghost hidden" type="button">حذف</button><button id="wealthSaveBtn" class="primary" type="button">حفظ</button></div>
+</section>
+
+<section id="wealthUpdateSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button>
+  <div class="handle"></div><h3>تحديث القيم</h3><p class="sheetLead" id="wealthUpdateLabel">اكتب القيمة الحالية لكل حساب</p>
+  <div id="wealthUpdateRows"></div>
+  <div class="actions"><button id="wealthUpdateCancel" class="ghost" type="button">إلغاء</button><button id="wealthUpdateSave" class="primary" type="button">حفظ التحديث</button></div>
+</section>
+
 <nav class="bottom"><button id="homeNav" class="navtab on" type="button"><b>⌂</b>الرئيسية</button><button id="budgetNav" class="navtab" type="button"><b>◎</b>الميزانية</button><button id="addTxnBtn" class="primaryNav" type="button"><b>＋</b>عملية</button><button id="insightsNav" class="navtab" type="button"><b>⌁</b>التحليل</button><button id="splitsNav" class="navtab" type="button"><b>👥</b>القطات</button></nav>
 </div>
 <main id="payView" class="payview hidden">
@@ -797,9 +945,9 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 <button id="applyUpdateBtn" type="button" style="border:0;border-radius:10px;background:#fff;color:#0b6f5e;padding:7px 10px;font-weight:800">تحديث</button>
 </div>
 <div id="backdrop" class="backdrop hidden"></div><div id="toast" class="toast"></div>
-<section id="txnSheet" class="sheet hidden"><div class="handle"></div><h3>إضافة عملية</h3><form id="txnForm"><label>المبلغ<input id="txnAmount" type="number" min="0.01" step="0.01" inputmode="decimal" required placeholder="مثال: 85"></label><label>نوع العملية<select id="txnType"><option value="personal">مصروف شخصي</option><option value="split">قطة / دفعت عن مجموعة</option><option value="reimbursement">تحويل مسترد من شخص</option><option value="cashback">كاش باك / مكافأة</option><option value="internal">تحويل بين حساباتي</option></select></label><div id="peopleBox" class="hidden"></div><div class="subcatRow"><label>التصنيف<select id="category"></select></label><label>التصنيف الفرعي<select id="txnSubcategory"></select></label></div><label>البطاقة / الحساب<select id="txnSource"></select></label><label>ملاحظة<input id="note" placeholder="اختياري"></label><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">حفظ</button></div></form></section>
+<section id="txnSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>إضافة عملية</h3><form id="txnForm"><label>المبلغ<input id="txnAmount" type="number" min="0.01" step="0.01" inputmode="decimal" required placeholder="مثال: 85"></label><label>نوع العملية<select id="txnType"><option value="personal">مصروف شخصي</option><option value="split">قطة / دفعت عن مجموعة</option><option value="reimbursement">تحويل مسترد من شخص</option><option value="cashback">كاش باك / مكافأة</option><option value="internal">تحويل بين حساباتي</option></select></label><div id="peopleBox" class="hidden"></div><div class="subcatRow"><label>التصنيف<select id="category"></select></label><label>التصنيف الفرعي<select id="txnSubcategory"></select></label></div><label>البطاقة / الحساب<select id="txnSource"></select></label><label>ملاحظة<input id="note" placeholder="اختياري"></label><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">حفظ</button></div></form></section>
 
-<section id="splitSheet" class="sheet hidden"><div class="handle"></div><h3 id="splitTitle">تقسيم الفاتورة</h3>
+<section id="splitSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3 id="splitTitle">تقسيم الفاتورة</h3>
 <form id="splitForm"><input id="splitTxnId" type="hidden"><div id="splitTxnSummary" class="result"></div>
 <div class="sectionhead" style="margin-top:14px"><div><h2 style="font-size:15px">مين كان معك؟</h2><p>أنت مضاف تلقائيًا</p></div><button id="addPersonFromSplit" class="ghost" type="button">+ شخص</button></div>
 <div id="splitPeoplePicker" class="personPicker"></div>
@@ -807,10 +955,10 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 <div id="splitBuilderRows" class="builderRows"></div><div id="splitBuilderTotal" class="builderTotal"></div>
 <div class="splitpreview"><div><span>الإجمالي</span><b id="splitPreviewTotal">0</b></div><div><span>حصتك</span><b id="splitPreviewShare">0</b></div><div><span>مستحق لك</span><b id="splitPreviewOwed">0</b></div></div>
 <div id="splitRecoveredInfo" class="result hidden"></div><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">حفظ القطة</button></div><button id="cancelSplitBtn" type="button" class="dangerbtn hidden">إلغاء القطة وإرجاع العملية كمصروف شخصي</button></form></section>
-<section id="personSheet" class="sheet hidden"><div class="handle"></div><h3 id="personSheetTitle">إضافة شخص</h3><form id="personForm"><input id="personId" type="hidden"><label>الاسم<input id="personName" required placeholder="مثال: محمد"></label><label>رقم الجوال<input id="personPhone" type="tel" inputmode="tel" placeholder="05xxxxxxxx"></label><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">حفظ</button></div><button id="deletePersonBtn" type="button" class="dangerbtn hidden">حذف الشخص من القائمة</button></form></section>
-<section id="collectionSheet" class="sheet hidden"><div class="handle"></div><h3>إعداد التحصيل</h3><form id="collectionForm"><label>رقم الجوال المسجل في سريع<input id="collectionPhone" type="tel" inputmode="tel" placeholder="05xxxxxxxx"></label><label>اسم اختصار الإرسال<input id="collectShortcutName" value="Mizan Collect"></label><label>نص طلب القطة<textarea id="requestTemplate" style="min-height:110px"></textarea></label><label>نص التذكير<textarea id="reminderTemplate" style="min-height:110px"></textarea></label><div class="result">المتغيرات: {name} الاسم، {amount} المبلغ، {split} القطة، {phone} رقم سريع، {link} رابط طلب القطة</div><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">حفظ</button></div></form></section>
-<section id="refundMatchSheet" class="sheet hidden"><div class="handle"></div><h3>مين حول؟</h3><input id="refundTxnId" type="hidden"><div id="refundMatchInfo" class="result"></div><div id="refundMatchList" class="personPicker" style="margin-top:12px"></div><div class="actions"><button type="button" class="secondary close">إلغاء</button></div></section>
-<section id="editTxnSheet" class="sheet hidden"><div class="handle"></div><h3>تعديل العملية</h3>
+<section id="personSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3 id="personSheetTitle">إضافة شخص</h3><form id="personForm"><input id="personId" type="hidden"><label>الاسم<input id="personName" required placeholder="مثال: محمد"></label><label>رقم الجوال<input id="personPhone" type="tel" inputmode="tel" placeholder="05xxxxxxxx"></label><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">حفظ</button></div><button id="deletePersonBtn" type="button" class="dangerbtn hidden">حذف الشخص من القائمة</button></form></section>
+<section id="collectionSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>إعداد التحصيل</h3><form id="collectionForm"><label>رقم الجوال المسجل في سريع<input id="collectionPhone" type="tel" inputmode="tel" placeholder="05xxxxxxxx"></label><label>اسم اختصار الإرسال<input id="collectShortcutName" value="Mizan Collect"></label><label>نص طلب القطة<textarea id="requestTemplate" style="min-height:110px"></textarea></label><label>نص التذكير<textarea id="reminderTemplate" style="min-height:110px"></textarea></label><div class="result">المتغيرات: {name} الاسم، {amount} المبلغ، {split} القطة، {phone} رقم سريع، {link} رابط طلب القطة</div><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">حفظ</button></div></form></section>
+<section id="refundMatchSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>مين حول؟</h3><input id="refundTxnId" type="hidden"><div id="refundMatchInfo" class="result"></div><div id="refundMatchList" class="personPicker" style="margin-top:12px"></div><div class="actions"><button type="button" class="secondary close">إلغاء</button></div></section>
+<section id="editTxnSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>تعديل العملية</h3>
 <form id="editTxnForm"><input id="editTxnId" type="hidden">
 <label>المبلغ<input id="editAmount" type="number" min="0.01" step="0.01" inputmode="decimal"></label>
 <div class="subcatRow"><label>التصنيف<select id="editCategory"></select></label><label>التصنيف الفرعي<select id="editSubcategory"></select></label></div><div id="editClassificationWhy" class="whyBox"><b>لماذا هذا التصنيف؟</b><small>يظهر تفسير القرار هنا</small></div>
@@ -822,20 +970,20 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 <div id="editSplitHint" class="result hidden">هذه العملية مرتبطة بقطة. تعديل مبلغها سيحدّث إجمالي القطة مع الحفاظ على حصتك الحالية قدر الإمكان</div>
 <div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">حفظ التعديل</button></div>
 </form></section>
-<section id="buySheet" class="sheet hidden"><div class="handle"></div><h3>هل أقدر أشتريه؟</h3><form id="buyForm">
+<section id="buySheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>هل أقدر أشتريه؟</h3><form id="buyForm">
 <label>السعر<input id="buyAmount" type="number" min="0.01" step="0.01" inputmode="decimal" required></label>
 <label>الفئة<select id="buyCategory"></select></label>
 <div id="buyResult" class="result">اكتب السعر والفئة ونحسب أثره على اليوم والفئة ودورة المصروف</div>
 <div class="actions"><button type="button" class="secondary close">إغلاق</button><button type="submit" class="primary">احسب</button></div></form></section>
 
-<section id="operationsSheet" class="sheet opsSheet hidden"><div class="handle"></div><h3>كل العمليات</h3>
+<section id="operationsSheet" class="sheet opsSheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>كل العمليات</h3>
 <div class="opsToolbar"><input id="opsSearch" type="search" placeholder="ابحث باسم التاجر أو الوصف"><div class="opsFilters">
 <select id="opsCategoryFilter"><option value="">كل الفئات</option></select>
 <select id="opsConfidenceFilter"><option value="">كل التصنيفات</option><option value="review">تحتاج مراجعة</option><option value="learned">تعلم منك</option><option value="auto">تلقائي</option></select>
 </div></div><div class="opsStats"><span id="opsCount">0 عملية</span><span id="opsTotal">0 ر.س</span></div><div id="opsList" class="opsList"></div><div class="actions"><button type="button" class="secondary close">إغلاق</button></div></section>
 
-<section id="sourceSheet" class="sheet hidden"><div class="handle"></div><h3>إضافة بطاقة أو حساب</h3><form id="sourceForm"><label>الاسم<input id="sourceName" required placeholder="بطاقة البنزين"></label><label>البنك<input id="sourceBank" placeholder="اسم البنك"></label><label>النوع<select id="sourceType"><option>بطاقة</option><option>حساب جاري</option><option>محفظة</option></select></label><label>آخر 4 أرقام<input id="last4" inputmode="numeric" maxlength="4"></label><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">إضافة</button></div></form></section>
-<section id="settingsSheet" class="sheet hidden"><div class="handle"></div><h3>الإعدادات</h3><form id="settingsForm">
+<section id="sourceSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>إضافة بطاقة أو حساب</h3><form id="sourceForm"><label>الاسم<input id="sourceName" required placeholder="بطاقة البنزين"></label><label>البنك<input id="sourceBank" placeholder="اسم البنك"></label><label>النوع<select id="sourceType"><option>بطاقة</option><option>حساب جاري</option><option>محفظة</option></select></label><label>آخر 4 أرقام<input id="last4" inputmode="numeric" maxlength="4"></label><div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">إضافة</button></div></form></section>
+<section id="settingsSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>الإعدادات</h3><form id="settingsForm">
 <div class="secureAccountBox"><div><b id="secureAccountName">—</b><small id="secureAccountEmail">—</small></div><span id="secureAccountRole">User</span></div>
 <label>اسمك<input id="secureSettingsName" placeholder="اسمك"></label>
 <div class="settingsSectionTitle"><b>ميزانية كل يوم</b><small>كل يوم مستقل عن الثاني</small></div>
@@ -893,13 +1041,13 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
 </div>
 </section>
 
-<section id="smsSheet" class="sheet hidden"><div class="handle"></div><h3>استيراد رسالة بنك</h3>
+<section id="smsSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>استيراد رسالة بنك</h3>
 <label>البنك / المرسل<select id="smsSender"><option value="auto">تلقائي</option><option value="AlRajhiBank">AlRajhiBank</option><option value="SNB-AlAhli">SNB-AlAhli</option><option value="BSF">Saudi Fransi / BSF</option><option value="BankAlbilad">Bank Albilad</option><option value="Other">بنك آخر</option></select></label>
 <label>نص الرسالة<textarea id="smsText" placeholder="الصق رسالة البنك هنا..."></textarea></label>
 <div id="smsResult" class="result">يدعم أي بنك بصيغة عامة. Mizan Import الجديد يرسل رسالة البنك إلى Mizan Inbox الآمن في Supabase بدون فتح Safari، ثم ميزان يصنفها عند المزامنة</div>
 <div class="actions"><button type="button" class="secondary close">إغلاق</button><button id="smsImportGo" type="button" class="primary">تحليل وإضافة</button></div></section>
-<section id="importSheet" class="sheet hidden"><div class="handle"></div><h3>استيراد كشف CSV</h3><label>اربطه بمصدر<select id="importSource"></select></label><label>الملف<input id="csvFile" type="file" accept=".csv,text/csv"></label><div id="importResult" class="result">الأعمدة المدعومة: Date / التاريخ، Description / الوصف، Amount أو Debit/Credit</div><div class="actions"><button type="button" class="secondary close">إغلاق</button><button id="importGo" type="button" class="primary">استيراد</button></div></section>
-<section id="setupGuideSheet" class="sheet hidden"><div class="handle"></div>
+<section id="importSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>استيراد كشف CSV</h3><label>اربطه بمصدر<select id="importSource"></select></label><label>الملف<input id="csvFile" type="file" accept=".csv,text/csv"></label><div id="importResult" class="result">الأعمدة المدعومة: Date / التاريخ، Description / الوصف، Amount أو Debit/Credit</div><div class="actions"><button type="button" class="secondary close">إغلاق</button><button id="importGo" type="button" class="primary">استيراد</button></div></section>
+<section id="setupGuideSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div>
 <h3>إعداد ميزان على الآيفون</h3>
 <div class="guideTabs"><button class="on" data-guide-tab="home" type="button">الشاشة الرئيسية</button><button data-guide-tab="import" type="button">Mizan Import</button><button data-guide-tab="collect" type="button">Mizan Collect</button></div>
 <div class="guidePane on" data-guide-pane="home"><h4>إضافة ميزان كتطبيق</h4><p>نفذها من Safari بعد اعتماد النسخة النهائية على الرابط الرئيسي</p><div class="guideSteps"><div class="guideStep">افتح ميزان في <b>Safari</b></div><div class="guideStep">اضغط <b>المشاركة Share</b></div><div class="guideStep">اختر <b>Add to Home Screen / إضافة إلى الشاشة الرئيسية</b></div><div class="guideStep">خل الاسم <b>ميزان</b> واضغط <b>Add / إضافة</b></div></div><div class="guideNote">نسخة Secure تعتمد على السيرفر؛ لازم يكون فيه إنترنت وقت الدخول والمزامنة</div></div>
@@ -922,7 +1070,7 @@ header{display:flex;justify-content:space-between;align-items:center;margin:0 4p
     <div class="tourActions"><button id="tourPrev" type="button">رجوع</button><button id="tourNext" type="button">التالي</button></div>
   </div>
 </div>
-<section id="adminSheet" class="sheet hidden"><div class="handle"></div><h3>إدارة الوصول 🔐</h3><div class="secureAdminBadge">Owner • MFA / AAL2</div><div class="adminKpis"><div><span>المستخدمون</span><b id="adminUsersCount">0</b></div><div><span>الموقوفون</span><b id="adminBlockedCount">0</b></div><div><span>الدعوات</span><b id="adminPendingCount">0</b></div></div><div class="adminPanel"><div class="adminTitle"><b>التحكم العام</b><button id="adminKillBtn" class="adminMini danger" type="button">إيقاف الجميع</button></div><small id="adminKillText">وصول المستخدمين مفعّل</small></div><div class="adminPanel"><b>دعوة مستخدم</b><label>الاسم<input id="adminInviteName" placeholder="محمد"></label><label>الإيميل<input id="adminInviteEmail" type="email" placeholder="name@example.com"></label><label>صلاحية الدعوة بالساعات<input id="adminInviteHours" type="number" min="1" max="720" value="72"></label><button id="adminCreateInvite" class="primary secureFull" type="button">إنشاء رابط دعوة</button><div id="adminInviteResult" class="secureMsg hidden"></div></div><div class="adminPanel"><div class="adminTitle"><b>المستخدمون</b><button id="adminRefresh" class="adminMini" type="button">تحديث</button></div><div id="adminUsersList" class="adminList"></div></div><div class="adminPanel"><b>الدعوات</b><div id="adminInvitesList" class="adminList"></div></div><div class="adminPanel"><b>آخر النشاطات</b><div id="adminAuditList" class="adminList"></div></div><div class="actions"><button type="button" class="secondary close">إغلاق</button></div></section>
+<section id="adminSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div><h3>إدارة الوصول 🔐</h3><div class="secureAdminBadge">Owner • MFA / AAL2</div><div class="adminKpis"><div><span>المستخدمون</span><b id="adminUsersCount">0</b></div><div><span>الموقوفون</span><b id="adminBlockedCount">0</b></div><div><span>الدعوات</span><b id="adminPendingCount">0</b></div></div><div class="adminPanel"><div class="adminTitle"><b>التحكم العام</b><button id="adminKillBtn" class="adminMini danger" type="button">إيقاف الجميع</button></div><small id="adminKillText">وصول المستخدمين مفعّل</small></div><div class="adminPanel"><b>دعوة مستخدم</b><label>الاسم<input id="adminInviteName" placeholder="محمد"></label><label>الإيميل<input id="adminInviteEmail" type="email" placeholder="name@example.com"></label><label>صلاحية الدعوة بالساعات<input id="adminInviteHours" type="number" min="1" max="720" value="72"></label><button id="adminCreateInvite" class="primary secureFull" type="button">إنشاء رابط دعوة</button><div id="adminInviteResult" class="secureMsg hidden"></div></div><div class="adminPanel"><div class="adminTitle"><b>المستخدمون</b><button id="adminRefresh" class="adminMini" type="button">تحديث</button></div><div id="adminUsersList" class="adminList"></div></div><div class="adminPanel"><b>الدعوات</b><div id="adminInvitesList" class="adminList"></div></div><div class="adminPanel"><b>آخر النشاطات</b><div id="adminAuditList" class="adminList"></div></div><div class="actions"><button type="button" class="secondary close">إغلاق</button></div></section>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (()=>{
@@ -932,14 +1080,14 @@ const SUPABASE_KEY='sb_publishable_jBKntvH70OkSa9zgrMjRjw_XNC2sSq0';
 const OWNER_EMAIL='fs.almutairi@outlook.com';
 const RELEASE_MANIFEST='/version.json';
 const SMS_INGEST_ENDPOINT='https://snhmckjyhiizzsqgraec.supabase.co/functions/v1/sms-ingest';
-let smsIngestTokenOnce='';
+let smsIngestTokenOnce='';let cycleDraft=null,editingCommitId=null,editingWealthId=null,pullStartY=null;
 let smsInboxSyncBusy=false;
 let availableAppVersion=null,availableAppBuild=null,updateCheckBusy=false;
 
 const LEGACY_KEY='mizan-static-v1';
 const GUIDE_CROPS={};
 const KEY=LEGACY_KEY;
-const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleEndDay:31},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:''},merchantRules:{},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
+const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleEndDay:31},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:'',budgetSeg:'cycle',insightSeg:'spend'},merchantRules:{},income:{commitments:[],autoOpen:true},cycles:{},wealth:{accounts:[],snapshots:[]},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
 const clone=x=>JSON.parse(JSON.stringify(x));let state=clone(defaults);let splitReturnTxnId=null;
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 let secureUser=null,secureProfile=null,secureSession=null,secureReady=false,secureSaveTimer=null,secureSaveBusy=false,secureSaveQueued=false,accessTimer=null,mfaEnrollment=null,currentAdminControl=null,v5BackfillPending=0;
@@ -1163,6 +1311,124 @@ function applyRefundToMember(amount,splitId,memberId){const s=state.splits.find(
 function applyRefundToSplit(amount,splitId){const s=state.splits.find(x=>x.id===splitId);if(!s)return applyRefund(amount);if(Array.isArray(s.members)){let remaining=amount,allocations=[];for(const m of s.members.filter(x=>!x.isSelf)){const due=Math.max(0,(+m.share||0)-(+m.paidAmount||0)),p=Math.min(due,remaining);if(p>0){m.paidAmount=(+m.paidAmount||0)+p;m.paid=m.paidAmount>=(+m.share||0)-.009;allocations.push({splitId:s.id,memberId:m.id,amount:p});remaining-=p}if(remaining<=.009)break}syncSplitTotals(s);return{applied:amount-remaining,allocations}}const due=Math.max(0,(s.owed||0)-(s.recovered||0)),v=Math.min(due,amount);s.recovered=(s.recovered||0)+v;return{applied:v,allocations:v?[{splitId:s.id,amount:v}]:[]}}
 function learnedCategory(rule){return typeof rule==='string'?rule:(rule&&typeof rule==='object'?rule.category:null)}
 function learnedSubcategory(rule){return rule&&typeof rule==='object'?(rule.subcategory||''):''}
+
+const COMMIT_GROUPS=[['fixed','التزامات ثابتة','gFixed'],['transfer','تحويلات شخصية','gTransfer'],['saving','ادخار','gSave'],['invest','استثمار','gInvest']];
+const WEALTH_TYPES=[['fund','صندوق','◈'],['stocks','أسهم','▲'],['gold','ذهب','●'],['realestate','عقار','▣'],['deposit','وديعة','▤'],['crypto','محفظة رقمية','◆'],['other','أخرى','◇']];
+function groupLabel(g){const r=COMMIT_GROUPS.find(x=>x[0]===g);return r?r[1]:'أخرى'}
+function groupClass(g){const r=COMMIT_GROUPS.find(x=>x[0]===g);return r?r[2]:'gFixed'}
+function wealthTypeMeta(t){const r=WEALTH_TYPES.find(x=>x[0]===t);return r?{label:r[1],icon:r[2]}:{label:'أخرى',icon:'◇'}}
+function ensureIncomeShape(){
+  if(!state.income||typeof state.income!=='object')state.income={commitments:[],autoOpen:true};
+  if(!Array.isArray(state.income.commitments))state.income.commitments=[];
+  if(state.income.autoOpen===undefined)state.income.autoOpen=true;
+  if(!state.cycles||typeof state.cycles!=='object')state.cycles={};
+  if(!state.wealth||typeof state.wealth!=='object')state.wealth={accounts:[],snapshots:[]};
+  if(!Array.isArray(state.wealth.accounts))state.wealth.accounts=[];
+  if(!Array.isArray(state.wealth.snapshots))state.wealth.snapshots=[];
+}
+function cycleKeyFor(b){const p=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;return `${p(b.start)}_${p(b.end)}`}
+function currentCycleKey(){return cycleKeyFor(currentCycle())}
+function cycleRecord(key=currentCycleKey()){ensureIncomeShape();return state.cycles[key]||null}
+function cycleIncomeTotal(key=currentCycleKey()){const c=cycleRecord(key);if(!c)return 0;return (c.income||[]).reduce((a,x)=>a+(+x.amount||0),0)}
+function cycleReservations(key=currentCycleKey()){const c=cycleRecord(key);return c?(c.reservations||[]):[]}
+function reservedTotal(key=currentCycleKey()){return cycleReservations(key).filter(r=>r.status!=='skipped').reduce((a,r)=>a+(+r.amount||0),0)}
+function reservedByGroup(key=currentCycleKey()){const m={fixed:0,transfer:0,saving:0,invest:0};cycleReservations(key).forEach(r=>{if(r.status==='skipped')return;m[r.group]=(m[r.group]||0)+(+r.amount||0)});return m}
+function cycleAvailable(key=currentCycleKey()){const inc=cycleIncomeTotal(key);if(inc<=0)return null;return Math.max(0,inc-reservedTotal(key))}
+function incomeActive(){ensureIncomeShape();return cycleIncomeTotal()>0}
+function cycleDaysLeft(){const b=currentCycle(),now=fdate();let n=0,d=new Date(now);while(d<b.endExclusive){n++;d.setDate(d.getDate()+1)}return Math.max(1,n)}
+function availablePerDay(){const a=cycleAvailable();if(a===null)return null;const spent=monthSpend();return Math.max(0,a-spent)/cycleDaysLeft()}
+function nextCommitmentDate(dueDay,b){const day=Math.min(31,Math.max(1,+dueDay||1));let d=new Date(b.start.getFullYear(),b.start.getMonth(),Math.min(day,daysInMonth(b.start.getFullYear(),b.start.getMonth())));if(d<b.start)d=new Date(b.start.getFullYear(),b.start.getMonth()+1,Math.min(day,daysInMonth(b.start.getFullYear(),b.start.getMonth()+1)));return d}
+function buildCycleDraft(key=currentCycleKey()){
+  ensureIncomeShape();const b=currentCycle(),prevKeys=Object.keys(state.cycles).sort();
+  const prev=prevKeys.length?state.cycles[prevKeys[prevKeys.length-1]]:null;
+  const rows=state.income.commitments.filter(c=>c.active!==false).map(c=>{
+    const last=prev?(prev.reservations||[]).find(r=>r.commitmentId===c.id):null;
+    const suggested=c.varying?(+((last&&last.amount)||c.lastAmount||c.amount)||0):(+c.amount||0);
+    return {commitmentId:c.id,name:c.name,group:c.group,amount:suggested,varying:!!c.varying,dueDay:c.dueDay||1,dueAt:nextCommitmentDate(c.dueDay,b).toISOString(),status:'reserved',needsInput:!!c.varying,txnId:null,confirmedAt:null}
+  });
+  const lastIncome=prev&&(prev.income||[]).length?(prev.income||[]).reduce((a,x)=>a+(+x.amount||0),0):0;
+  return {key,openedAt:null,income:lastIncome>0?[{id:uid(),label:'الراتب',amount:lastIncome,ts:b.start.toISOString()}]:[],reservations:rows}
+}
+function openCycleIfNeeded(){
+  ensureIncomeShape();
+  const key=currentCycleKey();
+  if(state.cycles[key]&&state.cycles[key].openedAt)return false;
+  if(!state.income.commitments.length&&!Object.keys(state.cycles).length)return false;
+  cycleDraft=buildCycleDraft(key);
+  renderCycleOpen();open('cycleOpenSheet');
+  return true
+}
+function commitCycleDraft(){
+  if(!cycleDraft)return;
+  ensureIncomeShape();
+  cycleDraft.openedAt=new Date().toISOString();
+  cycleDraft.reservations.forEach(r=>{r.needsInput=false});
+  state.cycles[cycleDraft.key]=cycleDraft;
+  cycleDraft.reservations.forEach(r=>{const c=state.income.commitments.find(x=>x.id===r.commitmentId);if(c&&c.varying)c.lastAmount=r.amount});
+  cycleDraft=null;save();close();render();toast('تم فتح الدورة')
+}
+function matchReservation(p){
+  ensureIncomeShape();
+  const key=currentCycleKey(),rec=state.cycles[key];
+  if(!rec||!rec.reservations)return null;
+  const amt=+p.amount||0;if(!(amt>0))return null;
+  const ts=new Date(p.ts);
+  let best=null;
+  for(const r of rec.reservations){
+    if(r.status!=='reserved')continue;
+    const ra=+r.amount||0;if(!(ra>0))continue;
+    const diff=Math.abs(ra-amt)/ra;
+    if(diff>0.01)continue;
+    const due=new Date(r.dueAt),gap=Math.abs(ts-due)/86400000;
+    if(gap>7)continue;
+    const score=diff+gap/100;
+    if(!best||score<best.score)best={r,score}
+  }
+  if(!best)return null;
+  best.r.status='confirmed';best.r.confirmedAt=ts.toISOString();best.r.actualAmount=amt;
+  return best.r
+}
+function commitmentAlerts(){
+  ensureIncomeShape();const out=[];const key=currentCycleKey(),rec=state.cycles[key];
+  if(!rec)return out;
+  const now=fdate();
+  for(const r of (rec.reservations||[])){
+    if(r.status!=='reserved')continue;
+    const due=new Date(r.dueAt);
+    if((now-due)/86400000>3)out.push({type:'missed',row:r})
+  }
+  return out
+}
+function monthKeyOf(d=new Date()){const x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}`}
+function accountLatest(accountId,beforeKey=null){
+  ensureIncomeShape();
+  const rows=state.wealth.snapshots.filter(x=>x.accountId===accountId&&(!beforeKey||x.monthKey<=beforeKey)).sort((a,b)=>a.monthKey<b.monthKey?-1:1);
+  return rows.length?rows[rows.length-1]:null
+}
+function wealthMonthKeys(n=12){
+  ensureIncomeShape();
+  const keys=[];const d=new Date();d.setDate(1);
+  for(let i=n-1;i>=0;i--){const x=new Date(d.getFullYear(),d.getMonth()-i,1);keys.push(monthKeyOf(x))}
+  return keys
+}
+function wealthTotalAt(monthKey){
+  ensureIncomeShape();
+  return state.wealth.accounts.reduce((a,acc)=>{const s=accountLatest(acc.id,monthKey);return a+(s?(+s.value||0):0)},0)
+}
+function wealthTotals(){
+  ensureIncomeShape();
+  const value=state.wealth.accounts.reduce((a,acc)=>{const s=accountLatest(acc.id);return a+(s?(+s.value||0):0)},0);
+  const contributed=state.wealth.accounts.reduce((a,acc)=>a+(+acc.contributed||0),0);
+  const gain=value-contributed,pct=contributed>0?gain/contributed*100:0;
+  const prevKey=monthKeyOf(new Date(new Date().getFullYear(),new Date().getMonth()-1,1));
+  const prev=wealthTotalAt(prevKey),mom=prev>0?(value-prev)/prev*100:0;
+  return {value,contributed,gain,pct,prev,mom}
+}
+function staleAccounts(){
+  ensureIncomeShape();const cur=monthKeyOf();
+  return state.wealth.accounts.filter(acc=>{const s=accountLatest(acc.id);return !s||s.monthKey<cur})
+}
+
 function classifyCategory(s='',ctx={}){
  const raw=String(s||''),mk=normalizeMerchant(raw),rules=state.merchantRules||{},threshold=+state.intelligence?.reviewThreshold||.78;
  const finish=x=>({...x,version:5,merchantKey:mk,needsReview:(x.category==='أخرى'||(+x.confidence||0)<threshold),reason:x.reason||sourceTitle(x.source)});
@@ -1197,6 +1463,7 @@ function applyClassificationToSimilar(t,category,subcategory){const mk=t.merchan
 function renderV5Intelligence(){
  populateCategoryControls();const current=state.ui.activeTab||'home';
  for(const[id,tab]of[['homeView','home'],['budgetView','budget'],['insightsView','insights'],['splitsView','splits']])$(id)?.classList.toggle('hidden',current!==tab);
+try{renderMoneyPanes()}catch(e){console.error('money panes',e)}
  for(const[id,tab]of[['homeNav','home'],['budgetNav','budget'],['insightsNav','insights'],['splitsNav','splits']])$(id)?.classList.toggle('on',current===tab);
  const labels={home:`${shortDays[fdate().getDay()]} • ميزانية اليوم ${fmt(activeDayBudget())} ر.س`,budget:'ميزانية الفئات ومسار الدورة',insights:'التحليل المالي الذكي',splits:'إدارة القطات والتحصيل'};$('dayLabel').textContent=labels[current]||labels.home;
  const classRows=classificationReviewRows(),paces=CATEGORY_LIST.map(categoryPace).filter(x=>x.budget>0),badPaces=paces.filter(x=>['warn','fast','over'].includes(x.status)),anoms=unusualTransactions();$('attentionClassCount').textContent=classRows.length;$('attentionBudgetCount').textContent=badPaces.length;$('attentionAnomalyCount').textContent=anoms.length;$('attentionTotal').textContent=classRows.length+badPaces.length+anoms.length;
@@ -1252,6 +1519,155 @@ async function handlePaymentLink(){
   if(!(amount>0)||!phone){$('payView').classList.add('invalid');$('payHello').textContent='طلب القطة غير مكتمل';$('payAmount').textContent='—';$('paySplit').textContent='اطلب من المرسل إعادة إرسال الرابط';return true}
   $('payHello').textContent=name?`هلا ${name}، عليك`:'عليك';$('payAmount').textContent=fmt(amount);$('payAmountSmall').textContent=fmt(amount);$('paySplit').textContent=split;$('payPhone').textContent=phone;
   $('copyTransferBtn').onclick=()=>copyPayText(`رقم سريع: ${phone}\nالمبلغ: ${fmt(amount)} ر.س`,'تم نسخ رقم سريع والمبلغ');$('copyPhoneBtn').onclick=()=>copyPayText(phone,'تم نسخ رقم سريع');$('copyAmountBtn').onclick=()=>copyPayText(String(amount),'تم نسخ المبلغ');return true
+}
+
+
+function renderCycleFlow(){
+  ensureIncomeShape();
+  const inc=cycleIncomeTotal(),g=reservedByGroup(),avail=cycleAvailable();
+  $('cycleIncomeVal').textContent=fmt(inc);
+  $('cycleHeroLabel').textContent='دخل الدورة • '+cycleLabel(currentCycle());
+  const parts=[['fixed','#0f6e56'],['transfer','#5DCAA5'],['saving','#7F77DD'],['invest','#4b41a8']];
+  const spendPart=Math.max(0,inc-reservedTotal());
+  const total=inc>0?inc:1;
+  $('cycleFlowBar').innerHTML=parts.map(([k,c])=>`<i style="width:${(g[k]||0)/total*100}%;background:${c}"></i>`).join('')+`<i style="width:${spendPart/total*100}%;background:#EF9F27"></i>`;
+  $('cycleFlowLegend').innerHTML=`<span>التزامات<b>${fmt(g.fixed||0)}</b></span><span>تحويلات<b>${fmt(g.transfer||0)}</b></span><span>ادخار<b>${fmt((g.saving||0)+(g.invest||0))}</b></span><span>للصرف<b>${fmt(spendPart)}</b></span>`;
+  const spent=monthSpend(),av=avail===null?0:avail,left=Math.max(0,av-spent);
+  $('cycleAvailVal').textContent=fmt(av);
+  $('cycleAvailBar').style.width=(av>0?Math.min(100,spent/av*100):0)+'%';
+  $('cycleAvailSpent').textContent=`صرفت ${fmt(spent)}`;
+  $('cycleAvailLeft').textContent=`باقي ${fmt(left)} • ${cycleDaysLeft()} يوم`;
+  const notes=[];
+  if(inc<=0){notes.push(['noteInfo','₪','سجّل راتبك عشان ميزان يحسب كم يتبقى لك فعلًا بعد الالتزامات'])}
+  else{
+    const perDay=availablePerDay(),base=activeDayBudget();
+    if(perDay!==null&&base>0&&perDay<base*0.92)notes.push(['noteWarn','!',`حدك اليومي ${fmt(base)} ر.س، لكن المتاح يسمح بـ ${fmt(perDay)} ر.س فقط لباقي الدورة`]);
+    else if(perDay!==null&&base>0&&perDay>base*1.25)notes.push(['noteGood','✓',`عندك مساحة أوسع من حدك اليومي — المتاح يسمح بـ ${fmt(perDay)} ر.س يوميًا`]);
+    const sv=(reservedByGroup().saving||0)+(reservedByGroup().invest||0);
+    if(sv>0)notes.push(['noteGood','◆',`تدّخر ${fmt(sv)} ر.س هذه الدورة — ${Math.round(sv/inc*100)}% من دخلك`]);
+    else notes.push(['noteInfo','◆','ما فيه ادخار محجوز هذه الدورة. حتى مبلغ بسيط ثابت يفرق على المدى الطويل']);
+  }
+  commitmentAlerts().forEach(a=>notes.push(['noteWarn','!',`${a.row.name} كان مستحقًا ولا وصلت رسالة تأكيد — تأكد أنه انصرف`]));
+  $('cycleNotes').innerHTML=notes.map(([c,i,t])=>`<div class="insightNote ${c}"><i>${i}</i><span>${t}</span></div>`).join('');
+  const rows=cycleReservations();
+  $('commitList').innerHTML=rows.length?rows.map(r=>{
+    const st=r.status==='confirmed'?['stConfirmed','تم الدفع'] : r.status==='skipped'?['stSkipped','متجاوَز'] : (new Date()-new Date(r.dueAt))/86400000>3?['stMissed','متأخر — ما وصل تأكيد']:['stReserved','محجوز • '+new Date(r.dueAt).toLocaleDateString('en-US',{day:'numeric',month:'short'})];
+    return `<div class="commitRow" data-commit="${r.commitmentId}"><div><h4>${r.name}<span class="groupChip ${groupClass(r.group)}">${groupLabel(r.group)}</span></h4><small class="${st[0]}">${st[1]}</small></div><b>${fmt(r.amount)}</b></div>`
+  }).join(''):`<div class="emptyBlock"><b>ما فيه التزامات بعد</b><small>سجّل القرض والفيزا والتحويلات الثابتة، وميزان يحجزها من راتبك قبل ما يحسب مصروفك اليومي</small><button class="ghost" onclick="document.getElementById('addCommitBtn').click()">إضافة أول التزام</button></div>`;
+  document.querySelectorAll('[data-commit]').forEach(el=>el.onclick=()=>openCommitSheet(el.dataset.commit));
+}
+function renderWealth(){
+  ensureIncomeShape();
+  const t=wealthTotals();
+  $('wealthTotal').textContent=fmt(t.value);
+  const d=$('wealthDelta');
+  if(t.contributed>0){const up=t.gain>=0;d.className='wealthDelta '+(Math.abs(t.pct)<0.05?'wFlat':up?'wUp':'wDown');d.textContent=`${up?'▲':'▼'} ${fmt(Math.abs(t.gain))} ر.س • ${Math.abs(t.pct).toFixed(1)}%`}
+  else{d.className='wealthDelta wFlat';d.textContent='سجّل ما ضخّيته عشان نحسب العائد'}
+  const keys=wealthMonthKeys(12),vals=keys.map(k=>wealthTotalAt(k)),mx=Math.max(1,...vals),mn=Math.min(...vals,0);
+  const rng=Math.max(1,mx-mn);
+  const pts=vals.map((v,i)=>`${i/(vals.length-1||1)*300},${70-((v-mn)/rng)*62}`).join(' ');
+  $('wealthSpark').innerHTML=vals.some(v=>v>0)?`<polyline points="${pts}" fill="none" stroke="#0fa187" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="0,74 ${pts} 300,74" fill="#0fa18714" stroke="none"/>`:'';
+  const byType={};state.wealth.accounts.forEach(a=>{const sn=accountLatest(a.id);byType[a.type]=(byType[a.type]||0)+(sn?+sn.value||0:0)});
+  const colors={fund:'#0f6e56',stocks:'#378ADD',gold:'#EF9F27',realestate:'#7F77DD',deposit:'#5DCAA5',crypto:'#D4537E',other:'#888780'};
+  const tot=Object.values(byType).reduce((a,b)=>a+b,0)||1;
+  $('wealthAlloc').innerHTML=Object.entries(byType).filter(([,v])=>v>0).map(([k,v])=>`<i style="width:${v/tot*100}%;background:${colors[k]||'#888780'}"></i>`).join('');
+  $('wealthAllocLegend').innerHTML=Object.entries(byType).filter(([,v])=>v>0).slice(0,4).map(([k,v])=>`<span>${wealthTypeMeta(k).label}<b>${Math.round(v/tot*100)}%</b></span>`).join('');
+  const notes=[];const stale=staleAccounts();
+  if(!state.wealth.accounts.length)notes.push(['noteInfo','◆','أضف حساباتك الاستثمارية والادخارية، وحدّث قيمتها مرة بالشهر عشان تشوف نموّك الحقيقي']);
+  else{
+    if(stale.length)notes.push(['noteWarn','!',`${stale.length} حساب ما تحدّث هذا الشهر — القيم اللي تشوفها قديمة`]);
+    if(t.prev>0)notes.push([t.mom>=0?'noteGood':'noteWarn',t.mom>=0?'▲':'▼',`تغيّرت ثروتك ${Math.abs(t.mom).toFixed(1)}% عن الشهر الماضي`]);
+    const sv=(reservedByGroup().saving||0)+(reservedByGroup().invest||0);
+    if(sv>0&&t.value>0)notes.push(['noteInfo','◷',`بمعدل ${fmt(sv)} ر.س شهريًا، تضيف ${fmt(sv*12)} ر.س خلال سنة قبل أي عائد`]);
+  }
+  $('wealthNotes').innerHTML=notes.map(([c,i,x])=>`<div class="insightNote ${c}"><i>${i}</i><span>${x}</span></div>`).join('');
+  const cur=monthKeyOf();
+  $('wealthList').innerHTML=state.wealth.accounts.length?state.wealth.accounts.map(a=>{
+    const sn=accountLatest(a.id),v=sn?+sn.value||0:0,c=+a.contributed||0,gain=v-c,pct=c>0?gain/c*100:0,meta=wealthTypeMeta(a.type);
+    const old=!sn||sn.monthKey<cur;
+    return `<div class="wRow" data-wealth="${a.id}"><div class="wIcon" style="background:${(colors[a.type]||'#888780')}1f;color:${colors[a.type]||'#888780'}">${meta.icon}</div><div><h4>${a.name}</h4><small>${old?'<i class="staleDot"></i>':''}${meta.label}${c>0?' • ضخّيت '+fmt(c):''}</small></div><div class="v"><b>${fmt(v)}</b><small class="${gain>=0?'stConfirmed':'stMissed'}">${c>0?(gain>=0?'+':'−')+fmt(Math.abs(gain))+' • '+Math.abs(pct).toFixed(1)+'%':'—'}</small></div></div>`
+  }).join(''):`<div class="emptyBlock"><b>ابدأ بمتابعة ثروتك</b><small>صندوق، أسهم، ذهب، عقار أو وديعة. تسجّله مرة، وتحدّث قيمته شهريًا فقط</small><button class="ghost" onclick="document.getElementById('addWealthBtn').click()">إضافة أول حساب</button></div>`;
+  document.querySelectorAll('[data-wealth]').forEach(el=>el.onclick=()=>openWealthSheet(el.dataset.wealth));
+}
+function renderCycleOpen(){
+  if(!cycleDraft)return;
+  $('cycleOpenLabel').textContent=cycleLabel(currentCycle());
+  $('cycleOpenIncome').value=(cycleDraft.income||[]).reduce((a,x)=>a+(+x.amount||0),0)||'';
+  $('cycleOpenRows').innerHTML=cycleDraft.reservations.map((r,idx)=>{
+    const due=new Date(r.dueAt).toLocaleDateString('en-US',{day:'numeric',month:'short'});
+    return `<div class="commitRow"><div><h4>${r.name}<span class="groupChip ${groupClass(r.group)}">${groupLabel(r.group)}</span></h4><small class="${r.varying?'stReserved':'stConfirmed'}">${r.varying?'مبلغ متغير — راجعه':'ثابت'} • ${due}</small></div><input data-res="${idx}" inputmode="decimal" value="${r.amount||''}" placeholder="${r.amount||0}" style="width:88px;text-align:center"></div>`
+  }).join('')||'<div class="emptyBlock"><small>ما عندك التزامات مسجلة بعد</small></div>';
+  const upd=()=>{
+    const inc=+$('cycleOpenIncome').value||0;
+    let res=0;cycleDraft.reservations.forEach((r,i)=>{const el=document.querySelector(`[data-res="${i}"]`);r.amount=+((el&&el.value)||0);if(r.status!=='skipped')res+=r.amount});
+    cycleDraft.income=inc>0?[{id:(cycleDraft.income[0]&&cycleDraft.income[0].id)||uid(),label:'الراتب',amount:inc,ts:currentCycle().start.toISOString()}]:[];
+    const av=Math.max(0,inc-res);
+    $('cycleOpenAvail').textContent=fmt(av);
+    $('cycleOpenPerDay').textContent=inc>0?`≈ ${fmt(av/Math.max(1,cycleDaysLeft()))} ر.س يوميًا لباقي الدورة`:'أدخل دخلك عشان نحسب المتاح';
+  };
+  $('cycleOpenIncome').oninput=upd;
+  document.querySelectorAll('[data-res]').forEach(el=>el.oninput=upd);
+  upd();
+}
+function openCommitSheet(id=null){
+  ensureIncomeShape();
+  editingCommitId=id;
+  const c=id?state.income.commitments.find(x=>x.id===id):null;
+  $('commitSheetTitle').textContent=c?'تعديل التزام':'التزام جديد';
+  $('commitGroup').innerHTML=COMMIT_GROUPS.map(([k,l])=>`<option value="${k}">${l}</option>`).join('');
+  $('commitName').value=c?c.name:'';
+  $('commitGroup').value=c?c.group:'fixed';
+  $('commitAmount').value=c?(c.amount||''):'';
+  $('commitDue').value=c?(c.dueDay||''):'';
+  $('commitVarying').checked=c?!!c.varying:false;
+  $('commitDeleteBtn').classList.toggle('hidden',!c);
+  open('commitSheet')
+}
+function openWealthSheet(id=null){
+  ensureIncomeShape();
+  editingWealthId=id;
+  const a=id?state.wealth.accounts.find(x=>x.id===id):null;
+  $('wealthSheetTitle').textContent=a?'تعديل حساب':'حساب جديد';
+  $('wealthType').innerHTML=WEALTH_TYPES.map(([k,l])=>`<option value="${k}">${l}</option>`).join('');
+  $('wealthName').value=a?a.name:'';
+  $('wealthType').value=a?a.type:'fund';
+  $('wealthContrib').value=a?(a.contributed||''):'';
+  const sn=a?accountLatest(a.id):null;
+  $('wealthValue').value=sn?sn.value:'';
+  $('wealthDeleteBtn').classList.toggle('hidden',!a);
+  open('wealthAccountSheet')
+}
+function openWealthUpdate(){
+  ensureIncomeShape();
+  if(!state.wealth.accounts.length){toast('أضف حسابًا أولًا');return}
+  const cur=monthKeyOf();
+  $('wealthUpdateLabel').textContent='قيم '+new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  $('wealthUpdateRows').innerHTML=state.wealth.accounts.map(a=>{
+    const sn=accountLatest(a.id),prev=sn?+sn.value||0:0,fresh=sn&&sn.monthKey===cur;
+    return `<div class="commitRow"><div><h4>${a.name}</h4><small class="${fresh?'stConfirmed':'stReserved'}">${fresh?'محدّث هذا الشهر':(sn?'آخر قيمة '+sn.monthKey:'ما فيه قيمة سابقة')}</small></div><input data-wv="${a.id}" inputmode="decimal" value="${prev||''}" placeholder="${prev||0}" style="width:96px;text-align:center"></div>`
+  }).join('');
+  open('wealthUpdateSheet')
+}
+function renderIncomeSheet(){
+  ensureIncomeShape();
+  const key=currentCycleKey();
+  if(!state.cycles[key])state.cycles[key]={key,openedAt:new Date().toISOString(),income:[],reservations:buildCycleDraft(key).reservations};
+  const rows=state.cycles[key].income||[];
+  $('incomeRows').innerHTML=rows.length?rows.map(r=>`<div class="commitRow"><div><h4>${r.label||'دخل'}</h4><small class="stConfirmed">${new Date(r.ts).toLocaleDateString('en-US',{day:'numeric',month:'short'})}</small></div><b>${fmt(r.amount)} <button class="ghost" data-delinc="${r.id}" style="min-height:26px;padding:0 8px;margin-inline-start:6px">حذف</button></b></div>`).join(''):'<div class="emptyBlock"><small>ما سجّلت دخل هذه الدورة بعد</small></div>';
+  document.querySelectorAll('[data-delinc]').forEach(el=>el.onclick=()=>{const k=currentCycleKey();state.cycles[k].income=(state.cycles[k].income||[]).filter(x=>x.id!==el.dataset.delinc);save();renderIncomeSheet();render()});
+}
+function renderMoneyPanes(){
+  ensureIncomeShape();
+  const bs=state.ui.budgetSeg==='cats'?'cats':'cycle';
+  $('segCycle')?.classList.toggle('on',bs==='cycle');$('segCats')?.classList.toggle('on',bs==='cats');
+  $('cyclePane')?.classList.toggle('hidden',bs!=='cycle');$('catsPane')?.classList.toggle('hidden',bs!=='cats');
+  $('budgetPageSub').textContent=bs==='cycle'?'وين يروح الراتب، وكم باقي للصرف':'ميزانية الفئات وسرعة الصرف داخل الدورة';
+  const is=state.ui.insightSeg==='wealth'?'wealth':'spend';
+  $('segSpend')?.classList.toggle('on',is==='spend');$('segWealth')?.classList.toggle('on',is==='wealth');
+  $('spendPane')?.classList.toggle('hidden',is!=='spend');$('wealthPane')?.classList.toggle('hidden',is!=='wealth');
+  $('insightPageSub').textContent=is==='spend'?'قراءة لسلوك الصرف، وليس رسومًا للتجميل':'نموّ ثروتك بمرور الوقت';
+  if(bs==='cycle')renderCycleFlow();
+  if(is==='wealth')renderWealth();
 }
 
 function render(){
@@ -1363,7 +1779,7 @@ function smsMerchant(raw='',bank=''){const lines=String(raw).split(/\r?\n/).map(
 function smsBank(sender='',raw=''){const s=(sender+' '+raw).toLowerCase();if(s.includes('snb')||s.includes('alahli')||s.includes('الأهلي'))return'snb';if(s.includes('alrajhi')||s.includes('الراجحي'))return'alrajhi';if(s.includes('bsf')||s.includes('fransi')||s.includes('الفرنسي')||s.includes('السعودي الفرنسي'))return'bsf';if(s.includes('albilad')||s.includes('bank albilad')||s.includes('البلاد'))return'albilad';if(/ائتمانية\s*\*{1,2}\d{4}/.test(raw))return'snb';if(/عبر\s*[:：]?\s*\d{4}/.test(raw))return'alrajhi';return'unknown'}
 function ensureSmsSource(p){if(p.last4){const existing=state.sources.find(s=>String(s.last4||'')===String(p.last4));if(existing)return existing.id}const bankName=p.bank==='alrajhi'?'الراجحي':p.bank==='snb'?'الأهلي':p.bank==='bsf'?'السعودي الفرنسي':p.bank==='albilad'?'البلاد':'بنك غير محدد';const type=p.cardType==='mada'?'مدى':p.cardType==='credit'?'ائتمانية':'بطاقة';const id=`sms-${p.bank}-${p.last4||type}`;if(!state.sources.some(s=>s.id===id))state.sources.push({id,name:`${bankName} • ${type}${p.last4?' '+p.last4:''}`,bank:bankName,type,last4:p.last4||''});return id}
 function parseBankSms(sender='',raw=''){const original=String(raw||'').trim();if(!original)return{ok:false,error:'الرسالة فارغة'};const t=arDigits(original);const bank=smsBank(sender,t),amount=smsAmount(t),last4=smsCard(t),merchant=smsMerchant(t,bank),ts=parseSmsDate(t).toISOString();const isCashback=/استرجاع\s+نقدي|كاش\s*باك|cash\s*back|cashback|مكافأة نقدية/i.test(t);const isReversal=/عكس\s+عملية|إلغاء\s+عملية|عملية\s+ملغاة|reversal|reversed|void/i.test(t);const isTransfer=/حوالة|تحويل|transfer/i.test(t)&&!/شراء|pos|purchase/i.test(t),isIncomingTransfer=/واردة|وارد|مستلمة|استلام|received|incoming|إيداع/i.test(t);const isPurchase=/شراء|pos|purchase|عملية\s+شراء|دفع|payment/i.test(t);const cardType=/مدى|mada/i.test(t)?'mada':(/فيزا|visa|ائتمانية|credit|mastercard/i.test(t)?'credit':'card');if(!Number.isFinite(amount)||amount<=0)return{ok:false,error:'ما قدرت أحدد مبلغ العملية من الرسالة'};let impact=0,label='عملية بنكية',direction='debit',classification=classifyCategory(merchant||t,{amount,ts}),category=classification.category,review=null;if(isCashback){impact=0;label='كاش باك';direction='credit';category='كاش باك';classification={category:'كاش باك',confidence:1,source:'system',matched:'cashback',merchantKey:normalizeMerchant(merchant||t)}}else if(isReversal){impact=-amount;label='عكس عملية';direction='credit';classification=classifyCategory(merchant||t,{amount,ts});category=classification.category}else if(isTransfer){impact=0;label=isIncomingTransfer?'تحويل وارد':'تحويل بنكي';direction=isIncomingTransfer?'credit':'transfer';category='أخرى';classification={category:'أخرى',confidence:1,source:'system',matched:'transfer',merchantKey:normalizeMerchant(merchant||t)};review=isIncomingTransfer&&owed()>0?infer({direction:'credit',amount,impact:0,category:'أخرى',note:merchant||t}):{kind:'transfer',text:'تحويل بنكي — حدّد هل هو مصروف شخصي أو تحويل غير محتسب'}}else if(isPurchase){impact=amount;label=/انترنت|إنترنت|online|e-commerce|ecommerce/i.test(t)?'شراء إنترنت':'شراء';direction='debit';review=impact>=250&&['مطاعم','ترفيه'].includes(category)?{kind:'split',text:'المبلغ مرتفع؛ هل كانت قطة؟'}:null}else{return{ok:false,error:'الرسالة فيها مبلغ لكن نوع العملية غير واضح — تحتاج مراجعة'}}return{ok:true,bank,amount,last4,merchant:merchant||'عملية بنكية',ts,cardType,impact,label,direction,category,subcategory:classification.subcategory||'',classification,review}}
-function importBankSms(sender,raw){const p=parseBankSms(sender,raw);if(!p.ok)return p;const source=ensureSmsSource(p);const tr={id:uid(),amount:p.amount,impact:p.impact,category:p.category,subcategory:p.subcategory||'',source,note:p.merchant,label:p.label,ts:p.ts,createdAt:new Date().toISOString(),direction:p.direction,classification:p.classification,merchantKey:normalizeMerchant(p.merchant),review:p.review,sms:true};tr.fp=fingerprint(tr);if(isDup(tr))return{ok:false,error:'هذه العملية موجودة مسبقًا'};state.txns.push(tr);save();return{ok:true,parsed:p}}
+function importBankSms(sender,raw){const p=parseBankSms(sender,raw);if(!p.ok)return p;const source=ensureSmsSource(p);let matchedRes=null;if(p.impact>0){matchedRes=matchReservation(p);if(matchedRes){p.impact=0;p.label=matchedRes.name;p.category=groupLabel(matchedRes.group);p.classification={category:p.category,confidence:1,source:'system',matched:matchedRes.name,reason:'التزام محجوز من الراتب — لا يُحسب مرتين',needsReview:false}}}const tr={id:uid(),amount:p.amount,impact:p.impact,category:p.category,subcategory:p.subcategory||'',source,note:p.merchant,label:p.label,ts:p.ts,createdAt:new Date().toISOString(),direction:p.direction,classification:p.classification,merchantKey:normalizeMerchant(p.merchant),review:p.review,sms:true};tr.fp=fingerprint(tr);if(isDup(tr))return{ok:false,error:'هذه العملية موجودة مسبقًا'};if(matchedRes){tr.commitmentId=matchedRes.commitmentId;matchedRes.txnId=tr.id}state.txns.push(tr);save();return{ok:true,parsed:p}}
 
 function toast(msg,bad=false){const el=$('toast');if(!el)return;el.textContent=msg;el.classList.toggle('bad',bad);el.classList.add('show');clearTimeout(window.__mizanToast);window.__mizanToast=setTimeout(()=>el.classList.remove('show'),2600)}
 function open(id){
@@ -1376,6 +1792,100 @@ function close(){
   $('backdrop').classList.add('hidden');document.querySelectorAll('.sheet').forEach(s=>s.classList.add('hidden'))
 }
 $('backdrop').onclick=close;document.querySelectorAll('.close').forEach(b=>b.onclick=close);
+
+document.querySelectorAll('.sheetX').forEach(b=>b.onclick=close);
+$('segCycle').onclick=()=>{state.ui.budgetSeg='cycle';persistState();render()};
+$('segCats').onclick=()=>{state.ui.budgetSeg='cats';persistState();render()};
+$('segSpend').onclick=()=>{state.ui.insightSeg='spend';persistState();render()};
+$('segWealth').onclick=()=>{state.ui.insightSeg='wealth';persistState();render()};
+$('addCommitBtn').onclick=()=>openCommitSheet(null);
+$('addWealthBtn').onclick=()=>openWealthSheet(null);
+$('updateWealthBtn').onclick=openWealthUpdate;
+$('editIncomeBtn').onclick=()=>{$('incomeAmount').value='';$('incomeLabel').value='';renderIncomeSheet();open('incomeSheet')};
+$('incomeAddBtn').onclick=()=>{
+  const amt=+$('incomeAmount').value||0;if(!(amt>0)){toast('اكتب مبلغًا صحيحًا',true);return}
+  ensureIncomeShape();const key=currentCycleKey();
+  if(!state.cycles[key])state.cycles[key]={key,openedAt:new Date().toISOString(),income:[],reservations:buildCycleDraft(key).reservations};
+  state.cycles[key].income=(state.cycles[key].income||[]).concat([{id:uid(),label:$('incomeLabel').value.trim()||'الراتب',amount:amt,ts:new Date().toISOString()}]);
+  $('incomeAmount').value='';$('incomeLabel').value='';save();renderIncomeSheet();render();toast('تم تسجيل الدخل')
+};
+$('incomeDoneBtn').onclick=close;
+$('commitSaveBtn').onclick=()=>{
+  ensureIncomeShape();
+  const name=$('commitName').value.trim();if(!name){toast('اكتب اسم الالتزام',true);return}
+  const amt=+$('commitAmount').value||0,due=Math.min(31,Math.max(1,+$('commitDue').value||1));
+  const varying=$('commitVarying').checked;
+  if(!varying&&!(amt>0)){toast('اكتب المبلغ أو فعّل «مبلغ متغير»',true);return}
+  const payload={name,group:$('commitGroup').value,amount:amt,dueDay:due,varying,active:true};
+  if(editingCommitId){const c=state.income.commitments.find(x=>x.id===editingCommitId);if(c)Object.assign(c,payload)}
+  else state.income.commitments.push({id:uid(),lastAmount:amt,...payload});
+  const key=currentCycleKey(),rec=state.cycles[key];
+  if(rec){
+    const ex=(rec.reservations||[]).find(r=>r.commitmentId===(editingCommitId||null));
+    if(ex&&editingCommitId){ex.name=payload.name;ex.group=payload.group;if(!varying)ex.amount=amt}
+    else if(!editingCommitId){const c=state.income.commitments[state.income.commitments.length-1];rec.reservations=(rec.reservations||[]).concat([{commitmentId:c.id,name:c.name,group:c.group,amount:amt,varying,dueDay:due,dueAt:nextCommitmentDate(due,currentCycle()).toISOString(),status:'reserved',txnId:null,confirmedAt:null}])}
+  }
+  save();close();render();toast('تم الحفظ')
+};
+$('commitDeleteBtn').onclick=()=>{
+  if(!editingCommitId)return;
+  ensureIncomeShape();
+  state.income.commitments=state.income.commitments.filter(x=>x.id!==editingCommitId);
+  Object.values(state.cycles).forEach(c=>{c.reservations=(c.reservations||[]).filter(r=>r.commitmentId!==editingCommitId)});
+  save();close();render();toast('تم الحذف')
+};
+$('wealthSaveBtn').onclick=()=>{
+  ensureIncomeShape();
+  const name=$('wealthName').value.trim();if(!name){toast('اكتب اسم الحساب',true);return}
+  const contrib=+$('wealthContrib').value||0,val=+$('wealthValue').value||0;
+  let id=editingWealthId;
+  if(id){const a=state.wealth.accounts.find(x=>x.id===id);if(a){a.name=name;a.type=$('wealthType').value;a.contributed=contrib}}
+  else{id=uid();state.wealth.accounts.push({id,name,type:$('wealthType').value,contributed:contrib,createdAt:new Date().toISOString()})}
+  if(val>0){
+    const mk=monthKeyOf(),ex=state.wealth.snapshots.find(x=>x.accountId===id&&x.monthKey===mk);
+    if(ex)ex.value=val;else state.wealth.snapshots.push({id:uid(),accountId:id,monthKey:mk,value:val,ts:new Date().toISOString()})
+  }
+  save();close();render();toast('تم الحفظ')
+};
+$('wealthDeleteBtn').onclick=()=>{
+  if(!editingWealthId)return;
+  ensureIncomeShape();
+  state.wealth.accounts=state.wealth.accounts.filter(x=>x.id!==editingWealthId);
+  state.wealth.snapshots=state.wealth.snapshots.filter(x=>x.accountId!==editingWealthId);
+  save();close();render();toast('تم الحذف')
+};
+$('wealthUpdateCancel').onclick=close;
+$('wealthUpdateSave').onclick=()=>{
+  ensureIncomeShape();const mk=monthKeyOf();let n=0;
+  document.querySelectorAll('[data-wv]').forEach(el=>{
+    const v=+el.value||0;if(!(v>0))return;
+    const ex=state.wealth.snapshots.find(x=>x.accountId===el.dataset.wv&&x.monthKey===mk);
+    if(ex)ex.value=v;else state.wealth.snapshots.push({id:uid(),accountId:el.dataset.wv,monthKey:mk,value:v,ts:new Date().toISOString()});
+    n++
+  });
+  save();close();render();toast(n?`تم تحديث ${n} حساب`:'ما فيه قيم جديدة')
+};
+$('cycleOpenLater').onclick=()=>{cycleDraft=null;close()};
+$('cycleOpenConfirm').onclick=commitCycleDraft;
+(function(){
+  const view=document.querySelector('.app')||document.body;
+  const el=$('pullRefresh');if(!el)return;
+  let armed=false;
+  window.addEventListener('touchstart',e=>{pullStartY=(window.scrollY<=2&&state.ui.activeTab==='home')?e.touches[0].clientY:null;armed=false},{passive:true});
+  window.addEventListener('touchmove',e=>{
+    if(pullStartY===null)return;
+    const dy=e.touches[0].clientY-pullStartY;
+    if(dy>58){el.classList.add('show');armed=true}
+    else if(dy<10){el.classList.remove('show');armed=false}
+  },{passive:true});
+  window.addEventListener('touchend',async()=>{
+    if(!armed){el.classList.remove('show');pullStartY=null;return}
+    pullStartY=null;armed=false;el.classList.add('spin');
+    try{await syncSmsInbox({silent:false});await checkForAppUpdate(true)}catch(e){}
+    el.classList.remove('spin');el.classList.remove('show');render()
+  },{passive:true});
+})();
+
 $('adaptiveToggle').onclick=()=>{state.ui.adaptive=!state.ui.adaptive;save()};
 $('monthPrev').onclick=()=>{state.ui.monthOffset=(state.ui.monthOffset||0)-1;save()};
 $('monthNext').onclick=()=>{if((state.ui.monthOffset||0)<0){state.ui.monthOffset++;save()}};
@@ -1654,7 +2164,7 @@ async function finishProductTour(){
   persistState();await secureSaveNow();toast('ميزان جاهز لك ✓')
 }
 
-async function secureEnterApp(forceTour=false){secureReady=true;const upgraded=v5BackfillPending;v5BackfillPending=0;$('secureGate').classList.add('hidden');$('secureQuickStart').classList.add('hidden');$('payView').classList.add('hidden');$('appRoot').classList.remove('hidden');$('adminBtn').classList.toggle('hidden',secureProfile?.role!=='owner');startAccessTimer();render();if(upgraded){queueSecureSave(700);setTimeout(()=>toast(`تم تحديث ذكاء ${upgraded} عملية قديمة`),850)}await handlePendingSms();await syncSmsInbox({silent:true});if(forceTour||state.secureMeta?.tourComplete===false)setTimeout(startProductTour,420)}
+async function secureEnterApp(forceTour=false){secureReady=true;const upgraded=v5BackfillPending;v5BackfillPending=0;$('secureGate').classList.add('hidden');$('secureQuickStart').classList.add('hidden');$('payView').classList.add('hidden');$('appRoot').classList.remove('hidden');$('adminBtn').classList.toggle('hidden',secureProfile?.role!=='owner');startAccessTimer();render();if(upgraded){queueSecureSave(700);setTimeout(()=>toast(`تم تحديث ذكاء ${upgraded} عملية قديمة`),850)}await handlePendingSms();await syncSmsInbox({silent:true});try{ensureIncomeShape();if(state.income.autoOpen)setTimeout(()=>{try{openCycleIfNeeded()}catch(e){console.error(e)}},900)}catch(e){}if(forceTour||state.secureMeta?.tourComplete===false)setTimeout(startProductTour,420)}
 function startAccessTimer(){clearInterval(accessTimer);accessTimer=setInterval(async()=>{const r=await sb.rpc('can_access_app');if(r.error||!r.data)await secureAccessLost('تم إنهاء وصولك بواسطة مالك ميزان')},15000)}
 async function secureAccessLost(text){secureReady=false;clearInterval(accessTimer);state=clone(defaults);try{render()}catch{}$('appRoot').classList.add('hidden');await sb.auth.signOut();secureDeny(text)}
 function secureDeny(text){$('secureDeniedText').textContent=text;secureShow('secureDenied')}
