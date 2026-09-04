@@ -1,26 +1,8 @@
-const CACHE='mizan-secure-v5-5-0';
-const SHELL=['/secure-v3.html?v=550','/version.json','/manifest.webmanifest?v=550','/icon-192.png','/icon-512.png','/apple-touch-icon.png'];
-
-self.addEventListener('install',e=>{
- self.skipWaiting();
- e.waitUntil(caches.open(CACHE).then(c=>Promise.allSettled(SHELL.map(u=>c.add(u)))));
-});
-
-self.addEventListener('activate',e=>{
- e.waitUntil(Promise.all([
-  caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))),
-  self.clients.claim()
- ]));
-});
-
+const CACHE='mizan-secure-v5-0-1';
+const SHELL=['./','./index.html','./secure-v3.html?v=501','./manifest.webmanifest'];
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL).catch(()=>{})))});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{
- const r=e.request;if(r.method!=='GET')return;
- const path=new URL(r.url).pathname;
- if(r.mode==='navigate'||r.destination==='document'||path==='/version.json'){
-  e.respondWith(fetch(r,{cache:'no-store'}).catch(()=>caches.match(r).then(x=>x||caches.match('/secure-v3.html?v=550'))));return;
- }
- e.respondWith(fetch(r,{cache:'no-store'}).then(res=>{
-  if(res&&res.ok){const cp=res.clone();caches.open(CACHE).then(c=>c.put(r,cp))}
-  return res
- }).catch(()=>caches.match(r)));
+  const r=e.request;if(r.method!=='GET')return;
+  e.respondWith(fetch(r).then(res=>{const c=res.clone();caches.open(CACHE).then(x=>x.put(r,c).catch(()=>{}));return res}).catch(()=>caches.match(r).then(m=>m||caches.match('./secure-v3.html?v=501'))))
 });
