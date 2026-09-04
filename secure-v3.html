@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-/V9NLJO3lSuiD21hJZ0Wt1xvCxPUDDBFT5yfmxfPous='; style-src 'sha256-ydsdBAdjz0iMJjKTCwRxUdG2Sf9Am5Fxb7iv1InIPHI='; img-src 'self' data:; connect-src 'self' https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-Ka9F+D1Y2I8A+VuookBAUx8u65aTdUhld1r8Su+KAM0='; style-src 'sha256-b9kT171Mr5udYgJzbKYiwbJIvTWnoV1ZuEyZajETNtQ='; img-src 'self' data:; connect-src 'self' https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -403,6 +403,30 @@ body{overflow-x:hidden}
 .privacyBtn.on .eyeOff{display:block}
 
 #updateBanner.required{background:#7a2018}
+
+body.sheetOpen{position:fixed;inset-inline:0;width:100%;overflow:hidden}
+.iconbtn .eyeOff{display:none}
+.iconbtn .eyeOn svg,.iconbtn .eyeOff svg{width:17px;height:17px;display:block}
+#privacyBtn.on{background:#2f6bff;color:#fff;border-color:#2f6bff}
+#privacyBtn.on .eyeOn{display:none}
+#privacyBtn.on .eyeOff{display:block}
+input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-align:start;direction:ltr}
+
+.wScoreGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
+.wScoreGrid:empty{display:none}
+.wScoreCard{border-radius:14px;padding:10px}
+.wScoreCard span{font-size:8.5px;font-weight:850;display:block}
+.wScoreCard b{font-size:19px;display:block;margin-top:2px}
+.wScoreCard small{font-size:8px;display:block;margin-top:2px;opacity:.85}
+.wScoreCard.up{background:#eaf8f1;color:#0b6d5b}
+.wScoreCard.down{background:#fdeeea;color:#a8492f}
+.chartCap{font-size:8px;color:#9bb0aa;text-align:center;margin:4px 0 0}
+.investBox{background:#f4f2fd;border:1px solid #ddd8f6;border-radius:17px;padding:12px;margin-top:10px}
+.investBox .r{display:flex;justify-content:space-between;align-items:baseline}
+.investBox .r span{font-size:10px;color:#4b41a8;font-weight:800}
+.investBox .r b{font-size:17px;color:#2f2a6b}
+.investSplit{height:7px;border-radius:4px;background:#e3ddfa;overflow:hidden;margin:9px 0 7px}
+.investSplit i{display:block;height:100%;background:#7F77DD}
 </style>
 </head>
 <body>
@@ -819,8 +843,8 @@ body{overflow-x:hidden}
       </div>
     </section><section class="quickScene hidden" data-quick-step="4"><div class="tutorialHeaderSticky"><div class="tutorialStepHead"><span class="quickBadge">4</span><div><small>آخر لمسة</small><h2>حدد رقم الاستلام</h2></div></div><p class="tutorialLead">هذا الرقم يظهر فقط في طلبات القطة التي ترسلها</p></div><div class="collectionVisual"><div class="collectPhoneCard"><span>رقم الاستلام</span><b>05•• ••• ••••</b><small>يظهر في رابط القطة فقط</small></div><div class="collectArrow">↓</div><div class="collectLinkCard"><small>طلب قطة آمن</small><b>75 ر.س</b><span>نسخ بيانات التحويل</span></div></div><div class="explainField"><label for="quickCollectionPhone">رقم الجوال للاستلام</label><input id="quickCollectionPhone" inputmode="tel" placeholder="05xxxxxxxx"><small>تقدر تضيفه الآن أو تكمل وتضيفه لاحقًا من القطات</small></div><div class="quickReady"><div class="readyCheck">✓</div><div><b>خلص إعداد البداية</b><small>بعد الدخول بتبدأ الجولة داخل واجهة ميزان نفسها</small></div></div><div class="tutorialStickyNav final"><button id="quickFinalBack" class="tutorialBack">رجوع</button><button id="quickFinishBtn" class="onboardPrimary">ادخل ميزان</button></div></section>
 </section>
-<div id="appRoot" class="app hidden"><div id="saveStatus" class="saveStatus hidden"></div><button id="privacyBtn" class="privacyBtn" type="button" aria-label="إخفاء الأرقام" aria-pressed="false"><span class="eyeOn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="eyeOff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 6.2A9.9 9.9 0 0 1 12 6c6.5 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1"/><path d="M6.6 6.7A17.6 17.6 0 0 0 2 13s3.5 7 10 7a9.8 9.8 0 0 0 4.5-1.1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="m3 3 18 18"/></svg></span></button><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
-<header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version">Secure v5.0.1</span></h1></div><div class="secureHeadActions"><button class="iconbtn hidden" id="adminBtn" type="button">🔐</button><button class="iconbtn" id="settingsBtn" type="button">⚙️</button></div></header>
+<div id="appRoot" class="app hidden"><div id="saveStatus" class="saveStatus hidden"></div><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
+<header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version" id="headVersion">Secure</span></h1></div><div class="secureHeadActions"><button class="iconbtn" id="privacyBtn" type="button" aria-label="إخفاء الأرقام" aria-pressed="false"><span class="eyeOn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="eyeOff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 6.2A9.9 9.9 0 0 1 12 6c6.5 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1"/><path d="M6.6 6.7A17.6 17.6 0 0 0 2 13s3.5 7 10 7a9.8 9.8 0 0 0 4.5-1.1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="m3 3 18 18"/></svg></span></button><button class="iconbtn hidden" id="adminBtn" type="button">🔐</button><button class="iconbtn" id="settingsBtn" type="button">⚙️</button></div></header>
 <main id="homeView">
 <section id="tourToday" class="card hero"><div><div class="muted">المتبقي اليوم</div><div class="big"><span id="todayRemaining">100</span> <small>ر.س</small></div><div id="todaySpend" class="muted">صرفت 0 من 100 ر.س</div><div id="statusPill" class="pill">✓ على المسار</div></div><div id="ring" class="ring"><div class="ringin"><strong id="pct">0%</strong><span>استهلاك</span></div></div><div id="tourSafe" class="safehero"><div><span>Safe to Spend</span><small>اليوم + الأسبوع + الشهر</small><button id="canBuyBtn" class="heroQuickAction" type="button">هل أقدر؟</button></div><b><span id="safeSpend">0</span> ر.س</b></div></section>
 <section class="grid3"><div class="tile a"><span>المتبقي هذا الأسبوع</span><strong id="weekRemaining">1,000</strong><small>ر.س</small></div><div class="tile b"><span>مستحق لك</span><strong id="owedTotal">0</strong><small>ر.س</small></div><div class="tile c"><span>المتبقي للدورة</span><strong id="savedMonth">0</strong><small>ر.س</small><div id="monthModeNote" class="monthnote">دورة المصروف</div></div></section>
@@ -875,7 +899,7 @@ body{overflow-x:hidden}
         <div class="availTrack"><i id="cycleAvailBar" style="width:0%"></i></div>
         <div class="availFoot"><span id="cycleAvailSpent">صرفت 0</span><span id="cycleAvailLeft">باقي 0</span></div>
       </div>
-      <div id="cycleNotes"></div>
+      <div class="investBox" id="investBox"><div class="r"><span>للادخار والاستثمار</span><b><span id="investPlanned">0</span> ر.س</b></div><div class="investSplit" id="investSplit"></div><div class="availFoot"><span id="investLinked">—</span><button id="goWealthBtn" class="miniBtn ghostMini" type="button">افتح الثروة</button></div></div><div id="cycleNotes"></div>
       <div class="actions"><button id="editIncomeBtn" class="ghost" type="button">تعديل الدخل</button><button id="addCommitBtn" class="ghost" type="button">إضافة التزام</button></div>
     </section>
     <section class="card"><div class="sectionhead"><div><h2>الالتزامات</h2><p>المحجوز من الراتب قبل المصروف اليومي</p></div></div>
@@ -897,7 +921,7 @@ body{overflow-x:hidden}
   <div id="wealthPane" class="hidden">
     <section class="card">
       <div class="wealthHero"><span>إجمالي الثروة</span><b><span id="wealthTotal">0</span> <small style="font-size:12px;color:#7a938c">ر.س</small></b><div><span id="wealthDelta" class="wealthDelta wFlat">—</span></div></div>
-      <div class="sparkWrap"><svg id="wealthSpark" class="spark" viewBox="0 0 300 74" preserveAspectRatio="none"></svg></div>
+      <div id="wealthScore" class="wScoreGrid"></div><div class="sparkWrap"><svg id="wealthSpark" class="spark" viewBox="0 0 300 78"></svg><p class="chartCap" id="wealthChartCap"></p></div>
       <div class="allocBar" id="wealthAlloc"></div>
       <div class="flowLegend" id="wealthAllocLegend"></div>
       <div id="wealthNotes"></div>
@@ -975,8 +999,7 @@ body{overflow-x:hidden}
   <div class="handle"></div><h3 id="wealthSheetTitle">حساب جديد</h3><p class="sheetLead">سجّل الحساب مرة، وحدّث قيمته شهريًا</p>
   <label>الاسم<input id="wealthName" placeholder="صندوق الراجحي"></label>
   <label>النوع<select id="wealthType"></select></label>
-  <label>إجمالي ما ضخّيته<input id="wealthContrib" inputmode="decimal" placeholder="0"></label>
-  <label>القيمة الحالية<input id="wealthValue" inputmode="decimal" placeholder="0"></label>
+  <div id="wealthDynFields"></div><div id="wealthValueWrap"><label>القيمة الحالية<input id="wealthValue" inputmode="decimal" placeholder="0"></label></div>
   <div class="actions"><button id="wealthDeleteBtn" class="ghost hidden" type="button">حذف</button><button id="wealthSaveBtn" class="primary" type="button">حفظ</button></div>
 </section>
 
@@ -1017,6 +1040,12 @@ body{overflow-x:hidden}
   <label>تاريخ بداية هذه الدورة<input id="anchorDate" type="date"></label>
   <label class="inlineCheck"><input id="anchorWeekend" type="checkbox"> قدّم الدورة لو صادف يوم البداية عطلة نهاية الأسبوع</label>
   <div class="actions"><button id="anchorResetBtn" class="secondary" type="button">رجّع الافتراضي</button><button id="anchorSaveBtn" class="primary" type="button">حفظ</button></div>
+</section>
+
+
+<section id="anchorAskSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div>
+  <h3>نزل الراتب بتاريخ مختلف</h3><p class="sheetLead" id="anchorAskText"></p>
+  <div class="actions"><button id="anchorAskNo" class="secondary" type="button">لا، خلها كما هي</button><button id="anchorAskYes" class="primary" type="button">نعم، ابدأ من هذا اليوم</button></div>
 </section>
 
 <nav class="bottom"><button id="homeNav" class="navtab on" type="button"><b>⌂</b>الرئيسية</button><button id="budgetNav" class="navtab" type="button"><b>◎</b>الميزانية</button><button id="addTxnBtn" class="primaryNav" type="button"><b>＋</b>عملية</button><button id="insightsNav" class="navtab" type="button"><b>⌁</b>التحليل</button><button id="splitsNav" class="navtab" type="button"><b>👥</b>القطات</button></nav>
@@ -1098,8 +1127,8 @@ body{overflow-x:hidden}
 <label>بداية احتساب ميزان<input id="trackingStart" type="date"></label>
 <div class="settingsnote">العمليات قبل هذا التاريخ تبقى محفوظة، لكن لا تدخل في اليوم أو الأسبوع أو دورة المصروف</div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-<label>بداية دورة المصروف<input id="cycleStartDay" type="number" min="1" max="31" inputmode="numeric" placeholder="27"></label>
-<label>نهاية دورة المصروف<input id="cycleEndDay" type="number" min="1" max="31" inputmode="numeric" placeholder="26"></label>
+<label>يوم نزول الراتب<input id="cycleStartDay" type="number" min="1" max="31" inputmode="numeric" placeholder="27"></label><label class="inlineCheck"><input id="setShiftWeekend" type="checkbox"> لو صادف الجمعة يتقدم للخميس، ولو السبت يتأخر للأحد</label><p class="sheetLead" id="cycleSettingHint">—</p>
+
 </div>
 <div class="settingsnote">اكتب يوم الشهر. مثال: إذا الراتب ينزل يوم 27، اجعل البداية 27 والنهاية 26. الدورة تتكرر تلقائيًا كل شهر</div>
 <label>حساب المتبقي للدورة<select id="monthBudgetMode"><option value="auto">تلقائي من ميزانيات الأيام</option><option value="manual">تحديد المتبقي الحالي يدويًا</option></select></label>
@@ -1172,20 +1201,20 @@ body{overflow-x:hidden}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (()=>{
-const APP_VERSION='5.4.3';
+const APP_VERSION='5.5.0';
 const SUPABASE_URL='https://snhmckjyhiizzsqgraec.supabase.co';
 const SUPABASE_KEY='sb_publishable_jBKntvH70OkSa9zgrMjRjw_XNC2sSq0';
 const OWNER_EMAIL='fs.almutairi@outlook.com';
 const RELEASE_MANIFEST='version.json';
 const SMS_INGEST_ENDPOINT='https://snhmckjyhiizzsqgraec.supabase.co/functions/v1/sms-ingest';
-let smsIngestTokenOnce='';let cycleDraft=null,editingCommitId=null,editingWealthId=null,editingSourceId=null,editingLoanId=null,pullStartY=null;
+let smsIngestTokenOnce='';let pendingAnchorDate=null,mzScrollY=0;let cycleDraft=null,editingCommitId=null,editingWealthId=null,editingSourceId=null,editingLoanId=null,pullStartY=null;
 let smsInboxSyncBusy=false;
 let availableAppVersion=null,availableAppBuild=null,updateCheckBusy=false;
 
 const LEGACY_KEY='mizan-static-v1';
 const GUIDE_CROPS={};
 const KEY=LEGACY_KEY;
-const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleShiftWeekend:true,cycleAnchors:{},cycleEndDay:31},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:'',budgetSeg:'cycle',insightSeg:'spend',splitSeg:'splits',privacy:false},merchantRules:{},income:{commitments:[],autoOpen:true},cycles:{},wealth:{accounts:[],snapshots:[]},balanceGaps:[],loans:[],meta:{rev:0,savedAt:null,device:''},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
+const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleShiftWeekend:true,cycleAnchors:{}},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:'',budgetSeg:'cycle',insightSeg:'spend',splitSeg:'splits',privacy:false},merchantRules:{},income:{commitments:[],autoOpen:true},cycles:{},wealth:{accounts:[],snapshots:[]},balanceGaps:[],loans:[],meta:{rev:0,savedAt:null,device:''},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
 const clone=x=>JSON.parse(JSON.stringify(x));let state=clone(defaults);let splitReturnTxnId=null;
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 let secureUser=null,secureProfile=null,secureSession=null,secureReady=false,secureSaveTimer=null,secureSaveBusy=false,secureSaveQueued=false,accessTimer=null,mfaEnrollment=null,currentAdminControl=null,v5BackfillPending=0;
@@ -1465,30 +1494,48 @@ function daysInMonth(y,m){return new Date(y,m+1,0).getDate()}
 function safeMonthDay(y,m,d){return new Date(y,m,Math.min(Math.max(1,+d||1),daysInMonth(y,m)),0,0,0,0)}
 function anchorKey(y,m){return `${y}-${String(m+1).padStart(2,'0')}`}
 function cycleAnchors(){if(!state.settings.cycleAnchors||typeof state.settings.cycleAnchors!=='object')state.settings.cycleAnchors={};return state.settings.cycleAnchors}
-function shiftBeforeWeekend(d){
+function payWeekendRule(d){
   if(state.settings.cycleShiftWeekend===false)return d;
-  const x=new Date(d);
-  while(x.getDay()===5||x.getDay()===6)x.setDate(x.getDate()-1);
+  const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());
+  if(x.getDay()===5)x.setDate(x.getDate()-1);
+  else if(x.getDay()===6)x.setDate(x.getDate()+1);
   return x
 }
-function cycleStartFor(y,m){
+function payDayFor(y,m){
   const key=anchorKey(y,m),ov=cycleAnchors()[key];
-  if(ov){const d=new Date(ov+'T00:00:00');if(!isNaN(d))return d}
+  if(ov){const d=new Date(ov+'T00:00:00');if(!isNaN(d))return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
   const sd=Math.min(31,Math.max(1,+state.settings.cycleStartDay||1));
-  return shiftBeforeWeekend(safeMonthDay(y,m,sd))
+  return payWeekendRule(safeMonthDay(y,m,sd))
 }
 function cycleCandidate(y,m){
-  const start=cycleStartFor(y,m);
-  const nextBase=new Date(y,m+1,1);
-  const nextStart=cycleStartFor(nextBase.getFullYear(),nextBase.getMonth());
-  const endExclusive=new Date(nextStart);
-  const end=new Date(nextStart);end.setDate(end.getDate()-1);
+  const start=payDayFor(y,m);
+  const nb=new Date(y,m+1,1);
+  const endExclusive=payDayFor(nb.getFullYear(),nb.getMonth());
+  const end=new Date(endExclusive);end.setDate(end.getDate()-1);
   return{start,end,endExclusive}
 }
 function setCycleAnchor(dateStr){
   const d=new Date(dateStr+'T00:00:00');if(isNaN(d))return false;
   cycleAnchors()[anchorKey(d.getFullYear(),d.getMonth())]=dateStr;
   save();render();return true
+}
+function clearCycleAnchor(y,m){delete cycleAnchors()[anchorKey(y,m)];save();render()}
+function cycleIsManual(b=currentCycle()){return !!cycleAnchors()[anchorKey(b.start.getFullYear(),b.start.getMonth())]}
+function cycleRangeText(b=currentCycle()){
+  const f=d=>d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+  return `${f(b.start)} — ${f(b.end)}`
+}
+function expectedPayDay(){const n=fdate();return payDayFor(n.getFullYear(),n.getMonth())}
+function maybeAskAnchor(actualDate){
+  const d=new Date(actualDate);if(isNaN(d))return false;
+  const day=new Date(d.getFullYear(),d.getMonth(),d.getDate());
+  const expected=payDayFor(day.getFullYear(),day.getMonth());
+  if(Math.abs(day-expected)<86400000)return false;
+  pendingAnchorDate=day;
+  const f=x=>x.toLocaleDateString('en-GB',{day:'numeric',month:'long'});
+  $('anchorAskText').textContent=`سجّلت دخلك في ${f(day)}، والمتوقع كان ${f(expected)}. نبدأ الدورة من ${f(day)}؟`;
+  open('anchorAskSheet');
+  return true
 }
 function currentCycle(d=fdate()){const x=new Date(d);x.setHours(0,0,0,0);const y=x.getFullYear(),m=x.getMonth(),c=[];for(let off=-2;off<=1;off++){const base=new Date(y,m+off,1),b=cycleCandidate(base.getFullYear(),base.getMonth());c.push(b);if(x>=b.start&&x<b.endExclusive)return b}const past=c.filter(b=>b.start<=x).sort((a,b)=>b.start-a.start)[0];return past||cycleCandidate(y,m)}
 function cycleByOffset(offset=0){const cur=currentCycle(),base=new Date(cur.start.getFullYear(),cur.start.getMonth()+offset,1);return cycleCandidate(base.getFullYear(),base.getMonth())}
@@ -1584,7 +1631,38 @@ function learnedSubcategory(rule){return rule&&typeof rule==='object'?(rule.subc
 
 const COMMIT_GROUPS=[['visa','مستحقات فيزا','gVisa'],['bills','فواتير','gBills'],['education','رسوم تعليم','gEdu'],['bnpl','اشتر الآن وادفع لاحقًا','gBnpl'],['finance','تمويل','gFin'],['transfer','تحويلات شخصية','gTransfer'],['saving','ادخار','gSave'],['invest','استثمار','gInvest'],['other','أخرى','gOther']];
 const SAVING_GROUPS=['saving','invest'];
-const WEALTH_TYPES=[['fund','صندوق','◈'],['stocks','أسهم','▲'],['gold','ذهب','●'],['realestate','عقار','▣'],['deposit','وديعة','▤'],['crypto','محفظة رقمية','◆'],['other','أخرى','◇']];
+const WEALTH_TYPES=[
+  ['deposit','وديعة','▤'],
+  ['sukuk','صكوك','▥'],
+  ['fund','صندوق / محفظة رقمية','◈'],
+  ['stocks','أسهم','▲'],
+  ['gold','ذهب','●'],
+  ['realestate','عقار','▣'],
+  ['other','أخرى','◇']];
+const WEALTH_FIELDS={
+  deposit:[['principal','مبلغ الوديعة','decimal'],['startAt','تاريخ الإيداع','date'],['maturityAt','تاريخ الاستحقاق','date'],['ratePct','الربح المتوقع %','decimal'],['payout','التوزيع','select:نهاية المدة|شهري|ربع سنوي'],['refNo','رقم الصك / المرجع','text'],['platform','البنك / الجهة','text']],
+  sukuk:[['principal','قيمة الاكتتاب','decimal'],['startAt','تاريخ الإصدار','date'],['maturityAt','تاريخ الاستحقاق','date'],['ratePct','العائد السنوي %','decimal'],['payout','التوزيع','select:نصف سنوي|ربع سنوي|شهري|نهاية المدة'],['refNo','رمز الصك','text'],['platform','المنصة','text']],
+  fund:[['principal','رأس المال المستثمر','decimal'],['platform','المنصة','text'],['fundKind','نوع الصندوق','select:أسهم محلية|أسهم عالمية|مرابحة|متنوع|عقاري|أخرى'],['startAt','تاريخ أول استثمار','date'],['riskLevel','مستوى المخاطرة','select:منخفض|متوسط|مرتفع']],
+  stocks:[['principal','تكلفة الشراء','decimal'],['platform','المحفظة / الوسيط','text'],['market','السوق','select:تداول السعودي|أمريكي|خليجي|أخرى'],['startAt','تاريخ أول شراء','date']],
+  gold:[['principal','تكلفة الشراء','decimal'],['grams','الوزن بالجرام','decimal'],['karat','العيار','select:24|22|21|18'],['platform','الجهة','text'],['startAt','تاريخ الشراء','date']],
+  realestate:[['principal','تكلفة التملك','decimal'],['city','المدينة','text'],['propKind','النوع','select:أرض|شقة|فيلا|تجاري'],['rentAnnual','الإيجار السنوي','decimal'],['startAt','تاريخ التملك','date']],
+  other:[['principal','رأس المال','decimal'],['platform','الجهة','text'],['startAt','تاريخ البداية','date']]
+};
+function wealthFieldsFor(t){return WEALTH_FIELDS[t]||WEALTH_FIELDS.other}
+function isFixedTerm(t){return t==='deposit'||t==='sukuk'}
+function expectedMaturityValue(a){
+  const p=+((a.meta||{}).principal)||+a.contributed||0,r=+((a.meta||{}).ratePct)||0;
+  if(!p||!r)return null;
+  const st=new Date((a.meta||{}).startAt||a.createdAt||Date.now()),mt=new Date((a.meta||{}).maturityAt||0);
+  if(isNaN(mt)||!mt.getTime())return null;
+  const yrs=Math.max(0,(mt-st)/(365.25*86400000));
+  return p*(1+r/100*yrs)
+}
+function daysToMaturity(a){
+  const mt=new Date((a.meta||{}).maturityAt||0);
+  if(isNaN(mt)||!mt.getTime())return null;
+  return Math.round((mt-fdate())/86400000)
+}
 function groupLabel(g){const r=COMMIT_GROUPS.find(x=>x[0]===g);return r?r[1]:'أخرى'}
 function groupClass(g){const r=COMMIT_GROUPS.find(x=>x[0]===g);return r?r[2]:'gFixed'}
 function wealthTypeMeta(t){const r=WEALTH_TYPES.find(x=>x[0]===t);return r?{label:r[1],icon:r[2]}:{label:'أخرى',icon:'◇'}}
@@ -1911,9 +1989,8 @@ function renderCycleFlow(){
   const inc=cycleIncomeTotal(),g=reservedByGroup(),avail=cycleAvailable();
   $('cycleIncomeVal').textContent=fmt(inc);
   $('cycleHeroLabel').textContent='دخل الدورة • '+cycleLabel(currentCycle());
-  {const b=currentCycle(),k=anchorKey(b.start.getFullYear(),b.start.getMonth()),manual=!!cycleAnchors()[k];
-   const d=n=>n.toLocaleDateString('en-US',{day:'numeric',month:'short'});
-   $('cycleAnchorText').textContent=`${d(b.start)} — ${d(b.end)} • ${cycleDaysLeft()} يوم باقي${manual?' • معدّلة يدويًا':''}`}
+  {const b=currentCycle();
+   $('cycleAnchorText').textContent=`${cycleRangeText(b)} • ${cycleDaysLeft()} يوم باقي${cycleIsManual(b)?' • معدّلة يدويًا':''}`}
   const oblig=(g.visa||0)+(g.bills||0)+(g.education||0)+(g.bnpl||0)+(g.finance||0)+(g.other||0);
   const save=(g.saving||0)+(g.invest||0);
   const spendPart=Math.max(0,inc-reservedTotal());
@@ -1937,6 +2014,11 @@ function renderCycleFlow(){
     else notes.push(['noteInfo','◆','ما فيه ادخار محجوز هذه الدورة. حتى مبلغ بسيط ثابت يفرق على المدى الطويل']);
   }
   loansDue().slice(0,2).forEach(l=>notes.push(['noteWarn','◷',`${esc(l.name)} وعدك يرجّع ${fmt(loanRemaining(l))} ر.س — ${loanStatus(l)[1]}`]));
+  {const rg=reservedByGroup(),plan=(rg.saving||0)+(rg.invest||0),inc2=cycleIncomeTotal();
+   $('investPlanned').textContent=fmt(plan);
+   $('investSplit').innerHTML=`<i style="width:${plan&&inc2?Math.min(100,plan/inc2*100):0}%"></i>`;
+   const wt=wealthTotals();
+   $('investLinked').textContent=plan>0?`${inc2?Math.round(plan/inc2*100):0}% من دخلك • ثروتك الآن ${fmt(wt.value)} ر.س`:'ما خصصت شيء للادخار هذي الدورة';}
   commitmentAlerts().forEach(a=>notes.push(['noteWarn','!',`${a.row.name} كان مستحقًا ولا وصلت رسالة تأكيد — تأكد أنه انصرف`]));
   $('cycleNotes').innerHTML=notes.map(([c,i,t])=>`<div class="insightNote ${c}"><i>${i}</i><span>${t}</span></div>`).join('');
   const rows=cycleReservations();
@@ -1961,37 +2043,72 @@ function renderCycleFlow(){
     save();render();toast('رجعناه محجوز')
   });
 }
+const WCOLORS={deposit:'#0f6e56',sukuk:'#5DCAA5',fund:'#378ADD',stocks:'#7F77DD',gold:'#EF9F27',realestate:'#D4537E',other:'#888780'};
+function monthDeltas(n=8){
+  const keys=wealthMonthKeys(n+1),out=[];
+  for(let i=1;i<keys.length;i++){
+    const a=wealthTotalAt(keys[i-1]),b=wealthTotalAt(keys[i]);
+    out.push({key:keys[i],prev:a,val:b,delta:a>0?b-a:0})
+  }
+  return out
+}
+function accountGain(a){
+  const sn=accountLatest(a.id),v=sn?+sn.value||0:0,c=+a.contributed||0;
+  return{value:v,cost:c,gain:v-c,pct:c>0?(v-c)/c*100:0}
+}
 function renderWealth(){
   ensureIncomeShape();
   const t=wealthTotals();
   $('wealthTotal').textContent=fmt(t.value);
   const d=$('wealthDelta');
   if(t.contributed>0){const up=t.gain>=0;d.className='wealthDelta '+(Math.abs(t.pct)<0.05?'wFlat':up?'wUp':'wDown');d.textContent=`${up?'▲':'▼'} ${fmt(Math.abs(t.gain))} ر.س • ${Math.abs(t.pct).toFixed(1)}%`}
-  else{d.className='wealthDelta wFlat';d.textContent='سجّل ما ضخّيته عشان نحسب العائد'}
-  const keys=wealthMonthKeys(12),vals=keys.map(k=>wealthTotalAt(k)),mx=Math.max(1,...vals),mn=Math.min(...vals,0);
-  const rng=Math.max(1,mx-mn);
-  const pts=vals.map((v,i)=>`${i/(vals.length-1||1)*300},${70-((v-mn)/rng)*62}`).join(' ');
-  $('wealthSpark').innerHTML=vals.some(v=>v>0)?`<polyline points="${pts}" fill="none" stroke="#0fa187" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="0,74 ${pts} 300,74" fill="#0fa18714" stroke="none"/>`:'';
+  else{d.className='wealthDelta wFlat';d.textContent='سجّل رأس مالك عشان نحسب العائد'}
+
+  const rows=monthDeltas(8),mx=Math.max(1,...rows.map(r=>Math.abs(r.delta)));
+  const bw=Math.floor(300/Math.max(1,rows.length))-6;
+  $('wealthSpark').innerHTML=rows.map((r,i)=>{
+    const hgt=Math.max(2,Math.abs(r.delta)/mx*30),x=i*(bw+6)+3,mid=37;
+    const y=r.delta>=0?mid-hgt:mid,c=r.delta>=0?'#0fa187':'#c9553d';
+    const lbl=r.key.slice(5);
+    return `<rect x="${x}" y="${y}" width="${bw}" height="${hgt}" rx="2" fill="${c}"/>`+
+           `<text x="${x+bw/2}" y="72" font-size="7" fill="#9bb0aa" text-anchor="middle">${lbl}</text>`
+  }).join('')+`<line x1="0" y1="37" x2="300" y2="37" stroke="#dfeae7" stroke-width="1"/>`;
+  $('wealthChartCap').textContent=rows.some(r=>r.delta!==0)?'التغير الشهري في إجمالي الثروة':'حدّث قيمك شهرًا بعد شهر عشان يظهر التغير';
+
   const byType={};state.wealth.accounts.forEach(a=>{const sn=accountLatest(a.id);byType[a.type]=(byType[a.type]||0)+(sn?+sn.value||0:0)});
-  const colors={fund:'#0f6e56',stocks:'#378ADD',gold:'#EF9F27',realestate:'#7F77DD',deposit:'#5DCAA5',crypto:'#D4537E',other:'#888780'};
   const tot=Object.values(byType).reduce((a,b)=>a+b,0)||1;
-  $('wealthAlloc').innerHTML=Object.entries(byType).filter(([,v])=>v>0).map(([k,v])=>`<i style="width:${v/tot*100}%;background:${colors[k]||'#888780'}"></i>`).join('');
+  $('wealthAlloc').innerHTML=Object.entries(byType).filter(([,v])=>v>0).map(([k,v])=>`<i style="width:${v/tot*100}%;background:${WCOLORS[k]||'#888780'}"></i>`).join('');
   $('wealthAllocLegend').innerHTML=Object.entries(byType).filter(([,v])=>v>0).slice(0,4).map(([k,v])=>`<span>${wealthTypeMeta(k).label}<b>${Math.round(v/tot*100)}%</b></span>`).join('');
+
+  const withGain=state.wealth.accounts.map(a=>({a,g:accountGain(a)})).filter(x=>x.g.cost>0);
+  const winners=withGain.filter(x=>x.g.gain>0).sort((x,y)=>y.g.pct-x.g.pct);
+  const losers=withGain.filter(x=>x.g.gain<0).sort((x,y)=>x.g.pct-y.g.pct);
+  $('wealthScore').innerHTML=withGain.length?`
+    <div class="wScoreCard up"><span>رابحة</span><b>${winners.length}</b><small>${winners[0]?esc(winners[0].a.name)+' +'+winners[0].g.pct.toFixed(1)+'%':'—'}</small></div>
+    <div class="wScoreCard down"><span>خاسرة</span><b>${losers.length}</b><small>${losers[0]?esc(losers[0].a.name)+' '+losers[0].g.pct.toFixed(1)+'%':'—'}</small></div>`:'';
+
   const notes=[];const stale=staleAccounts();
-  if(!state.wealth.accounts.length)notes.push(['noteInfo','◆','أضف حساباتك الاستثمارية والادخارية، وحدّث قيمتها مرة بالشهر عشان تشوف نموّك الحقيقي']);
+  const maturing=state.wealth.accounts.filter(a=>{const dd=daysToMaturity(a);return dd!==null&&dd>=0&&dd<=45});
+  if(!state.wealth.accounts.length)notes.push(['noteInfo','◆','أضف وديعة أو صندوق أو أسهم، وميزان يتابع نموّها ويقارن الرابح بالخاسر']);
   else{
+    maturing.forEach(a=>{const dd=daysToMaturity(a),ev=expectedMaturityValue(a);
+      notes.push(['noteInfo','◷',`${esc(a.name)} تستحق بعد ${dd} يوم${ev?` — المتوقع ${fmt(ev)} ر.س`:''}`])});
     if(stale.length)notes.push(['noteWarn','!',`${stale.length} حساب ما تحدّث هذا الشهر — القيم اللي تشوفها قديمة`]);
     if(t.prev>0)notes.push([t.mom>=0?'noteGood':'noteWarn',t.mom>=0?'▲':'▼',`تغيّرت ثروتك ${Math.abs(t.mom).toFixed(1)}% عن الشهر الماضي`]);
-    const rg2=reservedByGroup(),sv=(rg2.saving||0)+(rg2.invest||0);
+    if(losers.length)notes.push(['noteWarn','▼',`${esc(losers[0].a.name)} أكبر خسارة — ${fmt(Math.abs(losers[0].g.gain))} ر.س`]);
+    const rg=reservedByGroup(),sv=(rg.saving||0)+(rg.invest||0);
     if(sv>0&&t.value>0)notes.push(['noteInfo','◷',`بمعدل ${fmt(sv)} ر.س شهريًا، تضيف ${fmt(sv*12)} ر.س خلال سنة قبل أي عائد`]);
   }
   $('wealthNotes').innerHTML=notes.map(([c,i,x])=>`<div class="insightNote ${c}"><i>${i}</i><span>${x}</span></div>`).join('');
+
   const cur=monthKeyOf();
   $('wealthList').innerHTML=state.wealth.accounts.length?state.wealth.accounts.map(a=>{
-    const sn=accountLatest(a.id),v=sn?+sn.value||0:0,c=+a.contributed||0,gain=v-c,pct=c>0?gain/c*100:0,meta=wealthTypeMeta(a.type);
-    const old=!sn||sn.monthKey<cur;
-    return `<div class="wRow" data-wealth="${a.id}"><div class="wIcon" style="background:${(colors[a.type]||'#888780')}1f;color:${colors[a.type]||'#888780'}">${meta.icon}</div><div><h4>${a.name}</h4><small>${old?'<i class="staleDot"></i>':''}${meta.label}${c>0?' • ضخّيت '+fmt(c):''}</small></div><div class="v"><b>${fmt(v)}</b><small class="${gain>=0?'stConfirmed':'stMissed'}">${c>0?(gain>=0?'+':'−')+fmt(Math.abs(gain))+' • '+Math.abs(pct).toFixed(1)+'%':'—'}</small></div></div>`
-  }).join(''):`<div class="emptyBlock"><b>ابدأ بمتابعة ثروتك</b><small>صندوق، أسهم، ذهب، عقار أو وديعة. تسجّله مرة، وتحدّث قيمته شهريًا فقط</small><button class="ghost" onclick="document.getElementById('addWealthBtn').click()">إضافة أول حساب</button></div>`;
+    const g=accountGain(a),meta=wealthTypeMeta(a.type),m=a.meta||{};
+    const old=!isFixedTerm(a.type)&&(()=>{const sn=accountLatest(a.id);return !sn||sn.monthKey<cur})();
+    const dd=daysToMaturity(a);
+    const sub=[meta.label,m.platform||'',dd!==null&&dd>=0?`تستحق بعد ${dd} يوم`:'',m.ratePct?`${m.ratePct}% متوقع`:''].filter(Boolean).join(' • ');
+    return `<div class="wRow" data-wealth="${a.id}"><div class="wIcon" style="background:${(WCOLORS[a.type]||'#888780')}1f;color:${WCOLORS[a.type]||'#888780'}">${meta.icon}</div><div><h4>${esc(a.name)}</h4><small>${old?'<i class="staleDot"></i>':''}${esc(sub)}</small></div><div class="v"><b>${fmt(g.value)}</b><small class="${g.gain>=0?'stConfirmed':'stMissed'}">${g.cost>0?(g.gain>=0?'+':'−')+fmt(Math.abs(g.gain))+' • '+Math.abs(g.pct).toFixed(1)+'%':'—'}</small></div></div>`
+  }).join(''):`<div class="emptyBlock"><b>ابدأ بمتابعة استثماراتك</b><small>وديعة، صكوك، صندوق، أسهم، ذهب أو عقار. كل نوع له حقوله الخاصة</small><button class="ghost" onclick="document.getElementById('addWealthBtn').click()">إضافة أول حساب</button></div>`;
   document.querySelectorAll('[data-wealth]').forEach(el=>el.onclick=()=>openWealthSheet(el.dataset.wealth));
 }
 function renderCycleOpen(){
@@ -2028,6 +2145,24 @@ function openCommitSheet(id=null){
   $('commitDeleteBtn').classList.toggle('hidden',!c);
   open('commitSheet')
 }
+function renderWealthFields(type,meta={}){
+  const host=$('wealthDynFields');if(!host)return;
+  host.innerHTML=wealthFieldsFor(type).map(([k,label,kind])=>{
+    const v=meta[k]!==undefined&&meta[k]!==null?String(meta[k]):'';
+    if(kind.startsWith('select:')){
+      const opts=kind.slice(7).split('|');
+      return `<label>${label}<select data-wf="${k}">${opts.map(o=>`<option value="${o}"${v===o?' selected':''}>${o}</option>`).join('')}</select></label>`
+    }
+    if(kind==='date')return `<label>${label}<input data-wf="${k}" type="date" value="${v}"></label>`;
+    if(kind==='decimal')return `<label>${label}<input data-wf="${k}" inputmode="decimal" value="${v}" placeholder="0"></label>`;
+    return `<label>${label}<input data-wf="${k}" value="${v}"></label>`
+  }).join('')
+}
+function collectWealthMeta(){
+  const meta={};
+  document.querySelectorAll('[data-wf]').forEach(el=>{const v=el.value;if(v!=='')meta[el.dataset.wf]=v});
+  return meta
+}
 function openWealthSheet(id=null){
   ensureIncomeShape();
   editingWealthId=id;
@@ -2035,10 +2170,13 @@ function openWealthSheet(id=null){
   $('wealthSheetTitle').textContent=a?'تعديل حساب':'حساب جديد';
   $('wealthType').innerHTML=WEALTH_TYPES.map(([k,l])=>`<option value="${k}">${l}</option>`).join('');
   $('wealthName').value=a?a.name:'';
-  $('wealthType').value=a?a.type:'fund';
-  $('wealthContrib').value=a?(a.contributed||''):'';
+  $('wealthType').value=a?a.type:'deposit';
   const sn=a?accountLatest(a.id):null;
   $('wealthValue').value=sn?sn.value:'';
+  renderWealthFields($('wealthType').value,(a&&a.meta)||{});
+  $('wealthType').onchange=()=>renderWealthFields($('wealthType').value,{});
+  $('wealthValueWrap').classList.toggle('hidden',isFixedTerm($('wealthType').value));
+  $('wealthType').addEventListener('change',()=>$('wealthValueWrap').classList.toggle('hidden',isFixedTerm($('wealthType').value)));
   $('wealthDeleteBtn').classList.toggle('hidden',!a);
   open('wealthAccountSheet')
 }
@@ -2257,10 +2395,12 @@ function toast(msg,bad=false){const el=$('toast');if(!el)return;el.textContent=m
 function open(id){
   document.querySelectorAll('.sheet').forEach(s=>s.classList.add('hidden'));
   const sheet=$(id);if(!sheet)return;
+  mzScrollY=window.scrollY||0;document.body.classList.add('sheetOpen');document.body.style.top=`-${mzScrollY}px`;
   $('backdrop').classList.remove('hidden');sheet.classList.remove('hidden');sheet.scrollTop=0
 }
 function close(){
   if(document.activeElement&&typeof document.activeElement.blur==='function')document.activeElement.blur();
+  if(document.body.classList.contains('sheetOpen')){document.body.classList.remove('sheetOpen');document.body.style.top='';window.scrollTo(0,mzScrollY||0)}
   $('backdrop').classList.add('hidden');document.querySelectorAll('.sheet').forEach(s=>s.classList.add('hidden'))
 }
 $('backdrop').onclick=close;document.querySelectorAll('.close').forEach(b=>b.onclick=close);
@@ -2319,7 +2459,9 @@ $('loanDeleteBtn').onclick=()=>{
 
 $('cycleAnchorBtn').onclick=()=>{
   const b=currentCycle();
-  $('anchorDate').value=b.start.toISOString().slice(0,10);
+  const p=n=>`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`;
+  $('anchorDate').value=p(b.start);
+  $('anchorResetBtn').classList.toggle('hidden',!cycleIsManual(b));
   $('anchorWeekend').checked=state.settings.cycleShiftWeekend!==false;
   open('cycleAnchorSheet')
 };
@@ -2338,6 +2480,19 @@ $('privacyBtn').onclick=()=>{
   state.ui.privacy=!privacyOn();persistState();render();
   toast(privacyOn()?'الأرقام مخفية':'الأرقام ظاهرة')
 };
+
+if($('headVersion'))$('headVersion').textContent='Secure v'+APP_VERSION;
+if($('appVersionLabel'))$('appVersionLabel').textContent=APP_VERSION;
+$('anchorAskYes').onclick=()=>{
+  if(pendingAnchorDate){
+    const d=pendingAnchorDate,iso=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    setCycleAnchor(iso)
+  }
+  pendingAnchorDate=null;close();render();toast('تم ضبط بداية الدورة')
+};
+$('anchorAskNo').onclick=()=>{pendingAnchorDate=null;close()};
+
+$('goWealthBtn').onclick=()=>{state.ui.insightSeg='wealth';persistState();setTab('insights');render()};
 $('segCycle').onclick=()=>{state.ui.budgetSeg='cycle';persistState();render()};
 $('segCats').onclick=()=>{state.ui.budgetSeg='cats';persistState();render()};
 $('segSpend').onclick=()=>{state.ui.insightSeg='spend';persistState();render()};
@@ -2352,10 +2507,13 @@ $('incomeAddBtn').onclick=()=>{
 };
 function commitPendingIncome(){
   const amt=+$('incomeAmount').value||0;if(!(amt>0))return false;
+  const askLater=true;
   ensureIncomeShape();const key=currentCycleKey();
   if(!state.cycles[key])state.cycles[key]={key,openedAt:new Date().toISOString(),income:[],reservations:buildCycleDraft(key).reservations};
   state.cycles[key].income=(state.cycles[key].income||[]).concat([{id:uid(),label:$('incomeLabel').value.trim()||'الراتب',amount:amt,ts:new Date().toISOString()}]);
-  $('incomeAmount').value='';$('incomeLabel').value='';save();return true
+  $('incomeAmount').value='';$('incomeLabel').value='';save();
+  try{setTimeout(()=>maybeAskAnchor(new Date()),450)}catch(e){}
+  return true
 }
 $('incomeDoneBtn').onclick=()=>{const added=commitPendingIncome();close();render();if(added)toast('تم تسجيل الدخل')};
 $('commitSaveBtn').onclick=()=>{
@@ -2385,10 +2543,13 @@ $('commitDeleteBtn').onclick=()=>{
 $('wealthSaveBtn').onclick=()=>{
   ensureIncomeShape();
   const name=$('wealthName').value.trim();if(!name){toast('اكتب اسم الحساب',true);return}
-  const contrib=+$('wealthContrib').value||0,val=+$('wealthValue').value||0;
+  const type=$('wealthType').value,meta=collectWealthMeta();
+  const contrib=+meta.principal||0;
   let id=editingWealthId;
-  if(id){const a=state.wealth.accounts.find(x=>x.id===id);if(a){a.name=name;a.type=$('wealthType').value;a.contributed=contrib}}
-  else{id=uid();state.wealth.accounts.push({id,name,type:$('wealthType').value,contributed:contrib,createdAt:new Date().toISOString()})}
+  if(id){const a=state.wealth.accounts.find(x=>x.id===id);if(a){a.name=name;a.type=type;a.contributed=contrib;a.meta=meta}}
+  else{id=uid();state.wealth.accounts.push({id,name,type,contributed:contrib,meta,createdAt:new Date().toISOString()})}
+  let val=+$('wealthValue').value||0;
+  if(isFixedTerm(type)&&!val)val=contrib;
   if(val>0){
     const mk=monthKeyOf(),ex=state.wealth.snapshots.find(x=>x.accountId===id&&x.monthKey===mk);
     if(ex)ex.value=val;else state.wealth.snapshots.push({id:uid(),accountId:id,monthKey:mk,value:val,ts:new Date().toISOString()})
@@ -2443,7 +2604,7 @@ $('editTxnForm').onsubmit=e=>{e.preventDefault();const t=state.txns.find(x=>x.id
 
 
 function renderSettingsV5(){const box=$('settingsCategoryBudgets');if(box)box.innerHTML=CATEGORY_LIST.map(c=>`<label class="categoryBudgetInput"><span>${esc(c)}</span><input data-category-budget="${esc(c)}" type="number" min="0" step="1" value="${Math.max(0,+state.settings.categoryBudgets?.[c]||0)}"><em>ر.س</em></label>`).join('');const rules=Object.entries(state.merchantRules||{}),list=$('learningRulesList');if(list)list.innerHTML=rules.length?rules.sort((a,b)=>new Date(b[1]?.updatedAt||0)-new Date(a[1]?.updatedAt||0)).slice(0,30).map(([k,v])=>`<div class="learningRule"><div><b>${esc(k)}</b><small>${esc(learnedCategory(v)||'أخرى')}${learnedSubcategory(v)?` • ${esc(learnedSubcategory(v))}`:''}</small></div><button data-delete-rule="${esc(k)}" type="button">حذف</button></div>`).join(''):'<div class="empty">ما فيه قواعد تعلم حتى الآن. أول تصحيح لتاجر سيظهر هنا</div>';document.querySelectorAll('[data-delete-rule]').forEach(b=>b.onclick=()=>{delete state.merchantRules[b.dataset.deleteRule];save();renderSettingsV5();toast('تم حذف قاعدة التعلم')})}
-$('settingsBtn').onclick=()=>{renderSettingsV5();refreshSmsInboxStatus().catch(()=>{});$('secureSettingsName').value=secureProfile?.display_name||'';$('secureAccountName').textContent=secureProfile?.display_name||'—';$('secureAccountEmail').textContent=secureProfile?.email||'';$('secureAccountRole').textContent=secureProfile?.role==='owner'?'Owner':'User';const db=Array.isArray(state.settings.dailyBudgets)&&state.settings.dailyBudgets.length===7?state.settings.dailyBudgets:[100,100,100,100,200,200,200];db.forEach((v,i)=>$('dayBudget'+i).value=v);$('resetHour').value=state.settings.reset;$('trackingStart').value=state.settings.trackingStart||'2026-09-01';$('cycleStartDay').value=state.settings.cycleStartDay||1;$('cycleEndDay').value=state.settings.cycleEndDay||31;const active=monthOverrideActive();$('monthBudgetMode').value=active?'manual':'auto';$('monthRemainingSet').value=active?Math.max(0,monthRemaining()).toFixed(2):'';document.querySelectorAll('[data-category-budget]').forEach(el=>{el.value=Math.max(0,+state.settings.categoryBudgets?.[el.dataset.categoryBudget]||0)});$('monthRemainingBox').classList.toggle('hidden',!active);open('settingsSheet')};$('homeNav').onclick=()=>setTab('home');$('budgetNav').onclick=()=>setTab('budget');$('insightsNav').onclick=()=>setTab('insights');$('splitsNav').onclick=()=>setTab('splits');$('openSplitsBtn').onclick=()=>setTab('splits');$('addTxnBtn').onclick=()=>{$('txnType').value='personal';open('txnSheet')};$('newSplitBtn').onclick=()=>{$('txnType').value='split';open('txnSheet')};$('canBuyBtn').onclick=()=>open('buySheet');$('addSourceBtn').onclick=()=>open('sourceSheet');$('smsBtn').onclick=()=>open('smsSheet');$('smsInboxRotateBtn').onclick=rotateSmsInboxToken;$('smsInboxCopyTokenBtn').onclick=()=>{if(smsIngestTokenOnce)copyPayText(smsIngestTokenOnce,'تم نسخ مفتاح Mizan Import')};if($('smsInboxCopyEndpointBtn'))$('smsInboxCopyEndpointBtn').onclick=()=>copyPayText(SMS_INGEST_ENDPOINT,'تم نسخ رابط الاستقبال');$('smsInboxSyncBtn').onclick=()=>syncSmsInbox({silent:false});$('importBtn').onclick=()=>open('importSheet');$('addPersonBtn').onclick=$('addPersonBtn2').onclick=()=>openPerson();$('addPersonFromSplit').onclick=()=>openPerson('',true);$('collectionSettingsBtn').onclick=openCollectionSettings;$('sendDueReminders').onclick=()=>runCollect(dueReminderRows(),'reminder');$('splitOpenFilter').onclick=()=>{state.ui.splitFilter='open';save()};$('splitDoneFilter').onclick=()=>{state.ui.splitFilter='done';save()};$('monthPathToggle').onclick=()=>{state.ui.monthOpen=!state.ui.monthOpen;save()};$('monthBudgetMode').onchange=e=>{$('monthRemainingBox').classList.toggle('hidden',e.target.value!=='manual');if(e.target.value==='manual'&&!$('monthRemainingSet').value)$('monthRemainingSet').value=Math.max(0,monthRemaining()).toFixed(2)};$('txnType').onchange=e=>$('peopleBox').classList.add('hidden');$('weekTab').onclick=()=>{state.view='week';save()};$('monthTab').onclick=()=>{state.view='month';save()};if($('openCategoryBudgetSettings'))$('openCategoryBudgetSettings').onclick=()=>{$('settingsBtn').click();setTimeout(()=>document.querySelector('[data-category-budget]')?.scrollIntoView({behavior:'smooth',block:'center'}),120)};$('budgetSettingsBtn').onclick=()=>{$('settingsBtn').click();setTimeout(()=>document.querySelector('[data-category-budget]')?.scrollIntoView({behavior:'smooth',block:'center'}),120)};$('openOperationsBtn').onclick=$('openOperationsBtn2').onclick=()=>{populateCategoryControls();$('opsSearch').value=state.ui.opsQuery||'';$('opsCategoryFilter').value=state.ui.opsCategory||'';$('opsConfidenceFilter').value=state.ui.opsConfidence||'';renderOperations();open('operationsSheet')};$('opsSearch').oninput=()=>{state.ui.opsQuery=$('opsSearch').value;renderOperations()};$('opsCategoryFilter').onchange=()=>{state.ui.opsCategory=$('opsCategoryFilter').value;renderOperations()};$('opsConfidenceFilter').onchange=()=>{state.ui.opsConfidence=$('opsConfidenceFilter').value;renderOperations()};
+$('settingsBtn').onclick=()=>{renderSettingsV5();refreshSmsInboxStatus().catch(()=>{});$('secureSettingsName').value=secureProfile?.display_name||'';$('secureAccountName').textContent=secureProfile?.display_name||'—';$('secureAccountEmail').textContent=secureProfile?.email||'';$('secureAccountRole').textContent=secureProfile?.role==='owner'?'Owner':'User';const db=Array.isArray(state.settings.dailyBudgets)&&state.settings.dailyBudgets.length===7?state.settings.dailyBudgets:[100,100,100,100,200,200,200];db.forEach((v,i)=>$('dayBudget'+i).value=v);$('resetHour').value=state.settings.reset;$('trackingStart').value=state.settings.trackingStart||'2026-09-01';$('cycleStartDay').value=state.settings.cycleStartDay||1;const active=monthOverrideActive();$('monthBudgetMode').value=active?'manual':'auto';$('monthRemainingSet').value=active?Math.max(0,monthRemaining()).toFixed(2):'';document.querySelectorAll('[data-category-budget]').forEach(el=>{el.value=Math.max(0,+state.settings.categoryBudgets?.[el.dataset.categoryBudget]||0)});$('monthRemainingBox').classList.toggle('hidden',!active);open('settingsSheet')};$('homeNav').onclick=()=>setTab('home');$('budgetNav').onclick=()=>setTab('budget');$('insightsNav').onclick=()=>setTab('insights');$('splitsNav').onclick=()=>setTab('splits');$('openSplitsBtn').onclick=()=>setTab('splits');$('addTxnBtn').onclick=()=>{$('txnType').value='personal';open('txnSheet')};$('newSplitBtn').onclick=()=>{$('txnType').value='split';open('txnSheet')};$('canBuyBtn').onclick=()=>open('buySheet');$('addSourceBtn').onclick=()=>open('sourceSheet');$('smsBtn').onclick=()=>open('smsSheet');$('smsInboxRotateBtn').onclick=rotateSmsInboxToken;$('smsInboxCopyTokenBtn').onclick=()=>{if(smsIngestTokenOnce)copyPayText(smsIngestTokenOnce,'تم نسخ مفتاح Mizan Import')};if($('smsInboxCopyEndpointBtn'))$('smsInboxCopyEndpointBtn').onclick=()=>copyPayText(SMS_INGEST_ENDPOINT,'تم نسخ رابط الاستقبال');$('smsInboxSyncBtn').onclick=()=>syncSmsInbox({silent:false});$('importBtn').onclick=()=>open('importSheet');$('addPersonBtn').onclick=$('addPersonBtn2').onclick=()=>openPerson();$('addPersonFromSplit').onclick=()=>openPerson('',true);$('collectionSettingsBtn').onclick=openCollectionSettings;$('sendDueReminders').onclick=()=>runCollect(dueReminderRows(),'reminder');$('splitOpenFilter').onclick=()=>{state.ui.splitFilter='open';save()};$('splitDoneFilter').onclick=()=>{state.ui.splitFilter='done';save()};$('monthPathToggle').onclick=()=>{state.ui.monthOpen=!state.ui.monthOpen;save()};$('monthBudgetMode').onchange=e=>{$('monthRemainingBox').classList.toggle('hidden',e.target.value!=='manual');if(e.target.value==='manual'&&!$('monthRemainingSet').value)$('monthRemainingSet').value=Math.max(0,monthRemaining()).toFixed(2)};$('txnType').onchange=e=>$('peopleBox').classList.add('hidden');$('weekTab').onclick=()=>{state.view='week';save()};$('monthTab').onclick=()=>{state.view='month';save()};if($('openCategoryBudgetSettings'))$('openCategoryBudgetSettings').onclick=()=>{$('settingsBtn').click();setTimeout(()=>document.querySelector('[data-category-budget]')?.scrollIntoView({behavior:'smooth',block:'center'}),120)};$('budgetSettingsBtn').onclick=()=>{$('settingsBtn').click();setTimeout(()=>document.querySelector('[data-category-budget]')?.scrollIntoView({behavior:'smooth',block:'center'}),120)};$('openOperationsBtn').onclick=$('openOperationsBtn2').onclick=()=>{populateCategoryControls();$('opsSearch').value=state.ui.opsQuery||'';$('opsCategoryFilter').value=state.ui.opsCategory||'';$('opsConfidenceFilter').value=state.ui.opsConfidence||'';renderOperations();open('operationsSheet')};$('opsSearch').oninput=()=>{state.ui.opsQuery=$('opsSearch').value;renderOperations()};$('opsCategoryFilter').onchange=()=>{state.ui.opsCategory=$('opsCategoryFilter').value;renderOperations()};$('opsConfidenceFilter').onchange=()=>{state.ui.opsConfidence=$('opsConfidenceFilter').value;renderOperations()};
 $('personForm').onsubmit=e=>{
   e.preventDefault();
   const id=$('personId').value,name=$('personName').value.trim(),phone=phoneClean($('personPhone').value);
@@ -2486,7 +2647,7 @@ $('sourceForm').onsubmit=e=>{
   if(!name){toast('اكتب اسم البطاقة أو الحساب',true);return}
   state.sources.push({id:uid(),name,bank:$('sourceBank').value.trim(),type:$('sourceType').value,last4:$('last4').value.trim()});
   e.target.reset();finishSave('تمت إضافة البطاقة / الحساب')
-};$('settingsForm').onsubmit=async e=>{e.preventDefault();const newName=$('secureSettingsName').value.trim();if(newName&&newName!==(secureProfile?.display_name||'')){const nr=await sb.rpc('set_my_display_name',{p_name:newName});if(nr.error){toast('تعذر حفظ الاسم',true);return}secureProfile.display_name=newName}state.settings.dailyBudgets=Array.from({length:7},(_,i)=>Math.max(0,+$('dayBudget'+i).value||0));state.settings.weekday=state.settings.dailyBudgets.slice(0,4).reduce((a,b)=>a+b,0)/4;state.settings.weekend=state.settings.dailyBudgets.slice(4).reduce((a,b)=>a+b,0)/3;state.settings.reset=+$('resetHour').value||0;const ts=$('trackingStart').value,cs=Math.max(1,Math.min(31,+$('cycleStartDay').value||1)),ce=Math.max(1,Math.min(31,+$('cycleEndDay').value||31));if(!/^\d{4}-\d{2}-\d{2}$/.test(ts)){toast('حدد تاريخ بداية الاحتساب',true);return}state.settings.trackingStart=ts;state.settings.cycleStartDay=cs;state.settings.cycleEndDay=ce;state.settings.categoryBudgets={...defaults.settings.categoryBudgets};document.querySelectorAll('[data-category-budget]').forEach(el=>{state.settings.categoryBudgets[el.dataset.categoryBudget]=Math.max(0,+el.value||0)});state.ui.monthOffset=0;if($('monthBudgetMode').value==='manual'){const amt=+$('monthRemainingSet').value;if(!Number.isFinite(amt)||amt<0){toast('أدخل المتبقي للدورة بشكل صحيح',true);return}state.monthOverride={key:monthKey(),amount:amt,at:new Date().toISOString()}}else state.monthOverride={key:'',amount:null,at:null};finishSave('تم حفظ الإعدادات')};
+};$('settingsForm').onsubmit=async e=>{e.preventDefault();const newName=$('secureSettingsName').value.trim();if(newName&&newName!==(secureProfile?.display_name||'')){const nr=await sb.rpc('set_my_display_name',{p_name:newName});if(nr.error){toast('تعذر حفظ الاسم',true);return}secureProfile.display_name=newName}state.settings.dailyBudgets=Array.from({length:7},(_,i)=>Math.max(0,+$('dayBudget'+i).value||0));state.settings.weekday=state.settings.dailyBudgets.slice(0,4).reduce((a,b)=>a+b,0)/4;state.settings.weekend=state.settings.dailyBudgets.slice(4).reduce((a,b)=>a+b,0)/3;state.settings.reset=+$('resetHour').value||0;const ts=$('trackingStart').value,cs=Math.max(1,Math.min(31,+$('cycleStartDay').value||1));if(!/^\d{4}-\d{2}-\d{2}$/.test(ts)){toast('حدد تاريخ بداية الاحتساب',true);return}state.settings.trackingStart=ts;state.settings.cycleStartDay=cs;state.settings.cycleShiftWeekend=$('setShiftWeekend')?$('setShiftWeekend').checked:true;state.settings.categoryBudgets={...defaults.settings.categoryBudgets};document.querySelectorAll('[data-category-budget]').forEach(el=>{state.settings.categoryBudgets[el.dataset.categoryBudget]=Math.max(0,+el.value||0)});state.ui.monthOffset=0;if($('monthBudgetMode').value==='manual'){const amt=+$('monthRemainingSet').value;if(!Number.isFinite(amt)||amt<0){toast('أدخل المتبقي للدورة بشكل صحيح',true);return}state.monthOverride={key:monthKey(),amount:amt,at:new Date().toISOString()}}else state.monthOverride={key:'',amount:null,at:null};finishSave('تم حفظ الإعدادات')};
 
 $('smsImportGo').onclick=()=>{const sender=$('smsSender').value==='auto'?'':$('smsSender').value;const r=importBankSms(sender,$('smsText').value);if(!r.ok){$('smsResult').textContent=r.error;return}const p=r.parsed;$('smsResult').innerHTML=`تمت الإضافة: <b>${esc(p.label)}</b> • ${fmt(p.amount)} ر.س • ${esc(p.merchant)}${p.impact===0?' • لا يؤثر على الميزانية':p.impact<0?' • خُصم من الصرف':' • احتُسب كمصروف'}`;$('smsText').value=''};
 
@@ -2588,7 +2749,7 @@ async function secureFinishOnboarding(){
   state.settings.dailyBudgets=daily;
   state.settings.weekday=daily.slice(0,4).reduce((a,b)=>a+b,0)/4;
   state.settings.weekend=daily.slice(4).reduce((a,b)=>a+b,0)/3;
-  state.settings.cycleStartDay=cs;state.settings.cycleEndDay=ce;state.settings.reset=+$('secureReset').value||0;
+  state.settings.cycleStartDay=cs;if($('setShiftWeekend'))state.settings.cycleShiftWeekend=$('setShiftWeekend').checked;state.settings.reset=+$('secureReset').value||0;
   const d=new Date();state.settings.trackingStart=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
   state.secureMeta={setupComplete:true,quickStartComplete:false,tourComplete:false,createdAt:new Date().toISOString()};
   secureReady=true;
@@ -2669,13 +2830,18 @@ async function finishQuickStart(){
 }
 
 const productTourSteps=[
-  {target:'#tourToday',icon:'◎',title:'هذا أهم رقم عندك',text:'“المتبقي اليوم” يقول لك كم باقي من ميزانية اليوم بعد كل عملية. الحلقة توضح نسبة الاستهلاك بنظرة واحدة'},
-  {target:'#tourSafe',icon:'◉',title:'Safe to Spend',text:'هذا أذكى من حد اليوم فقط. يجمع وضع اليوم والأسبوع ودورة الراتب ويعطيك رقمًا أكثر أمانًا للقرار الحالي'},
-  {target:'#tourWeek',icon:'↔',title:'مسار الأسبوع',text:'تشوف كل يوم مقابل خطته. Adaptive اختياري: يعيد توزيع الوفر أو التجاوز من الأيام المنتهية على الأيام الجاية'},
-  {target:'#tourCycle',icon:'↻',title:'من راتب إلى راتب',text:'هنا تشوف صرف وخطة ومتبقي دورة المصروف اللي ضبطتها، بدل التقيد بالشهر الميلادي'},
-  {target:'#addTxnBtn',icon:'＋',title:'أضف عملية',text:'إذا احتجت تسجيل شيء يدويًا اضغط هنا. أما رسائل البنك، فـ Mizan Import يقدر يدخلها تلقائيًا'},
-  {target:'#splitsNav',icon:'👥',title:'القطات لها مكانها',text:'من هنا تحفظ الأشخاص، تقسم الفاتورة، ترسل طلب القطة، وتتابع مين دفع وكم باقي لك'},
-  {target:'#settingsBtn',icon:'⚙',title:'كل شيء قابل للتعديل',text:'الإعدادات فيها ميزانيتك ودورة راتبك، البطاقات، النسخ الاحتياطي، ودليل Shortcuts. وتقدر تعيد هذه الجولة بأي وقت'}
+  {target:'#tourToday',icon:'◎',title:'أهم رقم في ميزان',text:'«المتبقي اليوم» يقول لك كم باقي من ميزانية اليوم بعد كل عملية. الحلقة توضح نسبة الاستهلاك بنظرة'},
+  {target:'#tourSafe',icon:'◉',title:'كم أقدر أصرف بأمان',text:'يجمع وضع اليوم والأسبوع ودورة الراتب معًا، ويعطيك رقمًا آمنًا للقرار الحالي'},
+  {target:'#sourceGrid',icon:'▣',title:'بطاقاتك حيّة',text:'كل بطاقة تعرض صرفها في الدورة ونصيبها والمتاح فيها. اضغط أي بطاقة للتعديل أو الدمج'},
+  {target:'#privacyBtn',icon:'👁',title:'إخفاء الأرقام',text:'ضغطة وحدة تخفي كل المبالغ في التطبيق. مفيدة لو أحد جنبك أو تعرض شاشتك'},
+  {target:'#budgetNav',tab:'budget',seg:{budgetSeg:'cycle'},icon:'↻',title:'وين يروح راتبك',text:'تبويب الميزانية فيه شريحتان: «الدورة» توزّع راتبك على التزاماتك، و«الفئات» لميزانيات الصرف'},
+  {target:'#cycleAnchorBtn',tab:'budget',seg:{budgetSeg:'cycle'},icon:'📅',title:'دورتك من راتب لراتب',text:'تبدأ يوم نزول راتبك وتنتهي قبل الراتب الجاي. لو نزل بتاريخ مختلف، ميزان يسألك ويضبطها'},
+  {target:'#commitList',tab:'budget',seg:{budgetSeg:'cycle'},icon:'▤',title:'التزاماتك محجوزة',text:'فيزا، فواتير، تمويل، تابي، ادخار. تُحجز من الراتب أول الدورة، وتتأكد برسالة البنك أو بضغطة «أكّد الدفع»'},
+  {target:'#investBox',tab:'budget',seg:{budgetSeg:'cycle'},icon:'◆',title:'كم تقدر تستثمر',text:'ما خصصته للادخار والاستثمار يظهر هنا مربوطًا مباشرة بحساباتك في تبويب الثروة'},
+  {target:'#insightsNav',tab:'insights',seg:{insightSeg:'wealth'},icon:'▲',title:'لوحة الثروة',text:'وديعة، صكوك، صناديق، أسهم، ذهب، عقار. كل نوع بحقوله الخاصة — تاريخ الاستحقاق والعائد المتوقع ورقم الصك'},
+  {target:'#wealthScore',tab:'insights',seg:{insightSeg:'wealth'},icon:'⇅',title:'الرابح والخاسر',text:'ميزان يقارن كل حساب برأس ماله، ويعرض التغير الشهري في رسم بياني'},
+  {target:'#splitsNav',tab:'splits',seg:{splitSeg:'splits'},icon:'👥',title:'القطات والسلف',text:'شريحة «القطات» لتقسيم الفواتير، و«السلف» لمن سلّفتهم — مع تذكير عند موعد السداد'},
+  {target:'#settingsBtn',icon:'⚙',title:'كل شيء قابل للتعديل',text:'يوم نزول الراتب، الميزانيات، النسخ الاحتياطي، ومفتاح استقبال رسائل البنك. وتقدر تعيد هذه الجولة بأي وقت'}
 ];
 function startProductTour(){
   tourIndex=0;$('productTour').classList.remove('hidden');document.body.dataset.tour='1';renderProductTour();
@@ -2694,8 +2860,17 @@ function positionTourTarget(){
   spot.style.left=`${Math.max(7,rr.left-pad)}px`;spot.style.top=`${Math.max(7,rr.top-pad)}px`;
   spot.style.width=`${Math.min(innerWidth-14,rr.width+pad*2)}px`;spot.style.height=`${Math.max(44,rr.height+pad*2)}px`
 }
+function applyTourContext(step){
+  let changed=false;
+  if(step.seg){for(const k in step.seg){if(state.ui[k]!==step.seg[k]){state.ui[k]=step.seg[k];changed=true}}}
+  if(step.tab&&state.ui.activeTab!==step.tab){setTab(step.tab);changed=true}
+  else if(changed){try{render()}catch(e){}}
+  return changed
+}
 function renderProductTour(){
-  const step=productTourSteps[tourIndex],el=document.querySelector(step.target);if(!el){tourIndex++;if(tourIndex>=productTourSteps.length)return finishProductTour();return renderProductTour()}
+  const step=productTourSteps[tourIndex];
+  if(applyTourContext(step))return setTimeout(renderProductTour,260);
+  const el=document.querySelector(step.target);if(!el){tourIndex++;if(tourIndex>=productTourSteps.length)return finishProductTour();return renderProductTour()}
   $('tourCounter').textContent=`${tourIndex+1} / ${productTourSteps.length}`;$('tourMiniBar').style.width=`${(tourIndex+1)/productTourSteps.length*100}%`;
   $('tourIcon').textContent=step.icon;$('tourTitle').textContent=step.title;$('tourText').textContent=step.text;
   $('tourPrev').style.visibility=tourIndex===0?'hidden':'visible';$('tourNext').textContent=tourIndex===productTourSteps.length-1?'ابدأ استخدام ميزان':'التالي';
