@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-KQ8rHWYFqUp72Icx4epJlomyILoFMQ5mebT6m/S6krI='; style-src 'sha256-SbirZbFksl6aS+kGO6chmiCvRBY6oMAVYVC0nxEbf8I='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-req3eMbjTsdmHwJHLyv76NpGDZWIH4NGYvT07Tlm2uQ='; style-src 'sha256-LhDzqb56LuxPVif4k9aNFcrnZSCqMNQ4ijrIXSbR5GU='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -384,6 +384,11 @@ body{overflow-x:hidden}
 .gBnpl{background:#fdf0e9;color:#9a4b25}
 .gFin{background:#fbecec;color:#95352f}
 .gOther{background:#f1f4f3;color:#5b716c}
+
+.saveStatus{position:fixed;top:calc(env(safe-area-inset-top) + 8px);inset-inline-start:50%;transform:translateX(-50%);z-index:60;font-size:8.5px;font-weight:850;border-radius:999px;padding:5px 11px;background:#fff7e6;color:#8a6a1e;border:1px solid #ecdcae;box-shadow:0 6px 18px #0000000f}
+.saveStatus.saving{background:#eef6f4;color:#4f6f68;border-color:#dbe9e5}
+.saveStatus.merged{background:#eaf7f0;color:#0b6d5b;border-color:#c9e8dc}
+.saveStatus.dirty{background:#fff7e6;color:#8a6a1e;border-color:#ecdcae}
 </style>
 </head>
 <body>
@@ -801,7 +806,7 @@ body{overflow-x:hidden}
 </section>
 <div id="appRoot" class="app hidden">
 <header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version">Secure v5.0.1</span></h1></div><div class="secureHeadActions"><button class="iconbtn hidden" id="adminBtn" type="button">🔐</button><button class="iconbtn" id="settingsBtn" type="button">⚙️</button></div></header>
-<main id="homeView"><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
+<main id="homeView"><div id="saveStatus" class="saveStatus hidden"></div><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
 <section id="tourToday" class="card hero"><div><div class="muted">المتبقي اليوم</div><div class="big"><span id="todayRemaining">100</span> <small>ر.س</small></div><div id="todaySpend" class="muted">صرفت 0 من 100 ر.س</div><div id="statusPill" class="pill">✓ على المسار</div></div><div id="ring" class="ring"><div class="ringin"><strong id="pct">0%</strong><span>استهلاك</span></div></div><div id="tourSafe" class="safehero"><div><span>Safe to Spend</span><small>اليوم + الأسبوع + الشهر</small><button id="canBuyBtn" class="heroQuickAction" type="button">هل أقدر؟</button></div><b><span id="safeSpend">0</span> ر.س</b></div></section>
 <section class="grid3"><div class="tile a"><span>المتبقي هذا الأسبوع</span><strong id="weekRemaining">1,000</strong><small>ر.س</small></div><div class="tile b"><span>مستحق لك</span><strong id="owedTotal">0</strong><small>ر.س</small></div><div class="tile c"><span>المتبقي للدورة</span><strong id="savedMonth">0</strong><small>ر.س</small><div id="monthModeNote" class="monthnote">دورة المصروف</div></div></section>
 <section id="tourWeek" class="card"><div class="sectionhead"><div><h2>مسار الأسبوع</h2><p>ميزانية مستقلة لكل يوم حسب إعدادك</p></div><div class="adaptiveWrap"><button id="adaptiveToggle" class="switchbtn" type="button"><span>Adaptive</span><span class="track"><i class="dot"></i></span></button></div></div><div id="weekStrip" class="weekstrip"></div><div id="adaptiveNote" class="adaptiveNote">المسار الأساسي 100 / 200 ر.س</div></section>
@@ -1157,7 +1162,7 @@ let availableAppVersion=null,availableAppBuild=null,updateCheckBusy=false;
 const LEGACY_KEY='mizan-static-v1';
 const GUIDE_CROPS={};
 const KEY=LEGACY_KEY;
-const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleEndDay:31},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:'',budgetSeg:'cycle',insightSeg:'spend',splitSeg:'splits'},merchantRules:{},income:{commitments:[],autoOpen:true},cycles:{},wealth:{accounts:[],snapshots:[]},balanceGaps:[],loans:[],collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
+const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleEndDay:31},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:'',budgetSeg:'cycle',insightSeg:'spend',splitSeg:'splits'},merchantRules:{},income:{commitments:[],autoOpen:true},cycles:{},wealth:{accounts:[],snapshots:[]},balanceGaps:[],loans:[],meta:{rev:0,savedAt:null,device:''},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
 const clone=x=>JSON.parse(JSON.stringify(x));let state=clone(defaults);let splitReturnTxnId=null;
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 let secureUser=null,secureProfile=null,secureSession=null,secureReady=false,secureSaveTimer=null,secureSaveBusy=false,secureSaveQueued=false,accessTimer=null,mfaEnrollment=null,currentAdminControl=null,v5BackfillPending=0;
@@ -1206,9 +1211,149 @@ function legacyState(){try{const x=JSON.parse(localStorage.getItem(LEGACY_KEY)||
 function normalizePhone(v=''){return String(v||'').replace(/[^\d+]/g,'').replace(/^00966/,'+966').trim()}
 function normalizeName(v=''){return String(v||'').trim().toLowerCase().replace(/\s+/g,' ')}
 function dedupeLegacy(x){const src=mergeState(clone(x||{})),seen=new Map(),idMap=new Map(),unique=[];for(const p of src.people||[]){const phone=normalizePhone(p?.phone),name=normalizeName(p?.name),key=phone?`p:${phone}`:`n:${name}`;if(!phone&&!name)continue;if(seen.has(key)){const c=seen.get(key);if(p?.id&&c?.id)idMap.set(p.id,c.id);continue}const clean={...p,name:String(p?.name||'').trim(),phone:String(p?.phone||'').trim()};seen.set(key,clean);unique.push(clean)}const raw=(src.people||[]).length;src.people=unique;if(Array.isArray(src.splits)&&idMap.size)src.splits=src.splits.map(s=>({...s,members:Array.isArray(s.members)?s.members.map(mm=>({...mm,personId:mm?.personId&&idMap.has(mm.personId)?idMap.get(mm.personId):mm?.personId})):s.members}));return{state:src,rawCount:raw,uniqueCount:unique.length,duplicates:Math.max(0,raw-unique.length),people:unique}}
-function persistState(){if(!secureReady||!secureUser){toast('الجلسة الآمنة غير جاهزة',true);return false}queueSecureSave();return true}
+
+const MZ_DEVICE_KEY='mizan.deviceId';
+const MZ_MIRROR_PREFIX='mizan.mirror.';
+let mzDirty=false,mzLastRemoteRev=0,mzRetryTimer=null,mzSaveState='idle';
+function deviceId(){
+  try{let d=localStorage.getItem(MZ_DEVICE_KEY);if(!d){d='d'+Math.random().toString(36).slice(2,10)+Date.now().toString(36);localStorage.setItem(MZ_DEVICE_KEY,d)}return d}
+  catch(e){return 'nostorage'}
+}
+function mirrorKey(){return MZ_MIRROR_PREFIX+((secureUser&&secureUser.id)||'anon')}
+function stateMeta(){
+  if(!state.meta||typeof state.meta!=='object')state.meta={rev:0,savedAt:null,device:deviceId()};
+  if(typeof state.meta.rev!=='number')state.meta.rev=0;
+  return state.meta
+}
+function writeMirror(dirty){
+  try{
+    const m=stateMeta();
+    localStorage.setItem(mirrorKey(),JSON.stringify({rev:m.rev,dirty:!!dirty,at:new Date().toISOString(),device:deviceId(),state}))
+  }catch(e){console.warn('mirror write failed',e)}
+}
+function readMirror(){
+  try{const raw=localStorage.getItem(mirrorKey());return raw?JSON.parse(raw):null}catch(e){return null}
+}
+function clearMirrorDirty(){
+  try{const m=readMirror();if(m){m.dirty=false;m.rev=stateMeta().rev;localStorage.setItem(mirrorKey(),JSON.stringify(m))}}catch(e){}
+}
+function setSaveStatus(kind){
+  mzSaveState=kind;
+  const el=$('saveStatus');if(!el)return;
+  const map={idle:['',''],saving:['saving','حفظ…'],dirty:['dirty','لم يُحفظ'],error:['dirty','تعذر الحفظ'],merged:['merged','تم الدمج']};
+  const [cls,txt]=map[kind]||map.idle;
+  el.className='saveStatus '+cls;el.textContent=txt;el.classList.toggle('hidden',!txt)
+}
+function unionById(a=[],b=[],key='id'){
+  const out=[],seen=new Set();
+  for(const list of [a||[],b||[]])for(const it of list){
+    if(!it||typeof it!=='object')continue;
+    const k=it[key]||it.fp||JSON.stringify(it);
+    if(seen.has(k))continue;
+    seen.add(k);out.push(it)
+  }
+  return out
+}
+function mergeRemoteLocal(remote,local){
+  if(!remote||typeof remote!=='object')return local;
+  if(!local||typeof local!=='object')return remote;
+  const rAt=new Date(remote.meta?.savedAt||0),lAt=new Date(local.meta?.savedAt||0);
+  const newer=lAt>=rAt?local:remote,older=lAt>=rAt?remote:local;
+  const out=JSON.parse(JSON.stringify(newer));
+  out.txns=unionById(local.txns,remote.txns,'id');
+  out.splits=unionById(local.splits,remote.splits,'id');
+  out.people=unionById(local.people,remote.people,'id');
+  out.sources=unionById(local.sources,remote.sources,'id');
+  out.loans=unionById(local.loans,remote.loans,'id');
+  out.balanceGaps=unionById(local.balanceGaps,remote.balanceGaps,'id');
+  out.wealth=out.wealth||{accounts:[],snapshots:[]};
+  out.wealth.accounts=unionById(local.wealth&&local.wealth.accounts,remote.wealth&&remote.wealth.accounts,'id');
+  out.wealth.snapshots=unionById(local.wealth&&local.wealth.snapshots,remote.wealth&&remote.wealth.snapshots,'id');
+  out.income=out.income||{commitments:[],autoOpen:true};
+  out.income.commitments=unionById(local.income&&local.income.commitments,remote.income&&remote.income.commitments,'id');
+  out.cycles=Object.assign({},older.cycles||{},newer.cycles||{});
+  out.merchantRules=Object.assign({},older.merchantRules||{},newer.merchantRules||{});
+  out.meta=Object.assign({},newer.meta||{},{rev:Math.max(+(remote.meta?.rev||0),+(local.meta?.rev||0))+1,savedAt:new Date().toISOString(),device:deviceId()});
+  return out
+}
+async function fetchRemoteState(){
+  try{const {data,error}=await sb.rpc('get_my_mizan_state');if(error||!data||!data.exists)return null;return data.state||null}
+  catch(e){return null}
+}
+function scheduleRetry(){
+  clearTimeout(mzRetryTimer);
+  mzRetryTimer=setTimeout(()=>{if(mzDirty)secureSaveNow()},15000)
+}
+function flushIfDirty(){if(mzDirty&&navigator.onLine!==false)secureSaveNow()}
+window.addEventListener('online',flushIfDirty);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')flushIfDirty()});
+window.addEventListener('beforeunload',e=>{
+  if(!mzDirty)return;
+  writeMirror(true);
+  e.preventDefault();e.returnValue=''
+});
+function restoreMirrorIfNewer(){
+  const m=readMirror();
+  if(!m||!m.state)return false;
+  const localRev=+(m.state.meta?.rev||0),remoteRev=+(state.meta?.rev||0);
+  if(!m.dirty&&localRev<=remoteRev)return false;
+  const localTx=(m.state.txns||[]).length,remoteTx=(state.txns||[]).length;
+  state=mergeState(mergeRemoteLocal(state,m.state));
+  ensureIncomeShape();
+  const added=(state.txns||[]).length-remoteTx;
+  if(m.dirty||added>0){
+    mzDirty=true;setSaveStatus('dirty');queueSecureSave(400);
+    toast(added>0?`استرجعنا ${added} عملية لم تُحفظ`:'استرجعنا تعديلات غير محفوظة')
+  }
+  return true
+}
+
+function persistState(){
+  if(!secureReady||!secureUser){toast('الجلسة الآمنة غير جاهزة',true);return false}
+  const m=stateMeta();m.rev=(+m.rev||0)+1;m.savedAt=new Date().toISOString();m.device=deviceId();
+  mzDirty=true;setSaveStatus('dirty');writeMirror(true);
+  queueSecureSave();return true
+}
 function queueSecureSave(delay=280){clearTimeout(secureSaveTimer);secureSaveTimer=setTimeout(()=>secureSaveNow(),delay)}
-async function secureSaveNow(){if(!secureReady||!secureUser)return false;if(secureSaveBusy){secureSaveQueued=true;return true}secureSaveBusy=true;try{const {error}=await sb.rpc('save_my_mizan_state',{p_state:state});if(error){if(String(error.message||'').includes('access_denied')){await secureAccessLost('تم إيقاف وصولك بواسطة مالك ميزان');return false}console.error(error);toast('تعذر حفظ البيانات على السيرفر',true);return false}await syncSecureSplitStatuses();return true}finally{secureSaveBusy=false;if(secureSaveQueued){secureSaveQueued=false;queueSecureSave(50)}}}
+async function secureSaveNow(){
+  if(!secureReady||!secureUser)return false;
+  if(secureSaveBusy){secureSaveQueued=true;return true}
+  secureSaveBusy=true;setSaveStatus('saving');
+  try{
+    const remote=await fetchRemoteState();
+    const remoteRev=+(remote&&remote.meta&&remote.meta.rev||0);
+    const remoteDevice=remote&&remote.meta&&remote.meta.device;
+    if(remote&&remoteRev>mzLastRemoteRev&&remoteDevice&&remoteDevice!==deviceId()){
+      const before=(state.txns||[]).length;
+      state=mergeState(mergeRemoteLocal(remote,state));
+      ensureIncomeShape();
+      const gained=(state.txns||[]).length-before;
+      setSaveStatus('merged');
+      if(gained>0)toast(`دمجنا ${gained} عملية من جهاز آخر`);
+      try{render()}catch(e){}
+    }
+    const {error}=await sb.rpc('save_my_mizan_state',{p_state:state});
+    if(error){
+      if(String(error.message||'').includes('access_denied')){await secureAccessLost('تم إيقاف وصولك بواسطة مالك ميزان');return false}
+      console.error(error);
+      mzDirty=true;setSaveStatus('error');writeMirror(true);scheduleRetry();
+      toast('تعذر الحفظ — بياناتك محفوظة على الجهاز وسنعيد المحاولة',true);
+      return false
+    }
+    mzDirty=false;mzLastRemoteRev=+(stateMeta().rev||0);
+    clearMirrorDirty();writeMirror(false);setSaveStatus('idle');
+    await syncSecureSplitStatuses();
+    return true
+  }catch(e){
+    console.error('save failed',e);
+    mzDirty=true;setSaveStatus('error');writeMirror(true);scheduleRetry();
+    toast('تعذر الاتصال — بياناتك محفوظة على الجهاز',true);
+    return false
+  }finally{
+    secureSaveBusy=false;
+    if(secureSaveQueued){secureSaveQueued=false;queueSecureSave(50)}
+  }
+}
 async function syncSecureSplitStatuses(){const jobs=[];for(const s of state.splits||[])for(const mm of s.members||[]){if(mm.isSelf||!mm.secureLink?.id)continue;const paid=(+mm.paidAmount||0)>=(+mm.share||0)-.009;if(mm.secureLink.serverPaid===paid)continue;mm.secureLink.serverPaid=paid;jobs.push(sb.rpc('mark_split_link_paid',{p_link_id:mm.secureLink.id,p_paid:paid}))}if(jobs.length)await Promise.allSettled(jobs)}
 function save(){if(persistState())render()}
 function finishSave(message='',after=null){if(!persistState())return false;close();requestAnimationFrame(()=>{render();if(typeof after==='function')after();if(message)toast(message)});return true}
@@ -2251,7 +2396,7 @@ async function secureLogin(){const email=$('secureEmail').value.trim().toLowerCa
 async function secureInviteSignup(){const token=inviteToken(),email=$('secureEmail').value.trim().toLowerCase(),password=$('securePassword').value;if(!token)return secureMsg('secureAuthMsg','رابط الدعوة غير موجود','bad');if(!email||password.length<10)return secureMsg('secureAuthMsg','أدخل الإيميل المدعو وكلمة مرور 10 خانات على الأقل','warn');const redirect=`${location.origin}${location.pathname}?invite=${encodeURIComponent(token)}`;const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:redirect}});if(error)return secureMsg('secureAuthMsg',secureMapError(error),'bad');if(data.session)await enterSecure(data.session);else secureMsg('secureAuthMsg','تم إنشاء الحساب. أكد البريد ثم ارجع لنفس رابط الدعوة')}
 async function enterSecure(session){secureSession=session;secureUser=session.user;secureShow('secureLoading');let {data:profile,error}=await sb.from('profiles').select('user_id,email,display_name,role,status').eq('user_id',secureUser.id).maybeSingle();if(error)return secureDeny('تعذر التحقق من الحساب');if(!profile){const token=inviteToken();if(token){const c=await sb.rpc('claim_invite',{p_token:token});if(c.error)return secureDeny(secureMapError(c.error));sessionStorage.removeItem('mizan_invite');history.replaceState({},'',location.pathname);const p2=await sb.from('profiles').select('user_id,email,display_name,role,status').eq('user_id',secureUser.id).maybeSingle();profile=p2.data}}if(!profile)return secureDeny('هذا الحساب غير مدعو إلى ميزان');secureProfile=profile;const a=await sb.rpc('can_access_app');if(a.error||!a.data)return secureDeny(profile.status==='blocked'?'تم إيقاف وصول هذا الحساب بواسطة مالك ميزان':'الوصول إلى ميزان موقوف حاليًا');try{await sb.rpc('record_activity',{p_action:'login',p_metadata:{client:'mizan-secure-v5.0.1'}})}catch{}if(profile.role==='owner'){const aal=await sb.auth.mfa.getAuthenticatorAssuranceLevel();if(aal.error)return secureDeny('تعذر التحقق من MFA.');if(aal.data.currentLevel!=='aal2'){if(aal.data.nextLevel==='aal2')return secureShow('secureMfaChallenge');return secureShow('secureMfaEnroll')}}await loadSecureState()}
 async function loadSecureState(){const {data,error}=await sb.rpc('get_my_mizan_state');if(error)return secureDeny(secureMapError(error));if(data?.exists){
-    state=mergeState(data.state);v5BackfillPending=backfillSmartCategories();
+    state=mergeState(data.state);mzLastRemoteRev=+(state.meta&&state.meta.rev||0);try{ensureIncomeShape();restoreMirrorIfNewer()}catch(e){console.error('mirror restore',e)}v5BackfillPending=backfillSmartCategories();
     if(state.secureMeta?.setupComplete===true&&state.secureMeta?.quickStartComplete===false)return showQuickStart();
     return secureEnterApp()
   }const legacy=secureProfile?.role==='owner'?legacyState():null;if(legacy){const d=dedupeLegacy(legacy);$('legacyTxnCount').textContent=d.state.txns.length;$('legacySplitCount').textContent=d.state.splits.length;$('legacyPeopleCount').textContent=d.uniqueCount;$('legacyDupMsg').classList.toggle('hidden',d.duplicates===0);if(d.duplicates)$('legacyDupMsg').textContent=`وجدنا ${d.rawCount} سجلات أشخاص، لكن الفعلي ${d.uniqueCount}. سيتم تجاهل ${d.duplicates} سجل مكرر`;$('legacyPeopleNames').innerHTML=d.people.map(p=>`<div class="legacyPerson"><b>${esc(p.name||'بدون اسم')}</b><span>${esc(p.phone||'')}</span></div>`).join('');return secureShow('secureLegacy')}securePrepareOnboarding();secureShow('securePrelude')}
