@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-JZEP+Dey0kXMHEDRlXNVoXkBkWwq4UdbOHy8uBmyldg='; style-src 'sha256-TwJ4TkVKy53/+KqqL96FS4RfSFKqekfN4B0ULipVTeQ='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-/V9NLJO3lSuiD21hJZ0Wt1xvCxPUDDBFT5yfmxfPous='; style-src 'sha256-ydsdBAdjz0iMJjKTCwRxUdG2Sf9Am5Fxb7iv1InIPHI='; img-src 'self' data:; connect-src 'self' https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -401,6 +401,8 @@ body{overflow-x:hidden}
 .privacyBtn.on{background:#2f6bff;color:#fff;border-color:#2f6bff}
 .privacyBtn.on .eyeOn{display:none}
 .privacyBtn.on .eyeOff{display:block}
+
+#updateBanner.required{background:#7a2018}
 </style>
 </head>
 <body>
@@ -1118,7 +1120,7 @@ body{overflow-x:hidden}
 <button id="setupGuideBtn" type="button" class="toolbtn">دليل الإعداد</button>
 <button id="secureTourBtn" type="button" class="toolbtn">ابدأ الجولة التعريفية</button>
 <button id="secureLogoutBtn" type="button" class="toolbtn">تسجيل الخروج</button>
-<div class="toolbtn" style="display:grid;place-items:center;pointer-events:none">النسخة Secure v5.0.1</div>
+<div class="toolbtn" style="display:grid;place-items:center;pointer-events:none">النسخة Secure v<span id="appVersionLabel">5.4.3</span></div>
 </div>
 <div class="settingsSectionTitle"><b>Mizan Inbox</b><small>استيراد رسائل البنك بدون فتح Safari</small></div>
 <div class="smartCatHint">الاختصار الجديد يرسل رسالة البنك مباشرة إلى حسابك الآمن في الخلفية. ما يفتح Safari، ويقدر يستقبل الشراء والكاش باك كرسالتين منفصلتين</div>
@@ -1132,7 +1134,7 @@ body{overflow-x:hidden}
 <button id="smsInboxCopyTokenBtn" type="button" class="primary hidden">نسخ المفتاح</button>
 </div>
 <div class="actions">
-<button id="smsInboxCopyEndpointBtn" type="button" class="secondary">نسخ رابط الاستقبال</button>
+
 <button id="smsInboxSyncBtn" type="button" class="secondary">فحص الرسائل الآن</button>
 </div>
 </section>
@@ -1170,11 +1172,11 @@ body{overflow-x:hidden}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (()=>{
-const APP_VERSION='5.0.1';
+const APP_VERSION='5.4.3';
 const SUPABASE_URL='https://snhmckjyhiizzsqgraec.supabase.co';
 const SUPABASE_KEY='sb_publishable_jBKntvH70OkSa9zgrMjRjw_XNC2sSq0';
 const OWNER_EMAIL='fs.almutairi@outlook.com';
-const RELEASE_MANIFEST='/version.json';
+const RELEASE_MANIFEST='version.json';
 const SMS_INGEST_ENDPOINT='https://snhmckjyhiizzsqgraec.supabase.co/functions/v1/sms-ingest';
 let smsIngestTokenOnce='';let cycleDraft=null,editingCommitId=null,editingWealthId=null,editingSourceId=null,editingLoanId=null,pullStartY=null;
 let smsInboxSyncBusy=false;
@@ -1388,12 +1390,14 @@ function versionToBuild(v){
   const p=String(v||'0').split('.').map(x=>+x||0);
   return (p[0]||0)*100+(p[1]||0)*10+(p[2]||0)
 }
-function showUpdateBanner(release){
+function showUpdateBanner(release,required=false){
   availableAppVersion=release.version;
   availableAppBuild=release.build||versionToBuild(release.version);
   const banner=$('updateBanner'),txt=$('updateBannerText');
-  if(txt)txt.textContent=`Secure v${release.version} جاهز — يحدث بدون حذف التطبيق أو بياناتك`;
-  if(banner)banner.classList.remove('hidden')
+  if(txt)txt.textContent=required
+    ? `تحديث مطلوب — Secure v${release.version}. نسختك قديمة وقد لا تعمل بشكل صحيح`
+    : `Secure v${release.version} جاهز — يحدث بدون حذف التطبيق أو بياناتك`;
+  if(banner){banner.classList.remove('hidden');banner.classList.toggle('required',!!required)}
 }
 async function checkForAppUpdate({silent=true}={}){
   if(updateCheckBusy)return null;
@@ -1403,6 +1407,10 @@ async function checkForAppUpdate({silent=true}={}){
     if(!res.ok)throw new Error('release_manifest_unavailable');
     const release=await res.json();
     if(!release?.version)throw new Error('invalid_release_manifest');
+    if(release.minSupported&&compareVersions(release.minSupported,APP_VERSION)>0){
+      showUpdateBanner(release,true);
+      return release
+    }
     if(compareVersions(release.version,APP_VERSION)>0){
       showUpdateBanner(release);
       if(!silent)toast(`يتوفر تحديث Secure v${release.version}`);
@@ -2435,7 +2443,7 @@ $('editTxnForm').onsubmit=e=>{e.preventDefault();const t=state.txns.find(x=>x.id
 
 
 function renderSettingsV5(){const box=$('settingsCategoryBudgets');if(box)box.innerHTML=CATEGORY_LIST.map(c=>`<label class="categoryBudgetInput"><span>${esc(c)}</span><input data-category-budget="${esc(c)}" type="number" min="0" step="1" value="${Math.max(0,+state.settings.categoryBudgets?.[c]||0)}"><em>ر.س</em></label>`).join('');const rules=Object.entries(state.merchantRules||{}),list=$('learningRulesList');if(list)list.innerHTML=rules.length?rules.sort((a,b)=>new Date(b[1]?.updatedAt||0)-new Date(a[1]?.updatedAt||0)).slice(0,30).map(([k,v])=>`<div class="learningRule"><div><b>${esc(k)}</b><small>${esc(learnedCategory(v)||'أخرى')}${learnedSubcategory(v)?` • ${esc(learnedSubcategory(v))}`:''}</small></div><button data-delete-rule="${esc(k)}" type="button">حذف</button></div>`).join(''):'<div class="empty">ما فيه قواعد تعلم حتى الآن. أول تصحيح لتاجر سيظهر هنا</div>';document.querySelectorAll('[data-delete-rule]').forEach(b=>b.onclick=()=>{delete state.merchantRules[b.dataset.deleteRule];save();renderSettingsV5();toast('تم حذف قاعدة التعلم')})}
-$('settingsBtn').onclick=()=>{renderSettingsV5();refreshSmsInboxStatus().catch(()=>{});$('secureSettingsName').value=secureProfile?.display_name||'';$('secureAccountName').textContent=secureProfile?.display_name||'—';$('secureAccountEmail').textContent=secureProfile?.email||'';$('secureAccountRole').textContent=secureProfile?.role==='owner'?'Owner':'User';const db=Array.isArray(state.settings.dailyBudgets)&&state.settings.dailyBudgets.length===7?state.settings.dailyBudgets:[100,100,100,100,200,200,200];db.forEach((v,i)=>$('dayBudget'+i).value=v);$('resetHour').value=state.settings.reset;$('trackingStart').value=state.settings.trackingStart||'2026-09-01';$('cycleStartDay').value=state.settings.cycleStartDay||1;$('cycleEndDay').value=state.settings.cycleEndDay||31;const active=monthOverrideActive();$('monthBudgetMode').value=active?'manual':'auto';$('monthRemainingSet').value=active?Math.max(0,monthRemaining()).toFixed(2):'';document.querySelectorAll('[data-category-budget]').forEach(el=>{el.value=Math.max(0,+state.settings.categoryBudgets?.[el.dataset.categoryBudget]||0)});$('monthRemainingBox').classList.toggle('hidden',!active);open('settingsSheet')};$('homeNav').onclick=()=>setTab('home');$('budgetNav').onclick=()=>setTab('budget');$('insightsNav').onclick=()=>setTab('insights');$('splitsNav').onclick=()=>setTab('splits');$('openSplitsBtn').onclick=()=>setTab('splits');$('addTxnBtn').onclick=()=>{$('txnType').value='personal';open('txnSheet')};$('newSplitBtn').onclick=()=>{$('txnType').value='split';open('txnSheet')};$('canBuyBtn').onclick=()=>open('buySheet');$('addSourceBtn').onclick=()=>open('sourceSheet');$('smsBtn').onclick=()=>open('smsSheet');$('smsInboxRotateBtn').onclick=rotateSmsInboxToken;$('smsInboxCopyTokenBtn').onclick=()=>{if(smsIngestTokenOnce)copyPayText(smsIngestTokenOnce,'تم نسخ مفتاح Mizan Import')};$('smsInboxCopyEndpointBtn').onclick=()=>copyPayText(SMS_INGEST_ENDPOINT,'تم نسخ رابط الاستقبال');$('smsInboxSyncBtn').onclick=()=>syncSmsInbox({silent:false});$('importBtn').onclick=()=>open('importSheet');$('addPersonBtn').onclick=$('addPersonBtn2').onclick=()=>openPerson();$('addPersonFromSplit').onclick=()=>openPerson('',true);$('collectionSettingsBtn').onclick=openCollectionSettings;$('sendDueReminders').onclick=()=>runCollect(dueReminderRows(),'reminder');$('splitOpenFilter').onclick=()=>{state.ui.splitFilter='open';save()};$('splitDoneFilter').onclick=()=>{state.ui.splitFilter='done';save()};$('monthPathToggle').onclick=()=>{state.ui.monthOpen=!state.ui.monthOpen;save()};$('monthBudgetMode').onchange=e=>{$('monthRemainingBox').classList.toggle('hidden',e.target.value!=='manual');if(e.target.value==='manual'&&!$('monthRemainingSet').value)$('monthRemainingSet').value=Math.max(0,monthRemaining()).toFixed(2)};$('txnType').onchange=e=>$('peopleBox').classList.add('hidden');$('weekTab').onclick=()=>{state.view='week';save()};$('monthTab').onclick=()=>{state.view='month';save()};if($('openCategoryBudgetSettings'))$('openCategoryBudgetSettings').onclick=()=>{$('settingsBtn').click();setTimeout(()=>document.querySelector('[data-category-budget]')?.scrollIntoView({behavior:'smooth',block:'center'}),120)};$('budgetSettingsBtn').onclick=()=>{$('settingsBtn').click();setTimeout(()=>document.querySelector('[data-category-budget]')?.scrollIntoView({behavior:'smooth',block:'center'}),120)};$('openOperationsBtn').onclick=$('openOperationsBtn2').onclick=()=>{populateCategoryControls();$('opsSearch').value=state.ui.opsQuery||'';$('opsCategoryFilter').value=state.ui.opsCategory||'';$('opsConfidenceFilter').value=state.ui.opsConfidence||'';renderOperations();open('operationsSheet')};$('opsSearch').oninput=()=>{state.ui.opsQuery=$('opsSearch').value;renderOperations()};$('opsCategoryFilter').onchange=()=>{state.ui.opsCategory=$('opsCategoryFilter').value;renderOperations()};$('opsConfidenceFilter').onchange=()=>{state.ui.opsConfidence=$('opsConfidenceFilter').value;renderOperations()};
+$('settingsBtn').onclick=()=>{renderSettingsV5();refreshSmsInboxStatus().catch(()=>{});$('secureSettingsName').value=secureProfile?.display_name||'';$('secureAccountName').textContent=secureProfile?.display_name||'—';$('secureAccountEmail').textContent=secureProfile?.email||'';$('secureAccountRole').textContent=secureProfile?.role==='owner'?'Owner':'User';const db=Array.isArray(state.settings.dailyBudgets)&&state.settings.dailyBudgets.length===7?state.settings.dailyBudgets:[100,100,100,100,200,200,200];db.forEach((v,i)=>$('dayBudget'+i).value=v);$('resetHour').value=state.settings.reset;$('trackingStart').value=state.settings.trackingStart||'2026-09-01';$('cycleStartDay').value=state.settings.cycleStartDay||1;$('cycleEndDay').value=state.settings.cycleEndDay||31;const active=monthOverrideActive();$('monthBudgetMode').value=active?'manual':'auto';$('monthRemainingSet').value=active?Math.max(0,monthRemaining()).toFixed(2):'';document.querySelectorAll('[data-category-budget]').forEach(el=>{el.value=Math.max(0,+state.settings.categoryBudgets?.[el.dataset.categoryBudget]||0)});$('monthRemainingBox').classList.toggle('hidden',!active);open('settingsSheet')};$('homeNav').onclick=()=>setTab('home');$('budgetNav').onclick=()=>setTab('budget');$('insightsNav').onclick=()=>setTab('insights');$('splitsNav').onclick=()=>setTab('splits');$('openSplitsBtn').onclick=()=>setTab('splits');$('addTxnBtn').onclick=()=>{$('txnType').value='personal';open('txnSheet')};$('newSplitBtn').onclick=()=>{$('txnType').value='split';open('txnSheet')};$('canBuyBtn').onclick=()=>open('buySheet');$('addSourceBtn').onclick=()=>open('sourceSheet');$('smsBtn').onclick=()=>open('smsSheet');$('smsInboxRotateBtn').onclick=rotateSmsInboxToken;$('smsInboxCopyTokenBtn').onclick=()=>{if(smsIngestTokenOnce)copyPayText(smsIngestTokenOnce,'تم نسخ مفتاح Mizan Import')};if($('smsInboxCopyEndpointBtn'))$('smsInboxCopyEndpointBtn').onclick=()=>copyPayText(SMS_INGEST_ENDPOINT,'تم نسخ رابط الاستقبال');$('smsInboxSyncBtn').onclick=()=>syncSmsInbox({silent:false});$('importBtn').onclick=()=>open('importSheet');$('addPersonBtn').onclick=$('addPersonBtn2').onclick=()=>openPerson();$('addPersonFromSplit').onclick=()=>openPerson('',true);$('collectionSettingsBtn').onclick=openCollectionSettings;$('sendDueReminders').onclick=()=>runCollect(dueReminderRows(),'reminder');$('splitOpenFilter').onclick=()=>{state.ui.splitFilter='open';save()};$('splitDoneFilter').onclick=()=>{state.ui.splitFilter='done';save()};$('monthPathToggle').onclick=()=>{state.ui.monthOpen=!state.ui.monthOpen;save()};$('monthBudgetMode').onchange=e=>{$('monthRemainingBox').classList.toggle('hidden',e.target.value!=='manual');if(e.target.value==='manual'&&!$('monthRemainingSet').value)$('monthRemainingSet').value=Math.max(0,monthRemaining()).toFixed(2)};$('txnType').onchange=e=>$('peopleBox').classList.add('hidden');$('weekTab').onclick=()=>{state.view='week';save()};$('monthTab').onclick=()=>{state.view='month';save()};if($('openCategoryBudgetSettings'))$('openCategoryBudgetSettings').onclick=()=>{$('settingsBtn').click();setTimeout(()=>document.querySelector('[data-category-budget]')?.scrollIntoView({behavior:'smooth',block:'center'}),120)};$('budgetSettingsBtn').onclick=()=>{$('settingsBtn').click();setTimeout(()=>document.querySelector('[data-category-budget]')?.scrollIntoView({behavior:'smooth',block:'center'}),120)};$('openOperationsBtn').onclick=$('openOperationsBtn2').onclick=()=>{populateCategoryControls();$('opsSearch').value=state.ui.opsQuery||'';$('opsCategoryFilter').value=state.ui.opsCategory||'';$('opsConfidenceFilter').value=state.ui.opsConfidence||'';renderOperations();open('operationsSheet')};$('opsSearch').oninput=()=>{state.ui.opsQuery=$('opsSearch').value;renderOperations()};$('opsCategoryFilter').onchange=()=>{state.ui.opsCategory=$('opsCategoryFilter').value;renderOperations()};$('opsConfidenceFilter').onchange=()=>{state.ui.opsConfidence=$('opsConfidenceFilter').value;renderOperations()};
 $('personForm').onsubmit=e=>{
   e.preventDefault();
   const id=$('personId').value,name=$('personName').value.trim(),phone=phoneClean($('personPhone').value);
