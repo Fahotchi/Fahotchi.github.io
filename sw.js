@@ -1,5 +1,5 @@
-const CACHE='mizan-secure-v5-1-0';
-const SHELL=['/secure-v3.html?v=510','/version.json','/manifest.webmanifest?v=510','/icon-192.png','/icon-512.png','/apple-touch-icon.png'];
+const CACHE='mizan-secure-v5-2-0';
+const SHELL=['/secure-v3.html?v=520','/version.json','/manifest.webmanifest?v=520','/icon-192.png','/icon-512.png','/apple-touch-icon.png'];
 
 self.addEventListener('install',e=>{
  self.skipWaiting();
@@ -17,7 +17,7 @@ self.addEventListener('fetch',e=>{
  const r=e.request;if(r.method!=='GET')return;
  const path=new URL(r.url).pathname;
  if(r.mode==='navigate'||r.destination==='document'||path==='/version.json'){
-  e.respondWith(fetch(r,{cache:'no-store'}).catch(()=>caches.match(r).then(x=>x||caches.match('/secure-v3.html?v=510'))));return;
+  e.respondWith(fetch(r,{cache:'no-store'}).catch(()=>caches.match(r).then(x=>x||caches.match('/secure-v3.html?v=520'))));return;
  }
  e.respondWith(fetch(r,{cache:'no-store'}).then(res=>{
   if(res&&res.ok){const cp=res.clone();caches.open(CACHE).then(c=>c.put(r,cp))}
