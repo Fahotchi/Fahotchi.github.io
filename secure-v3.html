@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-TB0fyurjXZhE2Q/cj+Wexnrx64uzzQTqZgZv7SS/wqE='; style-src 'sha256-MuGyAEWXicChXCVHwObtX/VeAx0hryiT7p7j4f2flog='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-JZEP+Dey0kXMHEDRlXNVoXkBkWwq4UdbOHy8uBmyldg='; style-src 'sha256-TwJ4TkVKy53/+KqqL96FS4RfSFKqekfN4B0ULipVTeQ='; img-src 'self' data:; connect-src https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -290,7 +290,7 @@ body{overflow-x:hidden}
 .segTabs{display:flex;gap:4px;background:#eef6f4;border-radius:14px;padding:4px;margin:0 0 12px}
 .segTabs button{flex:1;min-height:38px;border:0;background:transparent;border-radius:11px;font-size:11px;font-weight:850;color:#6e8b84}
 .segTabs button.on{background:#fff;color:#0b6d5b;box-shadow:0 2px 8px #0b6d5b14}
-.pullRefresh{height:0;overflow:hidden;display:grid;place-items:center;transition:height .18s ease;color:#0b806b;font-size:9px;font-weight:800}
+.pullRefresh{position:relative;z-index:1;height:0;overflow:hidden;display:grid;place-items:center;transition:height .18s ease;color:#0b806b;font-size:9px;font-weight:800}
 .pullRefresh.show{height:34px}
 .pullRefresh.spin span{display:inline-block;animation:mzspin .8s linear infinite}
 @keyframes mzspin{to{transform:rotate(360deg)}}
@@ -385,7 +385,7 @@ body{overflow-x:hidden}
 .gFin{background:#fbecec;color:#95352f}
 .gOther{background:#f1f4f3;color:#5b716c}
 
-.saveStatus{position:fixed;top:calc(env(safe-area-inset-top) + 8px);inset-inline-start:50%;transform:translateX(-50%);z-index:60;font-size:8.5px;font-weight:850;border-radius:999px;padding:5px 11px;background:#fff7e6;color:#8a6a1e;border:1px solid #ecdcae;box-shadow:0 6px 18px #0000000f}
+.saveStatus{position:fixed;top:calc(env(safe-area-inset-top) + 9px);inset-inline-start:50%;transform:translateX(-50%);z-index:60;font-size:8.5px;font-weight:850;border-radius:999px;padding:5px 11px;background:#fff7e6;color:#8a6a1e;border:1px solid #ecdcae;box-shadow:0 6px 18px #0000000f}
 .saveStatus.saving{background:#eef6f4;color:#4f6f68;border-color:#dbe9e5}
 .saveStatus.merged{background:#eaf7f0;color:#0b6d5b;border-color:#c9e8dc}
 .saveStatus.dirty{background:#fff7e6;color:#8a6a1e;border-color:#ecdcae}
@@ -395,8 +395,12 @@ body{overflow-x:hidden}
 .commitEnd{display:flex;align-items:center;gap:7px}
 .miniBtn{min-height:29px;padding:0 9px;border-radius:9px;border:0;background:#0fa187;color:#fff;font-size:8px;font-weight:850}
 .miniBtn.ghostMini{background:#eef6f4;color:#5c7a73}
-.privacyBtn{position:fixed;top:calc(env(safe-area-inset-top) + 8px);inset-inline-end:12px;z-index:59;width:33px;height:33px;border-radius:50%;border:1px solid #e0ece8;background:#fff;color:#7d948e;font-size:13px;box-shadow:0 4px 14px #0000000d}
-.privacyBtn.on{background:#0fa187;color:#fff;border-color:#0fa187}
+.privacyBtn{position:fixed;top:calc(env(safe-area-inset-top) + 8px);inset-inline-end:12px;z-index:59;display:grid;place-items:center;width:38px;height:34px;border-radius:12px;border:1px solid #e0ece8;background:#fff;color:#6d8b83;box-shadow:0 4px 14px #0000000d;padding:0}
+.privacyBtn svg{width:19px;height:19px;display:block}
+.privacyBtn .eyeOff{display:none}
+.privacyBtn.on{background:#2f6bff;color:#fff;border-color:#2f6bff}
+.privacyBtn.on .eyeOn{display:none}
+.privacyBtn.on .eyeOff{display:block}
 </style>
 </head>
 <body>
@@ -813,9 +817,9 @@ body{overflow-x:hidden}
       </div>
     </section><section class="quickScene hidden" data-quick-step="4"><div class="tutorialHeaderSticky"><div class="tutorialStepHead"><span class="quickBadge">4</span><div><small>آخر لمسة</small><h2>حدد رقم الاستلام</h2></div></div><p class="tutorialLead">هذا الرقم يظهر فقط في طلبات القطة التي ترسلها</p></div><div class="collectionVisual"><div class="collectPhoneCard"><span>رقم الاستلام</span><b>05•• ••• ••••</b><small>يظهر في رابط القطة فقط</small></div><div class="collectArrow">↓</div><div class="collectLinkCard"><small>طلب قطة آمن</small><b>75 ر.س</b><span>نسخ بيانات التحويل</span></div></div><div class="explainField"><label for="quickCollectionPhone">رقم الجوال للاستلام</label><input id="quickCollectionPhone" inputmode="tel" placeholder="05xxxxxxxx"><small>تقدر تضيفه الآن أو تكمل وتضيفه لاحقًا من القطات</small></div><div class="quickReady"><div class="readyCheck">✓</div><div><b>خلص إعداد البداية</b><small>بعد الدخول بتبدأ الجولة داخل واجهة ميزان نفسها</small></div></div><div class="tutorialStickyNav final"><button id="quickFinalBack" class="tutorialBack">رجوع</button><button id="quickFinishBtn" class="onboardPrimary">ادخل ميزان</button></div></section>
 </section>
-<div id="appRoot" class="app hidden">
+<div id="appRoot" class="app hidden"><div id="saveStatus" class="saveStatus hidden"></div><button id="privacyBtn" class="privacyBtn" type="button" aria-label="إخفاء الأرقام" aria-pressed="false"><span class="eyeOn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="eyeOff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 6.2A9.9 9.9 0 0 1 12 6c6.5 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1"/><path d="M6.6 6.7A17.6 17.6 0 0 0 2 13s3.5 7 10 7a9.8 9.8 0 0 0 4.5-1.1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="m3 3 18 18"/></svg></span></button><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
 <header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version">Secure v5.0.1</span></h1></div><div class="secureHeadActions"><button class="iconbtn hidden" id="adminBtn" type="button">🔐</button><button class="iconbtn" id="settingsBtn" type="button">⚙️</button></div></header>
-<main id="homeView"><div id="saveStatus" class="saveStatus hidden"></div><button id="privacyBtn" class="privacyBtn" type="button" aria-label="اخفاء الارقام">◎</button><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
+<main id="homeView">
 <section id="tourToday" class="card hero"><div><div class="muted">المتبقي اليوم</div><div class="big"><span id="todayRemaining">100</span> <small>ر.س</small></div><div id="todaySpend" class="muted">صرفت 0 من 100 ر.س</div><div id="statusPill" class="pill">✓ على المسار</div></div><div id="ring" class="ring"><div class="ringin"><strong id="pct">0%</strong><span>استهلاك</span></div></div><div id="tourSafe" class="safehero"><div><span>Safe to Spend</span><small>اليوم + الأسبوع + الشهر</small><button id="canBuyBtn" class="heroQuickAction" type="button">هل أقدر؟</button></div><b><span id="safeSpend">0</span> ر.س</b></div></section>
 <section class="grid3"><div class="tile a"><span>المتبقي هذا الأسبوع</span><strong id="weekRemaining">1,000</strong><small>ر.س</small></div><div class="tile b"><span>مستحق لك</span><strong id="owedTotal">0</strong><small>ر.س</small></div><div class="tile c"><span>المتبقي للدورة</span><strong id="savedMonth">0</strong><small>ر.س</small><div id="monthModeNote" class="monthnote">دورة المصروف</div></div></section>
 <section id="tourWeek" class="card"><div class="sectionhead"><div><h2>مسار الأسبوع</h2><p>ميزانية مستقلة لكل يوم حسب إعدادك</p></div><div class="adaptiveWrap"><button id="adaptiveToggle" class="switchbtn" type="button"><span>Adaptive</span><span class="track"><i class="dot"></i></span></button></div></div><div id="weekStrip" class="weekstrip"></div><div id="adaptiveNote" class="adaptiveNote">المسار الأساسي 100 / 200 ر.س</div></section>
@@ -1442,7 +1446,7 @@ function startUpdateMonitor(){
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkForAppUpdate({silent:true})})
 }
 
-const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const rawFmt=n=>new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(Math.max(0,Number(n)||0));const privacyOn=()=>!!(state&&state.ui&&state.ui.privacy);const fmt=n=>{if(privacyOn()){const l=Math.min(6,Math.max(3,rawFmt(n).replace(/[^\d]/g,'').length));return '•'.repeat(l)}return rawFmt(n)};const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random();
+const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const rawFmt=n=>new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(Math.max(0,Number(n)||0));const privacyOn=()=>!!(state&&state.ui&&state.ui.privacy);const fmt=n=>{if(privacyOn()){const l=Math.min(6,Math.max(4,rawFmt(n).replace(/[^\d]/g,'').length));return '*'.repeat(l)}return rawFmt(n)};const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random();
 function fdate(d=new Date()){const x=new Date(d);if(x.getHours()<state.settings.reset)x.setDate(x.getDate()-1);x.setHours(0,0,0,0);return x}
 function dayBudget(d=new Date()){const day=fdate(d).getDay(),arr=Array.isArray(state.settings.dailyBudgets)?state.settings.dailyBudgets:null;return arr&&arr.length===7?Math.max(0,+arr[day]||0):(day<=3?Math.max(0,+state.settings.weekday||0):Math.max(0,+state.settings.weekend||0))}
 function wstart(){const x=fdate();x.setDate(x.getDate()-x.getDay());return x}
@@ -2052,7 +2056,7 @@ function renderIncomeSheet(){
 function renderMoneyPanes(){
   ensureIncomeShape();
   const bs=state.ui.budgetSeg==='cats'?'cats':'cycle';
-  if($('privacyBtn'))$('privacyBtn').classList.toggle('on',privacyOn());
+  if($('privacyBtn')){$('privacyBtn').classList.toggle('on',privacyOn());$('privacyBtn').setAttribute('aria-pressed',privacyOn()?'true':'false');$('privacyBtn').setAttribute('aria-label',privacyOn()?'إظهار الأرقام':'إخفاء الأرقام')}
   $('segCycle')?.classList.toggle('on',bs==='cycle');$('segCats')?.classList.toggle('on',bs==='cats');
   $('cyclePane')?.classList.toggle('hidden',bs!=='cycle');$('catsPane')?.classList.toggle('hidden',bs!=='cats');
   $('budgetPageSub').textContent=bs==='cycle'?'وين يروح الراتب، وكم باقي للصرف':'ميزانية الفئات وسرعة الصرف داخل الدورة';
@@ -2407,7 +2411,7 @@ $('cycleOpenConfirm').onclick=commitCycleDraft;
   const view=document.querySelector('.app')||document.body;
   const el=$('pullRefresh');if(!el)return;
   let armed=false;
-  window.addEventListener('touchstart',e=>{pullStartY=(window.scrollY<=2&&state.ui.activeTab==='home')?e.touches[0].clientY:null;armed=false},{passive:true});
+  window.addEventListener('touchstart',e=>{pullStartY=(window.scrollY<=2&&!document.querySelector('.sheet:not(.hidden)'))?e.touches[0].clientY:null;armed=false},{passive:true});
   window.addEventListener('touchmove',e=>{
     if(pullStartY===null)return;
     const dy=e.touches[0].clientY-pullStartY;
