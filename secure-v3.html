@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-4vmNn/n0SgIyEwTKEum/bZUKCnoiX/TXcFJK5grXMKo='; style-src 'sha256-ei9hj5gLdwE4gPa4I7pkC/86fKGT1VLs2hYE+B6yad0='; img-src 'self' data:; worker-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-HQGtN1BUam4NOtlmlFY/8p/TFqJEcBMM8NQMUdVol4I='; style-src 'sha256-ei9hj5gLdwE4gPa4I7pkC/86fKGT1VLs2hYE+B6yad0='; img-src 'self' data:; worker-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -1262,7 +1262,7 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (()=>{
-const APP_VERSION='5.6.0';
+const APP_VERSION='5.6.1';
 const SUPABASE_URL='https://snhmckjyhiizzsqgraec.supabase.co';
 const SUPABASE_KEY='sb_publishable_jBKntvH70OkSa9zgrMjRjw_XNC2sSq0';
 const OWNER_EMAIL='fs.almutairi@outlook.com';
@@ -2391,7 +2391,7 @@ async function pdfToText(file){
     for(const it of tc.items){
       const y=Math.round(it.transform[5]);
       if(lastY!==null&&Math.abs(y-lastY)>3){out.push(line);line=''}
-      line+=it.str;lastY=y
+      line+=(line&&!/\s$/.test(line)&&!/^\s/.test(it.str)?' ':'')+it.str;lastY=y
     }
     out.push(line)
   }
@@ -2454,12 +2454,19 @@ function stMerchant(note){
 }
 function parseStatement(text){
   const lines=String(text||'').split('\n').map(stNorm);
-  const AMT=/([\d,]+\.\d{2})\s*SAR\s+([\d,]+\.\d{2})\s*SAR\s+([\d,]+\.\d{2})\s*SAR\b(?:.*?)(\d{4}\/\d{2}\/\d{2})/;
+  const AMT=/([\d,]+\.\d{2})\s*SAR\s*([\d,]+\.\d{2})\s*SAR\s*([\d,]+\.\d{2})\s*SAR/;
+  const DATE=/(\d{4}\/\d{2}\/\d{2})/;
   const rows=[];let i=0;
   while(i<lines.length){
     const g=lines[i].match(AMT);
     if(!g){i++;continue}
-    const [full,bal,cr,db,date]=g;
+    const [full,bal,cr,db]=g;
+    let date=null;
+    for(let d=0;d<=3&&!date;d++){
+      const m1=(lines[i+d]||'').match(DATE); if(m1){date=m1[1];break}
+      if(d>0){const m2=(lines[i-d]||'').match(DATE); if(m2){date=m2[1];break}}
+    }
+    if(!date){i++;continue}
     let t=null;
     for(let b=1;b<=3;b++){ if(i-b>=0){ t=stDetectType(lines[i-b]); if(t)break } }
     const tail=lines[i].slice((g.index||0)+full.length);
@@ -2533,7 +2540,12 @@ async function handleStatementFile(file){
   try{
     const text=await pdfToText(file);
     stRows=parseStatement(text);
-    if(!stRows.length){$('stStatus').textContent='ما قدرنا نقرأ عمليات من هذا الملف. تأكد أنه كشف حساب PDF وليس صورة.';return}
+    if(!stRows.length){
+      window.__stText=text;
+      const sample=String(text||'').split('\n').filter(l=>l.trim()).slice(0,6).join(' ⏎ ').slice(0,300);
+      $('stStatus').innerHTML='<b>ما قدرنا نقرأ عمليات من هذا الملف.</b><br><span style="font-size:8px;color:#8ba39c;direction:ltr;display:block;text-align:left;margin-top:6px;word-break:break-all">'+esc(sample||'(لا نص)')+'</span>';
+      return
+    }
     stCheck=crossCheck(stRows);
     stRows.forEach((r,i)=>{const k=stRowKind(r);if(k==='spend'&&r.direction==='debit')stSelected[i]=true});
     $('stStatus').textContent='';
