@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-tZ1ozA8+Z0R49jisPcyQtVQRN57dLGBEFenT/+sR8HQ='; style-src 'sha256-nYddavyRcMyia+n5mEGKVRhzLm/O+8RazjA0fGYunRU='; img-src 'self' data:; connect-src 'self' https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-4vmNn/n0SgIyEwTKEum/bZUKCnoiX/TXcFJK5grXMKo='; style-src 'sha256-ei9hj5gLdwE4gPa4I7pkC/86fKGT1VLs2hYE+B6yad0='; img-src 'self' data:; worker-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -440,6 +440,24 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
 .restoreRow:first-child{border-top:0}
 .restoreRow b{font-size:10px;color:#12463c;display:block}
 .restoreRow small{font-size:8.5px;color:#7d948e;display:block;margin-top:2px}
+
+.stUpload{display:block;text-align:center;border:1.5px dashed #cbe2dc;background:#f7fcfb;border-radius:16px;padding:18px;margin:10px 0}
+.stUpload b{display:block;font-size:11.5px;color:#0b6d5b}
+.stUpload small{display:block;font-size:8.5px;color:#8ba39c;margin-top:3px}
+.stStats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.stStat{background:#f5faf8;border-radius:14px;padding:10px}
+.stStat span{font-size:8.5px;color:#7d948e;font-weight:800;display:block}
+.stStat b{font-size:16px;color:#0b3a31;display:block;margin-top:2px}
+.stStat small{font-size:7.5px;color:#8ba39c;display:block;margin-top:2px}
+.stRow{display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;padding:10px 0;border-top:1px solid #f1f7f5}
+.stRow:first-child{border-top:0}
+.stRow>div{min-width:0}
+.stRow b{font-size:11px;color:#12463c;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stRow small{font-size:8.5px;color:#7d948e;display:block;margin-top:2px}
+.stRow em{font-style:normal;font-size:12px;font-weight:850;color:#12463c}
+.stRow.dup{opacity:.5}
+.stRow select{min-height:34px;font-size:9px;padding:0 6px;max-width:132px}
+.stRow input[type=checkbox]{width:auto;margin:0}
 </style>
 </head>
 <body>
@@ -1061,6 +1079,26 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
   <div class="actions"><button id="anchorAskNo" class="secondary" type="button">لا، خلها كما هي</button><button id="anchorAskYes" class="primary" type="button">نعم، ابدأ من هذا اليوم</button></div>
 </section>
 
+
+<section id="statementSheet" class="sheet hidden"><button class="sheetX" type="button" aria-label="اغلاق">✕</button><div class="handle"></div>
+  <h3>استيراد كشف حساب</h3><p class="sheetLead">يُقرأ الملف على جهازك فقط ولا يُرفع لأي خادم</p>
+  <label class="stUpload" for="statementFile"><b>اختر ملف الكشف</b><small>PDF من تطبيق البنك</small></label>
+  <input id="statementFile" type="file" accept="application/pdf" style="display:none">
+  <div id="stStatus" class="sheetLead"></div>
+  <div id="stResult" class="hidden">
+    <div class="stStats" id="stStats"></div>
+    <div class="segTabs" id="stTabs">
+      <button data-sttab="new" class="on" type="button">جديدة</button>
+      <button data-sttab="map" type="button">تحتاج تعريف</button>
+      <button data-sttab="check" type="button">مطابقة</button>
+    </div>
+    <div id="stPaneNew"></div>
+    <div id="stPaneMap" class="hidden"></div>
+    <div id="stPaneCheck" class="hidden"></div>
+    <div class="actions"><button id="stCancel" class="secondary" type="button">إغلاق</button><button id="stImport" class="primary" type="button">استيراد المحدد</button></div>
+  </div>
+</section>
+
 <nav class="bottom"><button id="homeNav" class="navtab on" type="button"><b>⌂</b>الرئيسية</button><button id="budgetNav" class="navtab" type="button"><b>◎</b>الميزانية</button><button id="addTxnBtn" class="primaryNav" type="button"><b>＋</b>عملية</button><button id="insightsNav" class="navtab" type="button"><b>⌁</b>التحليل</button><button id="splitsNav" class="navtab" type="button"><b>👥</b>القطات</button></nav>
 </div>
 <main id="payView" class="payview hidden">
@@ -1156,7 +1194,8 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
 <div class="actions"><button type="button" class="secondary close">إلغاء</button><button type="submit" class="primary">حفظ</button></div>
 </form>
 <div class="settingtools">
-<button id="exportBackupBtn" type="button" class="toolbtn">تصدير نسخة احتياطية</button>
+<button id="openStatementBtn" class="secondary" type="button">استيراد كشف حساب</button>
+  <button id="exportBackupBtn" type="button" class="toolbtn">تصدير نسخة احتياطية</button>
   <div class="backupBox">
     <div class="backupRow"><b>آخر نسخة احتياطية</b><span id="lastBackupLabel">—</span></div>
     <p class="sheetLead" id="backupHint">النسخة الاحتياطية ملف على جهازك. تحميه لو تعطّل الاتصال بالخادم.</p>
@@ -1223,7 +1262,7 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (()=>{
-const APP_VERSION='5.5.1';
+const APP_VERSION='5.6.0';
 const SUPABASE_URL='https://snhmckjyhiizzsqgraec.supabase.co';
 const SUPABASE_KEY='sb_publishable_jBKntvH70OkSa9zgrMjRjw_XNC2sSq0';
 const OWNER_EMAIL='fs.almutairi@outlook.com';
@@ -1236,7 +1275,7 @@ let availableAppVersion=null,availableAppBuild=null,updateCheckBusy=false;
 const LEGACY_KEY='mizan-static-v1';
 const GUIDE_CROPS={};
 const KEY=LEGACY_KEY;
-const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleShiftWeekend:true,cycleAnchors:{}},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:'',budgetSeg:'cycle',insightSeg:'spend',splitSeg:'splits',privacy:false},merchantRules:{},income:{commitments:[],autoOpen:true},cycles:{},wealth:{accounts:[],snapshots:[]},balanceGaps:[],loans:[],meta:{rev:0,savedAt:null,device:''},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
+const defaults={settings:{weekday:100,weekend:200,dailyBudgets:[100,100,100,100,200,200,200],categoryBudgets:{'مطاعم':0,'قهوة':0,'بقالة':0,'بنزين':0,'تنقل':0,'مشتريات':0,'ترفيه':0,'اشتراكات':0,'فواتير':0,'صحة وعناية':0,'سفر':0,'تعليم':0,'حكومي':0,'سكن':0,'أخرى':0},reset:4,trackingStart:'2026-09-01',cycleStartDay:1,cycleShiftWeekend:true,cycleAnchors:{}},intelligence:{classifierVersion:5,reviewThreshold:.78,autoThreshold:.9,anomaly:true,recurring:true},monthOverride:{key:'',amount:null,at:null},ui:{monthOpen:false,adaptive:false,monthOffset:0,activeTab:'home',splitFilter:'open',opsQuery:'',opsCategory:'',opsConfidence:'',budgetSeg:'cycle',insightSeg:'spend',splitSeg:'splits',privacy:false},merchantRules:{},income:{commitments:[],autoOpen:true},cycles:{},wealth:{accounts:[],snapshots:[]},balanceGaps:[],loans:[],counterparties:{},meta:{rev:0,savedAt:null,device:''},collection:{phone:'',shortcutName:'Mizan Collect',requestTemplate:'هلا {name}، عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link}',reminderTemplate:'تذكير بسيط يا {name}، باقي عليك {amount} ر.س من قطة {split}.\nالتحويل عبر سريع: {phone}\nرابط القطة: {link} 🙏🏼'},people:[],view:'week',sources:[{id:'fuel',name:'بطاقة البنزين',bank:'',type:'بطاقة',last4:''},{id:'points',name:'بطاقة النقاط',bank:'',type:'بطاقة',last4:''},{id:'daily',name:'بطاقة المصاريف',bank:'',type:'بطاقة',last4:''},{id:'current',name:'الحساب الجاري',bank:'',type:'حساب جاري',last4:''}],txns:[],splits:[]}
 const clone=x=>JSON.parse(JSON.stringify(x));let state=clone(defaults);let splitReturnTxnId=null;
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 let secureUser=null,secureProfile=null,secureSession=null,secureReady=false,secureSaveTimer=null,secureSaveBusy=false,secureSaveQueued=false,accessTimer=null,mfaEnrollment=null,currentAdminControl=null,v5BackfillPending=0;
@@ -1711,6 +1750,7 @@ function ensureIncomeShape(){
   if(!Array.isArray(state.wealth.snapshots))state.wealth.snapshots=[];
   if(!Array.isArray(state.balanceGaps))state.balanceGaps=[];
   if(!Array.isArray(state.loans))state.loans=[];
+  if(!state.counterparties||typeof state.counterparties!=='object')state.counterparties={};
 }
 function cycleKeyFor(b){const p=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;return `${p(b.start)}_${p(b.end)}`}
 function currentCycleKey(){return cycleKeyFor(currentCycle())}
@@ -2317,6 +2357,284 @@ async function restoreSnapshot(snapDate){
   }catch(e){console.error(e);toast('تعذر الاسترجاع',true)}
 }
 
+const PDFJS_URL='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
+const PDFJS_WORKER='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+let pdfjsReady=null;
+function loadPdfJs(){
+  if(pdfjsReady)return pdfjsReady;
+  pdfjsReady=new Promise((res,rej)=>{
+    const sc=document.createElement('script');
+    sc.src=PDFJS_URL;
+    sc.onload=async()=>{
+      try{
+        const lib=window.pdfjsLib;
+        const r=await fetch(PDFJS_WORKER);
+        const blob=await r.blob();
+        lib.GlobalWorkerOptions.workerSrc=URL.createObjectURL(blob);
+        res(lib)
+      }catch(e){rej(e)}
+    };
+    sc.onerror=()=>rej(new Error('pdfjs_load_failed'));
+    document.head.appendChild(sc)
+  });
+  return pdfjsReady
+}
+async function pdfToText(file){
+  const lib=await loadPdfJs();
+  const buf=await file.arrayBuffer();
+  const doc=await lib.getDocument({data:buf}).promise;
+  let out=[];
+  for(let p=1;p<=doc.numPages;p++){
+    const page=await doc.getPage(p);
+    const tc=await page.getTextContent();
+    let line='',lastY=null;
+    for(const it of tc.items){
+      const y=Math.round(it.transform[5]);
+      if(lastY!==null&&Math.abs(y-lastY)>3){out.push(line);line=''}
+      line+=it.str;lastY=y
+    }
+    out.push(line)
+  }
+  return out.join('\n')
+}
+const stNorm=s=>String(s||'').normalize('NFKC').replace(/[\u200e\u200f]/g,'').replace(/\s+/g,' ').trim();
+const stRev=s=>String(s||'').split('').reverse().join('');
+const ST_TYPES=[
+  ['pos','شراء عبر نقاط البيع'],['online','شراء انترنت'],['refund','استرداد مبلغ شراء'],
+  ['salary','إضافة راتب'],
+  ['in_fast','حواالت فورية واردة'],['in_fast','حوالات فورية واردة'],
+  ['in_fast','حواالت سريع الواردة'],['in_fast','حوالات سريع الواردة'],
+  ['fee','رسوم حوالة فورية صادرة'],['out_fast','حوالة فورية صادرة'],
+  ['own','عملية تحويل بين حسابات العميل'],['internal','عملية تحويل داخلية'],
+  ['wallet','تحويل الى محفظة دراهم'],
+  ['card','خصم مستحقات البطاقات االئتمانية'],['card','خصم مستحقات البطاقات الائتمانية'],
+  ['sadad','مدفوعات سـداد'],['misc','متفرقات']
+];
+function stDetectType(line){
+  const r=stRev(stNorm(line)).replace(/ـ/g,'');
+  for(const [k,p] of ST_TYPES){ if(r.includes(p.replace(/ـ/g,'')))return k }
+  return null
+}
+const ST_LABEL={pos:'شراء نقاط بيع',online:'شراء إنترنت',refund:'استرداد',salary:'راتب',
+  in_fast:'حوالة واردة',out_fast:'حوالة صادرة',fee:'رسوم',own:'تحويل بين حساباتك',
+  internal:'تحويل داخلي',wallet:'محفظة دراهم',card:'سداد بطاقة',sadad:'سداد',misc:'متفرقات'};
+// تصنيفات الجهة
+const CP_KINDS=[
+  ['self','حساباتي — تجميع',0],
+  ['visa','تسديد فيزا',0],
+  ['saving','ادخار',0],
+  ['invest','استثمار',0],
+  ['family','تحويلات الأهل',1],
+  ['loan','سلفة لشخص',0],
+  ['finance','قسط تمويل',1],
+  ['income','دخل',0],
+  ['spend','مصروف',1]
+];
+function cpKindMeta(k){const r=CP_KINDS.find(x=>x[0]===k);return r?{label:r[1],spends:!!r[2]}:{label:'غير محدد',spends:false}}
+function stCounterparty(note,type){
+  const n=stNorm(note);
+  let m=n.match(/(?:TO|FR)ACCT\/(\d{6,})/)||n.match(/\/(\d{11,})(?:TO|FR)ACCT/);
+  if(m)return 'acct:'+m[1];
+  const lat=n.match(/[A-Za-z][A-Za-z ]{4,}/g);
+  if(lat&&(type==='in_fast'||type==='salary')){
+    const best=lat.map(x=>x.trim()).filter(x=>!/^(Online|Purchase|from|Time|Note)$/i.test(x)).sort((a,b)=>b.length-a.length)[0];
+    if(best)return 'name:'+best
+  }
+  const arRuns=(n.match(/[\u0600-\u06FF]{3,}(?: [\u0600-\u06FF]{2,})*/g)||[])
+    .filter(x=>!['ةظحلام','تقولا'].includes(x));
+  if(arRuns.length){const b=arRuns.sort((a,b)=>b.length-a.length)[0];return 'name:'+stRev(b).trim()}
+  return ''
+}
+function stMerchant(note){
+  const n=stNorm(note);
+  let m=n.match(/Online Purchase from ([^,\n:]+)/); if(m)return m[1].trim();
+  m=n.match(/\(\d+-\d+\)\s*([A-Za-z][A-Za-z0-9 &._'-]{2,})/); if(m)return m[1].trim().replace(/,$/,'');
+  m=n.match(/([A-Za-z][A-Za-z0-9 &._'-]{3,}?),\s*(?:RIYADH|JEDDAH|KHOBAR|Riyadh|riyadh|Jeddah|DAMMAM)/); if(m)return m[1].trim();
+  return ''
+}
+function parseStatement(text){
+  const lines=String(text||'').split('\n').map(stNorm);
+  const AMT=/([\d,]+\.\d{2})\s*SAR\s+([\d,]+\.\d{2})\s*SAR\s+([\d,]+\.\d{2})\s*SAR\b(?:.*?)(\d{4}\/\d{2}\/\d{2})/;
+  const rows=[];let i=0;
+  while(i<lines.length){
+    const g=lines[i].match(AMT);
+    if(!g){i++;continue}
+    const [full,bal,cr,db,date]=g;
+    let t=null;
+    for(let b=1;b<=3;b++){ if(i-b>=0){ t=stDetectType(lines[i-b]); if(t)break } }
+    const tail=lines[i].slice((g.index||0)+full.length);
+    const notes=[tail];let j=i+1;
+    while(j<lines.length&&!AMT.test(lines[j])&&!stDetectType(lines[j])){ if(lines[j])notes.push(lines[j]); j++ }
+    const note=notes.join(' ');
+    const crN=parseFloat(cr.replace(/,/g,''))||0, dbN=parseFloat(db.replace(/,/g,''))||0;
+    const dir=dbN>0?'debit':'credit';
+    rows.push({
+      date:date.replace(/\//g,'-'),
+      type:t||'unknown',
+      typeLabel:ST_LABEL[t]||'غير معروف',
+      amount:dbN>0?dbN:crN,
+      direction:dir,
+      balance:parseFloat(bal.replace(/,/g,''))||0,
+      merchant:stMerchant(note),
+      cp:stCounterparty(note,t),
+      note:note.slice(0,180)
+    });
+    i=j
+  }
+  return rows
+}
+// الأنواع التي تُحسب مصروفًا مباشرة
+const ST_SPEND=new Set(['pos','online','sadad']);
+const ST_ZERO=new Set(['own','fee','card','wallet']);
+function stRowKind(r){
+  if(r.direction==='credit')return r.type==='salary'?'income':(r.type==='refund'?'refund':'income');
+  if(ST_SPEND.has(r.type))return 'spend';
+  if(r.type==='card')return 'visa';
+  if(r.type==='wallet')return 'saving';
+  if(ST_ZERO.has(r.type))return 'self';
+  const saved=r.cp&&state.counterparties[r.cp];
+  if(saved)return saved;
+  return null
+}
+function stFingerprint(r){
+  return [r.date,(+r.amount||0).toFixed(2),(r.merchant||r.cp||'').toLowerCase()].join('|')
+}
+function crossCheck(rows){
+  const b=currentCycle();
+  const mine=state.txns.filter(t=>!t.ignored);
+  const matched=[],missing=[];
+  for(const r of rows){
+    if(r.direction!=='debit'||!ST_SPEND.has(r.type)){continue}
+    const d=new Date(r.date+'T00:00:00');
+    const hit=mine.find(t=>Math.abs((+t.amount||0)-r.amount)<0.01 &&
+      Math.abs(new Date(t.ts)-d)<3*86400000);
+    if(hit)matched.push({r,t:hit}); else missing.push(r)
+  }
+  const stAmounts=rows.filter(r=>r.direction==='debit').map(r=>r.amount);
+  const extra=mine.filter(t=>{
+    const ts=new Date(t.ts);
+    if(ts<new Date(rows[rows.length-1]?.date||0))return false;
+    return !stAmounts.some(a=>Math.abs(a-(+t.amount||0))<0.01)
+  });
+  return {matched,missing,extra}
+}
+
+let stRows=[],stCheck=null,stTab='new',stSelected={};
+function openStatement(){
+  stRows=[];stCheck=null;stTab='new';stSelected={};
+  $('stResult').classList.add('hidden');
+  $('stStatus').textContent='';
+  $('statementFile').value='';
+  open('statementSheet')
+}
+async function handleStatementFile(file){
+  if(!file)return;
+  $('stStatus').textContent='جاري قراءة الملف…';
+  try{
+    const text=await pdfToText(file);
+    stRows=parseStatement(text);
+    if(!stRows.length){$('stStatus').textContent='ما قدرنا نقرأ عمليات من هذا الملف. تأكد أنه كشف حساب PDF وليس صورة.';return}
+    stCheck=crossCheck(stRows);
+    stRows.forEach((r,i)=>{const k=stRowKind(r);if(k==='spend'&&r.direction==='debit')stSelected[i]=true});
+    $('stStatus').textContent='';
+    $('stResult').classList.remove('hidden');
+    renderStatement()
+  }catch(e){
+    console.error(e);
+    $('stStatus').textContent='تعذر قراءة الملف. قد يكون محميًا أو صورة ممسوحة.'
+  }
+}
+function stUnknownCps(){
+  const seen={};
+  stRows.forEach(r=>{
+    if(!r.cp)return;
+    if(stRowKind(r)!==null)return;
+    if(!seen[r.cp])seen[r.cp]={cp:r.cp,n:0,total:0,type:r.typeLabel};
+    seen[r.cp].n++;seen[r.cp].total+=r.amount
+  });
+  return Object.values(seen).sort((a,b)=>b.total-a.total)
+}
+function renderStatement(){
+  const spend=stRows.filter(r=>r.direction==='debit'&&stRowKind(r)==='spend');
+  const inc=stRows.filter(r=>r.direction==='credit');
+  const zero=stRows.filter(r=>r.direction==='debit'&&['self','visa','saving','invest'].includes(stRowKind(r)));
+  const sum=a=>a.reduce((x,y)=>x+y.amount,0);
+  const period=stRows.length?`${stRows[stRows.length-1].date} — ${stRows[0].date}`:'';
+  $('stStats').innerHTML=`
+    <div class="stStat"><span>عمليات الكشف</span><b>${stRows.length}</b><small>${period}</small></div>
+    <div class="stStat"><span>مصروف فعلي</span><b>${fmt(sum(spend))}</b><small>${spend.length} عملية</small></div>
+    <div class="stStat"><span>دخل ووارد</span><b>${fmt(sum(inc))}</b><small>${inc.length} عملية</small></div>
+    <div class="stStat"><span>غير مصروف</span><b>${fmt(sum(zero))}</b><small>تحويلات وسداد</small></div>`;
+  document.querySelectorAll('#stTabs button').forEach(b=>b.classList.toggle('on',b.dataset.sttab===stTab));
+  $('stPaneNew').classList.toggle('hidden',stTab!=='new');
+  $('stPaneMap').classList.toggle('hidden',stTab!=='map');
+  $('stPaneCheck').classList.toggle('hidden',stTab!=='check');
+  if(stTab==='new')renderStNew();
+  if(stTab==='map')renderStMap();
+  if(stTab==='check')renderStCheck()
+}
+function renderStNew(){
+  const missing=(stCheck&&stCheck.missing)||[];
+  const idx=new Map(stRows.map((r,i)=>[r,i]));
+  const rows=stRows.filter(r=>r.direction==='debit'&&['spend','family','loan','finance'].includes(stRowKind(r)));
+  if(!rows.length){$('stPaneNew').innerHTML='<div class="emptyBlock"><small>ما فيه عمليات جاهزة للاستيراد</small></div>';return}
+  $('stPaneNew').innerHTML=rows.map(r=>{
+    const i=idx.get(r), dup=!missing.includes(r), k=stRowKind(r);
+    return `<label class="stRow${dup?' dup':''}">
+      <input type="checkbox" data-stsel="${i}" ${stSelected[i]&&!dup?'checked':''} ${dup?'disabled':''}>
+      <div><b>${esc(r.merchant||cpKindMeta(k).label)}</b><small>${r.date} • ${esc(r.typeLabel)}${dup?' • مسجّلة عندك':''}</small></div>
+      <em>${fmt(r.amount)}</em></label>`
+  }).join('');
+  document.querySelectorAll('[data-stsel]').forEach(el=>el.onchange=()=>{stSelected[el.dataset.stsel]=el.checked});
+}
+function renderStMap(){
+  const list=stUnknownCps();
+  if(!list.length){$('stPaneMap').innerHTML='<div class="emptyBlock"><b>كل الجهات معرّفة</b><small>ما فيه جهة جديدة تحتاج تصنيف</small></div>';return}
+  $('stPaneMap').innerHTML=`<p class="sheetLead">عرّف كل جهة مرة وحدة، وميزان يتذكرها في كل كشف قادم</p>`+
+    list.map(c=>`<div class="stRow"><div><b>${esc(c.cp.replace('acct:','حساب ').replace('name:',''))}</b><small>${c.n} عملية • ${fmt(c.total)} ر.س • ${esc(c.type)}</small></div>
+    <select data-stcp="${esc(c.cp)}"><option value="">اختر…</option>${CP_KINDS.map(k=>`<option value="${k[0]}">${k[1]}</option>`).join('')}</select></div>`).join('');
+  document.querySelectorAll('[data-stcp]').forEach(el=>el.onchange=()=>{
+    if(!el.value)return;
+    state.counterparties[el.dataset.stcp]=el.value;
+    persistState();
+    stRows.forEach((r,i)=>{if(stRowKind(r)==='spend'&&r.direction==='debit'&&stSelected[i]===undefined)stSelected[i]=true});
+    renderStatement();toast('تم حفظ تصنيف الجهة')
+  });
+}
+function renderStCheck(){
+  if(!stCheck){$('stPaneCheck').innerHTML='';return}
+  const {matched,missing,extra}=stCheck;
+  $('stPaneCheck').innerHTML=`
+    <div class="insightNote noteGood"><i>✓</i><span>${matched.length} عملية في الكشف مسجّلة عندك أصلًا</span></div>
+    <div class="insightNote ${missing.length?'noteWarn':'noteGood'}"><i>${missing.length?'!':'✓'}</i><span>${missing.length} عملية في الكشف وما هي مسجّلة — تقدر تستوردها من تبويب «جديدة»</span></div>
+    <div class="insightNote ${extra.length?'noteInfo':'noteGood'}"><i>◇</i><span>${extra.length} عملية عندك وما ظهرت في الكشف — راجعها لو تبي</span></div>`+
+    (extra.length?extra.slice(0,12).map(t=>`<div class="stRow"><div><b>${esc(t.label||t.category||'عملية')}</b><small>${new Date(t.ts).toISOString().slice(0,10)} • غير موجودة في الكشف</small></div><em>${fmt(t.amount)}</em></div>`).join(''):'')
+}
+function importStatementRows(){
+  const picks=Object.keys(stSelected).filter(i=>stSelected[i]).map(i=>stRows[+i]).filter(Boolean);
+  if(!picks.length){toast('ما اخترت أي عملية',true);return}
+  let added=0,dup=0;
+  for(const r of picks){
+    const kind=stRowKind(r);
+    const meta=cpKindMeta(kind||'spend');
+    const ts=new Date(r.date+'T12:00:00').toISOString();
+    const label=r.merchant||meta.label;
+    const cls=classifyCategory(label,{amount:r.amount});
+    const tr={id:uid(),amount:r.amount,impact:meta.spends?r.amount:0,
+      category:cls&&cls.category||'أخرى',subcategory:'',source:(state.sources[0]&&state.sources[0].id)||'',
+      note:'من كشف الحساب',label,ts,createdAt:new Date().toISOString(),
+      direction:'debit',merchantKey:normalizeMerchant?normalizeMerchant(label):label,
+      classification:cls||{category:'أخرى',confidence:.4,source:'statement',needsReview:true},
+      fromStatement:true};
+    tr.fp=fingerprint(tr);
+    tr.smsHash=typeof smsHash==='function'?smsHash('STMT|'+r.date+'|'+r.amount+'|'+label):'';
+    if(isDup(tr)){dup++;continue}
+    state.txns.push(tr);added++
+  }
+  save();close();render();
+  toast(added?`أُضيفت ${added} عملية${dup?` • تجاهلنا ${dup} مكررة`:''}`:'كلها مسجّلة عندك أصلًا')
+}
+
 function render(){
   try{renderBackupStatus();if($('headVersion'))$('headVersion').textContent=APP_VERSION}catch(e){}
 const b=activeDayBudget(),sp=todaySpend(),rem=b-sp,p=b?Math.min(100,Math.round(sp/b*100)):0,fd=fdate();
@@ -2593,6 +2911,12 @@ $('anchorAskYes').onclick=()=>{
 $('anchorAskNo').onclick=()=>{pendingAnchorDate=null;close()};
 
 $('goWealthBtn').onclick=()=>{state.ui.insightSeg='wealth';persistState();setTab('insights');render()};
+
+if($('openStatementBtn'))$('openStatementBtn').onclick=openStatement;
+if($('statementFile'))$('statementFile').onchange=e=>handleStatementFile(e.target.files&&e.target.files[0]);
+if($('stCancel'))$('stCancel').onclick=close;
+if($('stImport'))$('stImport').onclick=importStatementRows;
+document.querySelectorAll('#stTabs button').forEach(b=>b.onclick=()=>{stTab=b.dataset.sttab;renderStatement()});
 $('segCycle').onclick=()=>{state.ui.budgetSeg='cycle';persistState();render()};
 $('segCats').onclick=()=>{state.ui.budgetSeg='cats';persistState();render()};
 $('segSpend').onclick=()=>{state.ui.insightSeg='spend';persistState();render()};
