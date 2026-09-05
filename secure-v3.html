@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-HQGtN1BUam4NOtlmlFY/8p/TFqJEcBMM8NQMUdVol4I='; style-src 'sha256-ei9hj5gLdwE4gPa4I7pkC/86fKGT1VLs2hYE+B6yad0='; img-src 'self' data:; worker-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-xwhFqy6S+CfiRT8DGYx14QKU1Ej8QADTutsZik0M1YA='; style-src 'sha256-ei9hj5gLdwE4gPa4I7pkC/86fKGT1VLs2hYE+B6yad0='; img-src 'self' data:; worker-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -1262,7 +1262,7 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (()=>{
-const APP_VERSION='5.6.1';
+const APP_VERSION='5.6.2';
 const SUPABASE_URL='https://snhmckjyhiizzsqgraec.supabase.co';
 const SUPABASE_KEY='sb_publishable_jBKntvH70OkSa9zgrMjRjw_XNC2sSq0';
 const OWNER_EMAIL='fs.almutairi@outlook.com';
@@ -2399,20 +2399,34 @@ async function pdfToText(file){
 }
 const stNorm=s=>String(s||'').normalize('NFKC').replace(/[\u200e\u200f]/g,'').replace(/\s+/g,' ').trim();
 const stRev=s=>String(s||'').split('').reverse().join('');
+// يعكس المقاطع العربية وحدها، لأن PDF يخزنها بترتيب بصري مقلوب
+function stRevRuns(s){
+  return String(s||'').replace(/[\u0600-\u06FF\u0750-\u077F ]{2,}/g,m=>stRev(m))
+}
+const stCanon=s=>stNorm(s).replace(/[ـ\s]/g,'');
+// كل الأشكال الممكنة لترتيب النص
+function stForms(line){
+  const n=stNorm(line);
+  return [stCanon(n), stCanon(stRev(n)), stCanon(stRevRuns(n))]
+}
 const ST_TYPES=[
   ['pos','شراء عبر نقاط البيع'],['online','شراء انترنت'],['refund','استرداد مبلغ شراء'],
-  ['salary','إضافة راتب'],
+  ['salary','إضافة راتب'],['salary','اضافة راتب'],
   ['in_fast','حواالت فورية واردة'],['in_fast','حوالات فورية واردة'],
   ['in_fast','حواالت سريع الواردة'],['in_fast','حوالات سريع الواردة'],
   ['fee','رسوم حوالة فورية صادرة'],['out_fast','حوالة فورية صادرة'],
   ['own','عملية تحويل بين حسابات العميل'],['internal','عملية تحويل داخلية'],
-  ['wallet','تحويل الى محفظة دراهم'],
+  ['wallet','تحويل الى محفظة دراهم'],['wallet','تحويل إلى محفظة دراهم'],
   ['card','خصم مستحقات البطاقات االئتمانية'],['card','خصم مستحقات البطاقات الائتمانية'],
-  ['sadad','مدفوعات سـداد'],['misc','متفرقات']
+  ['sadad','مدفوعات سـداد'],['sadad','مدفوعات سداد'],['misc','متفرقات']
 ];
 function stDetectType(line){
-  const r=stRev(stNorm(line)).replace(/ـ/g,'');
-  for(const [k,p] of ST_TYPES){ if(r.includes(p.replace(/ـ/g,'')))return k }
+  const forms=stForms(line);
+  // الرسوم قبل الحوالة الصادرة لأن نصها يحتويها
+  for(const [k,p] of ST_TYPES){
+    const c=stCanon(p);
+    if(forms.some(f=>f.includes(c)))return k
+  }
   return null
 }
 const ST_LABEL={pos:'شراء نقاط بيع',online:'شراء إنترنت',refund:'استرداد',salary:'راتب',
@@ -2431,18 +2445,32 @@ const CP_KINDS=[
   ['spend','مصروف',1]
 ];
 function cpKindMeta(k){const r=CP_KINDS.find(x=>x[0]===k);return r?{label:r[1],spends:!!r[2]}:{label:'غير محدد',spends:false}}
+const ST_TYPE_CANONS=ST_TYPES.map(t=>stCanon(t[1]));
+const ST_NOISE=['ملاحظة','مالحظة','ملاحظه','الوقت','التاريخ','تفاصيل','العملية','مدين','دائن','الرصيد','الرقم','التسلسلي','المحفظة','النشطة','الادخارية','رقم','الوثيقة','سرية','حاملها','مسؤولية','المحافظة','ملاحظةNotes','صفحة'].map(stCanon);
+const ST_CP_TYPES=new Set(['internal','own','out_fast','in_fast','wallet','salary','misc','card','fee']);
 function stCounterparty(note,type){
+  if(!ST_CP_TYPES.has(type))return '';
   const n=stNorm(note);
-  let m=n.match(/(?:TO|FR)ACCT\/(\d{6,})/)||n.match(/\/(\d{11,})(?:TO|FR)ACCT/);
+  let m=n.match(/(?:TO|FR)ACCT\/(\d{6,})/)||n.match(/\/(\d{11,})(?:TO|FR)ACCT/)||n.match(/ACCT\/?(\d{9,})/);
   if(m)return 'acct:'+m[1];
-  const lat=n.match(/[A-Za-z][A-Za-z ]{4,}/g);
-  if(lat&&(type==='in_fast'||type==='salary')){
-    const best=lat.map(x=>x.trim()).filter(x=>!/^(Online|Purchase|from|Time|Note)$/i.test(x)).sort((a,b)=>b.length-a.length)[0];
+  const lat=(n.match(/[A-Za-z][A-Za-z ]{4,}/g)||[]).map(x=>x.trim())
+    .filter(x=>!/^(Online|Purchase|from|Time|Note|Advance|payment|for|Card|ending|SAR)$/i.test(x));
+  if(lat.length&&(type==='in_fast'||type==='salary')){
+    const best=lat.sort((a,b)=>b.length-a.length)[0];
     if(best)return 'name:'+best
   }
-  const arRuns=(n.match(/[\u0600-\u06FF]{3,}(?: [\u0600-\u06FF]{2,})*/g)||[])
-    .filter(x=>!['ةظحلام','تقولا'].includes(x));
-  if(arRuns.length){const b=arRuns.sort((a,b)=>b.length-a.length)[0];return 'name:'+stRev(b).trim()}
+  const fixed=stRevRuns(n);
+  const runs=(fixed.match(/[\u0600-\u06FF]{3,}(?: [\u0600-\u06FF]{2,})*/g)||[])
+    .map(x=>x.trim())
+    .filter(x=>{
+      const c=stCanon(x);
+      if(ST_NOISE.some(z=>c.includes(z)||z.includes(c)))return false;
+      if(c.length>60)return false;
+      if(ST_TYPE_CANONS.some(z=>z.includes(c)||c.includes(z)))return false;
+      return c.length>=4
+    });
+  if(runs.length)return 'name:'+runs.sort((a,b)=>b.length-a.length)[0];
+  if(lat.length)return 'name:'+lat.sort((a,b)=>b.length-a.length)[0];
   return ''
 }
 function stMerchant(note){
@@ -2467,8 +2495,9 @@ function parseStatement(text){
       if(d>0){const m2=(lines[i-d]||'').match(DATE); if(m2){date=m2[1];break}}
     }
     if(!date){i++;continue}
-    let t=null;
-    for(let b=1;b<=3;b++){ if(i-b>=0){ t=stDetectType(lines[i-b]); if(t)break } }
+    let t=stDetectType(lines[i]);
+    if(!t){for(let b=1;b<=3;b++){ if(i-b>=0){ t=stDetectType(lines[i-b]); if(t)break } }}
+    if(!t){for(let a=1;a<=2;a++){ t=stDetectType(lines[i+a]||''); if(t)break }}
     const tail=lines[i].slice((g.index||0)+full.length);
     const notes=[tail];let j=i+1;
     while(j<lines.length&&!AMT.test(lines[j])&&!stDetectType(lines[j])){ if(lines[j])notes.push(lines[j]); j++ }
