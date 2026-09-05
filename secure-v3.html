@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-Ka9F+D1Y2I8A+VuookBAUx8u65aTdUhld1r8Su+KAM0='; style-src 'sha256-b9kT171Mr5udYgJzbKYiwbJIvTWnoV1ZuEyZajETNtQ='; img-src 'self' data:; connect-src 'self' https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-tZ1ozA8+Z0R49jisPcyQtVQRN57dLGBEFenT/+sR8HQ='; style-src 'sha256-nYddavyRcMyia+n5mEGKVRhzLm/O+8RazjA0fGYunRU='; img-src 'self' data:; connect-src 'self' https://snhmckjyhiizzsqgraec.supabase.co wss://snhmckjyhiizzsqgraec.supabase.co; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#effaf7">
 <meta name="robots" content="noindex,nofollow,noarchive">
@@ -427,6 +427,19 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
 .investBox .r b{font-size:17px;color:#2f2a6b}
 .investSplit{height:7px;border-radius:4px;background:#e3ddfa;overflow:hidden;margin:9px 0 7px}
 .investSplit i{display:block;height:100%;background:#7F77DD}
+
+.backupBanner{display:flex;align-items:center;gap:9px;justify-content:space-between;margin:0 0 11px;border:1px solid #ecdaa8;background:#fff8e7;border-radius:15px;padding:10px 12px}
+.backupBanner span{font-size:9px;color:#6f5c26;line-height:1.6;font-weight:700}
+.backupBanner button{flex:0 0 auto;min-height:32px;padding:0 11px;border:0;border-radius:10px;background:#0fa187;color:#fff;font-size:8.5px;font-weight:850}
+.backupBox{border:1px solid #e3efeb;background:#f8fcfb;border-radius:15px;padding:11px;margin-top:10px}
+.backupRow{display:flex;justify-content:space-between;align-items:center}
+.backupRow b{font-size:10px;color:#12463c}
+.backupRow span{font-size:9px;color:#7a938c;font-weight:800}
+.miniBtn2{min-height:30px;padding:0 10px;border-radius:9px;border:1px solid #bfe4da;background:#ebf9f5;color:#08705e;font-size:8.5px;font-weight:850}
+.restoreRow{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid #eaf3f0}
+.restoreRow:first-child{border-top:0}
+.restoreRow b{font-size:10px;color:#12463c;display:block}
+.restoreRow small{font-size:8.5px;color:#7d948e;display:block;margin-top:2px}
 </style>
 </head>
 <body>
@@ -845,7 +858,7 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
 </section>
 <div id="appRoot" class="app hidden"><div id="saveStatus" class="saveStatus hidden"></div><div id="pullRefresh" class="pullRefresh"><span>↻</span></div>
 <header><div class="brand"><small id="dayLabel">لوحة التحكم المالية</small><h1>ميزان <span class="version" id="headVersion">Secure</span></h1></div><div class="secureHeadActions"><button class="iconbtn" id="privacyBtn" type="button" aria-label="إخفاء الأرقام" aria-pressed="false"><span class="eyeOn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="eyeOff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.6 6.2A9.9 9.9 0 0 1 12 6c6.5 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1"/><path d="M6.6 6.7A17.6 17.6 0 0 0 2 13s3.5 7 10 7a9.8 9.8 0 0 0 4.5-1.1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="m3 3 18 18"/></svg></span></button><button class="iconbtn hidden" id="adminBtn" type="button">🔐</button><button class="iconbtn" id="settingsBtn" type="button">⚙️</button></div></header>
-<main id="homeView">
+<main id="homeView"><div id="backupBanner" class="backupBanner hidden"><span id="backupBannerText"></span><button id="backupBannerBtn" type="button">نزّل نسخة</button></div>
 <section id="tourToday" class="card hero"><div><div class="muted">المتبقي اليوم</div><div class="big"><span id="todayRemaining">100</span> <small>ر.س</small></div><div id="todaySpend" class="muted">صرفت 0 من 100 ر.س</div><div id="statusPill" class="pill">✓ على المسار</div></div><div id="ring" class="ring"><div class="ringin"><strong id="pct">0%</strong><span>استهلاك</span></div></div><div id="tourSafe" class="safehero"><div><span>Safe to Spend</span><small>اليوم + الأسبوع + الشهر</small><button id="canBuyBtn" class="heroQuickAction" type="button">هل أقدر؟</button></div><b><span id="safeSpend">0</span> ر.س</b></div></section>
 <section class="grid3"><div class="tile a"><span>المتبقي هذا الأسبوع</span><strong id="weekRemaining">1,000</strong><small>ر.س</small></div><div class="tile b"><span>مستحق لك</span><strong id="owedTotal">0</strong><small>ر.س</small></div><div class="tile c"><span>المتبقي للدورة</span><strong id="savedMonth">0</strong><small>ر.س</small><div id="monthModeNote" class="monthnote">دورة المصروف</div></div></section>
 <section id="tourWeek" class="card"><div class="sectionhead"><div><h2>مسار الأسبوع</h2><p>ميزانية مستقلة لكل يوم حسب إعدادك</p></div><div class="adaptiveWrap"><button id="adaptiveToggle" class="switchbtn" type="button"><span>Adaptive</span><span class="track"><i class="dot"></i></span></button></div></div><div id="weekStrip" class="weekstrip"></div><div id="adaptiveNote" class="adaptiveNote">المسار الأساسي 100 / 200 ر.س</div></section>
@@ -1144,6 +1157,15 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
 </form>
 <div class="settingtools">
 <button id="exportBackupBtn" type="button" class="toolbtn">تصدير نسخة احتياطية</button>
+  <div class="backupBox">
+    <div class="backupRow"><b>آخر نسخة احتياطية</b><span id="lastBackupLabel">—</span></div>
+    <p class="sheetLead" id="backupHint">النسخة الاحتياطية ملف على جهازك. تحميه لو تعطّل الاتصال بالخادم.</p>
+  </div>
+  <div class="backupBox">
+    <div class="backupRow"><b>نقاط الاسترجاع</b><button id="loadRestorePoints" class="miniBtn2" type="button">تحديث</button></div>
+    <p class="sheetLead">لقطة يومية محفوظة على الخادم لآخر ٩٠ يومًا</p>
+    <div id="restoreList"></div>
+  </div>
 <label class="toolbtn filelabel">استرجاع نسخة<input id="backupFile" type="file" accept=".json,application/json"></label>
 <button id="checkUpdateBtn" type="button" class="toolbtn">التحقق من النسخة</button>
 <button id="setupGuideBtn" type="button" class="toolbtn">دليل الإعداد</button>
@@ -1201,7 +1223,7 @@ input[type="date"]{min-height:44px;-webkit-appearance:none;appearance:none;text-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 (()=>{
-const APP_VERSION='5.5.0';
+const APP_VERSION='5.5.1';
 const SUPABASE_URL='https://snhmckjyhiizzsqgraec.supabase.co';
 const SUPABASE_KEY='sb_publishable_jBKntvH70OkSa9zgrMjRjw_XNC2sSq0';
 const OWNER_EMAIL='fs.almutairi@outlook.com';
@@ -1266,7 +1288,7 @@ function dedupeLegacy(x){const src=mergeState(clone(x||{})),seen=new Map(),idMap
 
 const MZ_DEVICE_KEY='mizan.deviceId';
 const MZ_MIRROR_PREFIX='mizan.mirror.';
-let mzDirty=false,mzLastRemoteRev=0,mzRetryTimer=null,mzSaveState='idle';
+let mzLastRemoteCheck=0;let mzDirty=false,mzLastRemoteRev=0,mzRetryTimer=null,mzSaveState='idle',mzLoaded=false;
 function deviceId(){
   try{let d=localStorage.getItem(MZ_DEVICE_KEY);if(!d){d='d'+Math.random().toString(36).slice(2,10)+Date.now().toString(36);localStorage.setItem(MZ_DEVICE_KEY,d)}return d}
   catch(e){return 'nostorage'}
@@ -1278,6 +1300,7 @@ function stateMeta(){
   return state.meta
 }
 function writeMirror(dirty){
+  if(!mzLoaded)return;
   try{
     const m=stateMeta();
     localStorage.setItem(mirrorKey(),JSON.stringify({rev:m.rev,dirty:!!dirty,at:new Date().toISOString(),device:deviceId(),state}))
@@ -1306,12 +1329,14 @@ function unionById(a=[],b=[],key='id'){
   }
   return out
 }
-function mergeRemoteLocal(remote,local){
+function mergeRemoteLocal(remote,local,opts){
+  opts=opts||{};
   if(!remote||typeof remote!=='object')return local;
   if(!local||typeof local!=='object')return remote;
-  const rAt=new Date(remote.meta?.savedAt||0),lAt=new Date(local.meta?.savedAt||0);
-  const newer=lAt>=rAt?local:remote,older=lAt>=rAt?remote:local;
-  const out=JSON.parse(JSON.stringify(newer));
+  // settingsFrom: 'remote' يمنع النسخة المحلية من استبدال الإعدادات
+  const base=opts.settingsFrom==='remote'?remote:(new Date(local.meta?.savedAt||0)>=new Date(remote.meta?.savedAt||0)?local:remote);
+  const other=base===local?remote:local;
+  const out=JSON.parse(JSON.stringify(base));
   out.txns=unionById(local.txns,remote.txns,'id');
   out.splits=unionById(local.splits,remote.splits,'id');
   out.people=unionById(local.people,remote.people,'id');
@@ -1323,9 +1348,10 @@ function mergeRemoteLocal(remote,local){
   out.wealth.snapshots=unionById(local.wealth&&local.wealth.snapshots,remote.wealth&&remote.wealth.snapshots,'id');
   out.income=out.income||{commitments:[],autoOpen:true};
   out.income.commitments=unionById(local.income&&local.income.commitments,remote.income&&remote.income.commitments,'id');
-  out.cycles=Object.assign({},older.cycles||{},newer.cycles||{});
-  out.merchantRules=Object.assign({},older.merchantRules||{},newer.merchantRules||{});
-  out.meta=Object.assign({},newer.meta||{},{rev:Math.max(+(remote.meta?.rev||0),+(local.meta?.rev||0))+1,savedAt:new Date().toISOString(),device:deviceId()});
+  out.cycles=Object.assign({},other.cycles||{},base.cycles||{});
+  out.merchantRules=Object.assign({},other.merchantRules||{},base.merchantRules||{});
+  if(opts.settingsFrom==='remote'&&remote.settings)out.settings=JSON.parse(JSON.stringify(remote.settings));
+  out.meta=Object.assign({},base.meta||{},{rev:Math.max(+(remote.meta?.rev||0),+(local.meta?.rev||0))+1,savedAt:new Date().toISOString(),device:deviceId()});
   return out
 }
 async function fetchRemoteState(){
@@ -1347,21 +1373,25 @@ window.addEventListener('beforeunload',e=>{
 function restoreMirrorIfNewer(){
   const m=readMirror();
   if(!m||!m.state)return false;
-  const localRev=+(m.state.meta?.rev||0),remoteRev=+(state.meta?.rev||0);
-  if(!m.dirty&&localRev<=remoteRev)return false;
-  const localTx=(m.state.txns||[]).length,remoteTx=(state.txns||[]).length;
-  state=mergeState(mergeRemoteLocal(state,m.state));
+  const remoteTx=(state.txns||[]).length;
+  const localTx=(m.state.txns||[]).length;
+  // لا نلمس شيئًا إلا إذا كانت النسخة المحلية تحمل عمليات غير موجودة على الخادم
+  if(!m.dirty&&localTx<=remoteTx)return false;
+  const merged=mergeRemoteLocal(state,m.state,{settingsFrom:'remote'});
+  const gained=(merged.txns||[]).length-remoteTx;
+  if(gained<=0&&!m.dirty)return false;
+  state=mergeState(merged);
   ensureIncomeShape();
-  const added=(state.txns||[]).length-remoteTx;
-  if(m.dirty||added>0){
-    mzDirty=true;setSaveStatus('dirty');queueSecureSave(400);
-    toast(added>0?`استرجعنا ${added} عملية لم تُحفظ`:'استرجعنا تعديلات غير محفوظة')
+  if(gained>0){
+    mzDirty=true;setSaveStatus('dirty');queueSecureSave(600);
+    toast(`استرجعنا ${gained} عملية لم تُحفظ`)
   }
   return true
 }
 
 function persistState(){
   if(!secureReady||!secureUser){toast('الجلسة الآمنة غير جاهزة',true);return false}
+  if(!mzLoaded){console.warn('save blocked: state not loaded yet');return false}
   const m=stateMeta();m.rev=(+m.rev||0)+1;m.savedAt=new Date().toISOString();m.device=deviceId();
   mzDirty=true;setSaveStatus('dirty');writeMirror(true);
   queueSecureSave();return true
@@ -1369,15 +1399,20 @@ function persistState(){
 function queueSecureSave(delay=280){clearTimeout(secureSaveTimer);secureSaveTimer=setTimeout(()=>secureSaveNow(),delay)}
 async function secureSaveNow(){
   if(!secureReady||!secureUser)return false;
+  if(!mzLoaded){console.warn('remote save blocked: not loaded');return false}
   if(secureSaveBusy){secureSaveQueued=true;return true}
   secureSaveBusy=true;setSaveStatus('saving');
   try{
-    const remote=await fetchRemoteState();
+    // نقرأ الحالة البعيدة فقط عند أول حفظ بعد الفتح أو كل ٥ دقائق، لا مع كل حفظ
+    const nowTs=Date.now();
+    const needCheck=(nowTs-mzLastRemoteCheck)>300000;
+    const remote=needCheck?await fetchRemoteState():null;
+    if(needCheck)mzLastRemoteCheck=nowTs;
     const remoteRev=+(remote&&remote.meta&&remote.meta.rev||0);
     const remoteDevice=remote&&remote.meta&&remote.meta.device;
     if(remote&&remoteRev>mzLastRemoteRev&&remoteDevice&&remoteDevice!==deviceId()){
       const before=(state.txns||[]).length;
-      state=mergeState(mergeRemoteLocal(remote,state));
+      state=mergeState(mergeRemoteLocal(remote,state,{}));
       ensureIncomeShape();
       const gained=(state.txns||[]).length-before;
       setSaveStatus('merged');
@@ -2218,7 +2253,72 @@ function renderMoneyPanes(){
   if(ss==='loans')renderLoans();
 }
 
+function daysSinceBackup(){
+  const t=state.secureMeta&&state.secureMeta.lastBackupAt;
+  if(!t)return null;
+  const d=(Date.now()-new Date(t))/86400000;
+  return isNaN(d)?null:d
+}
+function markBackupDone(){
+  state.secureMeta=state.secureMeta||{};
+  state.secureMeta.lastBackupAt=new Date().toISOString();
+  state.secureMeta.lastBackupTxns=(state.txns||[]).length;
+  persistState();renderBackupStatus()
+}
+function renderBackupStatus(){
+  const lbl=$('lastBackupLabel');
+  const d=daysSinceBackup();
+  const since=state.secureMeta&&state.secureMeta.lastBackupTxns;
+  const added=(state.txns||[]).length-(+since||0);
+  if(lbl)lbl.textContent=d===null?'ما أخذت نسخة بعد':(d<1?'اليوم':`قبل ${Math.floor(d)} يوم`);
+  const banner=$('backupBanner');if(!banner)return;
+  const overdue=(d===null&&(state.txns||[]).length>=5)||(d!==null&&d>=7&&added>0);
+  banner.classList.toggle('hidden',!overdue);
+  if(overdue&&$('backupBannerText')){
+    $('backupBannerText').textContent=d===null
+      ? 'ما عندك نسخة احتياطية. نزّلها الآن عشان بياناتك تكون بيدك'
+      : `مرّ ${Math.floor(d)} يوم على آخر نسخة، و${added} عملية جديدة`
+  }
+}
+function doExportBackup(){
+  const payload={app:'Mizan',version:APP_VERSION,exportedAt:new Date().toISOString(),state};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=`Mizan_Backup_${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  markBackupDone();
+  toast('تم تجهيز النسخة الاحتياطية')
+}
+async function loadRestorePoints(){
+  const host=$('restoreList');if(!host)return;
+  host.innerHTML='<p class="sheetLead">جاري التحميل…</p>';
+  try{
+    const {data,error}=await sb.from('user_state_daily')
+      .select('snap_date,txns_count,splits_count')
+      .order('snap_date',{ascending:false}).limit(30);
+    if(error)throw error;
+    if(!data||!data.length){host.innerHTML='<p class="sheetLead">ما فيه لقطات بعد. تُلتقط تلقائيًا عند أول حفظ كل يوم.</p>';return}
+    host.innerHTML=data.map(r=>`<div class="restoreRow"><div><b>${r.snap_date}</b><small>${r.txns_count} عملية • ${r.splits_count} قطة</small></div><button class="miniBtn2" data-snap="${r.snap_date}" type="button">استرجاع</button></div>`).join('');
+    document.querySelectorAll('[data-snap]').forEach(b=>b.onclick=()=>restoreSnapshot(b.dataset.snap));
+  }catch(e){
+    console.error(e);
+    host.innerHTML='<p class="sheetLead">تعذر تحميل نقاط الاسترجاع</p>'
+  }
+}
+async function restoreSnapshot(snapDate){
+  if(!confirm(`استرجاع حالة يوم ${snapDate}؟ سيتم استبدال بياناتك الحالية. ننصح بتنزيل نسخة أولًا.`))return;
+  try{
+    const {data,error}=await sb.from('user_state_daily').select('state').eq('snap_date',snapDate).single();
+    if(error||!data)throw error||new Error('not_found');
+    state=mergeState(data.state);
+    persistState();render();close();
+    toast(`تم الاسترجاع ليوم ${snapDate}`)
+  }catch(e){console.error(e);toast('تعذر الاسترجاع',true)}
+}
+
 function render(){
+  try{renderBackupStatus();if($('headVersion'))$('headVersion').textContent=APP_VERSION}catch(e){}
 const b=activeDayBudget(),sp=todaySpend(),rem=b-sp,p=b?Math.min(100,Math.round(sp/b*100)):0,fd=fdate();
 
 $('todayRemaining').textContent=fmt(Math.max(0,rem));$('todaySpend').textContent=`صرفت ${fmt(sp)} من ${fmt(b)} ر.س`;$('safeSpend').textContent=fmt(safeToSpend());$('pct').textContent=p+'%';$('ring').style.background=`conic-gradient(var(--teal) 0 ${p*3.6}deg,#dceee8 ${p*3.6}deg 360deg)`;
@@ -2654,8 +2754,11 @@ $('smsImportGo').onclick=()=>{const sender=$('smsSender').value==='auto'?'':$('s
 function csvRows(text){const out=[];let row=[],f='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c==='"'){if(q&&n==='"'){f+='"';i++}else q=!q}else if(c===','&&!q){row.push(f);f=''}else if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(f);f='';if(row.some(x=>x.trim()))out.push(row);row=[]}else f+=c}if(f||row.length){row.push(f);out.push(row)}return out}function col(h,ks){const x=h.map(s=>s.trim().toLowerCase());for(const k of ks){const i=x.findIndex(v=>v===k||v.includes(k));if(i>=0)return i}return-1}function num(v){return Number(String(v||'').replace(/[ ,]/g,'').replace(/SAR|ر\.س/gi,''))}function date(v){const d=new Date(v);if(!isNaN(d))return d;const m=String(v).match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);if(m){let y=+m[3];if(y<100)y+=2000;return new Date(y,+m[2]-1,+m[1],12)}return new Date()}
 $('importGo').onclick=async()=>{const file=$('csvFile').files[0];if(!file)return $('importResult').textContent='اختر ملف CSV أولًا';try{const rows=csvRows(await file.text()),h=rows[0]||[],di=col(h,['date','التاريخ']),xi=col(h,['description','details','merchant','الوصف','البيان','التفاصيل']),ai=col(h,['amount','المبلغ']),debi=col(h,['debit','مدين','خصم']),cri=col(h,['credit','دائن','إيداع']);if(di<0||xi<0||(ai<0&&debi<0&&cri<0))throw Error('تعذر اكتشاف أعمدة التاريخ والوصف والمبلغ');let add=0,dup=0,rev=0;for(const r of rows.slice(1)){let amount=NaN,direction='debit';if(ai>=0){amount=num(r[ai]);if(amount<0){amount=Math.abs(amount);direction='credit'}}else{const d=debi>=0?num(r[debi]):NaN,c=cri>=0?num(r[cri]):NaN;if(d>0)amount=d;else if(c>0){amount=c;direction='credit'}}if(!(amount>0))continue;const desc=r[xi]||'عملية مستوردة',dt=date(r[di]),cl=classifyCategory(desc,{amount,ts:dt.toISOString()}),t={id:uid(),amount,impact:direction==='debit'?amount:0,category:cl.category,subcategory:cl.subcategory||'',classification:cl,merchantKey:cl.merchantKey,source:$('importSource').value,note:desc,label:direction==='debit'?'مصروف مستورد':'تحويل وارد',ts:dt.toISOString(),createdAt:new Date().toISOString(),direction};t.fp=fingerprint(t);if(isDup(t)){dup++;continue}t.review=infer(t);if(t.review)rev++;state.txns.push(t);add++}save();$('importResult').innerHTML=`تمت إضافة <b>${add}</b> عملية، تجاهل ${dup} مكررة، و${rev} للمراجعة`}catch(err){$('importResult').textContent='تعذر الاستيراد: '+err.message}};
 
-$('exportBackupBtn').onclick=()=>{const payload={app:'Mizan',version:APP_VERSION,exportedAt:new Date().toISOString(),state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`Mizan_Backup_${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('تم تجهيز النسخة الاحتياطية')};
-$('backupFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const data=JSON.parse(await f.text()),incoming=data.state||data;if(!incoming||!Array.isArray(incoming.txns)||!Array.isArray(incoming.splits))throw Error('ملف غير صالح');if(!confirm('استرجاع النسخة الاحتياطية سيستبدل بيانات ميزان الحالية. متابعة؟'))return;state={...clone(defaults),...incoming,settings:{...defaults.settings,...(incoming.settings||{})},monthOverride:{...defaults.monthOverride,...(incoming.monthOverride||{})},ui:{...defaults.ui,...(incoming.ui||{})}};save();toast('تم استرجاع النسخة الاحتياطية')}catch(err){toast('تعذر قراءة ملف النسخة الاحتياطية',true)}finally{e.target.value=''}};
+$('exportBackupBtn').onclick=doExportBackup;
+if($('backupBannerBtn'))$('backupBannerBtn').onclick=doExportBackup;
+if($('loadRestorePoints'))$('loadRestorePoints').onclick=loadRestorePoints;
+
+$('backupFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const data=JSON.parse(await f.text()),incoming=data.state||data;if(!incoming||!Array.isArray(incoming.txns)||!Array.isArray(incoming.splits))throw Error('ملف غير صالح');if(!confirm('استرجاع النسخة الاحتياطية سيستبدل بيانات ميزان الحالية. متابعة؟'))return;state={...clone(defaults),...incoming,settings:{...defaults.settings,...(incoming.settings||{})},monthOverride:{...defaults.monthOverride,...(incoming.monthOverride||{})},ui:{...defaults.ui,...(incoming.ui||{})}};save();markBackupDone();toast('تم استرجاع النسخة الاحتياطية')}catch(err){toast('تعذر قراءة ملف النسخة الاحتياطية',true)}finally{e.target.value=''}};
 
 $('checkUpdateBtn').onclick=()=>checkForAppUpdate({silent:false});$('applyUpdateBtn').onclick=applyAppUpdate;$('secureLogoutBtn').onclick=secureLogout;$('adminBtn').onclick=()=>{open('adminSheet');refreshAdmin()};
 $('setupGuideBtn').onclick=()=>open('setupGuideSheet');
@@ -2668,10 +2771,10 @@ async function secureLogin(){const email=$('secureEmail').value.trim().toLowerCa
 async function secureInviteSignup(){const token=inviteToken(),email=$('secureEmail').value.trim().toLowerCase(),password=$('securePassword').value;if(!token)return secureMsg('secureAuthMsg','رابط الدعوة غير موجود','bad');if(!email||password.length<10)return secureMsg('secureAuthMsg','أدخل الإيميل المدعو وكلمة مرور 10 خانات على الأقل','warn');const redirect=`${location.origin}${location.pathname}?invite=${encodeURIComponent(token)}`;const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:redirect}});if(error)return secureMsg('secureAuthMsg',secureMapError(error),'bad');if(data.session)await enterSecure(data.session);else secureMsg('secureAuthMsg','تم إنشاء الحساب. أكد البريد ثم ارجع لنفس رابط الدعوة')}
 async function enterSecure(session){secureSession=session;secureUser=session.user;secureShow('secureLoading');let {data:profile,error}=await sb.from('profiles').select('user_id,email,display_name,role,status').eq('user_id',secureUser.id).maybeSingle();if(error)return secureDeny('تعذر التحقق من الحساب');if(!profile){const token=inviteToken();if(token){const c=await sb.rpc('claim_invite',{p_token:token});if(c.error)return secureDeny(secureMapError(c.error));sessionStorage.removeItem('mizan_invite');history.replaceState({},'',location.pathname);const p2=await sb.from('profiles').select('user_id,email,display_name,role,status').eq('user_id',secureUser.id).maybeSingle();profile=p2.data}}if(!profile)return secureDeny('هذا الحساب غير مدعو إلى ميزان');secureProfile=profile;const a=await sb.rpc('can_access_app');if(a.error||!a.data)return secureDeny(profile.status==='blocked'?'تم إيقاف وصول هذا الحساب بواسطة مالك ميزان':'الوصول إلى ميزان موقوف حاليًا');try{await sb.rpc('record_activity',{p_action:'login',p_metadata:{client:'mizan-secure-v5.0.1'}})}catch{}if(profile.role==='owner'){const aal=await sb.auth.mfa.getAuthenticatorAssuranceLevel();if(aal.error)return secureDeny('تعذر التحقق من MFA.');if(aal.data.currentLevel!=='aal2'){if(aal.data.nextLevel==='aal2')return secureShow('secureMfaChallenge');return secureShow('secureMfaEnroll')}}await loadSecureState()}
 async function loadSecureState(){const {data,error}=await sb.rpc('get_my_mizan_state');if(error)return secureDeny(secureMapError(error));if(data?.exists){
-    state=mergeState(data.state);mzLastRemoteRev=+(state.meta&&state.meta.rev||0);try{ensureIncomeShape();restoreMirrorIfNewer()}catch(e){console.error('mirror restore',e)}v5BackfillPending=backfillSmartCategories();
+    state=mergeState(data.state);mzLastRemoteRev=+(state.meta&&state.meta.rev||0);mzLoaded=true;try{ensureIncomeShape();restoreMirrorIfNewer()}catch(e){console.error('mirror restore',e)}v5BackfillPending=backfillSmartCategories();
     if(state.secureMeta?.setupComplete===true&&state.secureMeta?.quickStartComplete===false)return showQuickStart();
     return secureEnterApp()
-  }const legacy=secureProfile?.role==='owner'?legacyState():null;if(legacy){const d=dedupeLegacy(legacy);$('legacyTxnCount').textContent=d.state.txns.length;$('legacySplitCount').textContent=d.state.splits.length;$('legacyPeopleCount').textContent=d.uniqueCount;$('legacyDupMsg').classList.toggle('hidden',d.duplicates===0);if(d.duplicates)$('legacyDupMsg').textContent=`وجدنا ${d.rawCount} سجلات أشخاص، لكن الفعلي ${d.uniqueCount}. سيتم تجاهل ${d.duplicates} سجل مكرر`;$('legacyPeopleNames').innerHTML=d.people.map(p=>`<div class="legacyPerson"><b>${esc(p.name||'بدون اسم')}</b><span>${esc(p.phone||'')}</span></div>`).join('');return secureShow('secureLegacy')}securePrepareOnboarding();secureShow('securePrelude')}
+  }const legacy=secureProfile?.role==='owner'?legacyState():null;if(legacy){const d=dedupeLegacy(legacy);$('legacyTxnCount').textContent=d.state.txns.length;$('legacySplitCount').textContent=d.state.splits.length;$('legacyPeopleCount').textContent=d.uniqueCount;$('legacyDupMsg').classList.toggle('hidden',d.duplicates===0);if(d.duplicates)$('legacyDupMsg').textContent=`وجدنا ${d.rawCount} سجلات أشخاص، لكن الفعلي ${d.uniqueCount}. سيتم تجاهل ${d.duplicates} سجل مكرر`;$('legacyPeopleNames').innerHTML=d.people.map(p=>`<div class="legacyPerson"><b>${esc(p.name||'بدون اسم')}</b><span>${esc(p.phone||'')}</span></div>`).join('');mzLoaded=true;return secureShow('secureLegacy')}mzLoaded=true;securePrepareOnboarding();secureShow('securePrelude')}
 let setupStep=0,introIndex=0,quickStep=1,installSub=0,importSub=0,collectSub=0,tourIndex=0,tourResizeHandler=null;
 
 function setupDailyValues(){
@@ -2888,7 +2991,17 @@ async function finishProductTour(){
 }
 
 async function secureEnterApp(forceTour=false){secureReady=true;const upgraded=v5BackfillPending;v5BackfillPending=0;$('secureGate').classList.add('hidden');$('secureQuickStart').classList.add('hidden');$('payView').classList.add('hidden');$('appRoot').classList.remove('hidden');$('adminBtn').classList.toggle('hidden',secureProfile?.role!=='owner');startAccessTimer();render();if(upgraded){queueSecureSave(700);setTimeout(()=>toast(`تم تحديث ذكاء ${upgraded} عملية قديمة`),850)}await handlePendingSms();await syncSmsInbox({silent:true});try{ensureIncomeShape();if(state.income.autoOpen)setTimeout(()=>{try{openCycleIfNeeded()}catch(e){console.error(e)}},900)}catch(e){}if(forceTour||state.secureMeta?.tourComplete===false)setTimeout(startProductTour,420)}
-function startAccessTimer(){clearInterval(accessTimer);accessTimer=setInterval(async()=>{const r=await sb.rpc('can_access_app');if(r.error||!r.data)await secureAccessLost('تم إنهاء وصولك بواسطة مالك ميزان')},15000)}
+let accessFailStreak=0;
+function startAccessTimer(){
+  clearInterval(accessTimer);
+  accessTimer=setInterval(async()=>{
+    let r;
+    try{r=await sb.rpc('can_access_app')}catch(e){accessFailStreak++;return}
+    if(r&&r.error){accessFailStreak++;if(accessFailStreak>=4)await secureAccessLost('تعذر التحقق من وصولك');return}
+    if(r&&r.data===false){await secureAccessLost('تم إنهاء وصولك بواسطة مالك ميزان');return}
+    accessFailStreak=0
+  },60000)
+}
 async function secureAccessLost(text){secureReady=false;clearInterval(accessTimer);state=clone(defaults);try{render()}catch{}$('appRoot').classList.add('hidden');await sb.auth.signOut();secureDeny(text)}
 function secureDeny(text){$('secureDeniedText').textContent=text;secureShow('secureDenied')}
 async function secureLogout(){secureReady=false;clearInterval(accessTimer);state=clone(defaults);await sb.auth.signOut();location.href=location.pathname}
